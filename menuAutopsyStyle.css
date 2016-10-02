@@ -1,0 +1,636 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0; /*удаляем обводочку*/
+}
+
+body {
+    background: #B6B3A4;
+    font: 14px Arial, Tahoma, sans-serif;
+}
+
+p {
+    text-align: justify;
+    text-indent: 30px;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
+    font-family: 'Times New Roman', sans-serif;
+}
+
+li {
+    list-style-type: none; /* Убираем маркеры */
+}
+ul {
+    margin-left: 0; /* Отступ слева в браузере IE и Opera */
+    padding-left: 0; /* Отступ слева в браузере Firefox, Safari, Chrome */
+}
+
+.titleResearch {
+    margin-left: 40%;
+    /*font: 12px;*/
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight:bold;
+    text-transform: uppercase;
+
+
+}
+
+.main-container {
+    width: 900px;
+    min-height: 300px;
+    outline: solid 1px #337ab7;
+    margin: 48px auto;
+}
+
+.main-block {
+    outline: solid 1px #000;
+    background: #fbecdd;
+    padding: 10px 20px 20px 30px;
+}
+
+.menu {
+    width: auto;
+    height: 200px;
+    background: #e7c4a0;
+    padding: 10px;
+    outline: solid 1px green;
+    font: 0 Arial;
+}
+
+.button-pointer {
+    width: 172px;
+    height: 50px;
+    margin-left: 5px;
+    background: #008080;
+    display: inline-block;
+    vertical-align: top;
+    font: 14px Arial;
+    color: #fff;
+    margin-bottom: 5px;
+    cursor: pointer;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+
+}
+
+.button-pointer:nth-child(5n+1) {
+    margin-left: 0;
+}
+
+
+
+.button-pointer span {
+    display: block;
+    width: 100%;
+    height: 30%;
+    margin: 0 auto;
+    padding: 10% 0;
+    text-transform: uppercase;
+    text-align: center;
+    /*outline: 1px solid red;*/
+
+}
+/*
+.button-pointer:nth-child(6) span, .button-pointer:nth-child(2n+12) span {
+    padding: 5% 0;
+}
+*/
+
+.button-pointer:nth-child(n+5):nth-child(-n+6) span, .button-pointer:nth-child(2n+10):nth-child(-2n+14) span{
+    padding: 5% 0;
+}
+
+.pointer-dress {
+    background: #50a170;
+}
+
+.pointer-general {
+    background: #54a157;
+}
+
+
+.block {
+    -webkit-transition-duration: 0.6s; /* анимационное выдвижение для всех браузеров*/
+    -moz-transition-duration: 0.6s;
+    -o-transition-duration: 0.6s;
+    transition-duration: 0.6s;
+}
+
+.block-forma {
+    position: fixed;
+    background: #68a;
+    font: 14px Arial;
+    color: #f9f9f9; /* цвет текста */
+    padding: 5px;
+    border-radius: 4px;
+    border-top-right-radius: 0;
+}
+
+.block-forma-dress {
+    top: 50px;
+    left: -510px;
+    width: 500px;
+}
+
+.block-forma-general {
+    top: 50px;
+    left: -510px;
+    width: 500px;
+}
+
+.block-forma-decomposition {
+    top: 50px;
+    left: -510px;
+    width: 500px;
+}
+
+.block-forma-head {
+    top: 50px;
+    left: -1000px;
+}
+
+.block-forma-teeth {
+    top: 50px;
+    left: -500px;
+}
+
+.block-forma-damage {
+    top: 10px;
+    left: -1131px;
+}
+
+.block-forma-torso {
+    top: 50px;
+    left: -500px;
+}
+
+.block-forma-brainSkull {
+    top: 50px;
+    left: -500px;
+    width: 450px;
+}
+
+.block-forma-generalPathology {
+    top: 50px;
+    left: -500px;
+    width: 400px;
+}
+
+.block-forma-heartBloodVessels {
+    top: 10px;
+    left: -1200px;
+    min-width: 450px;
+}
+
+.heart-blood {
+    outline: red;
+    display: inline-block;
+}
+
+.heart-blood-left, .heart-blood-right {
+    display: inline-block;
+    vertical-align: top;
+
+}
+
+
+
+.block-forma-digestive {
+    top: 10px;
+    left: -500px;
+    width: 450px;
+}
+
+.block-forma-breath {
+    top: 10px;
+    left: -500px;
+    width: 450px;
+}
+
+.block-forma-genitourinary {
+    top: 10px;
+    left: -500px;
+    width: 450px;
+}
+
+.block-forma-other {
+    top: 10px;
+    left: -500px;
+    width: 450px;
+}
+
+.block-forma-additionalStudy {
+    top: 40px;
+    left: -500px;
+    width: 450px;
+}
+
+.pushback-block {
+    float: right;
+    outline: 1px solid black;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.pushback-block:hover {
+    background: #447;
+} 
+
+.dress-general {
+    max-height: 560px;
+    opacity: 1;
+    -webkit-transition-duration: .6s;
+    -moz-transition-duration: .6s;
+    -o-transition-duration: .6s;
+    transition-duration: .6s;
+    outline: 1px solid red;
+}
+
+.div-hidden {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-cloth {
+    max-height: 300px;
+    opacity: 1;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    outline: 1px solid coral;
+}
+
+.age-interval {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+
+}
+
+.age-interval-new {
+    max-height: 60px;
+    opacity: 1;
+}
+
+.mass {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+.mass-new {
+    max-height: 60px;
+    opacity: 1;
+}
+
+.spot-time {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.spot-time-new {
+    max-height: 40px;
+    opacity: 1;
+}
+
+.skin-dry-true {
+    max-height: 0;
+    opacity: 0;
+    width: 500px;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+.skin-dry-true-new {
+    max-height: 350px;
+    opacity: 1;
+    width: 500px;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.rotting-other {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.rotting-other-new {
+    max-height: 200px;
+    opacity: 1;
+}
+
+.div-hair-no {
+    max-height: 1000px;
+    opacity: 1;
+    /*overflow: hidden;*/
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-hair-no-new {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+
+.div-hair-color-other {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-hair-color-other-new {
+    max-height: 70px;
+    opacity: 1;
+}
+
+.div-iris-color-other {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-iris-color-other-new {
+    max-height: 70px;
+    opacity: 1;
+}
+
+.cold_other {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding-top: 10px;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-nose-excret {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-nose-excret-new, .div-ear-entry-other-new {
+    max-height: 700px;
+    opacity: 1;
+}
+
+
+.div-ear-excret-other {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-ear-excret-other-new {
+    max-height: 700px;
+    opacity: 1;
+}
+
+.div-breast {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-breast-new {
+    max-height: 700px;
+    opacity: 1;
+}
+
+.div-liverEdgeValue {
+    display: inline-block;
+    max-height: 0;
+    max-width: 0;
+    opacity: 0;
+    vertical-align: bottom;
+    overflow: hidden;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+ }
+
+.div-liverEdgeValue-new {
+    display: inline-block;
+    max-height: 300px;
+    max-width: 100px;
+    opacity: 1;
+}
+
+.div-pleuralCavity {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-pleuralCavity-new {
+    max-height: 300px;
+    opacity: 1;
+}
+
+.select-pleuralCavity {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.select-pleuralCavity-new {
+    max-height: 300px;
+    opacity: 1;
+}
+
+
+.div-gasterFilling-value {
+    display: inline-block;
+    max-height: 300px;
+    opacity: 1;
+    vertical-align: bottom;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-gasterFilling-value-new {
+    display: inline-block;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.div-bladder {
+    max-height: 700px;
+    opacity: 1;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-bladder-new {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    }
+
+.div-prostata {
+    max-height: 700px;
+    opacity: 1;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-prostata-new {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.div-uterus {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-uterus-new {
+    max-height: 700px;
+    opacity: 1;
+    overflow: hidden;
+ }
+
+.div-chemDefine {
+    position: absolute;
+    top: 69px;
+    left: 132px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-chemDefine-new {
+    position: absolute;
+    top: 69px;
+    left: 132px;
+    max-height: 700px;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.hair-face, .eyes, .nose, .ear, .lips {
+    display: inline-block;
+    outline: 1px solid black;
+    vertical-align: top;
+}
+
+.other-damage, .locomot-apparat-damage {
+    vertical-align: top;
+    display: inline-block;
+    /*outline: 1px solid black;*/
+}
+
+.locomot-apparat-damage {
+    width: 150px;
+}
+
+.other-damage {
+    width: 200px;
+}
+
+.valve {
+    outline: auto;
+    max-width: 283px;
+
+}
+.valve-left {
+    float: left;
+}
+.valve-right {
+    float: right;
+}
+
+
+
+.test-block {
+    width: 500px;
+    height: 200px;
+    background: green;
+    position: fixed;
+    left: -510px;
+
+    -webkit-transition-duration: 0.6s; /* анимационное выдвижение для всех браузеров*/
+    -moz-transition-duration: 0.6s;
+    -o-transition-duration: 0.6s;
+    transition-duration: 0.6s;
+}

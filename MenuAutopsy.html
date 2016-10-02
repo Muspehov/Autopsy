@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>MenuAutopsy</title>
+    <link href="menuAutopsyStyle.css" rel="stylesheet" type="text/css"/>
+    <script src="menuAutopsy.js"></script>
+
+
+</head>
+
+<body>
+<div class="main-container">
+    <div class="menu">
+        <!--<div class="button-container1">-->
+            <div class="button-pointer pointer-dress" onclick="changeLocalityLeft('formDress', '50px')"><span>одежда</span></div>
+            <div class="button-pointer " onclick="changeLocalityLeft('head', '50px')"><span>голова</span></div>
+            <div class="button-pointer" onclick="changeLocalityLeft('torso', '50px')"><span>туловище</span></div>
+            <div class="button-pointer" onclick="changeLocalityLeft('heartBloodVessels', '10px')"><span>сердце и сосуды</span></div>
+            <div class="button-pointer" onclick="changeLocalityLeft('breath', '50px')"><span>дыхательная система</span></div>
+
+        <!--</div>-->
+        <!--<div class="button-container2">-->
+            <div class="button-pointer pointer-general" onclick="changeLocalityLeft('formGeneral', '50px')"><span>общие параметры тела</span></div>
+            <div class="button-pointer" onclick="changeLocalityLeft('teeth', '50px')"><span>зубная формула</span></div>
+            <div class="button-pointer" onclick="changeLocalityLeft('brainSkull', '50px')"><span>ЦНС, череп</span></div>
+            <div class="button-pointer" onclick="changeLocalityLeft('digestive', '50px')"><span>ЖКТ</span></div>
+            <div class="button-pointer" onclick="changeLocalityLeft('genitourinary', '50px')"><span>мочеполовая система</span></div>
+            <div class="button-pointer" onclick="changeLocalityLeft('formDecomposition', '50px')"><span>трупные явления</span></div>
+            <div class="button-pointer" onclick="changeLocalityLeft('damage', '50px')"><span>повреждения</span></div>
+            <div class="button-pointer" onclick="changeLocalityLeft('generalPathology', '50px')"><span>общая патология</span></div>
+            <div class="button-pointer" onclick="changeLocalityLeft('additionalStudy', '50px')"><span>дополнительное исследование</span></div>
+            <div class="button-pointer" onclick="changeLocalityLeft('other', '50px')"><span>остальное</span></div>
+
+        <!--DRESS-->
+        <div class="block block-forma block-forma-dress" id="formDress">
+            <div class="pushback-block" onclick="resetLocalityLeft('formDress')">  X  </div>
+            <form id="form_dress" name="form_dress">
+                <label for="dressPresence"><span>Одежды нет</span></label>
+                <input type="checkbox" id="dressPresence" onchange="changeStyle('dressGeneral', ' div-hidden'); resetFormElements('dress', 'clotheds')"/>
+                <br/>
+                <br/>
+                <div class="dress-general" id="dressGeneral">
+                    <label for="dress"><span>Одежда:</span></label><br/>
+                    <textarea cols="50" id="dress" rows="13"></textarea><br/>
+                    <label for="checkDress"><span>Повреждения одежды&nbsp;</span></label>
+                    <input id="checkDress" type="checkbox" onclick="changeStyle('div_clotheds', ' div-cloth'); resetFormElements('clotheds')">
+                    <br/>
+                    <div class="div-hidden" id="div_clotheds">
+                        <textarea cols="50" id="clotheds" name="clotheds" rows="7"></textarea>
+                    </div>
+                    <br/>
+                    <div id="div_dress">
+                        <label for="dressold"><span>Степень изношенности одежды:</span></label>
+                        <select id="dressold">
+                            <option value="1"> сильно</option>
+                            <option selected value="2">среднее</option>
+                            <option value="3">слабо</option>
+                        </select>
+                        <br/>
+                        <br/>
+                        <label for="dirty"><span>Загрязнения:</span></label>
+                        <select id="dirty">
+                            <option value="1">нет</option>
+                            <option value="2">бытовая пыль</option>
+                            <option value="3">грязь</option>
+                            <option value="4">рвотные массы</option>
+                            <option value="5">кровь</option>
+                            <option value="6">каловые массы</option>
+                        </select>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="resetNewStyle('dressGeneral', 'div_clotheds');
+                        resetForm('form_dress')" type="button" value="Сбросить">
+            </form>
+        </div>
+                            <!--general characters -->
+        <div class="block block-forma block-forma-general" id="formGeneral">
+            <div class="pushback-block" onclick="resetLocalityLeft('formGeneral')">  X  </div>
+            <form id="form_general" name="form_general">
+                <span>Пол:</span><br>
+                <input checked id="man" name="sex" type="radio" onchange="resetNewStyle('divBreast', 'divProstata', 'divUterus'); getRandAndAddInValue('hair_length', 2, 10);
+                get5RandAndAddInValue('massBrain', 1360, 1380, 10);
+                "><label for="man"><span>Мужской</span></label><br/>
+                <input id="woman" name="sex" type="radio" onchange="changeStyle('divBreast', ' div-breast-new');
+                 changeStyle('divProstata', ' div-prostata-new');
+                 changeStyle('divUterus', ' div-uterus-new');
+                 getRandAndAddInValue('hair_length', 10, 35);
+                 get5RandAndAddInValue('massBrain', 1260, 1280, 10);
+                 "><label for="woman"><span>Женский</span></label><br/>
+                <br/>
+                <label for="growth"><span>Длина тела:</span></label> <input id="growth" size="5" type="text">
+                <span>см</span><br>
+                <br/>
+                <label for="physique"><span>Тип телосложения:</span></label>
+                <select id="physique">
+                    <option>крупное</option>
+                    <option selected>среднее</option>
+                    <option>слабое</option>
+                </select>
+                <br/>
+                <br/>
+                <label for="pitanie"><span>Тип питания:</span></label>
+                <select id="pitanie" onchange="changeSelectBySelect('pitanie', 'abdomen', '2-3', '3,4-2', '1-1');
+                switch (getOptionNumberOfSelect('pitanie')){
+                    case 1: get05RandAndAddInValue('kidneyFat', 2, 3); break;
+                    case 2: get05RandAndAddInValue('kidneyFat', 5, 7); break;
+                    case 3: get05RandAndAddInValue('kidneyFat', 0.5, 1); break;
+                    case 4: get05RandAndAddInValue('kidneyFat', 0.5, 1); break;
+                }
+                
+                switch (getOptionNumberOfSelect('pitanie')){
+                    case 1: getRandAndAddInValue('subcutaneousFatChest', 1, 2); break;
+                    case 2: getRandAndAddInValue('subcutaneousFatChest', 3, 6); break;
+                    case 3: get05RandAndAddInValue('subcutaneousFatChest', 0.5, 1); break;
+                    case 4: get05RandAndAddInValue('subcutaneousFatChest', 0.5, 1); break;
+                }
+
+                switch (getOptionNumberOfSelect('pitanie')){
+                    case 1: getRandAndAddInValue('subcutaneousFatAbdomen', 2, 4); break;
+                    case 2: getRandAndAddInValue('subcutaneousFatAbdomen', 4, 7); break;
+                    case 3: get05RandAndAddInValue('subcutaneousFatAbdomen', 1.5, 2); break;
+                    case 4: get05RandAndAddInValue('subcutaneousFatAbdomen', 1, 1.5); break;
+                }                
+                ">
+                    <option>умеренное</option>
+                    <option>повышенное</option>
+                    <option>пониженное</option>
+                    <option>пониженное</option>
+                    <option>резко пониженное, кахексия</option>
+                </select>
+                <br/>
+                <br/>
+                <label for="muscless"><span>Мускулатура:</span></label>
+                <select id="muscless">
+                    <option value="рельеф их выражен хорошо. ">развитая</option>
+                    <option selected value="">средняя</option>
+                    <option value="">слабая</option>
+                </select>
+                <br/>
+                <br/>
+                <label for="defects"><span>Дефекты развития&nbsp;</span>
+                </label><input id="defects" type="checkbox">
+                <label for="mass"><span>&nbsp; &nbsp; масса тела не измерялась&nbsp;</span></label>
+                <input checked id="mass" type="checkbox" onchange="changeStyle('massDiv', ' mass-new')">
+                <br/>
+                <div id="massDiv" class="mass">
+                    <label for="massNum"><span>Масса тела</span></label><input id="massNum" type="text" size="2"/><span>кг</span>
+                </div>
+
+                <br/>
+
+                <label for="age"><span>Возраст на вид:</span></label>
+                <select id="age" onchange="changeStyleIfSelected('ageInterval', 'age', ' age-interval-new', 4)">
+                    <option>соответствует</option>
+                    <option>выглядит старше</option>
+                    <option>выглядит младше</option>
+                    <option>указать примерный возраст</option>
+                </select>
+                <br/>
+                <div id="ageInterval" class="age-interval">
+                    <label for="ageIntervalMin"><span>Возраст на вид соответствует: &nbsp; от</span></label> <input id="ageIntervalMin" size="5" type="text">
+                    <span>до</span><input id="ageIntervalMax" size="5" type="text"> <span>лет</span>
+                </div>
+                <br/>
+                <label for="skinColor"><span>Цвет кожного покрова:</span></label>
+                <select id="skinColor">
+                    <option >мертвенно-бледный</option>
+                    <option >бледно-серый</option>
+                    <option >смуглый</option>
+                    <option >с желтизной</option>
+                    <option >грязно-зеленый</option>
+                    <option >с розовым оттенком</option>
+                </select>
+                <br/>
+                <label for="skinElastic"><span>Консистенция кожи:</span></label>
+                <select id="skinElastic">
+                    <option>упругая</option>
+                    <option>мягкая</option>
+                    <option>дряблая</option>
+                </select>
+                <br/>
+                <label for="skinDry"><span>Участки подсыхания кожи&nbsp;</span></label>
+                <input type="checkbox" id="skinDry" onclick="changeStyle('skinDryTrue', ' skin-dry-true-new');
+                    resetFormElements('skinDryTrue')">
+                <br/>
+                <textarea class="skin-dry-true" id="skinDryTrue" cols="20" rows="5"></textarea>
+                <br/>
+
+                <br/>
+                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="resetForm('form_general'); resetNewStyle('ageInterval','skinDryTrue', 'divBreast', 'divProstata', 'divUterus'); resetFormElements('abdomen');
+                getRandAndAddInValue('growth', 160, 180)" type="button" value="Сбросить">
+            </form>
+        </div>
+
+        <!--decomposition-->
+        <div class="block block-forma block-forma-decomposition" id="formDecomposition">
+            <div class="pushback-block" onclick="resetLocalityLeft('formDecomposition')">  X  </div>
+            <form id="form_decomposition" name="form_decomposition">
+                <label for="cool"><span>Охлаждение</span></label>
+                <select id="cool">
+                    <option>холодный</option>
+                    <option>теплый в подмыш. и вн.п. бедер</option>
+                    <option>тепловатый</option>
+                    <option >тепловатый в подмыш. и вн.п. бедер</option>
+                </select>
+                <br/>
+                <br/>
+
+                <label for="larshe"><span>Пятна Лярше &nbsp;</span></label>
+                <input type="checkbox" id="larshe">
+                <br/>
+                <br/>
+                <br/>
+                <span>Трупные пятна:</span>
+                <br/>
+                <br/>
+                <label for="spot_color"><span>цвет</span></label>
+                <select id="spot_color">
+                    <option>синюшно-фиолетовый</option>
+                    <option>синюшно-багровый</option>
+                    <option>розовато-красный</option>
+                </select>
+                <label for="spot_intensity"><span>интенсивность</span></label>
+                <select id="spot_intensity">
+                    <option>есть</option>
+                    <option>слабо</option>
+                </select>
+                <br/>
+                <br/>
+                <label for="spot_area"><span>распределение</span></label>
+                <select id="spot_area">
+                    <option>сливные</option>
+                    <option>очаговые</option>
+                </select>
+                <br/>
+                <br/>
+                <label for="spot_localization"><span>локализация</span></label>
+                <select id="spot_localization">
+                    <option value="">сзади</option>
+                    <option value="">сзади и по боковым поверхностям</option>
+                    <option value="">спереди</option>
+                    <option value="">слева</option>
+                    <option value="">справа</option>
+                </select>
+                <br/>
+                <br/>
+                <label for="spot_stage"><span>стадия</span></label>
+                <select id="spot_stage" onchange="
+                changeStyleAllExceptSelected('spTime', 'spot_stage', ' spot-time-new')">
+                    <option>имбибиция</option>
+                    <option>стаз</option>
+                    <option>гипостаз</option>
+                </select>
+                <div class="spot-time" id="spTime">
+                    <label for="spot_time"><span>время восстановленияпятна:</span></label>
+                    <input id="spot_time" size="5" type="text" value="5"><span>мин</span>
+                </div>
+                <br/>
+                <br/>
+                <span>Трупное окоченение:</span>
+                <label for="rigorMortis"><span>развито</span></label>
+                <select id="rigorMortis">
+                    <option>умеренно</option>
+                    <option>хорошо</option>
+                    <option>плохо</option>
+                    <option>отсутствует</option>
+                </select>
+                <br/>
+                <br/>
+                <label for="rotting"><span>Гниение:</span></label>
+                <select id="rotting" onchange="changeStyleIfSelected('rottingOther', 'rotting', ' rotting-other-new', 4)">
+                    <option>нет</option>
+                    <option>зелень на животе</option>
+                    <option>зелень в паховых областях</option>
+                    <option>другое</option>
+                </select>
+                <br/>
+                <div class="rotting-other" id="rottingOther">
+                    <label for="rotting2"><span>другое:</span></label><br/>
+                    <textarea cols="40" id="rotting2" rows="2"></textarea>
+                </div>
+                <br>
+                <label for="tandr"><span>температура тела и суправитальные реакции&nbsp;</span></label>
+                <input id="tandr" type="checkbox">
+                <br/>
+                <br/>
+                <input type="button" onclick="getResult(t)" value="Результат">
+                <input type="button" onclick="resetForm('form_decomposition')" value="Сбросить">
+            </form>
+        </div>
+
+                            <!--head-->
+        <div class="block block-forma block-forma-head" id="head">
+            <div class="pushback-block" onclick="resetLocalityLeft('head')">  X  </div>
+            <form id="formHead" name="formHead">
+                <div class="hair-face">
+                    <label for="hairNo"><span>волос нет</span></label>
+                    <input id="hairNo" type="checkbox" onclick="changeStyle('divHairNo', ' div-hair-no-new')">
+                    <br/>
+                    <div id="divHairNo" class="div-hair-no">
+                        <label for="hairColor"><span>волосы</span></label>
+                        <select id="hairColor" onchange="changeStyleIfSelected('divHairColorOther', 'hairColor', ' div-hair-color-other-new', 6)">
+                            <option>темно-русые</option>
+                            <option>русые</option>
+                            <option>светло-русые</option>
+                            <option>черные</option>
+                            <option>седые полностью</option>
+                            <option>другой цвет</option>
+                        </select>
+
+                        <div id="divHairColorOther" class="div-hair-color-other">
+                            <label for="hairColorOther"><span>другой цвет</span></label><br/>
+                            <textarea cols="20" id="hairColorOther" rows="1"></textarea>
+                        </div>
+                        <br/>
+                        <label for="greyHair"><span>с сединой</span></label>
+                        <input id="greyHair" type="checkbox">
+                        <br/>
+                        <label for="hair_length"><span>длина волос</span></label>
+                        <input id="hair_length" size="5" type="text"><span>см</span>
+                    </div>
+
+                    <label for="face"><span>лицо</span></label>
+                    <select id="face">
+                        <option value="">бледно-синюшное</option>
+                        <option value="">бледно-серое</option>
+                        <option value="">синюшно-фиолетовое</option>
+                        <option value="">синюшно-багровое</option>
+                        <option value="">синюшно-розовое</option>
+                    </select>
+                    <label for="puffy"><span>одутловатое</span></label>
+                    <input id="puffy" type="checkbox" value="125">
+                    <br/>
+                    <br/>
+                </div>
+
+                <div class="eyes">
+                    <label for="eyes"><span>глаза</span></label>
+                    <select id="eyes">
+                        <option value="">закрыты</option>
+                        <option value="">открыты</option>
+                    </select>
+                    <label for="cornea"><span>роговицы</span></label>
+                    <select id="cornea">
+                        <option value="">прозрачные</option>
+                        <option value="">мутные</option>
+                    </select>
+                    <br/>
+                    <br/>
+                    <label for="iris"><span>радужка</span></label>
+                    <select id="iris" onchange="changeStyleIfSelected('divIrisColorOther', 'iris', ' div-iris-color-other-new', 6)">
+                        <option >светло-коричневая</option>
+                        <option >темно-коричневая</option>
+                        <option >голубая</option>
+                        <option >черная</option>
+                        <option >светло-зеленая</option>
+                        <option >другой цвет</option>
+                    </select>
+                    <br/>
+                    <div id="divIrisColorOther" class="div-iris-color-other">
+                        <label for="iris_color"><span>другой цвет: </span></label><br/>
+                        <textarea cols="47" id="iris_color" rows="1"></textarea><br/>
+                    </div>
+                    <br/>
+                    <label for="pupil"><span>диаметр зрачков</span></label>
+                    <input id="pupil" size="1" type="text"><span>мм</span>
+                    <br/>
+
+                    <br/>
+                    <label for="shell_color"><span>Соединительные оболочки цвет</span></label>
+                    <select id="shell_color">
+                        <option value="">бледно-розовый</option>
+                        <option value="">серо-розовый</option>
+                        <option value="">желтые</option>
+                        <option value="">светло-желтые</option>
+                    </select><br/>
+                    <label for="shell_surface"><span>поверхность</span></label>
+                    <select id="shell_surface">
+                        <option value="">гладкие</option>
+                        <option value="">шероховатые</option>
+                    </select>
+                    </br>
+                    <label for="eyesHemorrhage"><span>кровоизлияния</span></label>
+                    <input id="eyesHemorrhage" type="checkbox" value="126">
+                    </br>
+                    </br>
+                </div>
+                </br>
+
+                <div class="nose">
+
+                    <label for="noseExcret"><span>Выделения из носа</span></label>
+                    <select id="noseExcret" onchange="changeStyleIfSelected('divNoseExcretOther', 'noseExcret', ' div-nose-excret-new', 6)">
+                        <option value="">нет</option>
+                        <option value="">кровянистые</option>
+                        <option value="">светло-желтые</option>
+                        <option value="">темно-желтые</option>
+                        <option value="">зеленоватые</option>
+                        <option value="">другое</option>
+                    </select>
+                    <br/>
+                    <div id="divNoseExcretOther" class="div-nose-excret">
+                        <label for="noseExcretOther"><span>другое: </span></label>
+                        <br/>
+                        <textarea cols="20" id="noseExcretOther" rows="4"></textarea>
+                    </div>
+                    <br/>
+                    <br/>
+                </div>
+
+                <div class="ear">
+                    <label for="earExcret"><span>Выделения из слух. проходов</span></label>
+                    <select id="earExcret" onchange="changeStyleIfSelected('divEarExcretOther', 'earExcret', ' div-ear-excret-other-new', 6 )">
+                        <option value="a">нет</option>
+                        <option value="ab">кровянистые</option>
+                        <option value="abc">светло-желтые</option>
+                        <option value="abcd">темно-желтые</option>
+                        <option value="abcde">зеленоватые</option>
+                        <option value="abcdef">другое</option>
+                    </select>
+                    <br/>
+                    <div id="divEarExcretOther" class="div-ear-excret-other">
+                        <label for="earExcretOther"><span>другое: </span></label><br/>
+                        <textarea cols="30" id="earExcretOther" rows="4"></textarea>
+                    </div>
+                    <br/>
+
+                </div>
+                <div class="lips">
+                    <label for="lipsBorderColor"><span>кайма губ</span></label>
+                    <select id="lipsBorderColor">
+                        <option value="">багрово-синюшная</option>
+                        <option value="">синюшная</option>
+                        <option value="">бледно-синюшная</option>
+                        <option value="">бледно-розовая</option>
+                    </select>
+                    <br/>
+                    <br/>
+                    <label for="lipsBorderSurface"><span>поверхность каймы</span></label>
+                    <select id="lipsBorderSurface">
+                        <option value="">гладкая</option>
+                        <option value="">шероховатая</option>
+                    </select>
+                    <br/>
+                    <br/>
+                    <label for="mouth"><span>слизистая преддеверия и полости рта</span></label>
+                    <select id="mouth">
+                        <option value="">синюшно-розовая</option>
+                        <option value="">бледно-синюшная</option>
+                        <option value="">бледно-серая</option>
+                        <option value="">бледно-желтая</option>
+                    </select>
+                    <br/>
+                    <br/>
+                    <label for="mouthSurface"><span>поверхность слизистой губ</span></label>
+                    <select id="mouthSurface">
+                        <option value="гладкая">гладкая</option>
+                        <option value="шероховатая">шероховатая</option>
+                    </select>
+                </div><br/>
+
+                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="resetNewStyle('divHairNo', 'divHairColorOther', 'divIrisColorOther', 'divNoseExcretOther', 'divEarExcretOther');
+        resetForm('formHead'); (ISchecked('man')) ? getRandAndAddInValue('hair_length', 2, 10) : getRandAndAddInValue('hair_length', 10, 35);
+        get05RandAndAddInValue('pupil', 0.3, 0.5)
+        " type="button" value="Сбросить">
+            </form>
+        </div>
+        <!--teeth-->
+        <div class="block block-forma block-forma-teeth" id="teeth">
+            <div class="pushback-block" onclick="resetLocalityLeft('teeth')">  X  </div>
+            <form id="formTeeth" name="formTeeth">
+                <label for="teethVisible"><span>Видимые зубы целы &nbsp;</span></label>
+                <input type="checkbox" id="teethVisible" checked>
+                <br/><br/>
+                <label><input type="radio" checked="checked" name="raz" id="s1"/> <span>Нет</span></label><br/>
+                <label><input type="radio" name="raz"/> <span>Из желтого металла</span></label><br/>
+                <label><input type="radio" name="raz"/> <span>Из белого металла</span></label><br/>
+                <label><input type="radio" name="raz"/> <span>Корень</span></label><br/>
+                <label><input type="radio" name="raz"/> <span>Целый</span></label><br/>
+                <label><input type="radio" name="raz"/> <span>Кариес</span></label><br/>
+
+                <table>
+                    <tr>
+                        <td><span>8</span></td>
+                        <td><span>7</span></td>
+                        <td><span>6</span></td>
+                        <td><span>5</span></td>
+                        <td><span>4</span></td>
+                        <td><span>3</span></td>
+                        <td><span>2</span></td>
+                        <td><span>1</span></td>
+
+
+                        <td></td>
+                        <td><span>1</span></td>
+                        <td><span>2</span></td>
+                        <td><span>3</span></td>
+                        <td><span>4</span></td>
+                        <td><span>5</span></td>
+                        <td><span>6</span></td>
+                        <td><span>7</span></td>
+                        <td><span>8</span></td>
+
+                    </tr>
+                    <tr>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+
+                        <td>||</td>
+
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+
+                    </tr>
+                    <tr>
+
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+
+                        <td>||</td>
+
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+                        <td><input name="inp" type="button" value=" Ц " onclick="push(this)"/></td>
+
+                    </tr>
+                </table>
+                <br/><br/>
+                <label><span>лунки отсутствующих зубов заращены </span><input type="checkbox" id="teeth_alveolus" checked></label>
+                <br/><br/>
+                <!-- Control buttons  -->
+                <input name="process" type="button" value="РЕЗУЛЬТАТ"
+                       onclick="getMatrix(matrix); funcEcho(getResultString(matrix, symb, textPhrasesArray), 'outputinf'); getResult(t)"/>
+                <input name="process" type="button" value="Все целы" onclick="resetTeeth('inp', ' Ц ')"/>
+                <input name="process" type="button" value="Нет зубов" onclick="resetTeeth('inp', ' Н ')"/>
+                <input name="process" type="button" value="Все по выбору" onclick="allTheSelectSymb('inp')"/>
+                <br/>
+                <br/>
+
+                <div id="outputinf"></div>
+
+            </form>
+        </div>
+
+        <!--torso-->
+        <div class="block block-forma block-forma-torso" id="torso">
+            <div class="pushback-block" onclick="resetLocalityLeft('torso')">  X  </div>
+            <form id="formTorso">
+                <label for="chest"><span>грудная клетка</span></label>
+                <select id="chest">
+                    <option value = "">цилиндрическая</option>
+                    <option value = "">бочкообразная</option>
+                    <option value = "">коническая</option>
+                    <option value = "">килевидная</option>
+                    <option value = "">воронкообразная</option>
+                    <option value = "">ладьевидная</option>
+                </select>
+                <br/>
+                <label for="chest_symmetry"><span>симметричная</span></label> <input type="checkbox" id="chest_symmetry" checked>
+                <br/><br/>
+
+                <div id="divBreast" class="div-breast">
+                    <label for="breast"><span>молочные железы</span></label>
+                    <select id="breast">
+                        <option value = "">плоские</option>
+                        <option value = "">округлые</option>
+                    </select> <br/><br/>
+                    <label for="nipples"><span>пигментация сосков</span></label>
+                    <select id="nipples">
+                        <option value = "">серо-розовая</option>
+                        <option value = "">светло-коричневая</option>
+                        <option value = "">буровато-красная</option>
+                    </select> <br/><br/>
+
+                </div>
+                <br/><br/>
+                <label for="abdomenSymmetry"><span>живот симметричный</span></label>
+                <input type="checkbox" id="abdomenSymmetry" checked><br/>
+                <label for="abdomen"><span>расположен</span></label>
+                <select id="abdomen">
+                    <option>на уровне</option>
+                    <option>ниже уровня</option>
+                    <option>выше уровня</option>
+                </select>
+                <br/><br/><br/><br/>
+                <label for="pubisHair"><span>оволосение на лобке</span></label>
+                <select id="pubisHair">
+                    <option>выражено хорошо</option>
+                    <option>выражено плохо</option>
+                    <option>волос нет</option>
+                </select>
+                <br>
+                <label for="genitalsExcret"><span>выделения из гениталий</span></label>
+                <select id="genitalsExcret">
+                    <option value = "a">нет</option>
+                    <option value = "ab">кровянистые</option>
+                    <option value = "abc">светло-желтые</option>
+                    <option value = "abcd">темно-желтые</option>
+                    <option value = "abcde">светло-зеленые</option>
+                </select>
+                <div id=divRectum>
+                    <label for="rectum"><span>задний проход</span></label>
+                    <select id="rectum">
+                        <option value = "">сомкнут</option>
+                        <option value = "">зияет</option>
+                    </select>
+                    <br/>
+                    <label for="rectumSkin"><span>кожа вокруг заднего прохода</span></label>
+                    <select id="rectumSkin">
+                        <option>чистая</option>
+                        <option>испачкана калом</option>
+                        <option>кровь</option>>
+                    </select>
+                </div>
+                <br/><br/><br/>
+                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="resetForm('formTorso')" type="button" value="Сбросить">
+            </form>
+        </div>
+
+        <!--damage-->
+
+        <div class="block block-forma block-forma-damage" id="damage">
+            <div class="pushback-block" onclick="resetLocalityLeft('damage')">  X  </div>
+            <form id="formDamage">
+                <div class="checkbox-damage">
+                    <div class="locomot-apparat-damage">
+                        <span style="text-decoration: underline">Отметить повреждения:</span><br/><br/>
+                        <label><input type="checkbox" id="d9"> <span>свод черепа</span></label><br/>
+                        <label><input type="checkbox" id="d9a"> <span>основание черепа</span></label><br/>
+                        <label><input type="checkbox" id="d10"> <span>лицевой скелет</span></label><br/>
+                        <label><input type="checkbox" id="d11" onchange="checkboxChecked('d11', 'd10')"> <span>кости носа</span></label><br/>
+                        <label><input type="checkbox" id="d11a"> <span>хрящи носа</span></label><br/>
+                        <label><input type="checkbox" id="d12"> <span>ребра</span></label><br/>
+                        <label><input type="checkbox" id="d13"> <span>спина</span></label><br/>
+                        <label><input type="checkbox" id="d14"> <span>поясница</span></label><br/>
+                        <label><input type="checkbox" id="d15"> <span>таз</span></label><br/>
+                        <label><input type="checkbox" id="d16"> <span>позвоночник</span></label><br/>
+                        <label><input type="checkbox" id="d17"> <span>конечности</span></label><br/>
+                        <label><input type="checkbox" id="d18"> <span>ключицы</span></label><br/>
+                        <label><input type="checkbox" id="d19"> <span>лопатки</span></label><br/>
+                        <br/>
+                        <label><input type="checkbox" id="d20"> <span>оболочки мозга</span></label><br/>
+                        <label><input type="checkbox" id="d21"> <span>брюшина</span></label><br/>
+                        <label><input type="checkbox" id="d22"> <span>легочная плевра</span></label><br/>
+                    </div>
+                    <div class="other-damage">
+                        <br/><br/>
+                        <label><input type="checkbox" id="d1"><span>волосистая часть головы</span></label><br/>
+                        <label><input type="checkbox" id="d2" > <span>глаза</span></label><br/>
+                        <label><input type="checkbox" id="d3" ><span>преддверие и полость рта</span></label>	<br/>
+                        <label><input type="checkbox" id="d5" ><span>ушные раковины</span></label><br/>
+                        <label><input type="checkbox" id="d6" ><span>шея</span></label><br/>
+                        <label><input type="checkbox" id="d7" ><span>подм. впадины</span></label>	<br/>
+                        <label><input type="checkbox" id="d8" >гениталии</label><br/>
+                        <br/>
+                        <label><input type="checkbox" id="d23" >мочеточники</label> <br/>
+                        <label><input type="checkbox" id="d24" >сердце</label> <br/>
+                        <label><input type="checkbox" id="d25" >желудок</label> <br/>
+                        <label><input type="checkbox" id="d26" >печень</label> <br/>
+                        <label><input type="checkbox" id="d27" >кишечник</label> <br/>
+                    </div>
+
+                </div>
+                <br/>
+                <label for="textareaDamage"><span>Описание наружных повреждений:</span> </label>
+                <div class="textarea-damage" >
+                    <textarea id="textareaDamage" cols = "75" rows = "10"></textarea><br>
+                </div>
+
+                <br/><br/><br/>
+                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="resetForm('formDamage')" type="button" value="Сбросить">
+            </form>
+
+        </div>
+
+        <div class="block block-forma block-forma-brainSkull" id="brainSkull">
+            <div class="pushback-block" onclick="resetLocalityLeft('brainSkull')">  X  </div>
+            <form id="formBrainSkull" >
+
+                <div class="scull_size">
+                    <span>Кости черепа:</span>
+                    <ul>
+                        <li><label for="osFrontale"><span>лобная:</span></label> <input id="osFrontale" size="3" type="text"></li>
+                        <li><label for="osTemporale"><span>теменная:</span></label> <input id="osTemporale" size="3" type="text"></li>
+                        <li><label for="osOccipitale"><span>височная:</span></label> <input id="osOccipitale" size="3" type="text"></li>
+                    </ul>
+                   <br/>
+                   <label for="duraMaterTension"><span>ТМО</span></label>
+                    <select id="duraMaterTension">
+                        <option>не напряжена</option>
+                        <option>напряжена</option>
+                    </select>
+                    <label for="duraMaterSeparate"><span>, </span></label>
+                    <select id="duraMaterSeparate">
+                        <option>отделяется с трудом</option>
+                        <option>хорошо отделяется</option>
+                    </select>
+                    <br/>
+                    <label for="duraMaterSinus"><span> в пазухах ТМО</span></label>
+                    <select id="duraMaterSinus">
+                        <option>темная жидкая кровь</option>
+                        <option>рыхл. свертки + кровь</option>
+                    </select>
+                   <br/><br/>
+                    <label for="massBrain"><span>Масса мозга:</span></label><input id="massBrain" size="3" type="text">
+                    <span>г.</span>
+                    <br/>
+                    <br/>
+                    <label for="arteriaCerebri"><span>Артерии основания мозга</span></label>
+                    <select id="arteriaCerebri">
+                        <option>слегка утолщены</option>
+                        <option>умеренный атеросклероз</option>
+                        <option>выраженный атеросклероз</option>
+                        <option>норма</option>
+                    </select>
+                    <br/><br/>
+                    <label><span>Эпифиз: &nbsp</span><input id="pinealGlandLength" size="1" type="text"></label>
+                    <label><span>х &nbsp</span><input id="pinealGlandWidth" size="1" type="text"></label>
+                    <label><span>х &nbsp</span><input id="pinealGlandDepth" size="1" type="text"></label>
+                    <br/><br/>
+                    <label><span>Гипофиз: &nbsp</span><input id="pituitaryGlandLength" size="1" type="text"></label>
+                    <label><span>х &nbsp</span><input id="pituitaryGlandWidth" size="1" type="text"></label>
+                    <label><span>х &nbsp</span><input id="pituitaryGlandDepth" size="1" type="text"></label>
+                </div>
+                <br/><br/>
+                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="resetForm('formBrainSkull');
+                get05RandAndAddInValue('osFrontale', 1, 1.5);
+                get05RandAndAddInValue('osTemporale', 0.7, 1.2);
+                get05RandAndAddInValue('osOccipitale', 0.6, 1.4);
+
+                get05RandAndAddInValue('pinealGlandLength', 0.7, 0.9);
+                get05RandAndAddInValue('pinealGlandWidth', 0.5, 0.8);
+                get05RandAndAddInValue('pinealGlandDepth', 0.4, 0.5);
+
+                get05RandAndAddInValue('pituitaryGlandLength', 0.6, 0.9);
+                get05RandAndAddInValue('pituitaryGlandWidth', 1.2, 1.4);
+                get05RandAndAddInValue('pituitaryGlandDepth', 0.6, 0.7);
+                (ISchecked('man')) ? get5RandAndAddInValue('massBrain', 1360, 1380, 10) : get5RandAndAddInValue('massBrain', 1260, 1280, 10);
+                " type="button" value="Сбросить">
+            </form>
+
+        </div>
+
+        <div class="block block-forma block-forma-generalPathology" id="generalPathology">
+            <div class="pushback-block" onclick="resetLocalityLeft('generalPathology')">  X  </div>
+            <form id="formGeneralPathology">
+                <label><input type="checkbox" id="plethora" onchange="onlyOneCheckboxChecked('anemia');
+                changeSelectByCheckbox('heartBloodFill', 'plethora', 2, 1);
+                changeSelectByCheckbox('liverBloodFill', 'plethora', 2, 1);
+                changeSelectByCheckbox('pancreasBloodFill', 'plethora', 2, 1);
+                changeSelectByCheckbox('lungsBloodFill', 'plethora', 2, 1);
+                changeSelectByCheckbox('kidneyBloodFill', 'plethora', 2, 1);
+                changeSelectByCheckbox('aortaCavity', 'plethora', 2, 1);
+                changeSelectByCheckbox('v_cavaInf', 'plethora', 2, 1)
+                ">Полнокровие</label><br/>
+
+                <label><input type="checkbox" id="anemia" onchange="onlyOneCheckboxChecked('plethora');
+                changeSelectByCheckbox('heartBloodFill', 'anemia', 4, 1);
+                changeSelectByCheckbox('liverBloodFill', 'anemia', 4, 1);
+                changeSelectByCheckbox('pancreasBloodFill', 'anemia', 4, 1);
+                changeSelectByCheckbox('lungsBloodFill', 'anemia', 4, 1);
+                changeSelectByCheckbox('kidneyBloodFill', 'anemia', 4, 1)
+                ">Малокровие</label><br/>
+
+                <label><input type="checkbox" id="generalAtherosclerosis" onchange="changeSelectByCheckbox('coronaritis', 'generalAtherosclerosis', 2, 1);
+                changeSelectByCheckbox('coronarosclerosis', 'generalAtherosclerosis', 3, 1);
+                changeSelectByCheckbox('aortaInnerMembrСolor', 'generalAtherosclerosis', 2, 1);
+                changeSelectByCheckbox('aortaInnerMembr', 'generalAtherosclerosis', 5, 1);
+                changeSelectByCheckbox('arteriaCerebri', 'generalAtherosclerosis', 2, 1);
+                ">Генерализованный атеросклероз</label><br/>
+                <label><input type="checkbox" id="icterus" onchange="
+                changeSelectByCheckbox('skinColor', 'icterus', 4, 1);
+                changeSelectByCheckbox('shell_color', 'icterus', 3, 1);
+                changeSelectByCheckbox('mouth', 'icterus', 4, 1);
+                " >Желтуха</label><br/>
+            </form>
+            <br/>
+            <input onclick="getResult(t)" type="button" value="Результат">
+            <input onclick="resetForm('formGeneralPathology');
+            resetFormElements('coronaritis', 'coronarosclerosis', 'aortaInnerMembrСolor', 'aortaInnerMembr',
+            'arteriaCerebri', 'heartBloodFill', 'liverBloodFill', 'pancreasBloodFill', 'lungsBloodFill', 'kidneyBloodFill',
+            'skinColor', 'shell_color', 'mouth', 'aortaCavity', 'v_cavaInf')" type="button" value="Сбросить">
+        </div>
+
+        <div class="block block-forma block-forma-heartBloodVessels" id="heartBloodVessels">
+            <div class="pushback-block" onclick="resetLocalityLeft('heartBloodVessels')">  X  </div>
+            <form id="formHeartBloodVessels">
+<div class="heart-blood">
+    <div class="heart-blood-left">
+                <label><span>Жидкость в перикарде: &nbsp</span><input id="liquidPericard" size="1" type="text" value="норм."></label><br/><br/>
+                <label for="heartConsistence"><span>Консистенция миокарда: </span></label>
+                <select id="heartConsistence">
+                    <option>плотноватый</option>
+                    <option>мягкий</option>
+                    <option>дряблый</option>
+                </select>
+                <br/>
+                <label for="heartBloodFill"><span>Кровенаполнение миокарда: <br/></span></label>
+                <select id="heartBloodFill">
+                    <option>умеренного кровенаполнения</option>
+                    <option>полнокровие</option>
+                    <option>неравномерное кровенаполнение</option>
+                    <option>малокровие</option>
+                </select>
+                <br/>
+                <br/>
+                <label><span>Масса сердца: &nbsp</span><input id="heartWeigth" size="1" type="text"></label><br/><br/>
+                <label><span>Размеры сердца: &nbsp</span><input id="heartLength" size="1" type="text"></label>
+                <label><span>х &nbsp</span><input id="heartWidth" size="1" type="text"></label>
+                <label><span>х &nbsp</span><input id="heartDepth" size="1" type="text"></label>
+                <br/><br/>
+                <label><span>Левый желудочек: &nbsp</span><input id="ventricleLeft" size="1" type="text"></label>
+                <label><span>Правый желудочек: &nbsp</span><input id="ventricleRight" size="1" type="text"></label>
+                <br/><br/>
+                <label for="heartFat"><span>Жировая ткань сердца: </span></label>
+                <select id="heartFat">
+                    <option>выражена незначительно</option>
+                    <option>выражена умеренно</option>
+                    <option>выражена хорошо</option>
+                    <option>резко выражена </option>
+                </select>
+                <br/>
+                <label for="heartCavity"><span>В полости сердца: </span></label>
+                <select id="heartCavity">
+                    <option>немного темн. жидк.кр.</option>
+                    <option>темн.жидк. кр.</option>
+                    <option>рыхлые свертки</option>
+                    <option>желтовато-красные свертки</option>
+                    <option>желтые свертки</option>
+                </select>
+                <br/><br/>
+                <label><input type="checkbox" id="heartCavExtend">Полости сердца расширены</label><br/>
+                <br/><br/>
+                <label><input type="checkbox" id="papillaryMuscles">Сосочковые мышцы утолщены</label><br/>
+                <label><input type="checkbox" id="tendonThread">Сухожильные нити укорочены</label><br/>
+                <br/>
+</div>
+<div class="heart-blood-right">
+    <label for="coronaritis"><span>Коронарные артерии: </span></label>
+                <select id="coronaritis">
+                    <option>обычные, эластичные</option>
+                    <option>утолщены плотные</option>
+                    <option>кальциноз</option>
+                </select>
+                <br/>
+                <label for="coronarosclerosis"><span>Коронаросклероз: </span></label>
+                <select id="coronarosclerosis">
+                    <option>отсутствует</option>
+                    <option>сужение на 1\3</option>
+                    <option>сужение на 2\3</option>
+                    <option>просвет полностью закрыт</option>
+                </select>
+                <br/>
+                <label><input type="checkbox" id="diffuseCardscl">Диффузный кардиосклероз</label><br/>
+                <br/>
+                <label for="aortaInnerMembrСolor"><span>Цвет интимы аорты: </span></label>
+                <select id="aortaInnerMembrСolor">
+                    <option>светло-желтая</option>
+                    <option>желтая</option>
+                    <option>темно-желтая</option>
+                    <option>красновато-желтая</option>
+                    <option>темно-красная</option>
+                </select>
+                <br/>
+                <label for="aortaInnerMembr"><span>Интима аорты: </span></label>
+                <select id="aortaInnerMembr" onchange="
+                switch (getOptionNumberOfSelect('aortaInnerMembr')){
+                    case 1: getRandAndAddInValue('aortaEdgesDivergence', 4, 5); break;
+                    case 2: getRandAndAddInValue('aortaEdgesDivergence', 4, 5); break;
+                    case 3: getRandAndAddInValue('aortaEdgesDivergence', 4, 5); break;
+                    case 4: getRandAndAddInValue('aortaEdgesDivergence', 3, 4); break;
+                    case 5: getRandAndAddInValue('aortaEdgesDivergence', 2, 3); break;
+                    case 6: getRandAndAddInValue('aortaEdgesDivergence', 2, 3); break;
+                }
+                ">
+                    <option>липидные пятна</option>
+                    <option>гладкая</option>
+                    <option>единичные бляшки</option>
+                    <option>много бляшек</option>
+                    <option>много осл. бляшек</option>
+                    <option>много бляшек с кальцинозом</option>
+                </select>
+                <br/>
+                <br/>
+
+                <label for="aortaCavity"><span>В полости аорты: </span></label>
+                <select id="aortaCavity">
+                    <option>немного темн. жидк.кр.</option>
+                    <option>темн.жидк. кр.</option>
+                    <option>рыхлые свертки</option>
+                    <option>желтовато-красные свертки</option>
+                    <option>желтые свертки</option>
+                </select>
+                <br/>
+                <label><span>Длина окружности аорты: &nbsp</span><input id="aortaWidth" size="1" type="text"></label><br/>
+                <label><span>Края аорты разошлись на: &nbsp</span><input id="aortaEdgesDivergence" size="1" type="text"></label>
+                <br/>
+                <br/>
+                <label for="v_cavaInf"><span>В просвете НПВ: </span></label>
+                <select id="v_cavaInf">
+                    <option>немного темн. жидк.кр.</option>
+                    <option>темн.жидк. кр.</option>
+                    <option>рыхлые свертки</option>
+                    <option>желтовато-красные свертки</option>
+                    <option>желтые свертки</option>
+                </select>
+    <br/><br/>
+    <label for="heartValves"><span>Общее состояние клапанов: </span></label>
+    <select id="heartValves">
+        <option>норма</option>
+        <option>утолщены</option>
+        <option>кальциноз</option>
+    </select>
+    <br/>
+    <div class="valve">
+        <div class="valve-right">
+            <label><span>Тркспд. клапан &nbsp</span><input id="tricuspid" size="1" type="text"></label><br/>
+            <label><span>Лег.ств. клапан &nbsp</span><input id="pulmValve" size="1" type="text"></label><br/>
+        </div>
+        <div class="valve-Left">
+            <label><span>Мтр. клапан &nbsp</span><input id="mitral" size="1" type="text"></label><br/>
+            <label><span>Аорт. клапан &nbsp</span><input id="aortaValve" size="1" type="text"></label><br/>
+        </div>
+    </div>
+</div>
+</div>
+                <br/>
+                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="resetForm('formHeartBloodVessels');
+                    get5RandAndAddInValue('heartWeigth', 300, 320, 5);
+                    get05RandAndAddInValue('heartLength', 11, 13);
+                    get05RandAndAddInValue('heartWidth', 8, 9);
+                    get05RandAndAddInValue('heartDepth', 5, 6);
+                    get05RandAndAddInValue('ventricleRight', 0.3, 0.3);
+                    get05RandAndAddInValue('ventricleLeft', 1.1, 1.4);
+                    get05RandAndAddInValue('aortaWidth', 4.5, 5.5);
+                    getRandAndAddInValue('aortaEdgesDivergence', 4, 5);
+                    get05RandAndAddInValue('tricuspid', 11, 11.5);
+                    get05RandAndAddInValue('pulmValve', 7.5, 8);
+                    get05RandAndAddInValue('mitral', 9.7, 10.3);
+                    get05RandAndAddInValue('aortaValve', 7, 7.3);
+                " type="button" value="Сбросить">
+
+
+            </form>
+
+        </div>
+
+       <div class="block block-forma block-forma-digestive" id="digestive">
+           <div class="pushback-block" onclick="resetLocalityLeft('digestive')">  X  </div>
+           <form id="formDigestive">
+               <label><span>В брюшной полости</span><input id="liquidAbdomen" size="1" type="text"></label>
+               <select id="liquidAbdomenKind">
+                   <option>светлая желтая жидкость</option>
+                   <option>темно-желтая жидкость</option>
+                   <option>темно-бурая жидкость</option>
+                   <option>кровь</option>
+               </select>
+               <br/>
+               <span style="text-decoration: underline">Печень</span><br/>
+               <label for="liverEdge"><span>край печени:</span></label>
+               <select id="liverEdge" onchange="changeStyleIfSelected('divLiverEdgeValue', 'liverEdge', ' div-liverEdgeValue-new', 2)">
+                   <option>не выступает</option>
+                   <option>выступает</option>
+               </select>
+               <div class="div-liverEdgeValue" id="divLiverEdgeValue">
+                    <label><span>На &nbsp;</span><input id="liverEdgeValue" size="1"  value="2" type="text"></label>
+               </div>
+               <select id="liverEdgeCurve">
+                   <option>острый</option>
+                   <option>слегка закруглен</option>
+                   <option>закруглен</option>
+               </select>
+              <br/><label><span>Размеры:&nbsp;</span><input id="liverSize1" size="1" type="text"></label><span>x</span>
+               <input id="liverSize2" size="1" type="text"><span>x</span>
+               <input id="liverSize3" size="1" type="text"><span>x</span>
+               <input id="liverSize4" size="1" type="text"><span>x</span>
+               <input id="liverSize5" size="1" type="text"><br/>
+
+               <label for="liverConsistency"><span>Консистенция:</span></label>
+               <select id="liverConsistency">
+                   <option>мягкая</option>
+                   <option>плотно-эластичная</option>
+                   <option>плотная</option>
+               </select>
+               <label for="liverColor"><span>Цвет:</span></label>
+               <select id="liverColor">
+                   <option>красновато-коричневый</option>
+                   <option>желтовато-коричневый</option>
+                   <option>темно-желтый</option>
+               </select>
+               <br/>
+               <label for="liverLobule"><span>Дольковый рисунок:</span></label>
+               <select id="liverLobule">
+                   <option>четкий</option>
+                   <option>нечеткий</option>
+               </select>
+               <br/>
+               <label for="liverBloodFill"><span>Кровенаполнение: </span></label>
+               <select id="liverBloodFill">
+                   <option>умеренного кровенаполнения</option>
+                   <option>полнокровие</option>
+                   <option>неравномерное кровенаполнение</option>
+                   <option>малокровие</option>
+               </select>
+               <br/><br/>
+               <label><span>Количество желчи в желчн.п.: </span><input id="gall" size="1" type="text"></label>
+               <br/><br/>
+               <span style="text-decoration: underline">Поджелудочная железа</span><br/>
+               <label><span>Размеры:&nbsp;</span><input id="pancreasSize1" size="1" type="text"></label><span>x</span>
+               <input id="pancreasSize2" size="1" type="text"><span>x</span>
+               <input id="pancreasSize3" size="1" type="text"><br/>
+               <label for="pancreasConsistency"><span>Консистенция:</span></label>
+               <select id="pancreasConsistency">
+                   <option>мягкая</option>
+                   <option>плотно-эластичная</option>
+                   <option>плотная</option>
+               </select>
+               <label for="pancreasLobule"><span>Дольковый рисунок:</span></label>
+               <select id="pancreasLobule">
+                   <option>четкий</option>
+                   <option>нечеткий</option>
+               </select>
+               <br/>
+               <label for="pancreasBloodFill"><span>Кровенаполнение: </span></label>
+               <select id="pancreasBloodFill">
+                   <option>умеренного кровенаполнения</option>
+                   <option>полнокровие</option>
+                   <option>неравномерное кровенаполнение</option>
+                   <option>малокровие</option>
+               </select>
+               <br/><br/>
+               <span style="text-decoration: underline">Пищевод</span><br/>
+               <label for="esophagusColor"><span>Цвет слизистой: </span></label>
+               <select id="esophagusColor">
+                   <option>бледно-розовый</option>
+                   <option>бледно-серый</option>
+                   <option>грязно-бурый</option>
+               </select>
+               <br/>
+               <label for="esophagusFolding"><span>Складчатость: </span></label>
+               <select id="esophagusFolding">
+                   <option>слабая</option>
+                   <option>хорошая</option>
+               </select>
+               <br/><br/>
+               <span style="text-decoration: underline">Желудок</span><br/>
+               <label for="gasterFilling"><span>Содержимое: </span></label>
+               <select id="gasterFilling" onchange="changeStyleIfSelected('divGasterFillingValue', 'gasterFilling', ' div-gasterFilling-value-new', 2)">
+                   <option>пища</option>
+                   <option>немного слизи</option>
+               </select>
+               <div class="div-gasterFilling-value" id="divGasterFillingValue">
+                   <label><span>&nbsp;</span><input id="gasterFillingValue" size="1"  value="2" type="text"></label>
+               </div>
+               <br/>
+               <label for="gasterFolds"><span>Складчатость: </span></label>
+               <select id="gasterFolds">
+                   <option>слабая</option>
+                   <option>отсутствует</option>
+                   <option>незначительно</option>
+                   <option>хорошая</option>
+               </select>
+               <br/>
+               <label for="gasterColor"><span>Цвет слизистой: </span></label>
+               <select id="gasterColor">
+                   <option>бледно-розовый</option>
+                   <option>бледно-серый</option>
+                   <option>грязно-бурый</option>
+               </select>
+
+               <br/><br/>
+               <input onclick="getResult(t)" type="button" value="Результат">
+               <input onclick="resetForm('formDigestive'); resetNewStyle('divLiverEdgeValue', 'divGasterFillingValue')" type="button" value="Сбросить">
+           </form>
+
+       </div>
+
+        <div class="block block-forma block-forma-breath" id="breath">
+            <div class="pushback-block" onclick="resetLocalityLeft('breath')">  X  </div>
+            <form id="formBreath">
+                <label for="pleuralCavity"><span>В плевральных полостях</span></label>
+                <select id="pleuralCavity" onchange="changeStyleAllExceptSelected('divPleuralCavity', 'pleuralCavity', ' div-pleuralCavity-new');
+                    changeStyleIfSelected('pleuralCavityLiquid', 'pleuralCavity', ' select-pleuralCavity-new ', 2)
+                ">
+                    <option>немного жидкости</option>
+                    <option>жидкость</option>
+                </select>
+                <br/>
+                <div class="div-pleuralCavity" id="divPleuralCavity">
+                    <label><span>Справа: &nbsp</span><input id="pleuralCavityRight" size="1" type="text" value="0"></label>
+                    <label><span>Слева: &nbsp</span><input id="pleuralCavityLeft" size="1" type="text"  value="0"></label>
+                    <select id="pleuralCavityLiquid" class="select-pleuralCavity">
+                        <option>желтоватая полупрозрачная </option>
+                        <option>желтая мутная</option>
+                        <option>красноватая полупрозрачная</option>
+                    </select>
+                </div>
+                <br/>
+                <label><span>Правое легкое: &nbsp</span><input id="lungRightWeight" size="1" type="text" value="0"> <span>г. &nbsp&nbsp&nbsp</span></label>
+                <label><span>Левое легкое: &nbsp</span><input id="lungLeftWeight" size="1" type="text" value="0"><span>г. </span></label>
+                <br/>
+                <label for="lungsConsistency"><span>Легкие</span></label>
+                <select id="lungsConsistency">
+                    <option>воздушны</option>
+                    <option>мягкие</option>
+                    <option>тестоватые</option>
+                </select>
+                <br/>
+                <label for="lungsColor"><span>Цвет легких</span></label>
+                <select id="lungsColor">
+                    <option>темно-красные</option>
+                    <option>светло-красные</option>
+                    <option>розовато-красные</option>
+                </select>
+                <br/>
+                <label for="lungsBloodFill"><span>Кровенаполнение легких: </span></label>
+                <select id="lungsBloodFill">
+                    <option>умеренного кровенаполнения</option>
+                    <option>полнокровие</option>
+                    <option>неравномерное кровенаполнение</option>
+                    <option>малокровие</option>
+                </select>
+                <br/>
+                <label><input type="checkbox" id="pulmonaryEdema"><span>Выраженный отек легких</span></label><br/>
+                <br/>
+                <label><input type="checkbox" id="bronchialWall"><span>Стенки бронхов утолщены, выступают от поверхности разрезов</span></label><br/>
+                <label><input type="checkbox" id="bronchialMucus"><span>В просветах бронхов слизь</span></label><br/>
+                <br/>
+
+                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="resetForm('formBreath'); resetNewStyle('divPleuralCavity');
+                    get5RandAndAddInValue('lungRightWeight', 380, 400, 5);
+                    get5RandAndAddInValue('lungLeftWeight', 380, 400, 5);
+                " type="button" value="Сбросить">
+            </form>
+        </div>
+
+        <div class="block block-forma block-forma-genitourinary" id="genitourinary">
+            <div class="pushback-block" onclick="resetLocalityLeft('genitourinary')">  X  </div>
+            <form id="formGenitourinary">
+                <label><input type="checkbox" id="bladder" onchange="changeStyle('divBladder', ' div-bladder-new');
+               document.getElementById('urineChem').checked =! document.getElementById('urineChem').checked;
+               ">
+                <span>Мочи нет</span></label><br/>
+                <div class="div-bladder" id="divBladder">
+                    <!--changeStyleIfChecked('divBladder', 'bladder', ' div-bladder-new')-->
+                    <label><span>В мочевом пузыре: &nbsp</span><input id="urine" size="1" type="text"></label><span>мл мочи</span>
+                </div>
+                <br/>
+                <span style="text-decoration: underline">Почки</span><br/>
+                <label><span>Толщина жировой капсулы:&nbsp;</span><input id="kidneyFat" size="1" type="text"></label>
+                <br/>
+                <label><span>размеры правой:&nbsp;</span><input id="kidneyRightSize1" size="1" type="text"></label><span>x</span>
+                <input id="kidneyRightSize2" size="1" type="text"><span>x</span>
+                <input id="kidneyRightSize3" size="1" type="text"><br/>
+                <label><span>размеры правой:&nbsp;</span><input id="kidneyLeftSize1" size="1" type="text"></label><span>x</span>
+                <input id="kidneyLeftSize2" size="1" type="text"><span>x</span>
+                <input id="kidneyLeftSize3" size="1" type="text">
+                <br/>
+                <label for="kidneyCapsula"><span>Капсула снимается:</span></label>
+                <select id="kidneyCapsula">
+                    <option>легко</option>
+                    <option>с трудом</option>
+                </select>
+                <br/>
+                <label for="kidneySurface"><span>Поверхность под капсулой:</span></label>
+                <select id="kidneySurface">
+                    <option>гладкая</option>
+                    <option>мелкобугристая</option>
+                    <option>крупнобугристая</option>
+                </select>
+                <br/>
+                <label><input type="checkbox" id="kidneyMedCortexBorder"><span>Граница между корк. и мозг. веществом нечеткая</span></label><br/>
+                <br/>
+                <label for="kidneyBloodFill"><span>Кровенаполнение почек: </span></label>
+                <select id="kidneyBloodFill">
+                    <option>умеренного кровенаполнения</option>
+                    <option>полнокровие</option>
+                    <option>неравномерное кровенаполнение</option>
+                    <option>малокровие</option>
+                </select>
+                <br/>
+                <br/>
+       <div class="div-prostata" id="divProstata">
+           <label><span>размеры простаты:&nbsp;</span><input id="prostataSize1" size="1" type="text"></label><span>x</span>
+           <input id="prostataSize2" size="1" type="text"><span>x</span>
+           <input id="prostataSize3" size="1" type="text">
+       </div>
+                <br/>
+<div class="div-uterus" id="divUterus">
+    <label for="uterus">Наружный зев матки: </label>
+    <select id="uterus">
+        <option>щелевидный</option>
+        <option>округлый</option>
+    </select>
+</div>
+                <br/>
+                <br/>
+                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="resetForm('formGenitourinary'); resetNewStyle('divBladder');
+                if (!document.getElementById('urineChem').checked) document.getElementById('urineChem').checked = true;
+                get05RandAndAddInValue('kidneyFat', 2, 3);
+                get5RandAndAddInValue('urine', 100, 200, 10);
+                getRandAndAddInValue('kidneyRightSize1', 11, 12);
+                get05RandAndAddInValue('kidneyRightSize2', 5, 6);
+                get05RandAndAddInValue('kidneyRightSize3', 3, 3.5);
+                getRandAndAddInValue('kidneyLeftSize1', 11, 12);
+                get05RandAndAddInValue('kidneyLeftSize2', 5, 6);
+                get05RandAndAddInValue('kidneyLeftSize3', 3, 3.5);
+                get05RandAndAddInValue('prostataSize1', 3.2, 4.7);
+                get05RandAndAddInValue('prostataSize2', 1.4, 2.3);
+                get05RandAndAddInValue('prostataSize3', 2.3, 3.4);
+
+
+                " type="button" value="Сбросить">
+            </form>
+        </div>
+
+            <div class="block block-forma block-forma-other" id="other">
+            <div class="pushback-block" onclick="resetLocalityLeft('other')">  X  </div>
+            <form id="formOther">
+                <span style="text-decoration: underline">Подкожно-жировая клетчатка</span><br/>
+                <label><span>Грудь: &nbsp</span><input id="subcutaneousFatChest" size="1" type="text"></label>
+                <label><span>Живот: &nbsp</span><input id="subcutaneousFatAbdomen" size="1" type="text"></label>
+                <br/>
+                <br/>
+                <span style="text-decoration: underline">Селезенка</span><br/>
+                <label><span>Размеры селезенки: &nbsp</span><input id="lienHeight" size="1" type="text"></label>
+                <label><span>х &nbsp</span><input id="lienWidth" size="1" type="text"></label>
+                <label><span>х &nbsp</span><input id="lienDepth" size="1" type="text"></label>
+                <br/>
+                <label><span>Масса селезенки: &nbsp</span><input id="lienMass" size="1" type="text"></label>
+                <br/>
+                <label for="lienScraping"><span>Соскоб пульпы: </span></label>
+                <select id="lienScraping">
+                    <option>умеренный</option>
+                    <option>обильный</option>
+                    <option>незначительный</option>
+                </select>
+                <br/>
+                <br/>
+                <span style="text-decoration: underline">Щитовидная</span><br/>
+                <label><span>Левая доля: &nbsp</span><input id="thyroidLeftHeight" size="1" type="text"></label>
+                <label><span>х &nbsp</span><input id="thyroidLeftWidth" size="1" type="text"></label>
+                <label><span>х &nbsp</span><input id="thyroidLeftDepth" size="1" type="text"></label>
+                <br/>
+                <label><span>Правая доля: &nbsp</span><input id="thyroidRightHeight" size="1" type="text"></label>
+                <label><span>х &nbsp</span><input id="thyroidRightWidth" size="1" type="text"></label>
+                <label><span>х &nbsp</span><input id="thyroidRightDepth" size="1" type="text"></label>
+                <br/>
+                <br/>
+                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="resetForm('formOther');
+                    getRandAndAddInValue('subcutaneousFatChest', 1, 2);
+                    getRandAndAddInValue('subcutaneousFatAbdomen', 2, 4);
+                    getRandAndAddInValue('lienHeight', 11, 12);
+                    getRandAndAddInValue('lienWidth', 7, 8);
+                    getRandAndAddInValue('lienDepth', 3, 4);
+                    get5RandAndAddInValue('lienMass', 130, 150, 5);
+                    get05RandAndAddInValue('thyroidLeftHeight', 5, 6);
+                    get05RandAndAddInValue('thyroidLeftWidth', 3, 4);
+                    get05RandAndAddInValue('thyroidLeftDepth', 1.5, 2);
+                    get05RandAndAddInValue('thyroidRightHeight', 5, 6);
+                    get05RandAndAddInValue('thyroidRightWidth', 3, 4);
+                    get05RandAndAddInValue('thyroidRightDepth', 1.5, 2);
+                " type="button" value="Сбросить">
+            </form>
+        </div>
+
+        <div class="block block-forma block-forma-additionalStudy" id="additionalStudy">
+            <div class="pushback-block" onclick="resetLocalityLeft('additionalStudy')">  X  </div>
+            <form id="formAdditionalStudy">
+                <span style="text-decoration: underline; text-transform: uppercase">химия</span><br/>
+                <label><input type="checkbox" id="bloodChem" checked><span>Кровь</span></label><br/>
+                <label><input type="checkbox" id="urineChem" checked><span>Моча</span></label><br/>
+                <br/>
+                <label><input type="checkbox" id="brainChem" onclick="(checkCheckboxesOR('brainChem', 'liverChem', 'kineyChem', 'stomachChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Мозг</span></label><br/>
+                <label><input type="checkbox" id="liverChem" onclick="(checkCheckboxesOR('brainChem', 'liverChem', 'kineyChem', 'stomachChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Печень</span></label><br/>
+                <label><input type="checkbox" id="kineyChem" onclick="(checkCheckboxesOR('brainChem', 'liverChem', 'kineyChem', 'stomachChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Почка</span></label><br/>
+                <label><input type="checkbox" id="stomachChem" onclick="(checkCheckboxesOR('brainChem', 'liverChem', 'kineyChem', 'stomachChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Желудок</span></label><br/>
+                <br/>
+                <div class="div-chemDefine" id="divChemDefine">
+                    <label><input type="checkbox" id="surrogates"><span>суррогаты</span></label><br/>
+                    <label><input type="checkbox" id="drug"><span>лекарства</span></label><br/>
+                    <label><input type="checkbox" id="narcotic"><span>наркотики</span></label><br/>
+                </div>
+                <br/>
+                <span style="text-decoration: underline; text-transform: uppercase">гистология</span><span>&nbsp;(дополнительно)</span><br/>
+                <label><input type="checkbox" id="lungTouch"><span>мазок из легких (пневмония)</span></label><br/>
+                <label><input type="checkbox" id="strangulationG"><span>странгуляционная борозда</span></label><br/>
+                <label><input type="checkbox" id="lymphonodusG"><span>лимфоузлы</span></label><br/>
+                <br/>
+                <span style="text-decoration: underline; text-transform: uppercase">биология</span><br/>
+                <label><input type="checkbox" id="bloodtype"><span>кровь на группу</span></label><br/>
+                <br/>
+                <br/>
+                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="resetForm('formAdditionalStudy'); resetNewStyle('divChemDefine')" type="button" value="Сбросить">
+            </form>
+        </div>
+        <div class="test-block" id="testblock"></div>
+
+    </div>
+
+
+    <div class="main-block" id="d"></div>
+
+    <script>
+
+        get05RandAndAddInValue('kidneyFat', 2, 3);
+        getRandAndAddInValue('subcutaneousFatChest', 1, 2);
+        getRandAndAddInValue('subcutaneousFatAbdomen', 2, 4);
+        getRandAndAddInValue('growth', 160, 180);
+        getRandAndAddInValue('hair_length', 2, 10);
+        get05RandAndAddInValue('pupil', 0.3, 0.5);
+
+        get5RandAndAddInValue('heartWeigth', 300, 320, 5);
+        get05RandAndAddInValue('heartLength', 11, 13);
+        get05RandAndAddInValue('heartWidth', 8, 9);
+        get05RandAndAddInValue('heartDepth', 5, 6);
+        get05RandAndAddInValue('ventricleRight', 0.3, 0.3);
+        get05RandAndAddInValue('ventricleLeft', 1.1, 1.4);
+        get05RandAndAddInValue('aortaWidth', 4.5, 5.5);
+        getRandAndAddInValue('aortaEdgesDivergence', 4, 5);
+        get5RandAndAddInValue('urine', 100, 200, 10);
+        getRandAndAddInValue('kidneyRightSize1', 11, 12);
+        get05RandAndAddInValue('kidneyRightSize2', 5, 6);
+        get05RandAndAddInValue('kidneyRightSize3', 3, 3.5);
+        getRandAndAddInValue('kidneyLeftSize1', 11, 12);
+        get05RandAndAddInValue('kidneyLeftSize2', 5, 6);
+        get05RandAndAddInValue('kidneyLeftSize3', 3, 3.5);
+        get05RandAndAddInValue('prostataSize1', 3.2, 4.7);
+        get05RandAndAddInValue('prostataSize2', 1.4, 2.3);
+        get05RandAndAddInValue('prostataSize3', 2.3, 3.4);
+        getRandAndAddInValue('lienHeight', 11, 12);
+        getRandAndAddInValue('lienWidth', 7, 8);
+        getRandAndAddInValue('lienDepth', 3, 4);
+        get5RandAndAddInValue('lienMass', 130, 150, 5);
+        get05RandAndAddInValue('thyroidLeftHeight', 5, 6);
+        get05RandAndAddInValue('thyroidLeftWidth', 3, 4);
+        get05RandAndAddInValue('thyroidLeftDepth', 1.5, 2);
+        get05RandAndAddInValue('thyroidRightHeight', 5, 6);
+        get05RandAndAddInValue('thyroidRightWidth', 3, 4);
+        get05RandAndAddInValue('thyroidRightDepth', 1.5, 2);
+        get05RandAndAddInValue('osFrontale', 1, 1.5);
+        get05RandAndAddInValue('osTemporale', 0.7, 1.2);
+        get05RandAndAddInValue('osOccipitale', 0.6, 1.4);
+        get5RandAndAddInValue('massBrain', 1360, 1380, 10);
+        get05RandAndAddInValue('pinealGlandLength', 0.7, 0.9);
+        get05RandAndAddInValue('pinealGlandWidth', 0.5, 0.8);
+        get05RandAndAddInValue('pinealGlandDepth', 0.4, 0.5);
+        get05RandAndAddInValue('pituitaryGlandLength', 0.6, 0.9);
+        get05RandAndAddInValue('pituitaryGlandWidth', 1.2, 1.4);
+        get05RandAndAddInValue('pituitaryGlandDepth', 0.6, 0.7);
+        get5RandAndAddInValue('lungRightWeight', 380, 400, 5);
+        get5RandAndAddInValue('lungLeftWeight', 380, 400, 5);
+        get05RandAndAddInValue('tricuspid', 11, 11.5);
+        get05RandAndAddInValue('pulmValve', 7.5, 8);
+        get05RandAndAddInValue('mitral', 9.7, 10.3);
+        get05RandAndAddInValue('aortaValve', 7, 7.3);
+
+
+//
+//
+//
+
+        getResult(t);
+
+    </script>
+
+</div>
+</body>
+</html>
