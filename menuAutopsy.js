@@ -2014,10 +2014,11 @@ function getResult(t) {
     spanTitle1.classList.add("titleResearch");
     spanTitle2.classList.add("titleResearch");
 
-    var p = document.createElement("p"),
+
+    var divFrame = document.createElement("div"),
+        p = document.createElement("p"),
         br = document.createElement("br"),
         p2 = document.createElement("p");
-
 
     var inputTitle1 = document.createTextNode(title1),
         inputTitle2 = document.createTextNode(title2);
@@ -2037,14 +2038,26 @@ function getResult(t) {
     p.appendChild(content2);
     p2.appendChild(content3);
 
-    var w = document.getElementById(t.outputId); //вывод данных
-    w.innerHTML = '';
-    w.appendChild(spanTitle1);
-    w.appendChild(br);
-    w.appendChild(p); //
-    w.appendChild(br); w.appendChild(br);
-    w.appendChild(spanTitle2);
-    w.appendChild(p2);
+    //var w = document.getElementById(t.outputId); //вывод данных
+    var isGecko = navigator.userAgent.toLowerCase().indexOf("gecko") != -1;
+    var iframe = (isGecko) ? document.getElementById("frameId") : frames["frameId"];
+    var iWin = (isGecko) ? iframe.contentWindow : iframe.window;
+    var iDoc = (isGecko) ? iframe.contentDocument : iframe.document;
+
+    iHTML = "<style>p {text-align: justify; text-indent: 30px; font-family: 'Times New Roman', sans-serif;} .titleResearch {margin-left: 40%; font-family: Georgia, 'Times New Roman', Times, serif; font-weight:bold; text-transform: uppercase;}</style>" +
+        "<div id='divFrame' style='background: #fbecdd; padding: 10px 20px 20px 30px'></div>" ;
+    iDoc.open(); // Открываем фрейм
+    iDoc.write(iHTML); // Добавляем написанный код в фрейм
+    iDoc.getElementById("divFrame").innerHTML = "";
+    iDoc.getElementById("divFrame").appendChild(spanTitle1);
+    iDoc.getElementById("divFrame").appendChild(br);
+    iDoc.getElementById("divFrame").appendChild(p); //
+    iDoc.getElementById("divFrame").appendChild(br); divFrame.appendChild(br);
+    iDoc.getElementById("divFrame").appendChild(spanTitle2);
+    iDoc.getElementById("divFrame").appendChild(p2);
+    iDoc.close(); // Закрываем фрейм
+    iDoc.designMode = "on"; // Включаем режим редактирования фрейма
+
 }
 
 var t = {

@@ -9,12 +9,6 @@ body {
     font: 14px Arial, Tahoma, sans-serif;
 }
 
-p {
-    text-align: justify;
-    text-indent: 30px;
-    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
-    font-family: 'Times New Roman', sans-serif;
-}
 
 li {
     list-style-type: none; /* Убираем маркеры */
@@ -22,16 +16,6 @@ li {
 ul {
     margin-left: 0; /* Отступ слева в браузере IE и Opera */
     padding-left: 0; /* Отступ слева в браузере Firefox, Safari, Chrome */
-}
-
-.titleResearch {
-    margin-left: 40%;
-    /*font: 12px;*/
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight:bold;
-    text-transform: uppercase;
-
-
 }
 
 .main-container {
