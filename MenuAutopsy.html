@@ -817,7 +817,7 @@
             <form id="formHeartBloodVessels">
 <div class="heart-blood">
     <div class="heart-blood-left">
-                <label><span>Жидкость в перикарде: &nbsp</span><input id="liquidPericard" size="1" type="text" value="норм."></label><br/><br/>
+                <label><span>Жидкость в перикарде: &nbsp</span><input id="liquidPericard" size="1" type="text"></label><br/><br/>
                 <label for="heartConsistence"><span>Консистенция миокарда: </span></label>
                 <select id="heartConsistence">
                     <option>плотноватый</option>
@@ -957,6 +957,7 @@
                 <br/>
                 <input onclick="getResult(t)" type="button" value="Результат">
                 <input onclick="resetForm('formHeartBloodVessels');
+                    get5RandAndAddInValue('liquidPericard', 10, 20, 5);
                     get5RandAndAddInValue('heartWeigth', 300, 320, 5);
                     get05RandAndAddInValue('heartLength', 11, 13);
                     get05RandAndAddInValue('heartWidth', 8, 9);
@@ -1342,6 +1343,7 @@
         getRandAndAddInValue('hair_length', 2, 10);
         get05RandAndAddInValue('pupil', 0.3, 0.5);
 
+        get5RandAndAddInValue('liquidPericard', 10, 20, 5);
         get5RandAndAddInValue('heartWeigth', 300, 320, 5);
         get05RandAndAddInValue('heartLength', 11, 13);
         get05RandAndAddInValue('heartWidth', 8, 9);
