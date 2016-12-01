@@ -440,7 +440,6 @@ function verificationSelect(id, point) { //то ли выбрано, что за
     var index = select.options[select.selectedIndex].index;
     if (index == point-1) return true;
     else return false;
-
 }
 
 function getStringEnumeration(idCheckbox, array, firstElement){
@@ -1028,7 +1027,9 @@ function getResultString(array, symbArray, textArray1) {
 var arr_commonPhrases = [
     ' цвета ',
     ' цвета, ',
-    ' цвета. '
+    ' цвета. ',
+    'синюшно-коричневого',
+    'бледно-синюшного'
 ];
 
 var arr_Dress = [
@@ -1446,6 +1447,30 @@ var arr_LienGsr = [
     ''
 
 ];
+
+var arr_genitourinary = [
+  'Почки на ощупь плотно-эластичные, бобовидной формы. Жировая капсула почек бледно-желтого цвета, толщина жировой капсулы почек до ',
+  'Правая почка размерами ',
+  'левая почка размерами ',
+  'Капсулы почек гладкие, снимаются легко, без потери вещества почек, ',
+  'Капсулы почек гладкие, снимаются с трудом, с частичной потерей вещества почек, ',
+  'обнажая их гладкие поверхности ',    //5
+  'обнажая их мелкобугристые поверхности ',
+  'обнажая их крупнобугристые поверхности ',
+  'На разрезах ткань почек красно-коричневого цвета, обычного анатомического строения, ',
+  'границы между корковым и мозговым веществами четкие. ',
+  'границы между корковым и мозговым веществами нечеткие. ',
+  'Очаговых изменений в ткани почек нет. Просветы лоханок свободны, слизистые оболочки их бледно-желтые, гладкие, без повреждений и кровоизлияний. Мочеточники проходимы, слизистые оболочки их серо-синюшного цвета, гладкие, без повреждений и кровоизлияний. ',
+  'В мочевом пузыре ', //12
+  'светло-желтой полупрозрачной мочи. ',
+  'мочи не обнаружено. ',
+  'Слизистая оболочка мочевого пузыря бледно-синюшная, гладкая, без повреждений и кровоизлияний, складчатость ее выражена слабо. ',
+  'Предстательная железа на ощупь плотноэластичной консистенции, обычной формы, размерами ', //16
+  'Матка обычной формы и величины, на разрезах обычного анатомического строения, умеренного кровенаполнения без очаговых изменений. Полость матки заполнена слизью.  ',
+  'Наружный зев щелевидный. ',
+  'Наружный зев округлой формы. ',
+  'Яичники обычного анатомического строения, умеренного кровенаполнения без очаговых изменений. ' //20
+    ];
 
 var arr_frequentlyPhrases = [
     'без очаговых изменений',
@@ -1999,11 +2024,60 @@ function getResult(t) {
             return getStringFromSelect2(t.id147, t.array13, 56) + t.array13[63];
     },
 
-    spleen: function(){
+    spleenGSR: function(){
         return t.array14[0] + t.array14[1] + getNumberFromTextarea(t.id152M) + ' г, ' +
             t.array11[12] + getNumberFromTextarea(t.id152H) + 'х' + getNumberFromTextarea(t.id152W) + 'х'+ getNumberFromTextarea(t.id152D) + ' см. ' +
             t.array14[2] + getStringFromSelect2(t.id153, t.array14, 3) + t.array14[6];
-    }
+    },
+
+    kidneyFat: function(){
+        return t.array15[0] + getNumberFromTextarea(t.id155) + ' мм. ';
+    },
+
+        kidneyRightSize: function(){
+          return t.array15[1] + getNumberFromTextarea(t.id156) + 'х' + getNumberFromTextarea(t.id157) + 'х' + getNumberFromTextarea(t.id158) + ' см, ';
+        },
+
+        kidneyLeftSize: function(){
+            return t.array15[2] + getNumberFromTextarea(t.id159) + 'х' + getNumberFromTextarea(t.id160) + 'х' + getNumberFromTextarea(t.id161) + ' см. ';
+        },
+
+        kidneyCapsule: function(){
+            return getStringFromSelect2(t.id162, t.array15, 3) + getStringFromSelect2(t.id163, t.array15, 5) + getStringFromSelect2(t.id164, t.array0, 3) + t.array0[2];
+        },
+
+        kidneyTissue: function(){
+            if (!ISchecked(t.id165)) {
+                if (verificationSelect(t.id166, 1)) return t.array15[8] + t.array8[1] + t.array15[9] + t.array15[11];
+                /*ум. кровенап*/
+                if (verificationSelect(t.id166, 2)) return t.array15[8] + t.array8[4] + t.array15[9] + t.array15[11];
+                /*полнокровие*/
+                if (verificationSelect(t.id166, 3)) return t.array15[8] + t.array8[7] + t.array15[9] + t.array15[11];
+                /*неравномерного*/
+                if (verificationSelect(t.id166, 4)) return t.array15[8] + t.array8[8] + t.array15[9] + t.array15[11];
+                /*малокр*/
+            }
+            else {
+                if (verificationSelect(t.id166, 1)) return t.array15[8] + t.array8[1] + t.array15[10] + t.array15[11];
+                /*ум. кровенап*/
+                if (verificationSelect(t.id166, 2)) return t.array15[8] + t.array8[4] + t.array15[10] + t.array15[11];
+                /*полнокровие*/
+                if (verificationSelect(t.id166, 3)) return t.array15[8] + t.array8[7] + t.array15[10] + t.array15[11];
+                /*неравномерного*/
+                if (verificationSelect(t.id166, 4)) return t.array15[8] + t.array8[8] + t.array15[10] + t.array15[11];
+                /*малокр*/
+            }
+        },
+
+        bladder: function(){
+            if (!ISchecked(t.id168)) return t.array15[12] + getNumberFromTextarea(t.id167) + ' мл ' + t.array15[13] + t.array15[15];
+            else return t.array15[12] + t.array15[14] + t.array15[15];
+        },
+
+        prostateUterus: function(){
+            if (ISchecked(t.id6)) return t.array15[16] + getNumberFromTextarea(t.id169) + 'x' + getNumberFromTextarea(t.id170) + 'x' + getNumberFromTextarea(t.id171) + ' см. ';
+            else return t.array15[17] + getStringFromSelect2(t.id172, t.array15, 18);
+        }
 
     };
 
@@ -2082,6 +2156,7 @@ var t = {
     array12: arr_lungs,
     array13: arr_heartVessels,
     array14: arr_LienGsr,
+    array15: arr_genitourinary,
     id2: 'dress',
     id3: 'dressold',
     id4: 'dirty',
@@ -2240,7 +2315,25 @@ var t = {
     id152D: 'lienDepth',
     id152M: 'lienMass',
     id153: 'lienScraping',
-    id154: 'liquidPericard'
+    id154: 'liquidPericard',
+    id155: 'kidneyFat',
+    id156: 'kidneyRightSize1',
+    id157: 'kidneyRightSize2',
+    id158: 'kidneyRightSize3',
+    id159: 'kidneyLeftSize1',
+    id160: 'kidneyLeftSize2',
+    id161: 'kidneyLeftSize3',
+    id162: 'kidneyCapsula',
+    id163: 'kidneySurface',
+    id164: 'kidneySurfaceColor',
+    id165: 'kidneyMedCortexBorder',
+    id166: 'kidneyBloodFill',
+    id167: 'urine',
+    id168: 'bladder',
+    id169: 'prostataSize1',
+    id170: 'prostataSize2',
+    id171: 'prostataSize3',
+    id172: 'uterus'
 
 };
 

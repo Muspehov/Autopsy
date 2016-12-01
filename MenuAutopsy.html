@@ -1192,7 +1192,7 @@
                 <label for="kidneyCapsula"><span>Капсула снимается:</span></label>
                 <select id="kidneyCapsula">
                     <option>легко</option>
-                    <option>с трудом</option>
+                    <option>с трудом, с частичн. потерей в-ва</option>
                 </select>
                 <br/>
                 <label for="kidneySurface"><span>Поверхность под капсулой:</span></label>
@@ -1200,6 +1200,12 @@
                     <option>гладкая</option>
                     <option>мелкобугристая</option>
                     <option>крупнобугристая</option>
+                </select>
+                <br/>
+                <label for="kidneySurfaceColor"><span>Цвет поверхности:</span></label>
+                <select id="kidneySurfaceColor">
+                    <option>синюшно-коричневая</option>
+                    <option>бледно-синюшная</option>
                 </select>
                 <br/>
                 <label><input type="checkbox" id="kidneyMedCortexBorder"><span>Граница между корк. и мозг. веществом нечеткая</span></label><br/>
@@ -1242,7 +1248,6 @@
                 get05RandAndAddInValue('prostataSize1', 3.2, 4.7);
                 get05RandAndAddInValue('prostataSize2', 1.4, 2.3);
                 get05RandAndAddInValue('prostataSize3', 2.3, 3.4);
-
 
                 " type="button" value="Сбросить">
             </form>
