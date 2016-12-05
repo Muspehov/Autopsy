@@ -663,13 +663,15 @@
                         <label><input type="checkbox" id="d14"> <span>поясница</span></label><br/>
                         <label><input type="checkbox" id="d15"> <span>таз</span></label><br/>
                         <label><input type="checkbox" id="d16"> <span>позвоночник</span></label><br/>
-                        <label><input type="checkbox" id="d17"> <span>конечности</span></label><br/>
+                        <label><input type="checkbox" id="d21"> <span>грудина</span></label><br/>
                         <label><input type="checkbox" id="d18"> <span>ключицы</span></label><br/>
                         <label><input type="checkbox" id="d19"> <span>лопатки</span></label><br/>
+                        <label><input type="checkbox" id="d17a"> <span>верхние конечности</span></label><br/>
+                        <label><input type="checkbox" id="d17b"> <span>нижние конечности</span></label><br/>
                         <br/>
                         <label><input type="checkbox" id="d20"> <span>оболочки мозга</span></label><br/>
-                        <label><input type="checkbox" id="d21"> <span>брюшина</span></label><br/>
-                        <label><input type="checkbox" id="d22"> <span>легочная плевра</span></label><br/>
+                        <!--<label><input type="checkbox" id="d21"> <span>брюшина</span></label><br/>-->
+                        <!--<label><input type="checkbox" id="d22"> <span>легочная плевра</span></label><br/>-->
                     </div>
                     <div class="other-damage">
                         <br/><br/>
@@ -681,11 +683,11 @@
                         <label><input type="checkbox" id="d7" ><span>подм. впадины</span></label>	<br/>
                         <label><input type="checkbox" id="d8" >гениталии</label><br/>
                         <br/>
-                        <label><input type="checkbox" id="d23" >мочеточники</label> <br/>
-                        <label><input type="checkbox" id="d24" >сердце</label> <br/>
-                        <label><input type="checkbox" id="d25" >желудок</label> <br/>
-                        <label><input type="checkbox" id="d26" >печень</label> <br/>
-                        <label><input type="checkbox" id="d27" >кишечник</label> <br/>
+                        <!--<label><input type="checkbox" id="d23" >мочеточники</label> <br/>-->
+                        <!--<label><input type="checkbox" id="d24" >сердце</label> <br/>-->
+                        <!--<label><input type="checkbox" id="d25" >желудок</label> <br/>-->
+                        <!--<label><input type="checkbox" id="d26" >печень</label> <br/>-->
+                        <!--<label><input type="checkbox" id="d27" >кишечник</label> <br/>-->
                     </div>
 
                 </div>
@@ -980,14 +982,7 @@
        <div class="block block-forma block-forma-digestive" id="digestive">
            <div class="pushback-block" onclick="resetLocalityLeft('digestive')">  X  </div>
            <form id="formDigestive">
-               <label><span>В брюшной полости</span><input id="liquidAbdomen" size="1" type="text"></label>
-               <select id="liquidAbdomenKind">
-                   <option>светлая желтая жидкость</option>
-                   <option>темно-желтая жидкость</option>
-                   <option>темно-бурая жидкость</option>
-                   <option>кровь</option>
-               </select>
-               <br/>
+              <br/>
                <span style="text-decoration: underline">Печень</span><br/>
                <label for="liverEdge"><span>край печени:</span></label>
                <select id="liverEdge" onchange="changeStyleIfSelected('divLiverEdgeValue', 'liverEdge', ' div-liverEdgeValue-new', 2)">
@@ -1338,7 +1333,7 @@
         <div class="test-block" id="testblock"></div>
 
     </div>
-    <iframe scrolling='yes' frameborder='no' src='#' id='frameId' name='frameId' width="900" height="1000"></iframe>
+    <iframe scrolling='yes' frameborder='no' src='#' id='frameId' name='frameId' width="900" height="2500"></iframe>
     <script>
 
         get05RandAndAddInValue('kidneyFat', 2, 3);

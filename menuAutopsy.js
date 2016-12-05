@@ -463,6 +463,28 @@ function getStringEnumeration(idCheckbox, array, firstElement){
     return result;
 }
 
+function getStringEnumeration2(idCheckbox, array, firstElement){
+    var result = '', resultArray = [], arrayCounter = 0, arrayPlace = arguments[arguments.length - 1];
+    if (!Array.isArray(arguments[arguments.length - 1])) { //last argument is not array?
+        arrayCounter  = arguments[arguments.length - 1];
+        arrayPlace = arguments[arguments.length - 2]; // the array will be the penultimate argument
+
+    }
+
+    for (var i = 0; i < arguments.length; i++, arrayCounter++) {
+        if (Array.isArray(arguments[i])) break;
+        if (!document.getElementById(arguments[i]).checked) {
+            resultArray.push(arrayPlace[arrayCounter]);
+        }
+    }
+
+    result = resultArray.join(' и '); //making the string
+    result = result.charAt(0).toUpperCase() + result.substr(1); //the first letter is capitalized
+
+    return result;
+}
+
+
 /*numbers */
 
 function randomInteger(min, max) {
@@ -1126,16 +1148,33 @@ var arr_Damage = [
    ' на ощупь целы. ', /*6*/
    'позвоночник',
    'кости таза',
-   'конечности',
    'ключицы',
    'лопатки',
+    '',
    'Спина и поясничная область без повреждений. ',
    'Спина без повреждений. ',
    'Поясничная область без повреждений. ',
     'Других изменений и каких-либо повреждений при наружном исследовании трупа не обнаружено.',
     'Других повреждений и изменений при наружном исследовании трупа не обнаружено.',
     'При исследовании трупа обнаружены следующие телесные повреждения: ' /*17*/,
-    'не повреждена, '
+    'не повреждена, ',
+    ' верхние ',  //19
+    ' нижние ',
+    'конечности ',
+    'грудина',   //22
+    'позвоночник',
+    'кости таза',
+    'ключицы',
+    'лопатки',
+    ' целы. ', //27
+    'Других изменений и каких-либо повреждений при внутреннем исследовании трупа не обнаружено.',
+    'Других повреждений и изменений при внутреннем исследовании трупа не обнаружено.',
+    'кости ', //30
+    'Кости ', //31
+    ' верхних ',
+    ' нижних ',
+    'конечностей ',
+    'Кости '
 
 ];
 
@@ -1736,24 +1775,55 @@ function getResult(t) {
             else return '';
         },
 
-        otherDamage: function() {
-         var m = getStringEnumeration(t.id77, t.id78, t.id79, t.id80, t.id81, t.array4, 7);
-         if (m !== '') return m + t.array4[6];
-         else return m;
+        bonesDamageExternalResearch: function() {
+         var otherBones = getStringEnumeration(t.id77, t.id78, t.id80, t.id81, t.array4, 7),
+             limbBones = getStringEnumeration2(t.id79a, t.id79b, t.array4, 19);
+
+
+         if (limbBones !== '' && otherBones !== '') {
+             return otherBones + ', ' + limbBones + t.array4[21] + t.array4[6];
+         }
+         else if (limbBones == '' && otherBones !== '') {
+             return otherBones + t.array4[6];
+         }
+         else if (limbBones !== '' && otherBones == ''){
+             return limbBones.charAt(1).toUpperCase() + limbBones.substr(2) + t.array4[21] + t.array4[6];
+         }
+         else return '';
         },
+
+        //bonesDamageInternalResearch: function() {
+        //    var otherBones = getStringEnumeration(t.id173, t.id77, t.id78, t.id80, t.id81, t.array4, 22),
+        //        limbBones = getStringEnumeration2(t.id79a, t.id79b, t.array4, 32);
+        //    console.log(limbBones);
+        //
+        //    if (limbBones !== '' && otherBones !== '') {
+        //        console.log('first');
+        //        return otherBones + ', ' + t.array4[30] + limbBones + t.array4[34] + t.array4[27];
+        //    }
+        //    else if (limbBones == '' && otherBones !== '') {
+        //        return otherBones + t.array4[27];
+        //    }
+        //    else if (limbBones !== '' && otherBones == ''){
+        //        console.log('1234');
+        //        return limbBones.charAt(1).toUpperCase() + limbBones.substr(2) + t.array4[21] + t.array4[27];
+        //    }
+        //    else return '';
+        //},
+
+
 
         textareaDamage: function() {
            if (checkAreaForFill(t.id84, re)) return t.array4[17] + getFromTextarea(t.id84) + ' ';
            else return '';
         },
 
-        lastSentence: function() {
-            if (checkCheckboxesOR(t.id30, t.id31, t.id49, t.id50, t.id51, t.id52, t.id58, t.id61, t.id64, t.id65, t.id66, t.id77, t.id78, t.id79, t.id80, t.id81, t.id82, t.id83) || checkAreaForFill(t.id84, re)) return t.array4[16];
+        lastSentenceExternalResearch: function() {
+            if (checkCheckboxesOR(t.id30, t.id31, t.id49, t.id50, t.id51, t.id52, t.id58, t.id61, t.id64, t.id65, t.id66, t.id77, t.id78, t.id79a, t.id79b, t.id80, t.id81, t.id82, t.id83) || checkAreaForFill(t.id84, re)) return t.array4[16];
             else return t.array4[15];
-        }
+        },
 
-
-        };
+    };
 
     var headBrain = {
         headSoftTissues: function(){
@@ -2077,6 +2147,36 @@ function getResult(t) {
         prostateUterus: function(){
             if (ISchecked(t.id6)) return t.array15[16] + getNumberFromTextarea(t.id169) + 'x' + getNumberFromTextarea(t.id170) + 'x' + getNumberFromTextarea(t.id171) + ' см. ';
             else return t.array15[17] + getStringFromSelect2(t.id172, t.array15, 18);
+        },
+
+        bonesDamageInternalResearch: function() {
+            var otherBones = getStringEnumeration(t.id173, t.id77, t.id78, t.id80, t.id81, t.array4, 22),
+                limbBones = getStringEnumeration2(t.id79a, t.id79b, t.array4, 32);
+
+            if (!ISchecked(t.id173) && checkCheckboxesAND(t.id77, t.id78, t.id80, t.id81, t.id79a, t.id79b)) {
+                return 'Грудина цела. ';
+            }
+            else if (!ISchecked(t.id77) && checkCheckboxesAND(t.id173, t.id78, t.id80, t.id81, t.id79a, t.id79b)){
+                return 'Позвоночник цел. ';
+            }
+            else {
+                if (limbBones !== '' && otherBones !== '') {
+                    return otherBones + ', ' + t.array4[30] + limbBones + t.array4[34] + t.array4[27];
+                }
+                else if (limbBones == '' && otherBones !== '') {
+                    return otherBones + t.array4[27];
+                }
+                else if (limbBones !== '' && otherBones == ''){
+                    console.log(t.array4[35] + limbBones + t.array4[21] + t.array4[27]);
+                    return t.array4[35] + limbBones + t.array4[21] + t.array4[27];
+                }
+                else return '';
+            }
+        },
+
+        lastSentenceInternalResearch: function() {
+            if (checkCheckboxesOR(t.id66, t.id77, t.id78, t.id79a, t.id79b, t.id80, t.id81, t.id86, t.id87, t.id91, t.id173)) return t.array4[29];
+            else return t.array4[28];
         }
 
     };
@@ -2235,7 +2335,8 @@ var t = {
     id76: 'rectumSkin',
     id77: 'd16', /*vertebra*/
     id78: 'd15', /*pelvis*/
-    id79: 'd17', /*limbs*/
+    id79a: 'd17a', /*upper limbs*/
+    id79b: 'd17b', /*lower limbs*/
     id80: 'd18', /*claviculas*/
     id81: 'd19', /*scapulas*/
     id82: 'd13', /*spin*/
@@ -2247,7 +2348,7 @@ var t = {
     id88: 'osFrontale',
     id89: 'osTemporale',
     id90: 'osOccipitale',
-    id91: 'd20',
+    id91: 'd20',  /*meninges*/
     id92: 'duraMaterTension',
     id93: 'duraMaterSeparate',
     id94: 'duraMaterSinus',
@@ -2333,7 +2434,8 @@ var t = {
     id169: 'prostataSize1',
     id170: 'prostataSize2',
     id171: 'prostataSize3',
-    id172: 'uterus'
+    id172: 'uterus',
+    id173: 'd21' /*sternum*/
 
 };
 
