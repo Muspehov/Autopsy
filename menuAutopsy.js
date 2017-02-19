@@ -555,10 +555,10 @@ function getPushSymb() {
     return mark;
 }
 
-function resetTeeth(name, symb) {
+function reset(name, symb) {
     var elLength = document.getElementsByName(name).length;
     for (var i = 0; i < elLength; i++) {
-            document.getElementsByName(name)[i].value = symb;
+        document.getElementsByName(name)[i].value = symb;
     }
 }
 
@@ -582,22 +582,22 @@ var textPhrasesArray = [
     'Все зубы целы. ',
     'На верхней и нижней челюсти определяются корни всех зубов. ',
     'Все зубы поражены кариесом. ',
-    'На верхней и нижней челюсти все зубы из металла белого цвета. ',
-    'На верхней и нижней челюсти все зубы из металла желтого цвета.',
+    'На верхней и нижней челюсти все зубы с коронками из металла белого цвета. ',
+    'На верхней и нижней челюсти все зубы с коронками из металла желтого цвета.',
 
-    'На верхней челюсти ',
-    'На нижней челюсти ',
+    'На верхней челюсти ', //6
+    'На нижней челюсти ', //7
 
     'зубы отсутствуют. ',
     'зубы целы. ',
-    'определяются корни всех зубов. ',
+    'определяются корни всех зубов. ', //10
     'все зубы поражены кариесом. ',
-    'зубы из металла белого цвета. ',
-    'зубы из металла желтого цвета.',
-    'справа: ',
+    'зубы с коронками из металла белого цвета. ',
+    'зубы с коронками из металла желтого цвета.', //13
+    'справа: ', //14
     'слева: ',
-    'зубы целы; ',
-    'зубы отсутствуют; '
+    'зубы целы; ', //16
+    'зубы отсутствуют; ' //17
 ];
 
 
@@ -669,8 +669,8 @@ function getUniqueElementOfArray(array, uniqueType, co1, co2, co3) {
     /*
      Получение массива уникальных(встречающихся) элементов либо их количества в предоставленном массиве или только его части
      array - имя массива. Массив может быть либо одномерный либо двухмерный.
-     uniqueType - если 0, то ф-ция получает массив уникальных элементов
-     если 1, то ф-ция получает число уникальных элементов
+     uniqueType - если 0, то ф-ция возвращает массив уникальных элементов
+     если 1, то ф-ция возвращает число уникальных элементов
      co1, co2, co3 - координаты массива, непостоянные аргументы
      Если координаты не заданы, обрабатывается весь предоставленный массив
      Для одномерного предоставляется только co1 и co2
@@ -683,7 +683,6 @@ function getUniqueElementOfArray(array, uniqueType, co1, co2, co3) {
     if (array[0][0] == undefined) { //one-dimentional
         if (uniqueType == 0) { //output Unique elements
             if ((co1 == undefined && co2 == undefined && co3 == undefined) || (co2 == undefined && co3 == undefined)) {
-
                 var result = [];
                 nextInput:
                     for (var i = 0; i < array.length; i++) {
@@ -717,18 +716,17 @@ function getUniqueElementOfArray(array, uniqueType, co1, co2, co3) {
                     counter = 0;
 
                 nextInput: //метка
-                    for (var i = 0; i < array.length; i++) {
+                    for (i = 0; i < array.length; i++) {
                         var element = array[i]; // для каждого элемента
-                        for (var j = 0; j < result.length; j++) { // ищем, был ли он уже?
+                        for (j = 0; j < result.length; j++) { // ищем, был ли он уже?
                             if (result[j] == element) continue nextInput; // если да, то следующий, переход на внешний цикл
                         }
                         result.push(element);
                         counter++;
                     }
-                console.log(counter);
                 return counter;
             } else {
-
+//////////////////////////
 
             }
         }
@@ -950,11 +948,11 @@ function joingArrayTeeth(array, row, arrSymb) {
                 break;
             case 4:
                 if (arrResult[v].length !== 0)
-                    arrayOutput[v] += ' из белого металла';
+                    (arrResult[v].length == 1) ? arrayOutput[v] += ' с коронкой из металла белого цвета' : arrayOutput[v] += ' с коронками из металла белого цвета';
                 break;
             case 5:
                 if (arrResult[v].length !== 0)
-                    arrayOutput[v] += ' из желтого металла';
+                    (arrResult[v].length == 1) ? arrayOutput[v] += ' с коронкой из металла желтого цвета' : arrayOutput[v] += ' с коронками из металла желтого цвета';
                 break;
         }
 
@@ -967,8 +965,6 @@ function joingArrayTeeth(array, row, arrSymb) {
         if (arrayOutput[s] == '') {
             arrayOutput.splice(s, 1);
             s = s - 1; //потому что splice сместил элементы
-
-
         }
     }
 
@@ -977,24 +973,14 @@ function joingArrayTeeth(array, row, arrSymb) {
     return arrayOutput;
 }
 
-
-//  MAIN FUNCTION
-
 function getResultString(array, symbArray, textArray1) {
     var teethAll,
         teethMaxilla, teethMandible,
         teethMaxillaRight, teethMaxillaLeft,
         teethMandibleRight, teethMandibleLeft,
-
         result = 'No';
 
-    //if (getUniqueElementOfArray(array, 1) == 1) teethAll = true;
-    //else teethAll = false;
-
-
     (getUniqueElementOfArray(array, 1) == 1) ? teethAll = true : teethAll = false;
-
-
     if (teethAll) { //все однотипные
         if (array[0][0] == symbArray[0]) result = textArray1[0];
         else if (array[0][0] == symbArray[1]) result = textArray1[1];
@@ -1006,40 +992,39 @@ function getResultString(array, symbArray, textArray1) {
         return result;
 
     }
-
-
+    //Проверка однотипности зубного ряда на ВЧ и НЧ
     (getUniqueElementOfArray(array, 1, 0) == 1 && getUniqueElementOfArray(array, 1, 1) == 1) ? teethMaxilla = true : teethMaxilla = false;
     (getUniqueElementOfArray(array, 1, 2) == 1 && getUniqueElementOfArray(array, 1, 3) == 1) ? teethMandible = true : teethMandible = false;
 
-    if (teethMaxilla) { // все на ВЧ
-        result = textArray1[6];
-
+    if (teethMaxilla) { // все на ВЧ однотипны
+        result = textArray1[6]; //Начало строки "На верхней челюсти"
         if (array[0][0] == symbArray[0]) result += textArray1[8];
         else if (array[0][0] == symbArray[1]) result += textArray1[9];
         else if (array[0][0] == symbArray[2]) result += textArray1[10];
         else if (array[0][0] == symbArray[3]) result += textArray1[11];
         else if (array[0][0] == symbArray[4]) result += textArray1[12];
+        else if (array[0][0] == symbArray[5]) result += textArray1[13];
         else result = textArray1[13];
     } else {
-        result = textArray1[6] + textArray1[14];
+        result = textArray1[6] + textArray1[14]; //Начало строки "На верхней челюсти" + "справа"
+        //Добавление числовой последовательности
         result += joingArrayTeeth(array, 0, symb) + '; ' + textArray1[15] + joingArrayTeeth(array, 1, symb) + '. ';
 
     }
 
-
-    if (teethMandible) { // все на HЧ
-        result += textArray1[7];
-
+    if (teethMandible) { // все на HЧ однотипны
+        result += textArray1[7]; //Начало строки "На нижней челюсти"
         if (array[2][0] == symbArray[0]) result += textArray1[8];
         else if (array[2][0] == symbArray[1]) result += textArray1[9];
         else if (array[2][0] == symbArray[2]) result += textArray1[10];
         else if (array[2][0] == symbArray[3]) result += textArray1[11];
         else if (array[2][0] == symbArray[4]) result += textArray1[12];
+        else if (array[2][0] == symbArray[5]) result += textArray1[13];
         else result = textArray1[13];
     } else {
         result += textArray1[7] + textArray1[14];
+        //Добавление числовой последовательности
         result += joingArrayTeeth(array, 2, symb) + '; ' + textArray1[15] + joingArrayTeeth(array, 3, symb) + '. ';
-
     }
     return result;
 }
@@ -1051,7 +1036,16 @@ var arr_commonPhrases = [
     ' цвета, ',
     ' цвета. ',
     'синюшно-коричневого',
-    'бледно-синюшного'
+    'бледно-синюшного',
+    'бледно-розового цвета, без кровоизлияний. ',
+    'бледно-серого цвета, без кровоизлияний. ',
+    'грязно-бурого цвета, без кровоизлияний. ',
+    'без кровоизлияний. ',
+    'красновато-коричневого цвета', /*9*/
+    'желтовато-коричневого цвета',
+    'темно-желтого цвета',
+    ''
+
 ];
 
 var arr_Dress = [
@@ -1174,7 +1168,8 @@ var arr_Damage = [
     ' верхних ',
     ' нижних ',
     'конечностей ',
-    'Кости '
+    'Кости ', //35
+    'Рассечены межреберные промежутки - переломов ребер не обнаружено. '
 
 ];
 
@@ -1220,10 +1215,10 @@ var arr_Head = [ /*array5*/
     'Из наружных отверстий носовых ходов выделения темно-желтого цвета. ',
     'Из наружных отверстий носовых ходов выделения зеленого цвета. ',
     'закрыты',
-    'Слизистая оболочка преддверия и полости рта синюшно-розового цвета', /*41*/
-    'Слизистая оболочка преддверия и полости рта бледно-синюшного цвета',
-    'Слизистая оболочка преддверия и полости рта бледно-серого цвета',
-    'Слизистая оболочка преддверия и полости рта бледно-желтого цвета',
+    ' Слизистая оболочка преддверия и полости рта синюшно-розового цвета', /*41*/
+    ' Слизистая оболочка преддверия и полости рта бледно-синюшного цвета',
+    ' Слизистая оболочка преддверия и полости рта бледно-серого цвета',
+    ' Слизистая оболочка преддверия и полости рта бледно-желтого цвета',
     'Переходная кайма губ багрово-синюшного цвета, ',
     'Переходная кайма губ синюшного цвета, ',
     'Переходная кайма губ бледно-синюшного цвета, ',
@@ -1287,7 +1282,7 @@ var arr_NeckTorso = [
 ];
 
 var arr_headbrain = [
-    'Вскрыты и отсепарированы мягкие ткани волосистой части головы. На ощупь они плотно-эластичные, ' +
+    'Вскрыты и отсепарованы мягкие ткани волосистой части головы. На ощупь они плотно-эластичные, ' +
     'с внутренней поверхности розовато-желтого цвета, влажные, блестящие, без кровоизлияний. ' +
     'Височные мышцы на разрезах красно-коричневого цвета, без кровоизлияний. ' /*0*/,
     'Кости свода черепа целы. ',
@@ -1511,6 +1506,46 @@ var arr_genitourinary = [
   'Яичники обычного анатомического строения, умеренного кровенаполнения без очаговых изменений. ' //20
     ];
 
+var arr_digestive = [
+  'Желудок обычной формы, ',
+  'в его полости около ',
+  'в его полости незначительное количество серой слизи. ',
+    'полупереваренных пищевых масс. ',
+    'Слизистая оболочка желудка умеренно складчатая, ',   //4
+    'Слизистая оболочка желудка с хорошо выраженной складчатостью, ',
+    'Слизистая оболочка желудка со слабой складчатостью, ',
+    'Слизистая оболочка желудка гладкая, ',
+    'В просвете двенадцатиперстной кишки незначительное количество серо-желтой слизи. Фатеров сосок не контурируется, желчь из него выделяется при умеренном надавливании на желчный пузырь. ',
+    'Поджелудочная железа в виде тяжа ', //9
+    'мягкой консистенции, ',
+    'плотно-эластичной консистенции, ',
+    'плотной консистенции, ',
+    'Капсула ее гладкая, не напряжена, ткань на разрезе серо-желтого цвета, ',
+    'дольчатого строения, ', /*14*/
+    'с нечетким дольчатым рисунком, ',
+    'В желчном пузыре около ',
+    ' мл желчи темно-оливкового цвета. ', /*17*/
+    'Слизистая оболочка желчного пузыря бархатистая, темно-зеленого цвета. Стенка его тонкая, эластичная, не деформирована. ',
+    'Печень двудольчатого строения, ',
+    'поверхность ее гладкая, ',
+    'Размеры печени: ',
+    'Ткань печени на разрезах ', /*22*/
+    'с нечетко выраженным дольковым рисунком. ',
+    'с четко выраженным дольковым рисунком. ',
+    'В просвете тонкой кишки умеренное количество однородных вязких желтоватых масс. В просвете толстой кишки коричневые полуоформленные каловые массы в умеренном количестве. ',
+    'Слизистая оболочка всех отделов кишечника серого цвета с зеленоватым оттенком, умеренно складчатая, без кровоизлияний, рубцов и дефектов. '
+
+];
+
+var arr_additionInvestigation = [
+  'На судебно-химическое исследование направлено ',
+  'по ',
+  'периферической крови ',
+  'мочи '
+
+
+];
+
 var arr_frequentlyPhrases = [
     'без очаговых изменений',
     'без кровоизлияний',
@@ -1524,9 +1559,9 @@ var arr_frequentlyPhrases = [
     'плотноватой консистенции', /*9*/
     'мягкой консистенции',
     'дрябловатой консистенции',
-    'размеры: '
-
-
+    'размеры: ',
+    'размерами ', /*13*/
+    'масса '
 ];
 
 function getResult(t) {
@@ -2149,6 +2184,55 @@ function getResult(t) {
             else return t.array15[17] + getStringFromSelect2(t.id172, t.array15, 18);
         },
 
+
+
+        gaster: function(){
+            if (verificationSelect(t.id174, 1)) return t.array16[0] + t.array16[1] + getNumberFromTextarea(t.id175) + ' мл ' + t.array16[3] + getStringFromSelect2(t.id176, t.array16, 4) + getStringFromSelect2(t.id177, t.array0, 5) + t.array16[8] ;
+            if (verificationSelect(t.id174, 2)) return t.array16[0] + t.array16[2] + getStringFromSelect2(t.id176, t.array16, 4) + getStringFromSelect2(t.id177, t.array0, 5) + t.array16[8];
+        },
+
+        pancreas: function(){
+            return t.array16[9] + getStringFromSelect2(t.id182, t.array16, 10) + t.array11[13] + getNumberFromTextarea(t.id179) + 'x' + getNumberFromTextarea(t.id180) + 'x' + getNumberFromTextarea(t.id181) + ' см, массой ' + getNumberFromTextarea(t.id178) + ' г. ';
+        },
+
+        pancreasStructure: function(){
+          return t.array16[13] + getStringFromSelect2(t.id182, t.array16, 10) + getStringFromSelect2(t.id183, t.array16, 14) + '';
+        },
+
+        pancreasBloodFillingOther: function(){
+            if (verificationSelect(t.id184, 1)) return t.array8[1] + t.array0[8];
+            /*ум. кровенап*/
+            if (verificationSelect(t.id184, 2)) return t.array8[4] + t.array0[8];
+            /*полнокровие*/
+            if (verificationSelect(t.id184, 3)) return t.array8[7] + t.array0[8];
+            /*неравномерного*/
+            if (verificationSelect(t.id184, 4)) return t.array8[8] + t.array0[8];
+            /*малокр*/
+        },
+
+        gallbladder: function(){
+          return t.array16[16] + getNumberFromTextarea(t.id185) + t.array16[17] +  t.array16[18];
+        },
+
+        hepar: function(){
+            return t.array16[19] + getStringFromSelect2(t.id186, t.array16, 10) + t.array16[20] + getStringFromSelect2(t.id187, t.array0, 9) + '. ' + t.array16[21] + getNumberFromTextarea(t.id188) + 'x' + getNumberFromTextarea(t.id189) + 'x' + getNumberFromTextarea(t.id190) + 'x' + getNumberFromTextarea(t.id191) + 'x' + getNumberFromTextarea(t.id192) + ' см, ' + t.array11[14] + getNumberFromTextarea(t.id193) + ' г. ' ;
+        },
+
+        heparDisection: function(){
+            if (verificationSelect(t.id194, 1)) return t.array16[22] + getStringFromSelect2(t.id187, t.array0, 9) + ', ' + t.array8[1] + getStringFromSelect2(t.id195, t.array16, 23);
+            /*ум. кровенап*/
+            if (verificationSelect(t.id194, 2)) return t.array16[22] + getStringFromSelect2(t.id187, t.array0, 9) + ', ' + t.array8[4] + getStringFromSelect2(t.id195, t.array16, 23);
+            /*полнокровие*/
+            if (verificationSelect(t.id194, 3)) return t.array16[22] + getStringFromSelect2(t.id187, t.array0, 9) + ', ' + t.array8[7] + getStringFromSelect2(t.id195, t.array16, 23);
+            /*неравномерного*/
+            if (verificationSelect(t.id194, 4)) return t.array16[22] +  getStringFromSelect2(t.id187, t.array0, 9) + ', ' + t.array8[8] + getStringFromSelect2(t.id195, t.array16, 23);
+            /*малокр*/
+        },
+
+        intestines: function(){
+            return t.array16[25] + t.array16[26];
+        },
+
         bonesDamageInternalResearch: function() {
             var otherBones = getStringEnumeration(t.id173, t.id77, t.id78, t.id80, t.id81, t.array4, 22),
                 limbBones = getStringEnumeration2(t.id79a, t.id79b, t.array4, 32);
@@ -2172,6 +2256,11 @@ function getResult(t) {
                 }
                 else return '';
             }
+        },
+
+        ribsDamage: function(){
+            if (!ISchecked(t.id66)) return t.array4[36];
+            else return '';
         },
 
         lastSentenceInternalResearch: function() {
@@ -2257,6 +2346,8 @@ var t = {
     array13: arr_heartVessels,
     array14: arr_LienGsr,
     array15: arr_genitourinary,
+    array16: arr_digestive,
+    array17: arr_additionInvestigation,
     id2: 'dress',
     id3: 'dressold',
     id4: 'dirty',
@@ -2435,7 +2526,35 @@ var t = {
     id170: 'prostataSize2',
     id171: 'prostataSize3',
     id172: 'uterus',
-    id173: 'd21' /*sternum*/
+    id173: 'd21' /*sternum*/,
+    id174: 'gasterFilling',
+    id175: 'gasterFillingValue',
+    id176: 'gasterFolds',
+    id177: 'gasterColor',
+    id178: 'pancreasMass',
+    id179: 'pancreasSize1',
+    id180: 'pancreasSize2',
+    id181: 'pancreasSize3',
+    id182: 'pancreasConsistency',
+    id183: 'pancreasLobule',
+    id184: 'pancreasBloodFill',
+    id185: 'gall',
+    id186: 'liverConsistency',
+    id187: 'liverColor',
+    id188: 'liverSize1',
+    id189: 'liverSize2',
+    id190: 'liverSize3',
+    id191: 'liverSize4',
+    id192: 'liverSize5',
+    id193: 'liverMass',
+    id194: 'liverBloodFill',
+    id195: 'liverLobule',
+    id196: 'organsChem',
+    id198: 'stomachChem',
+    id199: 'surrogates',
+    id200: 'drug',
+    id201: 'narcotic'
+
 
 };
 

@@ -1003,6 +1003,8 @@
                <input id="liverSize4" size="1" type="text"><span>x</span>
                <input id="liverSize5" size="1" type="text"><br/>
 
+               <label><span>Масса:&nbsp;</span><input id="liverMass" size="1"  value="2" type="text"></label>
+
                <label for="liverConsistency"><span>Консистенция:</span></label>
                <select id="liverConsistency">
                    <option>мягкая</option>
@@ -1018,8 +1020,8 @@
                <br/>
                <label for="liverLobule"><span>Дольковый рисунок:</span></label>
                <select id="liverLobule">
-                   <option>четкий</option>
                    <option>нечеткий</option>
+                   <option>четкий</option>
                </select>
                <br/>
                <label for="liverBloodFill"><span>Кровенаполнение: </span></label>
@@ -1035,7 +1037,8 @@
                <span style="text-decoration: underline">Поджелудочная железа</span><br/>
                <label><span>Размеры:&nbsp;</span><input id="pancreasSize1" size="1" type="text"></label><span>x</span>
                <input id="pancreasSize2" size="1" type="text"><span>x</span>
-               <input id="pancreasSize3" size="1" type="text"><br/>
+               <input id="pancreasSize3" size="1" type="text">
+               <label><span>Масса:&nbsp;</span><input id="pancreasMass" size="1" type="text"></label><br/>
                <label for="pancreasConsistency"><span>Консистенция:</span></label>
                <select id="pancreasConsistency">
                    <option>мягкая</option>
@@ -1077,15 +1080,15 @@
                    <option>немного слизи</option>
                </select>
                <div class="div-gasterFilling-value" id="divGasterFillingValue">
-                   <label><span>&nbsp;</span><input id="gasterFillingValue" size="1"  value="2" type="text"></label>
+                   <label><span>&nbsp;</span><input id="gasterFillingValue" size="1" type="text"></label>
                </div>
                <br/>
                <label for="gasterFolds"><span>Складчатость: </span></label>
                <select id="gasterFolds">
+                   <option>умеренная</option>
+                   <option>хорошая</option>
                    <option>слабая</option>
                    <option>отсутствует</option>
-                   <option>незначительно</option>
-                   <option>хорошая</option>
                </select>
                <br/>
                <label for="gasterColor"><span>Цвет слизистой: </span></label>
@@ -1097,7 +1100,22 @@
 
                <br/><br/>
                <input onclick="getResult(t)" type="button" value="Результат">
-               <input onclick="resetForm('formDigestive'); resetNewStyle('divLiverEdgeValue', 'divGasterFillingValue')" type="button" value="Сбросить">
+               <input onclick="resetForm('formDigestive');
+               resetNewStyle('divLiverEdgeValue', 'divGasterFillingValue');
+               get5RandAndAddInValue('gasterFillingValue', 100, 300, 10);
+               get5RandAndAddInValue('liverMass', 1400, 1800, 100);
+               get5RandAndAddInValue('liverSize1', 24, 27, 1);
+               get5RandAndAddInValue('liverSize2', 17, 20, 1);
+               get5RandAndAddInValue('liverSize3', 12, 14, 1);
+               get5RandAndAddInValue('liverSize4', 7, 9, 1);
+               get5RandAndAddInValue('liverSize5', 5, 6, 1);
+               get5RandAndAddInValue('gall', 20, 40, 10);
+               get5RandAndAddInValue('pancreasMass', 70, 80, 5);
+               get5RandAndAddInValue('pancreasSize1', 16, 22, 1);
+               get5RandAndAddInValue('pancreasSize2', 4, 6, 1);
+               get5RandAndAddInValue('pancreasSize3', 2, 3, 1);
+
+               " type="button" value="Сбросить">
            </form>
 
        </div>
@@ -1306,10 +1324,8 @@
                 <label><input type="checkbox" id="bloodChem" checked><span>Кровь</span></label><br/>
                 <label><input type="checkbox" id="urineChem" checked><span>Моча</span></label><br/>
                 <br/>
-                <label><input type="checkbox" id="brainChem" onclick="(checkCheckboxesOR('brainChem', 'liverChem', 'kineyChem', 'stomachChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Мозг</span></label><br/>
-                <label><input type="checkbox" id="liverChem" onclick="(checkCheckboxesOR('brainChem', 'liverChem', 'kineyChem', 'stomachChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Печень</span></label><br/>
-                <label><input type="checkbox" id="kineyChem" onclick="(checkCheckboxesOR('brainChem', 'liverChem', 'kineyChem', 'stomachChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Почка</span></label><br/>
-                <label><input type="checkbox" id="stomachChem" onclick="(checkCheckboxesOR('brainChem', 'liverChem', 'kineyChem', 'stomachChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Желудок</span></label><br/>
+                <label><input type="checkbox" id="organsChem" onclick="(checkCheckboxesOR('organsChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Мозг, почка, печень</span></label><br/>
+                <label><input type="checkbox" id="stomachChem" onclick="(checkCheckboxesOR('stomachChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Желудок</span></label><br/>
                 <br/>
                 <div class="div-chemDefine" id="divChemDefine">
                     <label><input type="checkbox" id="surrogates"><span>суррогаты</span></label><br/>
@@ -1317,11 +1333,7 @@
                     <label><input type="checkbox" id="narcotic"><span>наркотики</span></label><br/>
                 </div>
                 <br/>
-                <span style="text-decoration: underline; text-transform: uppercase">гистология</span><span>&nbsp;(дополнительно)</span><br/>
-                <label><input type="checkbox" id="lungTouch"><span>мазок из легких (пневмония)</span></label><br/>
-                <label><input type="checkbox" id="strangulationG"><span>странгуляционная борозда</span></label><br/>
-                <label><input type="checkbox" id="lymphonodusG"><span>лимфоузлы</span></label><br/>
-                <br/>
+
                 <span style="text-decoration: underline; text-transform: uppercase">биология</span><br/>
                 <label><input type="checkbox" id="bloodtype"><span>кровь на группу</span></label><br/>
                 <br/>
@@ -1388,8 +1400,18 @@
         get05RandAndAddInValue('pulmValve', 7.5, 8);
         get05RandAndAddInValue('mitral', 9.7, 10.3);
         get05RandAndAddInValue('aortaValve', 7, 7.3);
-
-
+        get5RandAndAddInValue('gasterFillingValue', 100, 300, 10);
+        get5RandAndAddInValue('liverMass', 1400, 1800, 100);
+        get5RandAndAddInValue('liverSize1', 24, 27, 1);
+        get5RandAndAddInValue('liverSize2', 17, 20, 1);
+        get5RandAndAddInValue('liverSize3', 12, 14, 1);
+        get5RandAndAddInValue('liverSize4', 7, 9, 1);
+        get5RandAndAddInValue('liverSize5', 5, 6, 1);
+        get5RandAndAddInValue('gall', 20, 40, 10);
+        get5RandAndAddInValue('pancreasMass', 70, 80, 5);
+        get5RandAndAddInValue('pancreasSize1', 16, 22, 1);
+        get5RandAndAddInValue('pancreasSize2', 4, 6, 1);
+        get5RandAndAddInValue('pancreasSize3', 2, 3, 1);
 //
 //
 //
