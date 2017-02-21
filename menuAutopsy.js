@@ -1072,12 +1072,12 @@ var arr_General = [
     'крупного телосложения, ',
     'среднего телосложения, ',
     'слабого телосложения, ',
-    'умеренного питания',
+    'умеренного питания', //5
     'повышенного питания',
     'пониженного питания',
     'резко пониженного питания',
     ' и нормального физического развития. ',
-    'Длина тела ',
+    'Длина тела ',  //10
     ' возраст на вид соответствует указанному выше. ',
     ' выглядит старше вышеуказанного  возраста. ',
     ' выглядит младше вышеуказанного возраста. ',
@@ -1087,15 +1087,15 @@ var arr_General = [
     'вне трупных пятен мертвенно-бледного цвета, ',
     'вне трупных пятен бледно-серого цвета, ',
     'смуглый вне трупных пятен, ',
-    'вне трупных пятен бледно-серого цвета с желтушным оттенком, ',
+    'вне трупных пятен бледно-серого цвета с желтушным оттенком, ', //20
     'грязно-зеленого цвета, ',
     'бледно-серого цвета с розовым оттенком вне трупных пятен, ',
     'упругий, ',
     'мягкий, ',
-    'дряблый, ',
+    'дряблый, ', //25
     'без видимых участков подсыхания. ',
     'с участками подсыхания ',
-    'Скелетные мышцы мягкие на ощупь',
+    'Скелетные мышцы мягкие на ощупь', //28
     'Скелетные мышцы плотные на ощупь',
     ', рельеф их выражен хорошо. ',
     ' с умеренно выраженным рельефом. ',
@@ -1125,7 +1125,7 @@ var arr_Decomposition = [
   'исчезают, восстанавливая свою окраску через ',
   'Трупное окоченение умеренно развито во всех группах мышц. ',
   'Трупное окоченение хорошо развито во всех группах мышц. ',
-  'Трупное окоченение плохо развито во всех группах мышц. ',
+  'Трупное окоченение слабо развито во всех группах мышц. ',
   'Трупное окоченение отсутствует во всех группах мышц. ',
   'Видимые признаки гниения отсутствуют. ',
   'Кожный покров на передней брюшной стенке темно-зеленого цвета (трупная зелень). ',
@@ -1342,7 +1342,7 @@ var arr_visceralGeneral = [
     'Подкожно-жировая клетчатка ',
     'толщиной на уровне грудины ',
     'на уровне пупка ',
-    'Мягкие ткани передне-боковых отделов шеи, груди и живота ', /*3*/
+    'Мягкие ткани переднебоковых отделов шеи, груди и живота ', /*3*/
     'Общее расположение органов брюшной полости правильное. Большой сальник розовато-желтого цвета, частично закрывает петли кишечника. Брюшина гладкая, влажная, полупрозрачная, белесовато-серого цвета, без повреждений. Спаек, сращений и посторонней жидкости в  брюшной полости не обнаружено. Червеобразный отросток не изменен, свободно расположен на своей брыжейке. ',
     'Передний край печени заострен, ', /*5*/
     'Передний край печени слегка закруглен, ',
@@ -1403,7 +1403,7 @@ var arr_lungs = [
 ];
 
 var arr_heartVessels = [
-    'Легочная артерия и ее ветви проходимы, внутренняя оболочка их серовато-синюшная, гладкая. ',
+    'Легочной ствол, отходящие от него артерии и их ветви проходимы, внутренняя оболочка их серовато-синюшная, гладкая. ',
     'Сердце свободно располагается в полости перикарда, ',
     'Наружная оболочка сердца сероватая, полупрозрачная, тонкая, блестящая, без кровоизлияний. ',
     'Под ней преимущественно по передней и боковым поверхностям отложение желтоватой жировой клетчатки толщиной до 0,4 см. ',
@@ -1641,7 +1641,7 @@ function getResult(t) {
       },
       rigorMortis: getStringFromSelect2(t.id26, t.array3, 20),
       muscle: function(){
-          if (verificationSelect(t.id26, 2)) return t.array2[29] + getStringFromSelect2(t.id27, t.array3, 30);
+          if (verificationSelect(t.id26, 2)) return t.array2[29] + getStringFromSelect2(t.id27, t.array2, 30);
           else return t.array2[28] + getStringFromSelect2(t.id27, t.array2, 30);
       },
       rotting: function(){
@@ -1827,27 +1827,6 @@ function getResult(t) {
          else return '';
         },
 
-        //bonesDamageInternalResearch: function() {
-        //    var otherBones = getStringEnumeration(t.id173, t.id77, t.id78, t.id80, t.id81, t.array4, 22),
-        //        limbBones = getStringEnumeration2(t.id79a, t.id79b, t.array4, 32);
-        //    console.log(limbBones);
-        //
-        //    if (limbBones !== '' && otherBones !== '') {
-        //        console.log('first');
-        //        return otherBones + ', ' + t.array4[30] + limbBones + t.array4[34] + t.array4[27];
-        //    }
-        //    else if (limbBones == '' && otherBones !== '') {
-        //        return otherBones + t.array4[27];
-        //    }
-        //    else if (limbBones !== '' && otherBones == ''){
-        //        console.log('1234');
-        //        return limbBones.charAt(1).toUpperCase() + limbBones.substr(2) + t.array4[21] + t.array4[27];
-        //    }
-        //    else return '';
-        //},
-
-
-
         textareaDamage: function() {
            if (checkAreaForFill(t.id84, re)) return t.array4[17] + getFromTextarea(t.id84) + ' ';
            else return '';
@@ -1856,7 +1835,7 @@ function getResult(t) {
         lastSentenceExternalResearch: function() {
             if (checkCheckboxesOR(t.id30, t.id31, t.id49, t.id50, t.id51, t.id52, t.id58, t.id61, t.id64, t.id65, t.id66, t.id77, t.id78, t.id79a, t.id79b, t.id80, t.id81, t.id82, t.id83) || checkAreaForFill(t.id84, re)) return t.array4[16];
             else return t.array4[15];
-        },
+        }
 
     };
 
@@ -2181,10 +2160,8 @@ function getResult(t) {
 
         prostateUterus: function(){
             if (ISchecked(t.id6)) return t.array15[16] + getNumberFromTextarea(t.id169) + 'x' + getNumberFromTextarea(t.id170) + 'x' + getNumberFromTextarea(t.id171) + ' см. ';
-            else return t.array15[17] + getStringFromSelect2(t.id172, t.array15, 18);
+            else return t.array15[17] + getStringFromSelect2(t.id172, t.array15, 18) + t.array15[20];
         },
-
-
 
         gaster: function(){
             if (verificationSelect(t.id174, 1)) return t.array16[0] + t.array16[1] + getNumberFromTextarea(t.id175) + ' мл ' + t.array16[3] + getStringFromSelect2(t.id176, t.array16, 4) + getStringFromSelect2(t.id177, t.array0, 5) + t.array16[8] ;

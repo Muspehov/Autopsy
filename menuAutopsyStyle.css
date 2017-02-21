@@ -578,22 +578,13 @@ ul {
 
 .hair-face, .eyes, .nose, .ear, .lips {
     display: inline-block;
-    outline: 1px solid black;
     vertical-align: top;
 }
 
-.other-damage, .locomot-apparat-damage {
+.damage-block {
     vertical-align: top;
     display: inline-block;
-    /*outline: 1px solid black;*/
-}
-
-.locomot-apparat-damage {
     width: 150px;
-}
-
-.other-damage {
-    width: 200px;
 }
 
 .valve {

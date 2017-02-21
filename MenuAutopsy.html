@@ -126,7 +126,7 @@
                 ">
                     <option>умеренное</option>
                     <option>повышенное</option>
-                    <option>пониженное</option>
+                    <!--<option>пониженное</option>-->
                     <option>пониженное</option>
                     <option>резко пониженное, кахексия</option>
                 </select>
@@ -265,7 +265,7 @@
                 <select id="rigorMortis">
                     <option>умеренно</option>
                     <option>хорошо</option>
-                    <option>плохо</option>
+                    <option>слабо</option>
                     <option>отсутствует</option>
                 </select>
                 <br/>
@@ -326,7 +326,7 @@
                     <label for="face"><span>лицо</span></label>
                     <select id="face">
                         <option value="">бледно-синюшное</option>
-                        <option value="">бледно-серое</option>
+                        <option value="" selected>бледно-серое</option>
                         <option value="">синюшно-фиолетовое</option>
                         <option value="">синюшно-багровое</option>
                         <option value="">синюшно-розовое</option>
@@ -474,7 +474,7 @@
             <div class="pushback-block" onclick="resetLocalityLeft('teeth')">  X  </div>
             <form id="formTeeth" name="formTeeth">
                 <label for="teethVisible"><span>Видимые зубы целы &nbsp;</span></label>
-                <input type="checkbox" id="teethVisible" checked>
+                <input type="checkbox" id="teethVisible">
                 <br/><br/>
                 <label><input type="radio" checked="checked" name="raz" id="s1"/> <span>Нет</span></label><br/>
                 <label><input type="radio" name="raz"/> <span>Из желтого металла</span></label><br/>
@@ -553,16 +553,21 @@
                     </tr>
                 </table>
                 <br/><br/>
-                <label><span>лунки отсутствующих зубов заращены </span><input type="checkbox" id="teeth_alveolus" checked></label>
+                <label><span>лунки отсутствующих зубов заращены </span><input type="checkbox" id="teeth_alveolus"
+                                                                              checked></label>
                 <br/><br/>
                 <!-- Control buttons  -->
                 <input name="process" type="button" value="РЕЗУЛЬТАТ"
-                       onclick="getMatrix(matrix); funcEcho(getResultString(matrix, symb, textPhrasesArray), 'outputinf'); getResult(t)"/>
+                       onclick="getMatrix(matrix); funcEcho((function() {
+                if (ISchecked(t.id85)) return t.array5[58];
+                else return getResultString(matrix, symb, textPhrasesArray);
+                })(), 'outputinf'); getResult(t)"/>
                 <input name="process" type="button" value="Все целы" onclick="resetTeeth('inp', ' Ц ')"/>
                 <input name="process" type="button" value="Нет зубов" onclick="resetTeeth('inp', ' Н ')"/>
                 <input name="process" type="button" value="Все по выбору" onclick="allTheSelectSymb('inp')"/>
                 <br/>
                 <br/>
+
 
                 <div id="outputinf" class="teeth-text-out"></div>
 
@@ -651,13 +656,17 @@
             <div class="pushback-block" onclick="resetLocalityLeft('damage')">  X  </div>
             <form id="formDamage">
                 <div class="checkbox-damage">
-                    <div class="locomot-apparat-damage">
+                    <div class="damage-block">
                         <span style="text-decoration: underline">Отметить повреждения:</span><br/><br/>
                         <label><input type="checkbox" id="d9"> <span>свод черепа</span></label><br/>
                         <label><input type="checkbox" id="d9a"> <span>основание черепа</span></label><br/>
                         <label><input type="checkbox" id="d10"> <span>лицевой скелет</span></label><br/>
                         <label><input type="checkbox" id="d11" onchange="checkboxChecked('d11', 'd10')"> <span>кости носа</span></label><br/>
                         <label><input type="checkbox" id="d11a"> <span>хрящи носа</span></label><br/>
+                        <br/>
+                        <label><input type="checkbox" id="d20"> <span>оболочки мозга</span></label><br/>
+                    </div>
+                    <div class="damage-block">
                         <label><input type="checkbox" id="d12"> <span>ребра</span></label><br/>
                         <label><input type="checkbox" id="d13"> <span>спина</span></label><br/>
                         <label><input type="checkbox" id="d14"> <span>поясница</span></label><br/>
@@ -669,12 +678,8 @@
                         <label><input type="checkbox" id="d17a"> <span>верхние конечности</span></label><br/>
                         <label><input type="checkbox" id="d17b"> <span>нижние конечности</span></label><br/>
                         <br/>
-                        <label><input type="checkbox" id="d20"> <span>оболочки мозга</span></label><br/>
-                        <!--<label><input type="checkbox" id="d21"> <span>брюшина</span></label><br/>-->
-                        <!--<label><input type="checkbox" id="d22"> <span>легочная плевра</span></label><br/>-->
-                    </div>
-                    <div class="other-damage">
-                        <br/><br/>
+                   </div>
+                    <div class="damage-block">
                         <label><input type="checkbox" id="d1"><span>волосистая часть головы</span></label><br/>
                         <label><input type="checkbox" id="d2" > <span>глаза</span></label><br/>
                         <label><input type="checkbox" id="d3" ><span>преддверие и полость рта</span></label>	<br/>
@@ -682,12 +687,6 @@
                         <label><input type="checkbox" id="d6" ><span>шея</span></label><br/>
                         <label><input type="checkbox" id="d7" ><span>подм. впадины</span></label>	<br/>
                         <label><input type="checkbox" id="d8" >гениталии</label><br/>
-                        <br/>
-                        <!--<label><input type="checkbox" id="d23" >мочеточники</label> <br/>-->
-                        <!--<label><input type="checkbox" id="d24" >сердце</label> <br/>-->
-                        <!--<label><input type="checkbox" id="d25" >желудок</label> <br/>-->
-                        <!--<label><input type="checkbox" id="d26" >печень</label> <br/>-->
-                        <!--<label><input type="checkbox" id="d27" >кишечник</label> <br/>-->
                     </div>
 
                 </div>
@@ -1198,7 +1197,7 @@
                 <label><span>размеры правой:&nbsp;</span><input id="kidneyRightSize1" size="1" type="text"></label><span>x</span>
                 <input id="kidneyRightSize2" size="1" type="text"><span>x</span>
                 <input id="kidneyRightSize3" size="1" type="text"><br/>
-                <label><span>размеры правой:&nbsp;</span><input id="kidneyLeftSize1" size="1" type="text"></label><span>x</span>
+                <label><span>размеры левой:&nbsp;</span><input id="kidneyLeftSize1" size="1" type="text"></label><span>x</span>
                 <input id="kidneyLeftSize2" size="1" type="text"><span>x</span>
                 <input id="kidneyLeftSize3" size="1" type="text">
                 <br/>
