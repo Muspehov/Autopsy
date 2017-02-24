@@ -21,14 +21,13 @@ ul {
 .main-container {
     width: 900px;
     min-height: 300px;
-    outline: solid 1px #337ab7;
-    margin: 48px auto;
+   margin: 48px auto;
 }
 
 .main-block {
-    outline: solid 1px #000;
     background: #fbecdd;
     padding: 10px 20px 20px 30px;
+    outline: solid 1px #000;
 }
 
 .menu {
@@ -38,6 +37,26 @@ ul {
     padding: 10px;
     outline: solid 1px green;
     font: 0 Arial;
+}
+
+/*.main-container input[type="text"] {*/
+    /*-webkit-border-radius: 6px;*/
+    /*-moz-border-radius: 6px;*/
+/*}*/
+
+.main-container textarea {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+}
+
+.main-container select {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+.main-container input {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
 }
 
 .button-pointer {
@@ -53,7 +72,6 @@ ul {
     cursor: pointer;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
-
 }
 
 .button-pointer:nth-child(5n+1) {
@@ -230,7 +248,6 @@ ul {
     -moz-transition-duration: .6s;
     -o-transition-duration: .6s;
     transition-duration: .6s;
-    outline: 1px solid red;
 }
 
 .div-hidden {
@@ -250,7 +267,6 @@ ul {
     -moz-transition-duration: 1s;
     -o-transition-duration: 1s;
     transition-duration: 1s;
-    outline: 1px solid coral;
 }
 
 .age-interval {
@@ -570,10 +586,15 @@ ul {
 .div-chemDefine-new {
     position: absolute;
     top: 69px;
-    left: 132px;
+    left: 178px;
     max-height: 700px;
     opacity: 1;
     overflow: hidden;
+}
+
+.span-warning-urineChem {
+    display: none;
+    color: #dc9693;
 }
 
 .hair-face, .eyes, .nose, .ear, .lips {
@@ -598,8 +619,6 @@ ul {
 .valve-right {
     float: right;
 }
-
-
 
 .test-block {
     width: 500px;

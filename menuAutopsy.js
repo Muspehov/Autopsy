@@ -3,7 +3,6 @@
  */
 /*VISUAL EFFECTS*/
 
-
 function changeLocality(id1, crd1, id2, crd2, side) { //смещение двух блоков
     var e1 = document.getElementById(id1);
     var e2 = document.getElementById(id2);
@@ -325,6 +324,14 @@ function checkCheckboxesAND(id) {
     return true;
 }
 
+function changeCheck(input1, input2) {
+    var chbx1 = document.getElementById(input1),
+        chbx2 = document.getElementById(input2);
+    if (chbx1.checked && chbx2.checked) chbx2.checked = false;
+    else if (!chbx1.checked && !chbx2.checked) chbx2.checked = true;
+    else return undefined;
+}
+
 //if (element) return true;
 //else return false;
 
@@ -481,6 +488,24 @@ function getStringEnumeration2(idCheckbox, array, firstElement){
     result = resultArray.join(' и '); //making the string
     result = result.charAt(0).toUpperCase() + result.substr(1); //the first letter is capitalized
 
+    return result;
+}
+
+function getStringEnumeration3(idCheckbox, array, firstElement){
+    var result = '', resultArray = [], arrayCounter = 0, arrayPlace = arguments[arguments.length - 1];
+    if (!Array.isArray(arguments[arguments.length - 1])) { //last argument is not array?
+        arrayCounter  = arguments[arguments.length - 1];
+        arrayPlace = arguments[arguments.length - 2]; // the array will be the penultimate argument
+    }
+
+    for (var i = 0; i < arguments.length; i++, arrayCounter++) {
+        if (Array.isArray(arguments[i])) break;
+        if (document.getElementById(arguments[i]).checked) {
+            resultArray.push(arrayPlace[arrayCounter]);
+        }
+    }
+
+    result = resultArray.join(', '); //making the string
     return result;
 }
 
@@ -1541,9 +1566,20 @@ var arr_additionInvestigation = [
   'На судебно-химическое исследование направлено ',
   'по ',
   'периферической крови ',
-  'мочи '
-
-
+  'мочи ',
+  ' На судебно-химическое исследование направлено ', //4
+  'по 10 мл периферической крови и мочи  ',
+  '10 мл периферической крови ',
+  'для определения концентрации этилового спирта', //7
+  'одна треть печени',
+  '200 гр. головного мозга',
+  'почка', //10
+  'желудок с содержимым',
+  ' для определения наличия ',
+  'суррогатов алкоголя',
+  'лекарственных препаратов',
+  'наркотических веществ', //15
+  'На судебно-биологическое исследование направлена кровь для определения групповой принадлежности.'
 ];
 
 var arr_frequentlyPhrases = [
@@ -2243,10 +2279,40 @@ function getResult(t) {
         lastSentenceInternalResearch: function() {
             if (checkCheckboxesOR(t.id66, t.id77, t.id78, t.id79a, t.id79b, t.id80, t.id81, t.id86, t.id87, t.id91, t.id173)) return t.array4[29];
             else return t.array4[28];
+        },
+
+        additionalInvestigationsChem: function () {
+            if (!ISchecked(t.id203) && !ISchecked(t.id204)) {                   //bloodChem, urineChem are unchecked
+                if (checkCheckboxesOR(t.id196, t.id197, t.id198, t.id199)) {    //general chemistry
+                    if (checkCheckboxesOR(t.id200, t.id201, t.id202)) {         //general chemistry items
+                        return t.array17[4]
+                            + getStringEnumeration3(t.id196, t.id197, t.id198, t.id199, t.array17, 8) + t.array17[12]
+                            + getStringEnumeration3(t.id200, t.id201, t.id202, t.array17, 13) + '. ';
+                    }
+                    return '';
+                }
+                else return '';
+            }
+
+            var alcogol = function () {
+                if (!ISchecked(t.id204)) return t.array17[4] + t.array17[6] + t.array17[7];
+                else return t.array17[4] + t.array17[5] + t.array17[7];
+            };
+
+            if (checkCheckboxesOR(t.id196, t.id197, t.id198, t.id199)) {
+                if (checkCheckboxesOR(t.id200, t.id201, t.id202)) {
+                    var chemItem = getStringEnumeration3(t.id200, t.id201, t.id202, t.array17, 13);
+                } else chemItem = '';
+                return alcogol() + '; ' + getStringEnumeration3(t.id196, t.id197, t.id198, t.id199, t.array17, 8) + t.array17[12] + chemItem + '. ';
+            }
+            else return alcogol() + '. ';
+        },
+
+        bloodType: function(){
+            if (ISchecked(t.id205)) return t.array17[16];
+            else return '';
         }
-
     };
-
 
     var title1 = 'наружное исследование',
         title2 = 'внутреннее исследование';
@@ -2289,8 +2355,9 @@ function getResult(t) {
     var iWin = (isGecko) ? iframe.contentWindow : iframe.window;
     var iDoc = (isGecko) ? iframe.contentDocument : iframe.document;
 
-    iHTML = "<style>p {text-align: justify; text-indent: 30px; font-family: 'Times New Roman', sans-serif;} .titleResearch {margin-left: 40%; font-family: Georgia, 'Times New Roman', Times, serif; font-weight:bold; text-transform: uppercase;}</style>" +
-        "<div id='divFrame' style='background: #fbecdd; padding: 10px 20px 20px 30px'></div>" ;
+    iHTML = "<style> p{text-align: justify; text-indent: 30px; font-family: 'Times New Roman', sans-serif; font-size: 16px; margin: 0}"
+        + " .titleResearch {margin-left: 40%; font-family: Georgia, 'Times New Roman', Times, serif; font-weight:bold; text-transform: uppercase;}</style>"
+        + "<div id='divFrame' style='background: #fbecdd; padding: 10px 20px 20px 30px'></div>" ;
     iDoc.open(); // Открываем фрейм
     iDoc.write(iHTML); // Добавляем написанный код в фрейм
     iDoc.getElementById("divFrame").innerHTML = "";
@@ -2298,11 +2365,13 @@ function getResult(t) {
     iDoc.getElementById("divFrame").appendChild(br);
     iDoc.getElementById("divFrame").appendChild(p); //
     iDoc.getElementById("divFrame").appendChild(br); divFrame.appendChild(br);
+    iDoc.getElementById("divFrame").appendChild(br);
+    iDoc.getElementById("divFrame").appendChild(br);
+    iDoc.getElementById("divFrame").appendChild(br);
     iDoc.getElementById("divFrame").appendChild(spanTitle2);
     iDoc.getElementById("divFrame").appendChild(p2);
     iDoc.close(); // Закрываем фрейм
     iDoc.designMode = "on"; // Включаем режим редактирования фрейма
-
 }
 
 var t = {
@@ -2526,12 +2595,15 @@ var t = {
     id193: 'liverMass',
     id194: 'liverBloodFill',
     id195: 'liverLobule',
-    id196: 'organsChem',
-    id198: 'stomachChem',
-    id199: 'surrogates',
-    id200: 'drug',
-    id201: 'narcotic'
-
-
+    id196: 'liverChem',
+    id197: 'brainChem',
+    id198: 'kidneyChem',
+    id199: 'stomachChem',
+    id200: 'surrogates',
+    id201: 'drug',
+    id202: 'narcotic',
+    id203: 'bloodChem',
+    id204: 'urineChem',
+    id205: 'bloodType'
 };
 

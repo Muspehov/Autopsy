@@ -1183,12 +1183,14 @@
             <div class="pushback-block" onclick="resetLocalityLeft('genitourinary')">  X  </div>
             <form id="formGenitourinary">
                 <label><input type="checkbox" id="bladder" onchange="changeStyle('divBladder', ' div-bladder-new');
-               document.getElementById('urineChem').checked =! document.getElementById('urineChem').checked;
+                changeCheck('bladder', 'urineChem')
+                if (document.getElementById('spanWarningChem').style.display == 'inline')
+                document.getElementById('spanWarningChem').style.display = 'none';
+
                ">
                 <span>Мочи нет</span></label><br/>
                 <div class="div-bladder" id="divBladder">
-                    <!--changeStyleIfChecked('divBladder', 'bladder', ' div-bladder-new')-->
-                    <label><span>В мочевом пузыре: &nbsp</span><input id="urine" size="1" type="text"></label><span>мл мочи</span>
+                <label><span>В мочевом пузыре: &nbsp</span><input id="urine" size="1" type="text"></label><span>мл мочи</span>
                 </div>
                 <br/>
                 <span style="text-decoration: underline">Почки</span><br/>
@@ -1321,9 +1323,18 @@
             <form id="formAdditionalStudy">
                 <span style="text-decoration: underline; text-transform: uppercase">химия</span><br/>
                 <label><input type="checkbox" id="bloodChem" checked><span>Кровь</span></label><br/>
-                <label><input type="checkbox" id="urineChem" checked><span>Моча</span></label><br/>
+                <label><input type="checkbox" id="urineChem" checked onchange="
+                if (document.getElementById('bladder').checked && document.getElementById('urineChem').checked)
+                    document.getElementById('spanWarningChem').style.display = 'inline';
+                else document.getElementById('spanWarningChem').style.display = 'none';
+
+//                console.log(document.getElementById('urine').checked && document.getElementById('urineChem').checked);
+                "><span>Моча</span></label>
+                <span class="span-warning-urineChem" id="spanWarningChem">(указано, что в мочевом пузыре мочи нет)</span><br/>
                 <br/>
-                <label><input type="checkbox" id="organsChem" onclick="(checkCheckboxesOR('organsChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Мозг, почка, печень</span></label><br/>
+                <label><input type="checkbox" id="liverChem" onclick="(checkCheckboxesOR('liverChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Печень</span></label><br/>
+                <label><input type="checkbox" id="brainChem" onclick="(checkCheckboxesOR('brainChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Мозг</span></label><br/>
+                <label><input type="checkbox" id="kidneyChem" onclick="(checkCheckboxesOR('kidneyChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Почка</span></label><br/>
                 <label><input type="checkbox" id="stomachChem" onclick="(checkCheckboxesOR('stomachChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Желудок</span></label><br/>
                 <br/>
                 <div class="div-chemDefine" id="divChemDefine">
@@ -1334,7 +1345,7 @@
                 <br/>
 
                 <span style="text-decoration: underline; text-transform: uppercase">биология</span><br/>
-                <label><input type="checkbox" id="bloodtype"><span>кровь на группу</span></label><br/>
+                <label><input type="checkbox" id="bloodType"><span>кровь на группу</span></label><br/>
                 <br/>
                 <br/>
                 <input onclick="getResult(t)" type="button" value="Результат">
