@@ -70,7 +70,9 @@
                 </div>
                 <br/>
                 <br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="
+                (getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);
+                " type="button" value="Результат">
                 <input onclick="resetNewStyle('dressGeneral', 'div_clotheds');
                         resetForm('form_dress')" type="button" value="Сбросить">
             </form>
@@ -1183,7 +1185,7 @@
             <div class="pushback-block" onclick="resetLocalityLeft('genitourinary')">  X  </div>
             <form id="formGenitourinary">
                 <label><input type="checkbox" id="bladder" onchange="changeStyle('divBladder', ' div-bladder-new');
-                changeCheck('bladder', 'urineChem')
+                changeCheck('bladder', 'urineChem');
                 if (document.getElementById('spanWarningChem').style.display == 'inline')
                 document.getElementById('spanWarningChem').style.display = 'none';
 
@@ -1355,9 +1357,14 @@
         <div class="test-block" id="testblock"></div>
 
     </div>
+
+    <div class="block block-forma warning" id="warning">
+        Warning
+        <input onclick="getResult(t); changeStyleDisplay('warning', 'none')" type="button" value="ДА">
+        <input onclick="changeStyleDisplay('warning', 'none')" type="button" value="НЕТ">
+    </div>
     <iframe scrolling='yes' frameborder='no' src='#' id='frameId' name='frameId' width="900" height="2500"></iframe>
     <script>
-
         get05RandAndAddInValue('kidneyFat', 2, 3);
         getRandAndAddInValue('subcutaneousFatChest', 1, 2);
         getRandAndAddInValue('subcutaneousFatAbdomen', 2, 4);
@@ -1422,11 +1429,24 @@
         get5RandAndAddInValue('pancreasSize1', 16, 22, 1);
         get5RandAndAddInValue('pancreasSize2', 4, 6, 1);
         get5RandAndAddInValue('pancreasSize3', 2, 3, 1);
-//
-//
-//
 
-        getResult(t);
+        getResult(t); //main function
+
+//        var b = frames[0].document; // взятие фрейма
+//        document.write(b.getElementsByTagName('body')[0].innerHTML);
+
+//        var frame = document.getElementById('frameId');
+//        document.write(frame);
+//        console.log(frame.document.body);
+
+
+//        var iframe = document.getElementById("frameId");
+//        var iframeBody = (iframe.contentDocument || iframe.contentWindow.document).body;
+//        console.log( getCaretCharacterOffsetWithin(iframeBody) );
+
+
+
+
 
     </script>
 

@@ -39,11 +39,6 @@ ul {
     font: 0 Arial;
 }
 
-/*.main-container input[type="text"] {*/
-    /*-webkit-border-radius: 6px;*/
-    /*-moz-border-radius: 6px;*/
-/*}*/
-
 .main-container textarea {
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
@@ -228,6 +223,15 @@ ul {
     top: 40px;
     left: -500px;
     width: 450px;
+}
+
+.warning {
+    top: 40px;
+    left: 100px;
+    height: 200px;
+    width: 450px;
+    display: block;
+    z-index: 13;
 }
 
 .pushback-block {

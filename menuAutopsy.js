@@ -51,6 +51,10 @@ function resetLocalityLeft(id) {
     e.style.zIndex = '0';
 }
 
+function changeStyleDisplay(id, display){
+    var element = document.getElementById(id);
+    element.style.display = display;
+}
 
 function changeStyle(id, newStyle){
     var element = document.getElementById(id);
@@ -292,6 +296,31 @@ function expandDivTroughSelect2(idSlct, optionNum, id, heightNum) { //тольк
         el.style.height = '0px';
         el.style.opacity = '0';
     }
+}
+
+/*WARNING*/
+function getCaretCharacterOffsetWithin(id) {
+    var iframe = document.getElementById(id);
+    var element = (iframe.contentDocument || iframe.contentWindow.document).body;
+    var doc = element.ownerDocument || element.document;
+    var win = doc.defaultView || doc.parentWindow;
+    var sel, range, preCaretRange, caretOffset = 0;
+    if (typeof win.getSelection != "undefined") {
+        sel = win.getSelection();
+        if (sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            preCaretRange = range.cloneRange();
+            preCaretRange.selectNodeContents(element);
+            preCaretRange.setEnd(range.endContainer, range.endOffset);
+            caretOffset = preCaretRange.toString().length;
+        }
+    } else if ( (sel = doc.selection) && sel.type != "Control") {
+        preCaretRange = doc.body.createTextRange();
+        preCaretRange.moveToElementText(element);
+        preCaretRange.setEndPoint("EndToEnd", textRange);
+        caretOffset = preCaretTextRange.text.length;
+    }
+    return caretOffset;
 }
 
 /*AUTOPSY */
