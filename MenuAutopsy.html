@@ -10,15 +10,12 @@
 <body>
 <div class="main-container">
     <div class="menu">
-        <!--<div class="button-container1">-->
             <div class="button-pointer pointer-dress" onclick="changeLocalityLeft('formDress', '50px')"><span>одежда</span></div>
             <div class="button-pointer " onclick="changeLocalityLeft('head', '50px')"><span>голова</span></div>
             <div class="button-pointer" onclick="changeLocalityLeft('torso', '50px')"><span>туловище</span></div>
             <div class="button-pointer" onclick="changeLocalityLeft('heartBloodVessels', '10px')"><span>сердце и сосуды</span></div>
             <div class="button-pointer" onclick="changeLocalityLeft('breath', '50px')"><span>дыхательная система</span></div>
 
-        <!--</div>-->
-        <!--<div class="button-container2">-->
             <div class="button-pointer pointer-general" onclick="changeLocalityLeft('formGeneral', '50px')"><span>общие параметры тела</span></div>
             <div class="button-pointer" onclick="changeLocalityLeft('teeth', '50px')"><span>зубная формула</span></div>
             <div class="button-pointer" onclick="changeLocalityLeft('brainSkull', '50px')"><span>ЦНС, череп</span></div>
@@ -35,14 +32,15 @@
             <div class="pushback-block" onclick="resetLocalityLeft('formDress')">  X  </div>
             <form id="form_dress" name="form_dress">
                 <label for="dressPresence"><span>Одежды нет</span></label>
-                <input type="checkbox" id="dressPresence" onchange="changeStyle('dressGeneral', ' div-hidden'); resetFormElements('dress', 'clotheds')"/>
+                <input type="checkbox" autocomplete="off"  id="dressPresence" onchange="changeStyle('dressGeneral', ' div-hidden'); resetFormElements('dress', 'clotheds')"/>
+               
                 <br/>
                 <br/>
                 <div class="dress-general" id="dressGeneral">
                     <label for="dress"><span>Одежда:</span></label><br/>
                     <textarea cols="50" id="dress" rows="13"></textarea><br/>
                     <label for="checkDress"><span>Повреждения одежды&nbsp;</span></label>
-                    <input id="checkDress" type="checkbox" onclick="changeStyle('div_clotheds', ' div-cloth'); resetFormElements('clotheds')">
+                    <input id="checkDress" type="checkbox" autocomplete="off"  onclick="changeStyle('div_clotheds', ' div-cloth'); resetFormElements('clotheds')">
                     <br/>
                     <div class="div-hidden" id="div_clotheds">
                         <textarea cols="50" id="clotheds" name="clotheds" rows="7"></textarea>
@@ -71,8 +69,10 @@
                 <br/>
                 <br/>
                 <input onclick="
-                (getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);
-                " type="button" value="Результат">
+                if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);
+                else getResult(t);
+                "
+                       type="button" value="Результат">
                 <input onclick="resetNewStyle('dressGeneral', 'div_clotheds');
                         resetForm('form_dress')" type="button" value="Сбросить">
             </form>
@@ -82,10 +82,10 @@
             <div class="pushback-block" onclick="resetLocalityLeft('formGeneral')">  X  </div>
             <form id="form_general" name="form_general">
                 <span>Пол:</span><br>
-                <input checked id="man" name="sex" type="radio" onchange="resetNewStyle('divBreast', 'divProstata', 'divUterus'); getRandAndAddInValue('hair_length', 2, 10);
+                <input id="man" name="sex" type="radio" autocomplete="off" checked="checked" onchange="resetNewStyle('divBreast', 'divProstata', 'divUterus'); getRandAndAddInValue('hair_length', 2, 10);
                 get5RandAndAddInValue('massBrain', 1360, 1380, 10);
                 "><label for="man"><span>Мужской</span></label><br/>
-                <input id="woman" name="sex" type="radio" onchange="changeStyle('divBreast', ' div-breast-new');
+                <input id="woman" name="sex" type="radio" autocomplete="off" onchange="changeStyle('divBreast', ' div-breast-new');
                  changeStyle('divProstata', ' div-prostata-new');
                  changeStyle('divUterus', ' div-uterus-new');
                  getRandAndAddInValue('hair_length', 10, 35);
@@ -111,7 +111,7 @@
                     case 3: get05RandAndAddInValue('kidneyFat', 0.5, 1); break;
                     case 4: get05RandAndAddInValue('kidneyFat', 0.5, 1); break;
                 }
-                
+
                 switch (getOptionNumberOfSelect('pitanie')){
                     case 1: getRandAndAddInValue('subcutaneousFatChest', 1, 2); break;
                     case 2: getRandAndAddInValue('subcutaneousFatChest', 3, 6); break;
@@ -124,7 +124,7 @@
                     case 2: getRandAndAddInValue('subcutaneousFatAbdomen', 4, 7); break;
                     case 3: get05RandAndAddInValue('subcutaneousFatAbdomen', 1.5, 2); break;
                     case 4: get05RandAndAddInValue('subcutaneousFatAbdomen', 1, 1.5); break;
-                }                
+                }
                 ">
                     <option>умеренное</option>
                     <option>повышенное</option>
@@ -143,9 +143,9 @@
                 <br/>
                 <br/>
                 <label for="defects"><span>Дефекты развития&nbsp;</span>
-                </label><input id="defects" type="checkbox">
+                </label><input id="defects" type="checkbox" autocomplete="off" >
                 <label for="mass"><span>&nbsp; &nbsp; масса тела не измерялась&nbsp;</span></label>
-                <input checked id="mass" type="checkbox" onchange="changeStyle('massDiv', ' mass-new')">
+                <input checked id="mass" type="checkbox" autocomplete="off"  onchange="changeStyle('massDiv', ' mass-new')">
                 <br/>
                 <div id="massDiv" class="mass">
                     <label for="massNum"><span>Масса тела</span></label><input id="massNum" type="text" size="2"/><span>кг</span>
@@ -184,14 +184,14 @@
                 </select>
                 <br/>
                 <label for="skinDry"><span>Участки подсыхания кожи&nbsp;</span></label>
-                <input type="checkbox" id="skinDry" onclick="changeStyle('skinDryTrue', ' skin-dry-true-new');
+                <input type="checkbox" autocomplete="off"  id="skinDry" onclick="changeStyle('skinDryTrue', ' skin-dry-true-new');
                     resetFormElements('skinDryTrue')">
                 <br/>
                 <textarea class="skin-dry-true" id="skinDryTrue" cols="20" rows="5"></textarea>
                 <br/>
 
                 <br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);" type="button" value="Результат">
                 <input onclick="resetForm('form_general'); resetNewStyle('ageInterval','skinDryTrue', 'divBreast', 'divProstata', 'divUterus'); resetFormElements('abdomen');
                 getRandAndAddInValue('growth', 160, 180)" type="button" value="Сбросить">
             </form>
@@ -212,7 +212,7 @@
                 <br/>
 
                 <label for="larshe"><span>Пятна Лярше &nbsp;</span></label>
-                <input type="checkbox" id="larshe">
+                <input type="checkbox" autocomplete="off"  id="larshe">
                 <br/>
                 <br/>
                 <br/>
@@ -286,10 +286,10 @@
                 </div>
                 <br>
                 <label for="tandr"><span>температура тела и суправитальные реакции&nbsp;</span></label>
-                <input id="tandr" type="checkbox">
+                <input id="tandr" type="checkbox" autocomplete="off" >
                 <br/>
                 <br/>
-                <input type="button" onclick="getResult(t)" value="Результат">
+                <input type="button" onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);" value="Результат">
                 <input type="button" onclick="resetForm('form_decomposition')" value="Сбросить">
             </form>
         </div>
@@ -300,7 +300,7 @@
             <form id="formHead" name="formHead">
                 <div class="hair-face">
                     <label for="hairNo"><span>волос нет</span></label>
-                    <input id="hairNo" type="checkbox" onclick="changeStyle('divHairNo', ' div-hair-no-new')">
+                    <input id="hairNo" type="checkbox" autocomplete="off"  onclick="changeStyle('divHairNo', ' div-hair-no-new')">
                     <br/>
                     <div id="divHairNo" class="div-hair-no">
                         <label for="hairColor"><span>волосы</span></label>
@@ -319,7 +319,7 @@
                         </div>
                         <br/>
                         <label for="greyHair"><span>с сединой</span></label>
-                        <input id="greyHair" type="checkbox">
+                        <input id="greyHair" type="checkbox" autocomplete="off" >
                         <br/>
                         <label for="hair_length"><span>длина волос</span></label>
                         <input id="hair_length" size="5" type="text"><span>см</span>
@@ -334,7 +334,7 @@
                         <option value="">синюшно-розовое</option>
                     </select>
                     <label for="puffy"><span>одутловатое</span></label>
-                    <input id="puffy" type="checkbox" value="125">
+                    <input id="puffy" type="checkbox" autocomplete="off"  value="125">
                     <br/>
                     <br/>
                 </div>
@@ -386,7 +386,7 @@
                     </select>
                     </br>
                     <label for="eyesHemorrhage"><span>кровоизлияния</span></label>
-                    <input id="eyesHemorrhage" type="checkbox" value="126">
+                    <input id="eyesHemorrhage" type="checkbox" autocomplete="off"  value="126">
                     </br>
                     </br>
                 </div>
@@ -464,7 +464,7 @@
                     </select>
                 </div><br/>
 
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);" type="button" value="Результат">
                 <input onclick="resetNewStyle('divHairNo', 'divHairColorOther', 'divIrisColorOther', 'divNoseExcretOther', 'divEarExcretOther');
         resetForm('formHead'); (ISchecked('man')) ? getRandAndAddInValue('hair_length', 2, 10) : getRandAndAddInValue('hair_length', 10, 35);
         get05RandAndAddInValue('pupil', 0.3, 0.5)
@@ -476,14 +476,14 @@
             <div class="pushback-block" onclick="resetLocalityLeft('teeth')">  X  </div>
             <form id="formTeeth" name="formTeeth">
                 <label for="teethVisible"><span>Видимые зубы целы &nbsp;</span></label>
-                <input type="checkbox" id="teethVisible">
+                <input type="checkbox" autocomplete="off"  id="teethVisible">
                 <br/><br/>
-                <label><input type="radio" checked="checked" name="raz" id="s1"/> <span>Нет</span></label><br/>
-                <label><input type="radio" name="raz"/> <span>Из желтого металла</span></label><br/>
-                <label><input type="radio" name="raz"/> <span>Из белого металла</span></label><br/>
-                <label><input type="radio" name="raz"/> <span>Корень</span></label><br/>
-                <label><input type="radio" name="raz"/> <span>Целый</span></label><br/>
-                <label><input type="radio" name="raz"/> <span>Кариес</span></label><br/>
+                <label><input type="radio" autocomplete="off"  checked="checked" name="raz" id="s1"/> <span>Нет</span></label><br/>
+                <label><input type="radio" autocomplete="off"  name="raz"/> <span>Из желтого металла</span></label><br/>
+                <label><input type="radio" autocomplete="off"  name="raz"/> <span>Из белого металла</span></label><br/>
+                <label><input type="radio" autocomplete="off"  name="raz"/> <span>Корень</span></label><br/>
+                <label><input type="radio" autocomplete="off"  name="raz"/> <span>Целый</span></label><br/>
+                <label><input type="radio" autocomplete="off"  name="raz"/> <span>Кариес</span></label><br/>
 
                 <table>
                     <tr>
@@ -555,7 +555,7 @@
                     </tr>
                 </table>
                 <br/><br/>
-                <label><span>лунки отсутствующих зубов заращены </span><input type="checkbox" id="teeth_alveolus"
+                <label><span>лунки отсутствующих зубов заращены </span><input type="checkbox" autocomplete="off"  id="teeth_alveolus"
                                                                               checked></label>
                 <br/><br/>
                 <!-- Control buttons  -->
@@ -563,14 +563,13 @@
                        onclick="getMatrix(matrix); funcEcho((function() {
                 if (ISchecked(t.id85)) return t.array5[58];
                 else return getResultString(matrix, symb, textPhrasesArray);
-                })(), 'outputinf'); getResult(t)"/>
+                })(), 'outputinf');
+                if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"/>
                 <input name="process" type="button" value="Все целы" onclick="resetTeeth('inp', ' Ц ')"/>
                 <input name="process" type="button" value="Нет зубов" onclick="resetTeeth('inp', ' Н ')"/>
                 <input name="process" type="button" value="Все по выбору" onclick="allTheSelectSymb('inp')"/>
                 <br/>
                 <br/>
-
-
                 <div id="outputinf" class="teeth-text-out"></div>
 
             </form>
@@ -590,7 +589,7 @@
                     <option value = "">ладьевидная</option>
                 </select>
                 <br/>
-                <label for="chest_symmetry"><span>симметричная</span></label> <input type="checkbox" id="chest_symmetry" checked>
+                <label for="chest_symmetry"><span>симметричная</span></label> <input type="checkbox" autocomplete="off"  id="chest_symmetry" checked>
                 <br/><br/>
 
                 <div id="divBreast" class="div-breast">
@@ -609,7 +608,7 @@
                 </div>
                 <br/><br/>
                 <label for="abdomenSymmetry"><span>живот симметричный</span></label>
-                <input type="checkbox" id="abdomenSymmetry" checked><br/>
+                <input type="checkbox" autocomplete="off"  id="abdomenSymmetry" checked><br/>
                 <label for="abdomen"><span>расположен</span></label>
                 <select id="abdomen">
                     <option>на уровне</option>
@@ -647,7 +646,7 @@
                     </select>
                 </div>
                 <br/><br/><br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);" type="button" value="Результат">
                 <input onclick="resetForm('formTorso')" type="button" value="Сбросить">
             </form>
         </div>
@@ -660,35 +659,35 @@
                 <div class="checkbox-damage">
                     <div class="damage-block">
                         <span style="text-decoration: underline">Отметить повреждения:</span><br/><br/>
-                        <label><input type="checkbox" id="d9"> <span>свод черепа</span></label><br/>
-                        <label><input type="checkbox" id="d9a"> <span>основание черепа</span></label><br/>
-                        <label><input type="checkbox" id="d10"> <span>лицевой скелет</span></label><br/>
-                        <label><input type="checkbox" id="d11" onchange="checkboxChecked('d11', 'd10')"> <span>кости носа</span></label><br/>
-                        <label><input type="checkbox" id="d11a"> <span>хрящи носа</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d9"> <span>свод черепа</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d9a"> <span>основание черепа</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d10"> <span>лицевой скелет</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d11" onchange="checkboxChecked('d11', 'd10')"> <span>кости носа</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d11a"> <span>хрящи носа</span></label><br/>
                         <br/>
-                        <label><input type="checkbox" id="d20"> <span>оболочки мозга</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d20"> <span>оболочки мозга</span></label><br/>
                     </div>
                     <div class="damage-block">
-                        <label><input type="checkbox" id="d12"> <span>ребра</span></label><br/>
-                        <label><input type="checkbox" id="d13"> <span>спина</span></label><br/>
-                        <label><input type="checkbox" id="d14"> <span>поясница</span></label><br/>
-                        <label><input type="checkbox" id="d15"> <span>таз</span></label><br/>
-                        <label><input type="checkbox" id="d16"> <span>позвоночник</span></label><br/>
-                        <label><input type="checkbox" id="d21"> <span>грудина</span></label><br/>
-                        <label><input type="checkbox" id="d18"> <span>ключицы</span></label><br/>
-                        <label><input type="checkbox" id="d19"> <span>лопатки</span></label><br/>
-                        <label><input type="checkbox" id="d17a"> <span>верхние конечности</span></label><br/>
-                        <label><input type="checkbox" id="d17b"> <span>нижние конечности</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d12"> <span>ребра</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d13"> <span>спина</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d14"> <span>поясница</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d15"> <span>таз</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d16"> <span>позвоночник</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d21"> <span>грудина</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d18"> <span>ключицы</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d19"> <span>лопатки</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d17a"> <span>верхние конечности</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d17b"> <span>нижние конечности</span></label><br/>
                         <br/>
                    </div>
                     <div class="damage-block">
-                        <label><input type="checkbox" id="d1"><span>волосистая часть головы</span></label><br/>
-                        <label><input type="checkbox" id="d2" > <span>глаза</span></label><br/>
-                        <label><input type="checkbox" id="d3" ><span>преддверие и полость рта</span></label>	<br/>
-                        <label><input type="checkbox" id="d5" ><span>ушные раковины</span></label><br/>
-                        <label><input type="checkbox" id="d6" ><span>шея</span></label><br/>
-                        <label><input type="checkbox" id="d7" ><span>подм. впадины</span></label>	<br/>
-                        <label><input type="checkbox" id="d8" >гениталии</label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d1"><span>волосистая часть головы</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d2" > <span>глаза</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d3" ><span>преддверие и полость рта</span></label>	<br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d5" ><span>ушные раковины</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d6" ><span>шея</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d7" ><span>подм. впадины</span></label>	<br/>
+                        <label><input type="checkbox" autocomplete="off"  id="d8" >гениталии</label><br/>
                     </div>
 
                 </div>
@@ -699,12 +698,13 @@
                 </div>
 
                 <br/><br/><br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);" type="button" value="Результат">
                 <input onclick="resetForm('formDamage')" type="button" value="Сбросить">
             </form>
 
         </div>
 
+<!--Brain, Skull-->
         <div class="block block-forma block-forma-brainSkull" id="brainSkull">
             <div class="pushback-block" onclick="resetLocalityLeft('brainSkull')">  X  </div>
             <form id="formBrainSkull" >
@@ -755,7 +755,7 @@
                     <label><span>х &nbsp</span><input id="pituitaryGlandDepth" size="1" type="text"></label>
                 </div>
                 <br/><br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);" type="button" value="Результат">
                 <input onclick="resetForm('formBrainSkull');
                 get05RandAndAddInValue('osFrontale', 1, 1.5);
                 get05RandAndAddInValue('osTemporale', 0.7, 1.2);
@@ -777,7 +777,7 @@
         <div class="block block-forma block-forma-generalPathology" id="generalPathology">
             <div class="pushback-block" onclick="resetLocalityLeft('generalPathology')">  X  </div>
             <form id="formGeneralPathology">
-                <label><input type="checkbox" id="plethora" onchange="onlyOneCheckboxChecked('anemia');
+                <label><input type="checkbox" autocomplete="off"  id="plethora" onchange="onlyOneCheckboxChecked('anemia');
                 changeSelectByCheckbox('heartBloodFill', 'plethora', 2, 1);
                 changeSelectByCheckbox('liverBloodFill', 'plethora', 2, 1);
                 changeSelectByCheckbox('pancreasBloodFill', 'plethora', 2, 1);
@@ -787,7 +787,7 @@
                 changeSelectByCheckbox('v_cavaInf', 'plethora', 2, 1)
                 ">Полнокровие</label><br/>
 
-                <label><input type="checkbox" id="anemia" onchange="onlyOneCheckboxChecked('plethora');
+                <label><input type="checkbox" autocomplete="off"  id="anemia" onchange="onlyOneCheckboxChecked('plethora');
                 changeSelectByCheckbox('heartBloodFill', 'anemia', 4, 1);
                 changeSelectByCheckbox('liverBloodFill', 'anemia', 4, 1);
                 changeSelectByCheckbox('pancreasBloodFill', 'anemia', 4, 1);
@@ -795,27 +795,28 @@
                 changeSelectByCheckbox('kidneyBloodFill', 'anemia', 4, 1)
                 ">Малокровие</label><br/>
 
-                <label><input type="checkbox" id="generalAtherosclerosis" onchange="changeSelectByCheckbox('coronaritis', 'generalAtherosclerosis', 2, 1);
+                <label><input type="checkbox" autocomplete="off"  id="generalAtherosclerosis" onchange="changeSelectByCheckbox('coronaritis', 'generalAtherosclerosis', 2, 1);
                 changeSelectByCheckbox('coronarosclerosis', 'generalAtherosclerosis', 3, 1);
                 changeSelectByCheckbox('aortaInnerMembrСolor', 'generalAtherosclerosis', 2, 1);
                 changeSelectByCheckbox('aortaInnerMembr', 'generalAtherosclerosis', 5, 1);
                 changeSelectByCheckbox('arteriaCerebri', 'generalAtherosclerosis', 2, 1);
                 ">Генерализованный атеросклероз</label><br/>
-                <label><input type="checkbox" id="icterus" onchange="
+                <label><input type="checkbox" autocomplete="off"  id="icterus" onchange="
                 changeSelectByCheckbox('skinColor', 'icterus', 4, 1);
                 changeSelectByCheckbox('shell_color', 'icterus', 3, 1);
                 changeSelectByCheckbox('mouth', 'icterus', 4, 1);
                 " >Желтуха</label><br/>
             </form>
             <br/>
-            <input onclick="getResult(t)" type="button" value="Результат">
+            <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);" type="button" value="Результат">
             <input onclick="resetForm('formGeneralPathology');
             resetFormElements('coronaritis', 'coronarosclerosis', 'aortaInnerMembrСolor', 'aortaInnerMembr',
             'arteriaCerebri', 'heartBloodFill', 'liverBloodFill', 'pancreasBloodFill', 'lungsBloodFill', 'kidneyBloodFill',
             'skinColor', 'shell_color', 'mouth', 'aortaCavity', 'v_cavaInf')" type="button" value="Сбросить">
         </div>
 
-        <div class="block block-forma block-forma-heartBloodVessels" id="heartBloodVessels">
+        <!--Heart, Blood, Vessels-->
+            <div class="block block-forma block-forma-heartBloodVessels" id="heartBloodVessels">
             <div class="pushback-block" onclick="resetLocalityLeft('heartBloodVessels')">  X  </div>
             <form id="formHeartBloodVessels">
 <div class="heart-blood">
@@ -862,10 +863,10 @@
                     <option>желтые свертки</option>
                 </select>
                 <br/><br/>
-                <label><input type="checkbox" id="heartCavExtend">Полости сердца расширены</label><br/>
+                <label><input type="checkbox" autocomplete="off"  id="heartCavExtend">Полости сердца расширены</label><br/>
                 <br/><br/>
-                <label><input type="checkbox" id="papillaryMuscles">Сосочковые мышцы утолщены</label><br/>
-                <label><input type="checkbox" id="tendonThread">Сухожильные нити укорочены</label><br/>
+                <label><input type="checkbox" autocomplete="off"  id="papillaryMuscles">Сосочковые мышцы утолщены</label><br/>
+                <label><input type="checkbox" autocomplete="off"  id="tendonThread">Сухожильные нити укорочены</label><br/>
                 <br/>
 </div>
 <div class="heart-blood-right">
@@ -884,7 +885,7 @@
                     <option>просвет полностью закрыт</option>
                 </select>
                 <br/>
-                <label><input type="checkbox" id="diffuseCardscl">Диффузный кардиосклероз</label><br/>
+                <label><input type="checkbox" autocomplete="off"  id="diffuseCardscl">Диффузный кардиосклероз</label><br/>
                 <br/>
                 <label for="aortaInnerMembrСolor"><span>Цвет интимы аорты: </span></label>
                 <select id="aortaInnerMembrСolor">
@@ -958,7 +959,8 @@
 </div>
 </div>
                 <br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"
+                       type="button" value="Результат">
                 <input onclick="resetForm('formHeartBloodVessels');
                     get5RandAndAddInValue('liquidPericard', 10, 20, 5);
                     get5RandAndAddInValue('heartWeigth', 300, 320, 5);
@@ -977,9 +979,9 @@
 
 
             </form>
-
         </div>
 
+<!--Digestive System-->
        <div class="block block-forma block-forma-digestive" id="digestive">
            <div class="pushback-block" onclick="resetLocalityLeft('digestive')">  X  </div>
            <form id="formDigestive">
@@ -1100,7 +1102,8 @@
                </select>
 
                <br/><br/>
-               <input onclick="getResult(t)" type="button" value="Результат">
+               <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"
+                      type="button" value="Результат">
                <input onclick="resetForm('formDigestive');
                resetNewStyle('divLiverEdgeValue', 'divGasterFillingValue');
                get5RandAndAddInValue('gasterFillingValue', 100, 300, 10);
@@ -1121,7 +1124,8 @@
 
        </div>
 
-        <div class="block block-forma block-forma-breath" id="breath">
+<!--Breath-->
+            <div class="block block-forma block-forma-breath" id="breath">
             <div class="pushback-block" onclick="resetLocalityLeft('breath')">  X  </div>
             <form id="formBreath">
                 <label for="pleuralCavity"><span>В плевральных полостях</span></label>
@@ -1167,13 +1171,14 @@
                     <option>малокровие</option>
                 </select>
                 <br/>
-                <label><input type="checkbox" id="pulmonaryEdema"><span>Выраженный отек легких</span></label><br/>
+                <label><input type="checkbox" autocomplete="off"  id="pulmonaryEdema"><span>Выраженный отек легких</span></label><br/>
                 <br/>
-                <label><input type="checkbox" id="bronchialWall"><span>Стенки бронхов утолщены, выступают от поверхности разрезов</span></label><br/>
-                <label><input type="checkbox" id="bronchialMucus"><span>В просветах бронхов слизь</span></label><br/>
+                <label><input type="checkbox" autocomplete="off"  id="bronchialWall"><span>Стенки бронхов утолщены, выступают от поверхности разрезов</span></label><br/>
+                <label><input type="checkbox" autocomplete="off"  id="bronchialMucus"><span>В просветах бронхов слизь</span></label><br/>
                 <br/>
 
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"
+                       type="button" value="Результат">
                 <input onclick="resetForm('formBreath'); resetNewStyle('divPleuralCavity');
                     get5RandAndAddInValue('lungRightWeight', 380, 400, 5);
                     get5RandAndAddInValue('lungLeftWeight', 380, 400, 5);
@@ -1181,14 +1186,14 @@
             </form>
         </div>
 
+        <!--Genitourinary system-->
         <div class="block block-forma block-forma-genitourinary" id="genitourinary">
             <div class="pushback-block" onclick="resetLocalityLeft('genitourinary')">  X  </div>
             <form id="formGenitourinary">
-                <label><input type="checkbox" id="bladder" onchange="changeStyle('divBladder', ' div-bladder-new');
+                <label><input type="checkbox" autocomplete="off"  id="bladder" onchange="changeStyle('divBladder', ' div-bladder-new');
                 changeCheck('bladder', 'urineChem');
                 if (document.getElementById('spanWarningChem').style.display == 'inline')
                 document.getElementById('spanWarningChem').style.display = 'none';
-
                ">
                 <span>Мочи нет</span></label><br/>
                 <div class="div-bladder" id="divBladder">
@@ -1224,7 +1229,7 @@
                     <option>бледно-синюшная</option>
                 </select>
                 <br/>
-                <label><input type="checkbox" id="kidneyMedCortexBorder"><span>Граница между корк. и мозг. веществом нечеткая</span></label><br/>
+                <label><input type="checkbox" autocomplete="off"  id="kidneyMedCortexBorder"><span>Граница между корк. и мозг. веществом нечеткая</span></label><br/>
                 <br/>
                 <label for="kidneyBloodFill"><span>Кровенаполнение почек: </span></label>
                 <select id="kidneyBloodFill">
@@ -1250,7 +1255,7 @@
 </div>
                 <br/>
                 <br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);" type="button" value="Результат">
                 <input onclick="resetForm('formGenitourinary'); resetNewStyle('divBladder');
                 if (!document.getElementById('urineChem').checked) document.getElementById('urineChem').checked = true;
                 get05RandAndAddInValue('kidneyFat', 2, 3);
@@ -1269,6 +1274,7 @@
             </form>
         </div>
 
+<!--Other-->
             <div class="block block-forma block-forma-other" id="other">
             <div class="pushback-block" onclick="resetLocalityLeft('other')">  X  </div>
             <form id="formOther">
@@ -1302,7 +1308,9 @@
                 <label><span>х &nbsp</span><input id="thyroidRightDepth" size="1" type="text"></label>
                 <br/>
                 <br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);
+                               else getResult(t);"
+                       type="button" value="Результат">
                 <input onclick="resetForm('formOther');
                     getRandAndAddInValue('subcutaneousFatChest', 1, 2);
                     getRandAndAddInValue('subcutaneousFatAbdomen', 2, 4);
@@ -1320,49 +1328,60 @@
             </form>
         </div>
 
+        <!--Additional Study-->
         <div class="block block-forma block-forma-additionalStudy" id="additionalStudy">
             <div class="pushback-block" onclick="resetLocalityLeft('additionalStudy')">  X  </div>
             <form id="formAdditionalStudy">
                 <span style="text-decoration: underline; text-transform: uppercase">химия</span><br/>
-                <label><input type="checkbox" id="bloodChem" checked><span>Кровь</span></label><br/>
-                <label><input type="checkbox" id="urineChem" checked onchange="
+                <label><input type="checkbox" autocomplete="off"  id="bloodChem" checked><span>Кровь</span></label><br/>
+                <label><input type="checkbox" autocomplete="off"  id="urineChem" checked onchange="
                 if (document.getElementById('bladder').checked && document.getElementById('urineChem').checked)
                     document.getElementById('spanWarningChem').style.display = 'inline';
-                else document.getElementById('spanWarningChem').style.display = 'none';
+                else changeStyleDisplay('spanWarningChem', 'none');
 
 //                console.log(document.getElementById('urine').checked && document.getElementById('urineChem').checked);
                 "><span>Моча</span></label>
                 <span class="span-warning-urineChem" id="spanWarningChem">(указано, что в мочевом пузыре мочи нет)</span><br/>
                 <br/>
-                <label><input type="checkbox" id="liverChem" onclick="(checkCheckboxesOR('liverChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Печень</span></label><br/>
-                <label><input type="checkbox" id="brainChem" onclick="(checkCheckboxesOR('brainChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Мозг</span></label><br/>
-                <label><input type="checkbox" id="kidneyChem" onclick="(checkCheckboxesOR('kidneyChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Почка</span></label><br/>
-                <label><input type="checkbox" id="stomachChem" onclick="(checkCheckboxesOR('stomachChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Желудок</span></label><br/>
+                <label><input type="checkbox" autocomplete="off"  id="liverChem" onclick="(checkCheckboxesOR('liverChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Печень</span></label><br/>
+                <label><input type="checkbox" autocomplete="off"  id="brainChem" onclick="(checkCheckboxesOR('brainChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Мозг</span></label><br/>
+                <label><input type="checkbox" autocomplete="off"  id="kidneyChem" onclick="(checkCheckboxesOR('kidneyChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Почка</span></label><br/>
+                <label><input type="checkbox" autocomplete="off"  id="stomachChem" onclick="(checkCheckboxesOR('stomachChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Желудок</span></label><br/>
                 <br/>
                 <div class="div-chemDefine" id="divChemDefine">
-                    <label><input type="checkbox" id="surrogates"><span>суррогаты</span></label><br/>
-                    <label><input type="checkbox" id="drug"><span>лекарства</span></label><br/>
-                    <label><input type="checkbox" id="narcotic"><span>наркотики</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off"  id="surrogates"><span>суррогаты</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off"  id="drug"><span>лекарства</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off"  id="narcotic"><span>наркотики</span></label><br/>
                 </div>
                 <br/>
 
                 <span style="text-decoration: underline; text-transform: uppercase">биология</span><br/>
-                <label><input type="checkbox" id="bloodType"><span>кровь на группу</span></label><br/>
+                <label><input type="checkbox" autocomplete="off"  id="bloodType"><span>кровь на группу</span></label><br/>
                 <br/>
                 <br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);
+                                else getResult(t);" type="button" value="Результат">
                 <input onclick="resetForm('formAdditionalStudy'); resetNewStyle('divChemDefine')" type="button" value="Сбросить">
             </form>
         </div>
         <div class="test-block" id="testblock"></div>
 
+        <input type="button" class="location-reload" onclick="location.reload()" value="Сбросить все изменения">
     </div>
 
+    <!--END FORM-->
+
     <div class="block block-forma warning" id="warning">
-        Warning
-        <input onclick="getResult(t); changeStyleDisplay('warning', 'none')" type="button" value="ДА">
-        <input onclick="changeStyleDisplay('warning', 'none')" type="button" value="НЕТ">
+        <p class="warning-word">Предупреждение!</p><p class="warning-text">При повторном использовании формы текст, который возможно вы самостоятельно добавили, будет утерян. Рекомендуется скопировать и сохранить его в отдельном файле. </p>
+        <div class="warning-buttons">
+            <input onclick="getResult(t); changeStyleDisplay('warning', 'none')" type="button" class="warning-button-left"  value="ВЫПОЛНИТЬ ">
+            <input onclick="changeStyleDisplay('warning', 'none')" type="button"  class="warning-button-right" value="ОТМЕНА ДЕЙСТВИЯ">
+        </div>
+        <label><input type="checkbox" id="noWarning" onclick="" autocomplete="off"><span>Не напоминать</span></label><br/>
     </div>
+
+
+
     <iframe scrolling='yes' frameborder='no' src='#' id='frameId' name='frameId' width="900" height="2500"></iframe>
     <script>
         get05RandAndAddInValue('kidneyFat', 2, 3);
@@ -1431,22 +1450,6 @@
         get5RandAndAddInValue('pancreasSize3', 2, 3, 1);
 
         getResult(t); //main function
-
-//        var b = frames[0].document; // взятие фрейма
-//        document.write(b.getElementsByTagName('body')[0].innerHTML);
-
-//        var frame = document.getElementById('frameId');
-//        document.write(frame);
-//        console.log(frame.document.body);
-
-
-//        var iframe = document.getElementById("frameId");
-//        var iframeBody = (iframe.contentDocument || iframe.contentWindow.document).body;
-//        console.log( getCaretCharacterOffsetWithin(iframeBody) );
-
-
-
-
 
     </script>
 

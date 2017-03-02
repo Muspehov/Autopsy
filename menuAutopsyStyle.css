@@ -226,13 +226,44 @@ ul {
 }
 
 .warning {
+    background: #5a9671;
     top: 40px;
     left: 100px;
     height: 200px;
-    width: 450px;
-    display: block;
+    width: 400px;
+    padding: 20px;
+    border: 5px solid #95333b;
+    display: none;
     z-index: 13;
 }
+
+.warning-word {
+    text-align: center;
+    font-size: 14pt;
+    color: #6b1d15;
+}
+
+.warning-text {
+    margin-top: 10px;
+    text-align: justify;
+}
+
+.warning-buttons {
+    margin-top: 20px;
+    margin-left: 60px;
+    width: 400px;
+
+}
+
+.warning-buttons input {
+    width: 35%;
+}
+
+.location-reload {
+    margin-top: 10px;
+    float: right;
+}
+
 
 .pushback-block {
     float: right;
@@ -577,7 +608,7 @@ ul {
 .div-chemDefine {
     position: absolute;
     top: 69px;
-    left: 132px;
+    left: 70px;
     max-height: 0;
     opacity: 0;
     overflow: hidden;
@@ -590,7 +621,7 @@ ul {
 .div-chemDefine-new {
     position: absolute;
     top: 69px;
-    left: 178px;
+    left: 80px;
     max-height: 700px;
     opacity: 1;
     overflow: hidden;
