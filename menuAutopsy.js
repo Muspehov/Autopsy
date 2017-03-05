@@ -51,27 +51,27 @@ function resetLocalityLeft(id) {
     e.style.zIndex = '0';
 }
 
-function changeStyleDisplay(id, display){
+function changeStyleDisplay(id, display) {
     var element = document.getElementById(id);
     element.style.display = display;
 }
 
-function changeStyle(id, newStyle){
+function changeStyle(id, newStyle) {
     var element = document.getElementById(id);
     var className = element.className;
-    if (className.indexOf(newStyle) == -1 ) className += newStyle;
+    if (className.indexOf(newStyle) == -1) className += newStyle;
     else className = className.replace(newStyle, '');
     element.className = className;
 }
 
-function changeStyleOneOff(id, newStyle){
+function changeStyleOneOff(id, newStyle) {
     var element = document.getElementById(id);
     var className = element.className;
-    if (className.indexOf(newStyle) == -1 ) className += newStyle;
+    if (className.indexOf(newStyle) == -1) className += newStyle;
     element.className = className;
 }
 
-function changeStyleIfChecked(id, idCheckbox, newStyle){
+function changeStyleIfChecked(id, idCheckbox, newStyle) {
     var element = document.getElementById(id);
     var className = element.className;
     var checkbox = document.getElementById(idCheckbox);
@@ -82,7 +82,7 @@ function changeStyleIfChecked(id, idCheckbox, newStyle){
     }
 }
 
-function changeStyleIfNoChecked(id, idCheckbox, newStyle){
+function changeStyleIfNoChecked(id, idCheckbox, newStyle) {
     var element = document.getElementById(id);
     var className = element.className;
     var checkbox = document.getElementById(idCheckbox);
@@ -93,14 +93,14 @@ function changeStyleIfNoChecked(id, idCheckbox, newStyle){
     }
 }
 
-function changeStyleIfSelected(id, idSelect, newStyle, optionNumber){
+function changeStyleIfSelected(id, idSelect, newStyle, optionNumber) {
     var element = document.getElementById(id);                           //доступ к блоку
     var select = document.getElementById(idSelect);                   //доступ к селекту
     var index = select.options[select.selectedIndex].index;         //какой выбрали option
     var className = element.className;
 
     if (optionNumber) {
-        if (index == (optionNumber-1)){   							//выбор option, тот который указан в optionNumber
+        if (index == (optionNumber - 1)) {   							//выбор option, тот который указан в optionNumber
             if (className.indexOf(newStyle) == -1) className += newStyle; //стиль новый, если устанвлен старый
             element.className = className;
         }
@@ -112,7 +112,7 @@ function changeStyleIfSelected(id, idSelect, newStyle, optionNumber){
         }
     }
     else {
-        if (index == 0){
+        if (index == 0) {
             console.log('else2');
             if (className.indexOf(newStyle) == -1) className += newStyle;
             element.className = className;
@@ -127,14 +127,14 @@ function changeStyleIfSelected(id, idSelect, newStyle, optionNumber){
 
 }
 
-function changeStyleAllExceptSelected(id, idSelect, newStyle, optionNumber){
+function changeStyleAllExceptSelected(id, idSelect, newStyle, optionNumber) {
     var element = document.getElementById(id);                           //доступ к блоку
     var select = document.getElementById(idSelect);                   //доступ к селекту
     var index = select.options[select.selectedIndex].index;         //какой выбрали option
     var className = element.className;
 
     if (optionNumber) {
-        if (index !== (optionNumber-1)){   							//выбор option, тот который указан в optionNumber
+        if (index !== (optionNumber - 1)) {   							//выбор option, тот который указан в optionNumber
             if (className.indexOf(newStyle) == -1) className += newStyle; //стиль новый, если устанвлен старый
             element.className = className;
         }
@@ -146,7 +146,7 @@ function changeStyleAllExceptSelected(id, idSelect, newStyle, optionNumber){
         }
     }
     else {
-        if (index !== 0){
+        if (index !== 0) {
             if (className.indexOf(newStyle) == -1) className += newStyle;
             element.className = className;
         }
@@ -159,7 +159,7 @@ function changeStyleAllExceptSelected(id, idSelect, newStyle, optionNumber){
     }
 }
 
-function changeSelectBySelect(idSelectSettings, idTransformedSelect, pattern){
+function changeSelectBySelect(idSelectSettings, idTransformedSelect, pattern) {
     var selectSettings = document.getElementById(idSelectSettings);
     var transformedSelect = document.getElementById(idTransformedSelect);
     var selectSettingsIndex = selectSettings.options[selectSettings.selectedIndex].index;         //какой выбрали option
@@ -170,12 +170,12 @@ function changeSelectBySelect(idSelectSettings, idTransformedSelect, pattern){
         if (!re.test(arguments[i])) console.log('Patterns error');
         else {
             subStringSet = arguments[i].slice(0, arguments[i].indexOf('-'));
-            setNumbers = subStringSet.replace(/,/g,'');
+            setNumbers = subStringSet.replace(/,/g, '');
             transformNumber = arguments[i].substr(-1);
-            for (var j = 0; j < setNumbers.length; j++){
-                if (selectSettingsIndex == setNumbers[j]-1){
-                    if (transformedSelectIndex+1 !== transformNumber){
-                        transformedSelect.selectedIndex = transformNumber-1;
+            for (var j = 0; j < setNumbers.length; j++) {
+                if (selectSettingsIndex == setNumbers[j] - 1) {
+                    if (transformedSelectIndex + 1 !== transformNumber) {
+                        transformedSelect.selectedIndex = transformNumber - 1;
                     }
                 }
             }
@@ -186,16 +186,16 @@ function changeSelectBySelect(idSelectSettings, idTransformedSelect, pattern){
 function changeSelectByCheckbox(idSelect, idCheckbox, selectSettingIndex, selectResetIndex) {
     var select = document.getElementById(idSelect);
     var checkbox = document.getElementById(idCheckbox);
-    if (checkbox.checked){
-        select.selectedIndex = selectSettingIndex-1;
+    if (checkbox.checked) {
+        select.selectedIndex = selectSettingIndex - 1;
     }
     else {
-        select.selectedIndex = selectResetIndex-1;
+        select.selectedIndex = selectResetIndex - 1;
     }
 }
 
-function onlyOneCheckboxChecked(idCheckbox){
-    for (var i = 0, checkbox = document.getElementById(arguments[i]); i < arguments.length; i++){
+function onlyOneCheckboxChecked(idCheckbox) {
+    for (var i = 0, checkbox = document.getElementById(arguments[i]); i < arguments.length; i++) {
         if (checkbox.checked) checkbox.checked = false;
     }
 }
@@ -214,7 +214,7 @@ function resetNewStyle(id) {
     }
 }
 
-function resetStyleIfChecked(id, idCheckboxButton, newStyle){
+function resetStyleIfChecked(id, idCheckboxButton, newStyle) {
     var element = document.getElementById(id);
     var checkboxButton = document.getElementById(idCheckboxButton);
     if (checkboxButton.checked) element.className = newStyle;
@@ -243,7 +243,7 @@ function viewDivReset(id) {
     el.style._display = 'none';
 }
 
-function hideExpandDivByCheckbox (elementId, checkboxId, checkOrUncheck, height) {
+function hideExpandDivByCheckbox(elementId, checkboxId, checkOrUncheck, height) {
     var element = document.getElementById(elementId);
     var checkbox = document.getElementById(checkboxId);
     if (checkOrUncheck == 1) {				//hide on uncheck
@@ -314,7 +314,7 @@ function getCaretCharacterOffsetWithin(id) {
             preCaretRange.setEnd(range.endContainer, range.endOffset);
             caretOffset = preCaretRange.toString().length;
         }
-    } else if ( (sel = doc.selection) && sel.type != "Control") {
+    } else if ((sel = doc.selection) && sel.type != "Control") {
         preCaretRange = doc.body.createTextRange();
         preCaretRange.moveToElementText(element);
         preCaretRange.setEndPoint("EndToEnd", textRange);
@@ -333,21 +333,19 @@ function getTextForm(inputId, outputId) {
 
 }
 
-
-
 function ISchecked(id) { //проверка на нажатие
     return document.getElementById(id).checked;
 }
 
 function checkCheckboxesOR(id) {
-    for (var i=0; i<arguments.length; i++) {
+    for (var i = 0; i < arguments.length; i++) {
         if (document.getElementById(arguments[i]).checked) return true;
     }
     return false;
 }
 
 function checkCheckboxesAND(id) {
-    for (var i=0; i<arguments.length; i++) {
+    for (var i = 0; i < arguments.length; i++) {
         if (!document.getElementById(arguments[i]).checked) return false;
     }
     return true;
@@ -361,11 +359,13 @@ function changeCheck(input1, input2) {
     else return undefined;
 }
 
-//if (element) return true;
-//else return false;
+function changeCheckedFalse(id) {
+    var element = document.getElementById(id);
+    if (element.checked) element.checked = false;
+}
 
-function resetFormElements(){ 								//reset input (text, checkbox, radio), textarea and select
-    for (var i=0; i<arguments.length; i++) {				//you need to add any number of IDs elements in the function arguments
+function resetFormElements() { 								//reset input by default (text, checkbox, radio), textarea and select
+    for (var i = 0; i < arguments.length; i++) {				//you need to add any number of IDs elements in the function arguments
         var element = document.getElementById(arguments[i]);
         var name = element.tagName;
         var type = element.getAttribute('type');
@@ -392,8 +392,8 @@ function resetForm(id) {
     document.getElementById(id).reset();
 }
 
-function resetTextarea(){
-    for (var i=0; i<arguments.length; i++) {
+function resetTextarea() {
+    for (var i = 0; i < arguments.length; i++) {
         var textarea = document.getElementById(arguments[i]);
         textarea.value = '';
     }
@@ -425,7 +425,7 @@ function ISchecked_AndOutputArrayElem2(id, item1, item2, num) { //проверк
 
 function checkboxChecked(checkboxSetId, checkboxChangeId) {
     var checkboxSet = document.getElementById(checkboxSetId);
-    for (var i=1; i<arguments.length; i++) {
+    for (var i = 1; i < arguments.length; i++) {
         var checkboxChange = document.getElementById(checkboxChangeId);
         if (checkboxSet.checked) checkboxChange.checked = true;
         else checkboxChange.checked = false;
@@ -442,7 +442,7 @@ function getValueFromSelect(id) {
     return document.getElementById(id).value
 }
 
-function getOptionNumberOfSelect(idSelect){
+function getOptionNumberOfSelect(idSelect) {
     var select = document.getElementById(idSelect);
     return select.options[select.selectedIndex].index + 1;
 }
@@ -452,7 +452,7 @@ function getFromTextarea(id) {
 }
 
 function getNumberFromTextarea(id) {
-    return document.getElementById(id).value.replace (/\./, ',');
+    return document.getElementById(id).value.replace(/\./, ',');
 }
 
 
@@ -464,7 +464,7 @@ function getStringFromSelect(id, optQnt, array, elmArr) {
     }
 }
 
-function getStringFromSelect2(idSelect, array, startArrayElement){
+function getStringFromSelect2(idSelect, array, startArrayElement) {
     var select = document.getElementById(idSelect);
     var index = select.options[select.selectedIndex].index;         //какой выбрали option
     return array[index + startArrayElement];
@@ -474,16 +474,15 @@ function getStringFromSelect2(idSelect, array, startArrayElement){
 function verificationSelect(id, point) { //то ли выбрано, что задано в point (№ option)?
     var select = document.getElementById(id);
     var index = select.options[select.selectedIndex].index;
-    if (index == point-1) return true;
+    if (index == point - 1) return true;
     else return false;
 }
 
-function getStringEnumeration(idCheckbox, array, firstElement){
+function getStringEnumeration(idCheckbox, array, firstElement) {
     var result = '', resultArray = [], arrayCounter = 0, arrayPlace = arguments[arguments.length - 1];
     if (!Array.isArray(arguments[arguments.length - 1])) { //last argument is not array?
-        arrayCounter  = arguments[arguments.length - 1];
+        arrayCounter = arguments[arguments.length - 1];
         arrayPlace = arguments[arguments.length - 2]; // the array will be the penultimate argument
-
     }
 
     for (var i = 0; i < arguments.length; i++, arrayCounter++) {
@@ -499,10 +498,10 @@ function getStringEnumeration(idCheckbox, array, firstElement){
     return result;
 }
 
-function getStringEnumeration2(idCheckbox, array, firstElement){
+function getStringEnumeration2(idCheckbox, array, firstElement) {
     var result = '', resultArray = [], arrayCounter = 0, arrayPlace = arguments[arguments.length - 1];
     if (!Array.isArray(arguments[arguments.length - 1])) { //last argument is not array?
-        arrayCounter  = arguments[arguments.length - 1];
+        arrayCounter = arguments[arguments.length - 1];
         arrayPlace = arguments[arguments.length - 2]; // the array will be the penultimate argument
 
     }
@@ -520,10 +519,10 @@ function getStringEnumeration2(idCheckbox, array, firstElement){
     return result;
 }
 
-function getStringEnumeration3(idCheckbox, array, firstElement){
+function getStringEnumeration3(idCheckbox, array, firstElement) {
     var result = '', resultArray = [], arrayCounter = 0, arrayPlace = arguments[arguments.length - 1];
     if (!Array.isArray(arguments[arguments.length - 1])) { //last argument is not array?
-        arrayCounter  = arguments[arguments.length - 1];
+        arrayCounter = arguments[arguments.length - 1];
         arrayPlace = arguments[arguments.length - 2]; // the array will be the penultimate argument
     }
 
@@ -538,6 +537,24 @@ function getStringEnumeration3(idCheckbox, array, firstElement){
     return result;
 }
 
+function getStringEnumeration4(idCheckbox, array, firstElement) {
+    var result = '', resultArray = [], arrayCounter = 0, arrayPlace = arguments[arguments.length - 1];
+    if (!Array.isArray(arguments[arguments.length - 1])) { //last argument is not array?
+        arrayCounter = arguments[arguments.length - 1];
+        arrayPlace = arguments[arguments.length - 2]; // the array will be the penultimate argument
+    }
+
+    for (var i = 0; i < arguments.length; i++, arrayCounter++) {
+        if (Array.isArray(arguments[i])) break;
+        if (document.getElementById(arguments[i]).checked) {
+            resultArray.push(arrayPlace[arrayCounter]);
+        }
+    }
+
+    result = resultArray.join(', '); //making the string
+
+    return result;
+}
 
 /*numbers */
 
@@ -552,20 +569,20 @@ function randomIntegerMultiple(min, max, num) {
     return Math.floor(rand / num) * num;
 }
 
-function getRandAndAddInValue(id, min, max){
+function getRandAndAddInValue(id, min, max) {
     var rand = min + Math.random() * (max + 1 - min);
     rand = Math.floor(rand);
     document.getElementById(id).value = rand;
 }
 
-function get05RandAndAddInValue(id, min, max){ //с десятичной дробью
+function get05RandAndAddInValue(id, min, max) { //с десятичной дробью
     var rand = Math.random() * (max - min) + min;
-    document.getElementById(id).value = Math.round((rand)*10)/10;
+    document.getElementById(id).value = Math.round((rand) * 10) / 10;
 }
 
 function get5RandAndAddInValue(id, min, max, num) { //кратное num
     var rand = Math.floor(Math.random() * (max - min + 1)) + min;
-    document.getElementById(id).value = Math.floor(rand/num)*num;
+    document.getElementById(id).value = Math.floor(rand / num) * num;
 }
 
 /* -----  */
@@ -1157,51 +1174,51 @@ var arr_General = [
 
 ];
 var arr_Decomposition = [
-  'Кожный покров холодный на ощупь по всем поверхностям тела, ',
-  'Кожный покров теплый на ощупь в подмышечных впадинах и внутренних поверхностях бедер, ',
-  'Кожный покров тепловатый на ощупь по всем поверхностям тела, ',
-  'Кожный покров тепловатый на ощупь в подмышечных впадинах и внутренних поверхностях бедер, ',
-  'Трупные пятна синюшно-фиолетового цвета, ',
-  'Трупные пятна синюшно-багрового цвета, ',
-  'Трупные пятна розовато-красного цвета, ',
-  'интенсивные, ',
-  'слабой интенсивности ',
-  'сливные, ',
-  'очаговые ',
-  'располагаются на задней поверхности шеи, спины и конечностей, за исключением мест сдавлений в области лопаток и ягодиц, ',
-  'располагаются на заднебоковых поверхностях шеи, спины и конечностей, ',
-  'располагаются на передней поверхности шеи, спины и конечностей, ',
-  'располагаются на левой боковой поверхности шеи, туловища и конечностей, ',
-  'располагаются на правой боковой поверхности шеи, туловища и конечностей, ',
-  'при надавливании в трех рядом расположенных участках судебно-медицинским динамометром СМЭД-2 с силой 2 кг/см',
-  'не изменяют свою окраску. ',
-  'бледнеют, восстанавливая свою окраску через ',
-  'исчезают, восстанавливая свою окраску через ',
-  'Трупное окоченение умеренно развито во всех группах мышц. ',
-  'Трупное окоченение хорошо развито во всех группах мышц. ',
-  'Трупное окоченение слабо развито во всех группах мышц. ',
-  'Трупное окоченение отсутствует во всех группах мышц. ',
-  'Видимые признаки гниения отсутствуют. ',
-  'Кожный покров на передней брюшной стенке темно-зеленого цвета (трупная зелень). ',
-  'Кожный покров в паховых областях темно-зеленого цвета (трупная зелень). '
+    'Кожный покров холодный на ощупь по всем поверхностям тела, ',
+    'Кожный покров теплый на ощупь в подмышечных впадинах и внутренних поверхностях бедер, ',
+    'Кожный покров тепловатый на ощупь по всем поверхностям тела, ',
+    'Кожный покров тепловатый на ощупь в подмышечных впадинах и внутренних поверхностях бедер, ',
+    'Трупные пятна синюшно-фиолетового цвета, ',
+    'Трупные пятна синюшно-багрового цвета, ',
+    'Трупные пятна розовато-красного цвета, ',
+    'интенсивные, ',
+    'слабой интенсивности ',
+    'сливные, ',
+    'очаговые ',
+    'располагаются на задней поверхности шеи, спины и конечностей, за исключением мест сдавлений в области лопаток и ягодиц, ',
+    'располагаются на заднебоковых поверхностях шеи, спины и конечностей, ',
+    'располагаются на передней поверхности шеи, спины и конечностей, ',
+    'располагаются на левой боковой поверхности шеи, туловища и конечностей, ',
+    'располагаются на правой боковой поверхности шеи, туловища и конечностей, ',
+    'при надавливании в трех рядом расположенных участках судебно-медицинским динамометром СМЭД-2 с силой 2 кг/см',
+    'не изменяют свою окраску. ',
+    'бледнеют, восстанавливая свою окраску через ',
+    'исчезают, восстанавливая свою окраску через ',
+    'Трупное окоченение умеренно развито во всех группах мышц. ',
+    'Трупное окоченение хорошо развито во всех группах мышц. ',
+    'Трупное окоченение слабо развито во всех группах мышц. ',
+    'Трупное окоченение отсутствует во всех группах мышц. ',
+    'Видимые признаки гниения отсутствуют. ',
+    'Кожный покров на передней брюшной стенке темно-зеленого цвета (трупная зелень). ',
+    'Кожный покров в паховых областях темно-зеленого цвета (трупная зелень). '
 ];
 
 var arr_Damage = [
-   'Кости свода черепа и лицевого скелета на ощупь целы. ',
-   'Повреждений на волосистой части головы не обнаружено. ',
-   ', без повреждений и кровоизлияний. ',
-   ', без повреждений. ',
-   ', без кровоизлияний. ',
-   ' ребра на ощупь целы. ',
-   ' на ощупь целы. ', /*6*/
-   'позвоночник',
-   'кости таза',
-   'ключицы',
-   'лопатки',
+    'Кости свода черепа и лицевого скелета на ощупь целы. ',
+    'Повреждений на волосистой части головы не обнаружено. ',
+    ', без повреждений и кровоизлияний. ',
+    ', без повреждений. ',
+    ', без кровоизлияний. ',
+    ' ребра на ощупь целы. ',
+    ' на ощупь целы. ', /*6*/
+    'позвоночник',
+    'кости таза',
+    'ключицы',
+    'лопатки',
     '',
-   'Спина и поясничная область без повреждений. ',
-   'Спина без повреждений. ',
-   'Поясничная область без повреждений. ',
+    'Спина и поясничная область без повреждений. ',
+    'Спина без повреждений. ',
+    'Поясничная область без повреждений. ',
     'Других изменений и каких-либо повреждений при наружном исследовании трупа не обнаружено.',
     'Других повреждений и изменений при наружном исследовании трупа не обнаружено.',
     'При исследовании трупа обнаружены следующие телесные повреждения: ' /*17*/,
@@ -1227,7 +1244,7 @@ var arr_Damage = [
 
 ];
 
-var arr_Head = [ /*array5*/
+var arr_Head = [/*array5*/
     'Волосы на голове отсутствуют. ',
     'Волосы на голове темно-русые',
     'Волосы на голове русые',
@@ -1328,7 +1345,7 @@ var arr_NeckTorso = [
     'Из половых путей определяются выделения светло-желтого цвета. ',
     'Из половых путей определяются выделения темно-желтого цвета. ',
     'Из половых путей определяются выделения темно-зеленого цвета. ',
-    'Задний проход сомкнут, ',/*36*/
+    'Задний проход сомкнут, ', /*36*/
     'Задний проход зияет, ',
     'кожа вокруг него чистая. ',
     'кожа вокруг него загрязнена каловыми массами. ',
@@ -1372,7 +1389,7 @@ var arr_headbrain = [
     'Эпифиз эластичный на ощупь, неправильной овальной формы, размерами ',
     'Эпифиз эластичный на ощупь, шаровидной формы, размерами ',
     'с поверхности и на разрезе светло-коричневого цвета. ',
-    'Гипофиз бобовидной формы, размерами ',/*34*/
+    'Гипофиз бобовидной формы, размерами ', /*34*/
     ' см, эластичный на ощупь, с поверхности и на разрезе синюшно-серого цвета с красным оттенком. ',
     'Каких-либо кровоизлияний и очагов размягчения в веществе мозга не выявлено. '
 ];
@@ -1522,7 +1539,7 @@ var arr_heartVessels = [
     'края ее при пересечении разошлись на ',
     'внутренняя оболочка сосуда темно-синюшная, гладкая, блестящая. ',
     'Перикард розовато-серого цвета, поверхности его гладкие и блестящие. В полости перикарда '
-    ];
+];
 
 var arr_LienGsr = [
     'Селезенка обычной формы, мягкой консистенции, серо-красного цвета, поверхность гладкая, капсула не напряжена. ',
@@ -1537,33 +1554,33 @@ var arr_LienGsr = [
 ];
 
 var arr_genitourinary = [
-  'Почки на ощупь плотно-эластичные, бобовидной формы. Жировая капсула почек бледно-желтого цвета, толщина жировой капсулы почек до ',
-  'Правая почка размерами ',
-  'левая почка размерами ',
-  'Капсулы почек гладкие, снимаются легко, без потери вещества почек, ',
-  'Капсулы почек гладкие, снимаются с трудом, с частичной потерей вещества почек, ',
-  'обнажая их гладкие поверхности ',    //5
-  'обнажая их мелкобугристые поверхности ',
-  'обнажая их крупнобугристые поверхности ',
-  'На разрезах ткань почек красно-коричневого цвета, обычного анатомического строения, ',
-  'границы между корковым и мозговым веществами четкие. ',
-  'границы между корковым и мозговым веществами нечеткие. ',
-  'Очаговых изменений в ткани почек нет. Просветы лоханок свободны, слизистые оболочки их бледно-желтые, гладкие, без повреждений и кровоизлияний. Мочеточники проходимы, слизистые оболочки их серо-синюшного цвета, гладкие, без повреждений и кровоизлияний. ',
-  'В мочевом пузыре ', //12
-  'светло-желтой полупрозрачной мочи. ',
-  'мочи не обнаружено. ',
-  'Слизистая оболочка мочевого пузыря бледно-синюшная, гладкая, без повреждений и кровоизлияний, складчатость ее выражена слабо. ',
-  'Предстательная железа на ощупь плотноэластичной консистенции, обычной формы, размерами ', //16
-  'Матка обычной формы и величины, на разрезах обычного анатомического строения, умеренного кровенаполнения без очаговых изменений. Полость матки заполнена слизью.  ',
-  'Наружный зев щелевидный. ',
-  'Наружный зев округлой формы. ',
-  'Яичники обычного анатомического строения, умеренного кровенаполнения без очаговых изменений. ' //20
-    ];
+    'Почки на ощупь плотно-эластичные, бобовидной формы. Жировая капсула почек бледно-желтого цвета, толщина жировой капсулы почек до ',
+    'Правая почка размерами ',
+    'левая почка размерами ',
+    'Капсулы почек гладкие, снимаются легко, без потери вещества почек, ',
+    'Капсулы почек гладкие, снимаются с трудом, с частичной потерей вещества почек, ',
+    'обнажая их гладкие поверхности ',    //5
+    'обнажая их мелкобугристые поверхности ',
+    'обнажая их крупнобугристые поверхности ',
+    'На разрезах ткань почек красно-коричневого цвета, обычного анатомического строения, ',
+    'границы между корковым и мозговым веществами четкие. ',
+    'границы между корковым и мозговым веществами нечеткие. ',
+    'Очаговых изменений в ткани почек нет. Просветы лоханок свободны, слизистые оболочки их бледно-желтые, гладкие, без повреждений и кровоизлияний. Мочеточники проходимы, слизистые оболочки их серо-синюшного цвета, гладкие, без повреждений и кровоизлияний. ',
+    'В мочевом пузыре ', //12
+    'светло-желтой полупрозрачной мочи. ',
+    'мочи не обнаружено. ',
+    'Слизистая оболочка мочевого пузыря бледно-синюшная, гладкая, без повреждений и кровоизлияний, складчатость ее выражена слабо. ',
+    'Предстательная железа на ощупь плотноэластичной консистенции, обычной формы, размерами ', //16
+    'Матка обычной формы и величины, на разрезах обычного анатомического строения, умеренного кровенаполнения без очаговых изменений. Полость матки заполнена слизью.  ',
+    'Наружный зев щелевидный. ',
+    'Наружный зев округлой формы. ',
+    'Яичники обычного анатомического строения, умеренного кровенаполнения без очаговых изменений. ' //20
+];
 
 var arr_digestive = [
-  'Желудок обычной формы, ',
-  'в его полости около ',
-  'в его полости незначительное количество серой слизи. ',
+    'Желудок обычной формы, ',
+    'в его полости около ',
+    'в его полости незначительное количество серой слизи. ',
     'полупереваренных пищевых масс. ',
     'Слизистая оболочка желудка умеренно складчатая, ',   //4
     'Слизистая оболочка желудка с хорошо выраженной складчатостью, ',
@@ -1592,23 +1609,23 @@ var arr_digestive = [
 ];
 
 var arr_additionInvestigation = [
-  'На судебно-химическое исследование направлено ',
-  'по ',
-  'периферической крови ',
-  'мочи ',
-  ' На судебно-химическое исследование направлено ', //4
-  'по 10 мл периферической крови и мочи  ',
-  '10 мл периферической крови ',
-  'для определения концентрации этилового спирта', //7
-  'одна треть печени',
-  '200 гр. головного мозга',
-  'почка', //10
-  'желудок с содержимым',
-  ' для определения наличия ',
-  'суррогатов алкоголя',
-  'лекарственных препаратов',
-  'наркотических веществ', //15
-  'На судебно-биологическое исследование направлена кровь для определения групповой принадлежности.'
+    'На судебно-химическое исследование направлено ',
+    'по ',
+    'периферической крови ',
+    'мочи ',
+    ' На судебно-химическое исследование направлено ', //4
+    'по 10 мл периферической крови и мочи  ',
+    '10 мл периферической крови ',
+    'для определения концентрации этилового спирта', //7
+    'одна треть печени',
+    '200 гр. головного мозга',
+    'почка', //10
+    'желудок с содержимым',
+    ' для определения наличия ',
+    'суррогатов алкоголя',
+    'лекарственных препаратов',
+    'наркотических веществ', //15
+    'На судебно-биологическое исследование направлена кровь для определения групповой принадлежности.'
 ];
 
 var arr_frequentlyPhrases = [
@@ -1628,6 +1645,41 @@ var arr_frequentlyPhrases = [
     'размерами ', /*13*/
     'масса '
 ];
+
+var arr_hystology = [
+    'На судебно-гистологическое исследование направлены кусочки ',
+    'головного мозга',
+    'гипофиза',
+    'твердой мозговой оболочки',
+    'спинного мозга',
+    'сердца',
+    'аорты',
+    'щитовидной железы',
+    'надпочечников',
+    'почек',
+    'мочевого пузыря',
+    'предстательной железы',
+    'яичек',
+    'матки',
+    'яичников',
+    'лимфатических узлов',
+    'селезенки',
+    'грудины',
+    'костного мозга',
+    'брюшины',
+    'брыжейки',
+    'пищевода',
+    'желудка',
+    'кишечника',
+    'печени',
+    'желчного пузыря',
+    'поджелудочной железы',
+    'мягких тканей нижних конечностей',
+    'мягких тканей шеи',
+    'кожи с фрагментом странгуляционной борозды'
+
+];
+
 
 function getResult(t) {
     var re = /[\S+]/;
@@ -1657,18 +1709,18 @@ function getResult(t) {
     }
 
     var generalCharacters = {
-        sex: function(){
+        sex: function () {
             if (ISchecked(t.id6)) return t.array2[0];
             else return t.array2[1];
         },
         physique: getStringFromSelect2(t.id8, t.array2, 2),
         pitanie: getStringFromSelect2(t.id7, t.array2, 5),
-        defects: function(){
+        defects: function () {
             if (!ISchecked(t.id9)) return t.array2[9];
             else return '. ';
         },
         growth: arr_General[10] + getFromTextarea(t.id10) + ' см, ',
-        age: function(){
+        age: function () {
             if (verificationSelect(t.id11, 4)) {
                 return t.array2[14] + getFromTextarea(t.id12) + '-' + getFromTextarea(t.id13) + ' лет. ';
             }
@@ -1676,53 +1728,53 @@ function getResult(t) {
                 return getStringFromSelect2(t.id11, arr_General, 11);
             }
         },
-        mass: function(){
+        mass: function () {
             if (ISchecked(t.id14)) return t.array2[15];
             else return t.array2[16] + getFromTextarea(t.id15) + ' кг. ';
         }
-        };
+    };
 
     var decompositionAndSkin = {
-      cool: getStringFromSelect2(t.id16, t.array3, 0),
-      skinColor: getStringFromSelect2(t.id17, t.array2, 17),
-      skinElastic: getStringFromSelect2(t.id18, t.array2, 23),
-      skinDry: function(){
-          if (ISchecked(t.id19)) return t.array2[27];
-          else  return t.array2[26];
-      },
-      spotColor: getStringFromSelect2(t.id20, t.array3, 4),
-      spotIntensity: getStringFromSelect2(t.id21, t.array3, 7),
-      spotArea: getStringFromSelect2(t.id22, t.array3, 9),
-      spotLocalization: getStringFromSelect2(t.id23, t.array3, 11),
-      spotStage: function(){
-          return t.array3[16];
-      }
+        cool: getStringFromSelect2(t.id16, t.array3, 0),
+        skinColor: getStringFromSelect2(t.id17, t.array2, 17),
+        skinElastic: getStringFromSelect2(t.id18, t.array2, 23),
+        skinDry: function () {
+            if (ISchecked(t.id19)) return t.array2[27];
+            else  return t.array2[26];
+        },
+        spotColor: getStringFromSelect2(t.id20, t.array3, 4),
+        spotIntensity: getStringFromSelect2(t.id21, t.array3, 7),
+        spotArea: getStringFromSelect2(t.id22, t.array3, 9),
+        spotLocalization: getStringFromSelect2(t.id23, t.array3, 11),
+        spotStage: function () {
+            return t.array3[16];
+        }
     };
 
     var decompositionMuscle = {
-      spotColorAfterPush: function(){
-         if (verificationSelect(t.id24, 1)) return t.array3[17];
-         else return getStringFromSelect2(t.id24, t.array3, 17) + getFromTextarea(t.id25) + ' мин. ';
-      },
-      rigorMortis: getStringFromSelect2(t.id26, t.array3, 20),
-      muscle: function(){
-          if (verificationSelect(t.id26, 2)) return t.array2[29] + getStringFromSelect2(t.id27, t.array2, 30);
-          else return t.array2[28] + getStringFromSelect2(t.id27, t.array2, 30);
-      },
-      rotting: function(){
-          if (verificationSelect(t.id28, 4)) return getFromTextarea(t.id29);
-          else return getStringFromSelect2(t.id28, t.array3, 24);
-      }
+        spotColorAfterPush: function () {
+            if (verificationSelect(t.id24, 1)) return t.array3[17];
+            else return getStringFromSelect2(t.id24, t.array3, 17) + getFromTextarea(t.id25) + ' мин. ';
+        },
+        rigorMortis: getStringFromSelect2(t.id26, t.array3, 20),
+        muscle: function () {
+            if (verificationSelect(t.id26, 2)) return t.array2[29] + getStringFromSelect2(t.id27, t.array2, 30);
+            else return t.array2[28] + getStringFromSelect2(t.id27, t.array2, 30);
+        },
+        rotting: function () {
+            if (verificationSelect(t.id28, 4)) return getFromTextarea(t.id29);
+            else return getStringFromSelect2(t.id28, t.array3, 24);
+        }
     };
 
     var head = {
-        skullDamage: function(){
-          if (!(ISchecked(t.id30) || ISchecked(t.id31))) return t.array4[0];
-          else return '';
+        skullDamage: function () {
+            if (!(ISchecked(t.id30) || ISchecked(t.id31))) return t.array4[0];
+            else return '';
         },
-        hair: function(){
+        hair: function () {
             if (!(ISchecked(t.id32))) {
-                if (!verificationSelect(t.id33, 6)){
+                if (!verificationSelect(t.id33, 6)) {
                     if (!ISchecked(t.id35)) return getStringFromSelect2(t.id33, t.array5, 1) + t.array5[8] + getFromTextarea(t.id36) + ' см. ';
                     else return getStringFromSelect2(t.id33, t.array5, 1) + t.array5[6] + t.array5[8] + getFromTextarea(t.id36) + ' см. ';
                 }
@@ -1732,44 +1784,44 @@ function getResult(t) {
             else  return t.array5[0];
         },
 
-        headHairDamage: function(){
+        headHairDamage: function () {
             if (!ISchecked(t.id49)) return t.array4[1];
             else return '';
         },
 
         face: getStringFromSelect2(t.id37, t.array5, 9),
-        facePuffy: function(){
-            if (ISchecked('puffy')) return  t.array5[15];
+        facePuffy: function () {
+            if (ISchecked('puffy')) return t.array5[15];
             else return t.array5[14];
         },
 
         eyes: getStringFromSelect2(t.id39, t.array5, 16) + getStringFromSelect2(t.id40, t.array5, 18),
 
-        iris: function(){
+        iris: function () {
             if (!verificationSelect(t.id41, 6)) return getStringFromSelect2(t.id41, t.array5, 20);
             else return t.array5[25] + getFromTextarea(t.id42) + t.array0[2];
         },
 
-        pupil: function(){
-           return  t.array5[59] + getNumberFromTextarea(t.id43) + ' см каждый. ';
+        pupil: function () {
+            return t.array5[59] + getNumberFromTextarea(t.id43) + ' см каждый. ';
         },
 
         eyesConnectMembran: getStringFromSelect2(t.id46, t.array5, 26) + getStringFromSelect2(t.id47, t.array5, 30),
-        eyesConnectMembranDamageAndHemorrhage: function(){
+        eyesConnectMembranDamageAndHemorrhage: function () {
             if (!ISchecked(t.id50) && !ISchecked(t.id48)) return t.array4[2];
             else if (!ISchecked(t.id50) && ISchecked(t.id48)) return t.array4[3];
             else if (ISchecked(t.id50) && !ISchecked(t.id48)) return t.array4[4];
             else return '. ';
         },
 
-        noseDamage: function(){
+        noseDamage: function () {
             if (!ISchecked(t.id51) && !ISchecked(t.id52)) return t.array5[32];
             else if (!ISchecked(t.id51) && ISchecked(t.id52)) return t.array5[33];
             else if (ISchecked(t.id51) && !ISchecked(t.id52)) return t.array5[34];
             else return '';
         },
 
-        noseExcret: function(){
+        noseExcret: function () {
             if (verificationSelect(t.id53, 6)) {
                 if (checkAreaForFill(t.id54, re)) {
                     return getFromTextarea(t.id54);
@@ -1781,20 +1833,20 @@ function getResult(t) {
             }
         },
 
-        teeth: function() {
-           if (ISchecked(t.id85)) return t.array5[58];
-           else return getResultString(matrix, symb, textPhrasesArray);
+        teeth: function () {
+            if (ISchecked(t.id85)) return t.array5[58];
+            else return getResultString(matrix, symb, textPhrasesArray);
         },
 
         mouth: getStringFromSelect2(t.id57, t.array5, 41),
-        mouthDamage: function(){
+        mouthDamage: function () {
             if (!ISchecked(t.id58)) return t.array4[3];
             else return '. ';
         },
 
         lipsborder: getStringFromSelect2(t.id59, t.array5, 45) + getStringFromSelect2(t.id60, t.array5, 49),
-        ear: function(){
-            if (!ISchecked(t.id61)){
+        ear: function () {
+            if (!ISchecked(t.id61)) {
                 if (verificationSelect(t.id62, 6)) {
                     if (checkAreaForFill(t.id63, re))  return t.array5[51] + getFromTextarea(t.id63);
 
@@ -1803,7 +1855,7 @@ function getResult(t) {
                     }
                 }
                 else return t.array5[51] + getStringFromSelect2(t.id62, t.array5, 53);
-                }
+            }
             else {
                 if (verificationSelect(t.id62, 6)) {
 
@@ -1816,17 +1868,17 @@ function getResult(t) {
     };
 
     var neckTorso = {
-        neck: function(){
+        neck: function () {
             if (ISchecked(t.id64)) return t.array6[0] + '. ';
             else return t.array6[0] + t.array4[3];
         },
 
-        armpits: function(){
+        armpits: function () {
             if (ISchecked(t.id65)) return '';
             else return t.array6[1] + t.array4[3];
         },
 
-        thorax: function(){
+        thorax: function () {
             if (ISchecked(t.id66)) {
                 if (ISchecked(t.id68)) return getStringFromSelect2(t.id67, t.array6, 2) + t.array6[8] + '. ';
                 else return getStringFromSelect2(t.id67, t.array6, 2) + t.array6[9] + '. ';
@@ -1837,17 +1889,17 @@ function getResult(t) {
             }
         },
 
-        mammaryGland:  function(){
+        mammaryGland: function () {
             if (ISchecked(t.id6a)) return getStringFromSelect2(t.id69, t.array6, 10) + getStringFromSelect2(t.id70, t.array6, 12);
             else return '';
         },
 
-        abdomen: function(){
+        abdomen: function () {
             if (ISchecked(t.id71)) return t.array6[15] + getStringFromSelect2(t.id72, t.array6, 17);
             else return t.array6[16] + getStringFromSelect2(t.id72, t.array6, 17);
         },
 
-        pubis: function(){
+        pubis: function () {
             if (verificationSelect(t.id73, 3)) return t.array6[22];
             else {
                 if (ISchecked(t.id6)) return getStringFromSelect2(t.id73, t.array6, 20) + t.array6[23];
@@ -1855,49 +1907,49 @@ function getResult(t) {
             }
         },
 
-        genitals: function() {
+        genitals: function () {
             if (ISchecked(t.id6)) return t.array6[25] + getStringFromSelect2(t.id74, t.array6, 26);
             else return getStringFromSelect2(t.id74, t.array6, 31);
         },
 
         rectum: getStringFromSelect2(t.id75, t.array6, 36) + getStringFromSelect2(t.id76, t.array6, 38),
 
-        spinLoinsDamage: function(){
-            if (!ISchecked(t.id82) && !ISchecked(t.id83)){
-              return t.array4[12];
+        spinLoinsDamage: function () {
+            if (!ISchecked(t.id82) && !ISchecked(t.id83)) {
+                return t.array4[12];
             }
-            else if (!ISchecked(t.id82) && ISchecked(t.id83)){
+            else if (!ISchecked(t.id82) && ISchecked(t.id83)) {
                 return t.array4[13];
             }
-            else if (ISchecked(t.id82) && !ISchecked(t.id83)){
+            else if (ISchecked(t.id82) && !ISchecked(t.id83)) {
                 return t.array4[14];
             }
             else return '';
         },
 
-        bonesDamageExternalResearch: function() {
-         var otherBones = getStringEnumeration(t.id77, t.id78, t.id80, t.id81, t.array4, 7),
-             limbBones = getStringEnumeration2(t.id79a, t.id79b, t.array4, 19);
+        bonesDamageExternalResearch: function () {
+            var otherBones = getStringEnumeration(t.id77, t.id78, t.id80, t.id81, t.array4, 7),
+                limbBones = getStringEnumeration2(t.id79a, t.id79b, t.array4, 19);
 
 
-         if (limbBones !== '' && otherBones !== '') {
-             return otherBones + ', ' + limbBones + t.array4[21] + t.array4[6];
-         }
-         else if (limbBones == '' && otherBones !== '') {
-             return otherBones + t.array4[6];
-         }
-         else if (limbBones !== '' && otherBones == ''){
-             return limbBones.charAt(1).toUpperCase() + limbBones.substr(2) + t.array4[21] + t.array4[6];
-         }
-         else return '';
+            if (limbBones !== '' && otherBones !== '') {
+                return otherBones + ', ' + limbBones + t.array4[21] + t.array4[6];
+            }
+            else if (limbBones == '' && otherBones !== '') {
+                return otherBones + t.array4[6];
+            }
+            else if (limbBones !== '' && otherBones == '') {
+                return limbBones.charAt(1).toUpperCase() + limbBones.substr(2) + t.array4[21] + t.array4[6];
+            }
+            else return '';
         },
 
-        textareaDamage: function() {
-           if (checkAreaForFill(t.id84, re)) return t.array4[17] + getFromTextarea(t.id84) + ' ';
-           else return '';
+        textareaDamage: function () {
+            if (checkAreaForFill(t.id84, re)) return t.array4[17] + getFromTextarea(t.id84) + ' ';
+            else return '';
         },
 
-        lastSentenceExternalResearch: function() {
+        lastSentenceExternalResearch: function () {
             if (checkCheckboxesOR(t.id30, t.id31, t.id49, t.id50, t.id51, t.id52, t.id58, t.id61, t.id64, t.id65, t.id66, t.id77, t.id78, t.id79a, t.id79b, t.id80, t.id81, t.id82, t.id83) || checkAreaForFill(t.id84, re)) return t.array4[16];
             else return t.array4[15];
         }
@@ -1905,37 +1957,37 @@ function getResult(t) {
     };
 
     var headBrain = {
-        headSoftTissues: function(){
+        headSoftTissues: function () {
             return t.array7[0];
         },
-        calvaria: function(){
-            if (!ISchecked(t.id86)){
+        calvaria: function () {
+            if (!ISchecked(t.id86)) {
                 return t.array7[1];
             }
             else return '';
         },
 
-        skull: function(){
+        skull: function () {
             return t.array7[3] + getNumberFromTextarea(t.id88) + ' см, ' + t.array7[4] +
                 getNumberFromTextarea(t.id89) + ' см, ' + t.array7[5] + getNumberFromTextarea(t.id90) + ' см. ';
         },
 
-        duraMater: function(){
-            if (!ISchecked(t.id91)){
+        duraMater: function () {
+            if (!ISchecked(t.id91)) {
                 return t.array7[6] + t.array4[18] + getStringFromSelect2(t.id92, t.array7, 7) + getStringFromSelect2(t.id93, t.array7, 9) + t.array7[11] + getStringFromSelect2(t.id94, t.array7, 12);
             }
             else return t.array7[6] + getStringFromSelect2(t.id92, t.array7, 7) + getStringFromSelect2(t.id93, t.array7, 9) + t.array7[11] + getStringFromSelect2(t.id94, t.array7, 12);
         },
 
-        arachnoidMater1: function(){
-            if (!ISchecked(t.id91)){
+        arachnoidMater1: function () {
+            if (!ISchecked(t.id91)) {
                 return t.array7[15] + t.array4[18] + t.array7[16];
             }
             else return t.array7[15] + t.array7[16];
         },
 
-        arachnoidMater2: function(){
-            if (!ISchecked(t.id95)){
+        arachnoidMater2: function () {
+            if (!ISchecked(t.id95)) {
                 return t.array7[17] + t.array7[19];
             }
             else return t.array7[18] + t.array7[19];
@@ -1944,129 +1996,131 @@ function getResult(t) {
 
         brainArterias: getStringFromSelect2(t.id104, t.array7, 26),
 
-        hemisphere: function(){
-          return t.array7[20];
+        hemisphere: function () {
+            return t.array7[20];
         },
 
-        brainMass: function(){
+        brainMass: function () {
             return t.array7[21] + getNumberFromTextarea(t.id97) + ' г. ';
         },
 
-        brain: function(){
+        brain: function () {
             if (!ISchecked(t.id95)) return t.array7[22] + t.array8[0];
             else return t.array7[22] + t.array8[2];
         },
 
-        brainCavity: function(){
+        brainCavity: function () {
             if (!ISchecked(t.id95)) return t.array7[24] + t.array8[0];
             else return t.array7[24] + t.array8[3];
         },
 
-        nucleiSubcortical: function(){
-          return t.array7[25];
+        nucleiSubcortical: function () {
+            return t.array7[25];
         },
 
-        brainstemCerebellim: function(){
+        brainstemCerebellim: function () {
             return t.array7[30];
         },
 
-        pinealGland: function(){
+        pinealGland: function () {
             if (getNumberFromTextarea(t.id98) == getNumberFromTextarea(t.id99) && getNumberFromTextarea(t.id98) == getNumberFromTextarea(t.id100)) return t.array7[32] + getNumberFromTextarea(t.id98) + 'x' + getNumberFromTextarea(t.id99) + 'x' + getNumberFromTextarea(t.id100) + ' см, ' + t.array7[33];
             else return t.array7[31] + getNumberFromTextarea(t.id98) + 'x' + getNumberFromTextarea(t.id99) + 'x' + getNumberFromTextarea(t.id100) + ' см, ' + t.array7[33];
         },
 
-        pituitaryGlandOtherBraim: function(){
+        pituitaryGlandOtherBraim: function () {
             return t.array7[34] + getNumberFromTextarea(t.id101) + 'x' + getNumberFromTextarea(t.id102) + 'x' + getNumberFromTextarea(t.id103) + t.array7[35] + t.array7[36];
         },
 
-        baseSkull: function(){
-        if (!ISchecked(t.id87)){
-            return t.array7[2];
-        }
-        else return '';
+        baseSkull: function () {
+            if (!ISchecked(t.id87)) {
+                return t.array7[2];
+            }
+            else return '';
         }
 
     };
 
     var visceralGeneral = {
-        subcutaneousFat: function(){
-            if (ISchecked(t.id96)) return t.array10[0] + t.array9[1] + t.array10[1]  + getNumberFromTextarea(t.id105) + ' см, ' + t.array10[2] + getNumberFromTextarea(t.id106) + ' см. ';
+        subcutaneousFat: function () {
+            if (ISchecked(t.id96)) return t.array10[0] + t.array9[1] + t.array10[1] + getNumberFromTextarea(t.id105) + ' см, ' + t.array10[2] + getNumberFromTextarea(t.id106) + ' см. ';
             else return t.array10[0] + t.array9[0] + t.array10[1] + getNumberFromTextarea(t.id105) + ' см, ' + t.array10[2] + getNumberFromTextarea(t.id106) + ' см. ';
         },
 
-        softTissueNeckThoraxAbdomen: function(){
+        softTissueNeckThoraxAbdomen: function () {
             if (ISchecked(t.id95)) return t.array10[3] + t.array9[3] + ', ' + t.array11[1] + '. ';
             else if (ISchecked(t.id96)) return t.array10[3] + t.array9[4] + ', ' + t.array11[1] + '. ';
             else return t.array10[3] + t.array9[2] + ', ' + t.array11[1] + '. ';
         },
 
-        abdominalCavity: function(){ return t.array10[4]; },
-        liverEdgeCurve: function(){
+        abdominalCavity: function () {
+            return t.array10[4];
+        },
+        liverEdgeCurve: function () {
             if (verificationSelect(t.id107, 1)) return t.array10[5];
             else if (verificationSelect(t.id107, 2)) return t.array10[6];
             else return t.array10[7];
         },
 
-        liverEdgeProtrusion: function(){
+        liverEdgeProtrusion: function () {
             if (verificationSelect(t.id108, 2)) return t.array10[8] + getNumberFromTextarea(t.id109) + ' см. ';
             else return t.array10[9];
         },
 
-        thoracicCavity: function(){
+        thoracicCavity: function () {
             return t.array10[10];
         },
 
-        pleuralCavityLiquid: function(){
+        pleuralCavityLiquid: function () {
             if (verificationSelect(t.id117, 2)) { /*Liquid*/
-                    if (getNumberFromTextarea(t.id118) == 0 && getNumberFromTextarea(t.id119) == 0) return t.array12[1];
-                    if (getNumberFromTextarea(t.id118) !== 0 && getNumberFromTextarea(t.id119) == 0) {
-                        if (verificationSelect(t.id120, 1)) return t.array12[5] + getNumberFromTextarea(t.id118) + ' мл ' +  t.array9[5] + t.array12[7] + t.array12[4];
-                        if (verificationSelect(t.id120, 2)) return t.array12[5] + getNumberFromTextarea(t.id118) + ' мл ' +  t.array9[6] + t.array12[7] + t.array12[4];
-                        if (verificationSelect(t.id120, 3)) return t.array12[5] + getNumberFromTextarea(t.id118) + ' мл ' +  t.array9[7] + t.array12[7] + t.array12[4];
-                    }
-                    if (getNumberFromTextarea(t.id118) == 0 && getNumberFromTextarea(t.id119) !== 0) {
-                        if (verificationSelect(t.id120, 1)) return t.array12[6] + getNumberFromTextarea(t.id119) + ' мл ' +  t.array9[5] + t.array12[8] + t.array12[4];
-                        if (verificationSelect(t.id120, 2)) return t.array12[6] + getNumberFromTextarea(t.id119) + ' мл ' +  t.array9[6] + t.array12[8] + t.array12[4];
-                        if (verificationSelect(t.id120, 3)) return t.array12[6] + getNumberFromTextarea(t.id119) + ' мл ' +  t.array9[7] + t.array12[8] + t.array12[4];
-                    }
-                    if (getNumberFromTextarea(t.id118) !== 0 && getNumberFromTextarea(t.id119) !== 0) {
-                        if (verificationSelect(t.id120, 1)) return  t.array12[9] + t.array9[8] + t.array11[3] + getNumberFromTextarea(t.id118) + ' мл, ' + t.array11[4] + getNumberFromTextarea(t.id119) + ' мл. ' + t.array12[4];
-                        if (verificationSelect(t.id120, 2)) return  t.array12[9] + t.array9[9] + t.array11[3] + getNumberFromTextarea(t.id118) + ' мл, ' + t.array11[4] + getNumberFromTextarea(t.id119) + ' мл. ' + t.array12[4];
-                        if (verificationSelect(t.id120, 3)) return  t.array12[9] + t.array9[10] + t.array11[3] + getNumberFromTextarea(t.id118) + ' мл, ' + t.array11[4] + getNumberFromTextarea(t.id119) + ' мл. ' + t.array12[4];
+                if (getNumberFromTextarea(t.id118) == 0 && getNumberFromTextarea(t.id119) == 0) return t.array12[1];
+                if (getNumberFromTextarea(t.id118) !== 0 && getNumberFromTextarea(t.id119) == 0) {
+                    if (verificationSelect(t.id120, 1)) return t.array12[5] + getNumberFromTextarea(t.id118) + ' мл ' + t.array9[5] + t.array12[7] + t.array12[4];
+                    if (verificationSelect(t.id120, 2)) return t.array12[5] + getNumberFromTextarea(t.id118) + ' мл ' + t.array9[6] + t.array12[7] + t.array12[4];
+                    if (verificationSelect(t.id120, 3)) return t.array12[5] + getNumberFromTextarea(t.id118) + ' мл ' + t.array9[7] + t.array12[7] + t.array12[4];
+                }
+                if (getNumberFromTextarea(t.id118) == 0 && getNumberFromTextarea(t.id119) !== 0) {
+                    if (verificationSelect(t.id120, 1)) return t.array12[6] + getNumberFromTextarea(t.id119) + ' мл ' + t.array9[5] + t.array12[8] + t.array12[4];
+                    if (verificationSelect(t.id120, 2)) return t.array12[6] + getNumberFromTextarea(t.id119) + ' мл ' + t.array9[6] + t.array12[8] + t.array12[4];
+                    if (verificationSelect(t.id120, 3)) return t.array12[6] + getNumberFromTextarea(t.id119) + ' мл ' + t.array9[7] + t.array12[8] + t.array12[4];
+                }
+                if (getNumberFromTextarea(t.id118) !== 0 && getNumberFromTextarea(t.id119) !== 0) {
+                    if (verificationSelect(t.id120, 1)) return t.array12[9] + t.array9[8] + t.array11[3] + getNumberFromTextarea(t.id118) + ' мл, ' + t.array11[4] + getNumberFromTextarea(t.id119) + ' мл. ' + t.array12[4];
+                    if (verificationSelect(t.id120, 2)) return t.array12[9] + t.array9[9] + t.array11[3] + getNumberFromTextarea(t.id118) + ' мл, ' + t.array11[4] + getNumberFromTextarea(t.id119) + ' мл. ' + t.array12[4];
+                    if (verificationSelect(t.id120, 3)) return t.array12[9] + t.array9[10] + t.array11[3] + getNumberFromTextarea(t.id118) + ' мл, ' + t.array11[4] + getNumberFromTextarea(t.id119) + ' мл. ' + t.array12[4];
 
-                    }
+                }
             }
             else return t.array12[1] + t.array12[3];
         },
 
-        pericard: function() {
-         return t.array13[64] + getNumberFromTextarea(t.id154) + ' мл ' + t.array9[11] + '. ';
+        pericard: function () {
+            return t.array13[64] + getNumberFromTextarea(t.id154) + ' мл ' + t.array9[11] + '. ';
         },
 
-        neckVessels: function(){
+        neckVessels: function () {
             if (ISchecked(t.id110)) return t.array10[13] + t.array10[14] + t.array10[15];
             else return t.array10[12] + t.array10[14] + t.array10[15];
         },
 
-        thyreoidGland: function(){
+        thyreoidGland: function () {
             return t.array10[16] + getNumberFromTextarea(t.id111) + 'x' + getNumberFromTextarea(t.id112) + 'х' + getNumberFromTextarea(t.id113) + ' см, ' +
-                   t.array10[17] + getNumberFromTextarea(t.id114) + 'x' + getNumberFromTextarea(t.id115) + 'х' + getNumberFromTextarea(t.id116) + ' см. ' +
-                   t.array10[18] + t.array11[0] + '. ' + t.array10[19];
+                t.array10[17] + getNumberFromTextarea(t.id114) + 'x' + getNumberFromTextarea(t.id115) + 'х' + getNumberFromTextarea(t.id116) + ' см. ' +
+                t.array10[18] + t.array11[0] + '. ' + t.array10[19];
         },
 
-        respiratoryDigestivePathNL: function(){
+        respiratoryDigestivePathNL: function () {
             return t.array10[20] + t.array10[21] + t.array10[22] + t.array11[0] + '. ';
         },
 
-        lungsMass: function(){
-            return t.array12[10] + t.array11[5] + getNumberFromTextarea(t.id121) + ' г., ' +  t.array11[6] +  getNumberFromTextarea(t.id122) + ' г. ' ;
+        lungsMass: function () {
+            return t.array12[10] + t.array11[5] + getNumberFromTextarea(t.id121) + ' г., ' + t.array11[6] + getNumberFromTextarea(t.id122) + ' г. ';
         },
 
-        pulmonaryPleura: function(){
+        pulmonaryPleura: function () {
             return t.array12[11];
         },
 
-        lungTissue: function(){
+        lungTissue: function () {
             if (ISchecked(t.id124)) {
                 if (verificationSelect(t.id123, 1)) return t.array12[12] + t.array8[1] + t.array12[15];
                 /*ум. кровенап*/
@@ -2089,51 +2143,51 @@ function getResult(t) {
             }
         },
 
-        bronchInSection: function(){
-            if (ISchecked(t.id125) && ISchecked(t.id126)){
+        bronchInSection: function () {
+            if (ISchecked(t.id125) && ISchecked(t.id126)) {
                 return t.array12[17] + t.array12[19];
             }
-            else if (ISchecked(t.id125) && !ISchecked(t.id126)){
+            else if (ISchecked(t.id125) && !ISchecked(t.id126)) {
                 return t.array12[17] + t.array12[18];
             }
-            else if (!ISchecked(t.id125) && ISchecked(t.id126)){
+            else if (!ISchecked(t.id125) && ISchecked(t.id126)) {
                 return t.array12[16] + t.array12[19];
             }
             else return t.array12[16] + t.array12[18];
         },
 
-        heartGeneral: function(){
+        heartGeneral: function () {
             return t.array13[0] + t.array13[1] + getStringFromSelect2(t.id128, t.array11, 9) + ', ';
         },
 
-        heartSizeWeight: function(){
-            return t.array11[7] + getNumberFromTextarea(t.id130L) + 'x'+ getNumberFromTextarea(t.id130W) + 'x' + getNumberFromTextarea(t.id130D) + ' см, ' + t.array11[8] + getNumberFromTextarea(t.id129) + ' г. '
+        heartSizeWeight: function () {
+            return t.array11[7] + getNumberFromTextarea(t.id130L) + 'x' + getNumberFromTextarea(t.id130W) + 'x' + getNumberFromTextarea(t.id130D) + ' см, ' + t.array11[8] + getNumberFromTextarea(t.id129) + ' г. '
         },
 
-        heartFatСoronaritis: function(){
+        heartFatСoronaritis: function () {
             return getStringFromSelect2(t.id127, t.array13, 3) +
-                   getStringFromSelect2(t.id131, t.array13, 7) + getStringFromSelect2(t.id132, t.array13, 10);
+                getStringFromSelect2(t.id131, t.array13, 7) + getStringFromSelect2(t.id132, t.array13, 10);
         },
 
-        heartCavity: function(){
-            if(ISchecked(t.id133)) return t.array13[14] + t.array13[16] + getStringFromSelect2(t.id134, t.array13, 17);
+        heartCavity: function () {
+            if (ISchecked(t.id133)) return t.array13[14] + t.array13[16] + getStringFromSelect2(t.id134, t.array13, 17);
             else return t.array13[14] + t.array13[15] + getStringFromSelect2(t.id134, t.array13, 17);
         },
 
-        heartValves: function(){
+        heartValves: function () {
             return getStringFromSelect2(t.id135, t.array13, 23) + t.array13[26] +
-             getNumberFromTextarea(t.id136) + ' см, ' + t.array13[27] + getNumberFromTextarea(t.id137) + ' см, ' +
-                t.array13[28] + getNumberFromTextarea(t.id138) + ' см, ' + t.array13[29] + getNumberFromTextarea(t.id139) + ' см. ' ;
+                getNumberFromTextarea(t.id136) + ' см, ' + t.array13[27] + getNumberFromTextarea(t.id137) + ' см, ' +
+                t.array13[28] + getNumberFromTextarea(t.id138) + ' см, ' + t.array13[29] + getNumberFromTextarea(t.id139) + ' см. ';
         },
 
-        heartPapillMusclThreadsEndocard: function(){
+        heartPapillMusclThreadsEndocard: function () {
             if (!ISchecked(t.id140) && !ISchecked(t.id141)) return t.array13[30] + t.array13[34];
             if (ISchecked(t.id140) && !ISchecked(t.id141)) return t.array13[31] + t.array13[34];
             if (!ISchecked(t.id140) && ISchecked(t.id141)) return t.array13[32] + t.array13[34];
             if (ISchecked(t.id140) && ISchecked(t.id141)) return t.array13[33] + t.array13[34];
         },
 
-        heartTissue: function(){
+        heartTissue: function () {
             if (ISchecked(t.id142)) {
                 if (verificationSelect(t.id143, 1)) return t.array13[35] + t.array8[1] + t.array13[36];
                 /*ум. кровенап*/
@@ -2156,46 +2210,46 @@ function getResult(t) {
             }
         },
 
-    heartVentriclesSize: function() {
-        return  t.array13[37] + getNumberFromTextarea(t.id144) + ' см, ' +  t.array13[38] + getNumberFromTextarea(t.id145) + ' см. ';
-    },
-
-    aorta: function() {
-        if (verificationSelect(t.id149, 6)) return t.array13[55] + getStringFromSelect2(t.id146, t.array13, 39) + getStringFromSelect2(t.id148, t.array13, 44) + getStringFromSelect2(t.id149, t.array13, 49);
-        else return getStringFromSelect2(t.id146, t.array13, 39) + getStringFromSelect2(t.id148, t.array13, 44) + getStringFromSelect2(t.id149, t.array13, 49);
-    },
-
-    aortaSize: function(){
-        return t.array13[61] + getNumberFromTextarea(t.id150) + ' см, ' + t.array13[62] + getNumberFromTextarea(t.id151) + ' см. ';
-    },
-
-    venaCavaInf: function(){
-            return getStringFromSelect2(t.id147, t.array13, 56) + t.array13[63];
-    },
-
-    spleenGSR: function(){
-        return t.array14[0] + t.array14[1] + getNumberFromTextarea(t.id152M) + ' г, ' +
-            t.array11[12] + getNumberFromTextarea(t.id152H) + 'х' + getNumberFromTextarea(t.id152W) + 'х'+ getNumberFromTextarea(t.id152D) + ' см. ' +
-            t.array14[2] + getStringFromSelect2(t.id153, t.array14, 3) + t.array14[6];
-    },
-
-    kidneyFat: function(){
-        return t.array15[0] + getNumberFromTextarea(t.id155) + ' мм. ';
-    },
-
-        kidneyRightSize: function(){
-          return t.array15[1] + getNumberFromTextarea(t.id156) + 'х' + getNumberFromTextarea(t.id157) + 'х' + getNumberFromTextarea(t.id158) + ' см, ';
+        heartVentriclesSize: function () {
+            return t.array13[37] + getNumberFromTextarea(t.id144) + ' см, ' + t.array13[38] + getNumberFromTextarea(t.id145) + ' см. ';
         },
 
-        kidneyLeftSize: function(){
+        aorta: function () {
+            if (verificationSelect(t.id149, 6)) return t.array13[55] + getStringFromSelect2(t.id146, t.array13, 39) + getStringFromSelect2(t.id148, t.array13, 44) + getStringFromSelect2(t.id149, t.array13, 49);
+            else return getStringFromSelect2(t.id146, t.array13, 39) + getStringFromSelect2(t.id148, t.array13, 44) + getStringFromSelect2(t.id149, t.array13, 49);
+        },
+
+        aortaSize: function () {
+            return t.array13[61] + getNumberFromTextarea(t.id150) + ' см, ' + t.array13[62] + getNumberFromTextarea(t.id151) + ' см. ';
+        },
+
+        venaCavaInf: function () {
+            return getStringFromSelect2(t.id147, t.array13, 56) + t.array13[63];
+        },
+
+        spleenGSR: function () {
+            return t.array14[0] + t.array14[1] + getNumberFromTextarea(t.id152M) + ' г, ' +
+                t.array11[12] + getNumberFromTextarea(t.id152H) + 'х' + getNumberFromTextarea(t.id152W) + 'х' + getNumberFromTextarea(t.id152D) + ' см. ' +
+                t.array14[2] + getStringFromSelect2(t.id153, t.array14, 3) + t.array14[6];
+        },
+
+        kidneyFat: function () {
+            return t.array15[0] + getNumberFromTextarea(t.id155) + ' мм. ';
+        },
+
+        kidneyRightSize: function () {
+            return t.array15[1] + getNumberFromTextarea(t.id156) + 'х' + getNumberFromTextarea(t.id157) + 'х' + getNumberFromTextarea(t.id158) + ' см, ';
+        },
+
+        kidneyLeftSize: function () {
             return t.array15[2] + getNumberFromTextarea(t.id159) + 'х' + getNumberFromTextarea(t.id160) + 'х' + getNumberFromTextarea(t.id161) + ' см. ';
         },
 
-        kidneyCapsule: function(){
+        kidneyCapsule: function () {
             return getStringFromSelect2(t.id162, t.array15, 3) + getStringFromSelect2(t.id163, t.array15, 5) + getStringFromSelect2(t.id164, t.array0, 3) + t.array0[2];
         },
 
-        kidneyTissue: function(){
+        kidneyTissue: function () {
             if (!ISchecked(t.id165)) {
                 if (verificationSelect(t.id166, 1)) return t.array15[8] + t.array8[1] + t.array15[9] + t.array15[11];
                 /*ум. кровенап*/
@@ -2218,30 +2272,30 @@ function getResult(t) {
             }
         },
 
-        bladder: function(){
+        bladder: function () {
             if (!ISchecked(t.id168)) return t.array15[12] + getNumberFromTextarea(t.id167) + ' мл ' + t.array15[13] + t.array15[15];
             else return t.array15[12] + t.array15[14] + t.array15[15];
         },
 
-        prostateUterus: function(){
+        prostateUterus: function () {
             if (ISchecked(t.id6)) return t.array15[16] + getNumberFromTextarea(t.id169) + 'x' + getNumberFromTextarea(t.id170) + 'x' + getNumberFromTextarea(t.id171) + ' см. ';
             else return t.array15[17] + getStringFromSelect2(t.id172, t.array15, 18) + t.array15[20];
         },
 
-        gaster: function(){
-            if (verificationSelect(t.id174, 1)) return t.array16[0] + t.array16[1] + getNumberFromTextarea(t.id175) + ' мл ' + t.array16[3] + getStringFromSelect2(t.id176, t.array16, 4) + getStringFromSelect2(t.id177, t.array0, 5) + t.array16[8] ;
+        gaster: function () {
+            if (verificationSelect(t.id174, 1)) return t.array16[0] + t.array16[1] + getNumberFromTextarea(t.id175) + ' мл ' + t.array16[3] + getStringFromSelect2(t.id176, t.array16, 4) + getStringFromSelect2(t.id177, t.array0, 5) + t.array16[8];
             if (verificationSelect(t.id174, 2)) return t.array16[0] + t.array16[2] + getStringFromSelect2(t.id176, t.array16, 4) + getStringFromSelect2(t.id177, t.array0, 5) + t.array16[8];
         },
 
-        pancreas: function(){
+        pancreas: function () {
             return t.array16[9] + getStringFromSelect2(t.id182, t.array16, 10) + t.array11[13] + getNumberFromTextarea(t.id179) + 'x' + getNumberFromTextarea(t.id180) + 'x' + getNumberFromTextarea(t.id181) + ' см, массой ' + getNumberFromTextarea(t.id178) + ' г. ';
         },
 
-        pancreasStructure: function(){
-          return t.array16[13] + getStringFromSelect2(t.id182, t.array16, 10) + getStringFromSelect2(t.id183, t.array16, 14) + '';
+        pancreasStructure: function () {
+            return t.array16[13] + getStringFromSelect2(t.id182, t.array16, 10) + getStringFromSelect2(t.id183, t.array16, 14) + '';
         },
 
-        pancreasBloodFillingOther: function(){
+        pancreasBloodFillingOther: function () {
             if (verificationSelect(t.id184, 1)) return t.array8[1] + t.array0[8];
             /*ум. кровенап*/
             if (verificationSelect(t.id184, 2)) return t.array8[4] + t.array0[8];
@@ -2252,37 +2306,37 @@ function getResult(t) {
             /*малокр*/
         },
 
-        gallbladder: function(){
-          return t.array16[16] + getNumberFromTextarea(t.id185) + t.array16[17] +  t.array16[18];
+        gallbladder: function () {
+            return t.array16[16] + getNumberFromTextarea(t.id185) + t.array16[17] + t.array16[18];
         },
 
-        hepar: function(){
-            return t.array16[19] + getStringFromSelect2(t.id186, t.array16, 10) + t.array16[20] + getStringFromSelect2(t.id187, t.array0, 9) + '. ' + t.array16[21] + getNumberFromTextarea(t.id188) + 'x' + getNumberFromTextarea(t.id189) + 'x' + getNumberFromTextarea(t.id190) + 'x' + getNumberFromTextarea(t.id191) + 'x' + getNumberFromTextarea(t.id192) + ' см, ' + t.array11[14] + getNumberFromTextarea(t.id193) + ' г. ' ;
+        hepar: function () {
+            return t.array16[19] + getStringFromSelect2(t.id186, t.array16, 10) + t.array16[20] + getStringFromSelect2(t.id187, t.array0, 9) + '. ' + t.array16[21] + getNumberFromTextarea(t.id188) + 'x' + getNumberFromTextarea(t.id189) + 'x' + getNumberFromTextarea(t.id190) + 'x' + getNumberFromTextarea(t.id191) + 'x' + getNumberFromTextarea(t.id192) + ' см, ' + t.array11[14] + getNumberFromTextarea(t.id193) + ' г. ';
         },
 
-        heparDisection: function(){
+        heparDisection: function () {
             if (verificationSelect(t.id194, 1)) return t.array16[22] + getStringFromSelect2(t.id187, t.array0, 9) + ', ' + t.array8[1] + getStringFromSelect2(t.id195, t.array16, 23);
             /*ум. кровенап*/
             if (verificationSelect(t.id194, 2)) return t.array16[22] + getStringFromSelect2(t.id187, t.array0, 9) + ', ' + t.array8[4] + getStringFromSelect2(t.id195, t.array16, 23);
             /*полнокровие*/
             if (verificationSelect(t.id194, 3)) return t.array16[22] + getStringFromSelect2(t.id187, t.array0, 9) + ', ' + t.array8[7] + getStringFromSelect2(t.id195, t.array16, 23);
             /*неравномерного*/
-            if (verificationSelect(t.id194, 4)) return t.array16[22] +  getStringFromSelect2(t.id187, t.array0, 9) + ', ' + t.array8[8] + getStringFromSelect2(t.id195, t.array16, 23);
+            if (verificationSelect(t.id194, 4)) return t.array16[22] + getStringFromSelect2(t.id187, t.array0, 9) + ', ' + t.array8[8] + getStringFromSelect2(t.id195, t.array16, 23);
             /*малокр*/
         },
 
-        intestines: function(){
+        intestines: function () {
             return t.array16[25] + t.array16[26];
         },
 
-        bonesDamageInternalResearch: function() {
+        bonesDamageInternalResearch: function () {
             var otherBones = getStringEnumeration(t.id173, t.id77, t.id78, t.id80, t.id81, t.array4, 22),
                 limbBones = getStringEnumeration2(t.id79a, t.id79b, t.array4, 32);
 
             if (!ISchecked(t.id173) && checkCheckboxesAND(t.id77, t.id78, t.id80, t.id81, t.id79a, t.id79b)) {
                 return 'Грудина цела. ';
             }
-            else if (!ISchecked(t.id77) && checkCheckboxesAND(t.id173, t.id78, t.id80, t.id81, t.id79a, t.id79b)){
+            else if (!ISchecked(t.id77) && checkCheckboxesAND(t.id173, t.id78, t.id80, t.id81, t.id79a, t.id79b)) {
                 return 'Позвоночник цел. ';
             }
             else {
@@ -2292,7 +2346,7 @@ function getResult(t) {
                 else if (limbBones == '' && otherBones !== '') {
                     return otherBones + t.array4[27];
                 }
-                else if (limbBones !== '' && otherBones == ''){
+                else if (limbBones !== '' && otherBones == '') {
                     console.log(t.array4[35] + limbBones + t.array4[21] + t.array4[27]);
                     return t.array4[35] + limbBones + t.array4[21] + t.array4[27];
                 }
@@ -2300,12 +2354,12 @@ function getResult(t) {
             }
         },
 
-        ribsDamage: function(){
+        ribsDamage: function () {
             if (!ISchecked(t.id66)) return t.array4[36];
             else return '';
         },
 
-        lastSentenceInternalResearch: function() {
+        lastSentenceInternalResearch: function () {
             if (checkCheckboxesOR(t.id66, t.id77, t.id78, t.id79a, t.id79b, t.id80, t.id81, t.id86, t.id87, t.id91, t.id173)) return t.array4[29];
             else return t.array4[28];
         },
@@ -2337,9 +2391,15 @@ function getResult(t) {
             else return alcogol() + '. ';
         },
 
-        bloodType: function(){
+        bloodType: function () {
             if (ISchecked(t.id205)) return t.array17[16];
             else return '';
+        },
+
+        hystilogy: function () {
+            if (checkCheckboxesOR(t.id206, t.id207, t.id208, t.id209, t.id210, t.id211, t.id212, t.id213, t.id214, t.id215, t.id216, t.id217, t.id218, t.id219, t.id220, t.id221, t.id222, t.id223, t.id224, t.id225, t.id226, t.id227, t.id228, t.id229, t.id230, t.id231, t.id232, t.id233, t.id234)) {
+                return t.array18[0] + getStringEnumeration4(t.id206, t.id207, t.id208, t.id209, t.id210, t.id211, t.id212, t.id213, t.id214, t.id215, t.id216, t.id217, t.id218, t.id219, t.id220, t.id221, t.id222, t.id223, t.id224, t.id225, t.id226, t.id227, t.id228, t.id229, t.id230, t.id231, t.id232, t.id233, t.id234, t.array18, 1) + '. ';
+            } else return '';
         }
     };
 
@@ -2386,14 +2446,15 @@ function getResult(t) {
 
     iHTML = "<style> p{text-align: justify; text-indent: 30px; font-family: 'Times New Roman', sans-serif; font-size: 16px; margin: 0}"
         + " .titleResearch {margin-left: 40%; font-family: Georgia, 'Times New Roman', Times, serif; font-weight:bold; text-transform: uppercase;}</style>"
-        + "<div id='divFrame' style='background: #fbecdd; padding: 10px 20px 20px 30px'></div>" ;
+        + "<div id='divFrame' style='background: #fbecdd; padding: 10px 20px 20px 30px'></div>";
     iDoc.open(); // Открываем фрейм
     iDoc.write(iHTML); // Добавляем написанный код в фрейм
     iDoc.getElementById("divFrame").innerHTML = "";
     iDoc.getElementById("divFrame").appendChild(spanTitle1);
     iDoc.getElementById("divFrame").appendChild(br);
     iDoc.getElementById("divFrame").appendChild(p); //
-    iDoc.getElementById("divFrame").appendChild(br); divFrame.appendChild(br);
+    iDoc.getElementById("divFrame").appendChild(br);
+    divFrame.appendChild(br);
     iDoc.getElementById("divFrame").appendChild(br);
     iDoc.getElementById("divFrame").appendChild(br);
     iDoc.getElementById("divFrame").appendChild(br);
@@ -2423,6 +2484,7 @@ var t = {
     array15: arr_genitourinary,
     array16: arr_digestive,
     array17: arr_additionInvestigation,
+    array18: arr_hystology,
     id2: 'dress',
     id3: 'dressold',
     id4: 'dirty',
@@ -2471,7 +2533,7 @@ var t = {
     id46: 'shell_color',
     id47: 'shell_surface',
     id48: 'eyesHemorrhage',
-    id49: 'd1',  /* hair pars of head*/
+    id49: 'd1', /* hair pars of head*/
     id50: 'd2', /*eyes membranes*/
     id51: 'd11', /*nose bones*/
     id52: 'd11a', /*nose cartilages*/
@@ -2506,7 +2568,7 @@ var t = {
     id80: 'd18', /*claviculas*/
     id81: 'd19', /*scapulas*/
     id82: 'd13', /*spin*/
-    id83: 'd14',  /*loins*/
+    id83: 'd14', /*loins*/
     id84: 'textareaDamage',
     id85: 'teethVisible',
     id86: 'd9' /*calvaria*/,
@@ -2514,7 +2576,7 @@ var t = {
     id88: 'osFrontale',
     id89: 'osTemporale',
     id90: 'osOccipitale',
-    id91: 'd20',  /*meninges*/
+    id91: 'd20', /*meninges*/
     id92: 'duraMaterTension',
     id93: 'duraMaterSeparate',
     id94: 'duraMaterSinus',
@@ -2633,6 +2695,35 @@ var t = {
     id202: 'narcotic',
     id203: 'bloodChem',
     id204: 'urineChem',
-    id205: 'bloodType'
+    id205: 'bloodType',
+    id206: 'hystBrain',
+    id207: 'hystHypophysis',
+    id208: 'hystDuraMater',
+    id209: 'hystSpinalCord',
+    id210: 'hystHeart',
+    id211: 'hystAorta',
+    id212: 'hystThyroid',
+    id213: 'hystAdrenal',
+    id214: 'hystBud',
+    id215: 'hystBladder',
+    id216: 'hystProstata',
+    id217: 'hystTesticles',
+    id218: 'hystUterus',
+    id219: 'hystOvary',
+    id220: 'hystLymph',
+    id221: 'hystSpleen',
+    id222: 'hystSternum',
+    id223: 'hystBoneMarrow',
+    id224: 'hystPeritoneum',
+    id225: 'hystMesentery',
+    id226: 'hystEsophagus',
+    id227: 'hystStomach',
+    id228: 'hystIntestine',
+    id229: 'hystLiver',
+    id230: 'hystGullbladder',
+    id231: 'hystPancreas',
+    id232: 'softTissueFeet',
+    id233: 'softTissueNeck',
+    id234: 'hystStrangulation'
 };
 

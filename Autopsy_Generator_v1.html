@@ -16,10 +16,10 @@
             font: 14px Arial, Tahoma, sans-serif;
         }
 
-
         li {
             list-style-type: none; /* Убираем маркеры */
         }
+
         ul {
             margin-left: 0; /* Отступ слева в браузере IE и Opera */
             padding-left: 0; /* Отступ слева в браузере Firefox, Safari, Chrome */
@@ -45,11 +45,6 @@
             outline: solid 1px green;
             font: 0 Arial;
         }
-
-        /*.main-container input[type="text"] {*/
-        /*-webkit-border-radius: 6px;*/
-        /*-moz-border-radius: 6px;*/
-        /*}*/
 
         .main-container textarea {
             -webkit-border-radius: 6px;
@@ -85,8 +80,6 @@
             margin-left: 0;
         }
 
-
-
         .button-pointer span {
             display: block;
             width: 100%;
@@ -95,27 +88,43 @@
             padding: 10% 0;
             text-transform: uppercase;
             text-align: center;
-            /*outline: 1px solid red;*/
-
         }
-        /*
-        .button-pointer:nth-child(6) span, .button-pointer:nth-child(2n+12) span {
-            padding: 5% 0;
-        }
-        */
 
-        .button-pointer:nth-child(n+5):nth-child(-n+6) span, .button-pointer:nth-child(2n+10):nth-child(-2n+14) span{
+        .button-pointer:nth-child(n+5):nth-child(-n+6) span, .button-pointer:nth-child(2n+10):nth-child(-2n+14) span {
             padding: 5% 0;
         }
 
         .pointer-dress {
-            background: #50a170;
+            background: #18a11c;
         }
 
         .pointer-general {
             background: #54a157;
         }
 
+        .pointer-generalPathology {
+            background: #7b7753;
+        }
+
+        .pointer-teethFormula {
+            background: #1d9671;
+        }
+
+        .pointer-decomposition {
+            background: #5b5682;
+        }
+
+        .pointer-damage {
+            background: #b43132;
+        }
+
+        .pointer-additionalStudy {
+            background: #2b5d96;
+        }
+
+        .pointer-other {
+            background: #697b7a;
+        }
 
         .block {
             -webkit-transition-duration: 0.6s; /* анимационное выдвижение для всех браузеров*/
@@ -205,8 +214,6 @@
 
         }
 
-
-
         .block-forma-digestive {
             top: 10px;
             left: -600px;
@@ -234,7 +241,47 @@
         .block-forma-additionalStudy {
             top: 40px;
             left: -500px;
-            width: 450px;
+            min-width: 450px;
+            min-height: 258px;
+        }
+
+        .warning {
+            background: #5a9671;
+            top: 40px;
+            left: 100px;
+            height: 200px;
+            width: 400px;
+            padding: 20px;
+            border: 5px solid #95333b;
+            display: none;
+            z-index: 13;
+        }
+
+        .warning-word {
+            text-align: center;
+            font-size: 14pt;
+            color: #6b1d15;
+        }
+
+        .warning-text {
+            margin-top: 10px;
+            text-align: justify;
+        }
+
+        .warning-buttons {
+            margin-top: 20px;
+            margin-left: 60px;
+            width: 400px;
+
+        }
+
+        .warning-buttons input {
+            width: 35%;
+        }
+
+        .location-reload {
+            margin-top: 10px;
+            float: right;
         }
 
         .pushback-block {
@@ -301,6 +348,7 @@
             -o-transition-duration: 1s;
             transition-duration: 1s;
         }
+
         .mass-new {
             max-height: 60px;
             opacity: 1;
@@ -331,6 +379,7 @@
             -o-transition-duration: 1s;
             transition-duration: 1s;
         }
+
         .skin-dry-true-new {
             max-height: 350px;
             opacity: 1;
@@ -371,7 +420,6 @@
             opacity: 0;
             overflow: hidden;
         }
-
 
         .div-hair-color-other {
             max-height: 0;
@@ -428,7 +476,6 @@
             max-height: 700px;
             opacity: 1;
         }
-
 
         .div-ear-excret-other {
             max-height: 0;
@@ -510,7 +557,6 @@
             opacity: 1;
         }
 
-
         .div-gasterFilling-value {
             display: inline-block;
             max-height: 300px;
@@ -580,7 +626,7 @@
         .div-chemDefine {
             position: absolute;
             top: 69px;
-            left: 132px;
+            left: 70px;
             max-height: 0;
             opacity: 0;
             overflow: hidden;
@@ -593,7 +639,7 @@
         .div-chemDefine-new {
             position: absolute;
             top: 69px;
-            left: 178px;
+            left: 80px;
             max-height: 700px;
             opacity: 1;
             overflow: hidden;
@@ -620,11 +666,31 @@
             max-width: 283px;
 
         }
+
         .valve-left {
             float: left;
         }
+
         .valve-right {
             float: right;
+        }
+
+        .hystology1 {
+            min-width: 100px;
+            position: absolute;
+            top: 14px;
+            left: 175px;
+        }
+
+        .hystology2 {
+            min-width: 100px;
+            position: absolute;
+            top: 44px;
+            left: 345px;
+        }
+
+        .hystology-reproductive-woman {
+            display: none;
         }
 
         .test-block {
@@ -633,7 +699,6 @@
             background: green;
             position: fixed;
             left: -510px;
-
             -webkit-transition-duration: 0.6s; /* анимационное выдвижение для всех браузеров*/
             -moz-transition-duration: 0.6s;
             -o-transition-duration: 0.6s;
@@ -643,10 +708,9 @@
 
     <script>
         /**
-         * Created by Ъ- on 29.09.2015.
+         * Start created by Ъ- on 29.09.2015.
          */
         /*VISUAL EFFECTS*/
-
         function changeLocality(id1, crd1, id2, crd2, side) { //смещение двух блоков
             var e1 = document.getElementById(id1);
             var e2 = document.getElementById(id2);
@@ -695,23 +759,27 @@
             e.style.zIndex = '0';
         }
 
+        function changeStyleDisplay(id, display) {
+            var element = document.getElementById(id);
+            element.style.display = display;
+        }
 
-        function changeStyle(id, newStyle){
+        function changeStyle(id, newStyle) {
             var element = document.getElementById(id);
             var className = element.className;
-            if (className.indexOf(newStyle) == -1 ) className += newStyle;
+            if (className.indexOf(newStyle) == -1) className += newStyle;
             else className = className.replace(newStyle, '');
             element.className = className;
         }
 
-        function changeStyleOneOff(id, newStyle){
+        function changeStyleOneOff(id, newStyle) {
             var element = document.getElementById(id);
             var className = element.className;
-            if (className.indexOf(newStyle) == -1 ) className += newStyle;
+            if (className.indexOf(newStyle) == -1) className += newStyle;
             element.className = className;
         }
 
-        function changeStyleIfChecked(id, idCheckbox, newStyle){
+        function changeStyleIfChecked(id, idCheckbox, newStyle) {
             var element = document.getElementById(id);
             var className = element.className;
             var checkbox = document.getElementById(idCheckbox);
@@ -722,7 +790,7 @@
             }
         }
 
-        function changeStyleIfNoChecked(id, idCheckbox, newStyle){
+        function changeStyleIfNoChecked(id, idCheckbox, newStyle) {
             var element = document.getElementById(id);
             var className = element.className;
             var checkbox = document.getElementById(idCheckbox);
@@ -733,14 +801,14 @@
             }
         }
 
-        function changeStyleIfSelected(id, idSelect, newStyle, optionNumber){
+        function changeStyleIfSelected(id, idSelect, newStyle, optionNumber) {
             var element = document.getElementById(id);                           //доступ к блоку
             var select = document.getElementById(idSelect);                   //доступ к селекту
             var index = select.options[select.selectedIndex].index;         //какой выбрали option
             var className = element.className;
 
             if (optionNumber) {
-                if (index == (optionNumber-1)){   							//выбор option, тот который указан в optionNumber
+                if (index == (optionNumber - 1)) {   							//выбор option, тот который указан в optionNumber
                     if (className.indexOf(newStyle) == -1) className += newStyle; //стиль новый, если устанвлен старый
                     element.className = className;
                 }
@@ -752,7 +820,7 @@
                 }
             }
             else {
-                if (index == 0){
+                if (index == 0) {
                     console.log('else2');
                     if (className.indexOf(newStyle) == -1) className += newStyle;
                     element.className = className;
@@ -767,14 +835,14 @@
 
         }
 
-        function changeStyleAllExceptSelected(id, idSelect, newStyle, optionNumber){
+        function changeStyleAllExceptSelected(id, idSelect, newStyle, optionNumber) {
             var element = document.getElementById(id);                           //доступ к блоку
             var select = document.getElementById(idSelect);                   //доступ к селекту
             var index = select.options[select.selectedIndex].index;         //какой выбрали option
             var className = element.className;
 
             if (optionNumber) {
-                if (index !== (optionNumber-1)){   							//выбор option, тот который указан в optionNumber
+                if (index !== (optionNumber - 1)) {   							//выбор option, тот который указан в optionNumber
                     if (className.indexOf(newStyle) == -1) className += newStyle; //стиль новый, если устанвлен старый
                     element.className = className;
                 }
@@ -786,7 +854,7 @@
                 }
             }
             else {
-                if (index !== 0){
+                if (index !== 0) {
                     if (className.indexOf(newStyle) == -1) className += newStyle;
                     element.className = className;
                 }
@@ -799,7 +867,7 @@
             }
         }
 
-        function changeSelectBySelect(idSelectSettings, idTransformedSelect, pattern){
+        function changeSelectBySelect(idSelectSettings, idTransformedSelect, pattern) {
             var selectSettings = document.getElementById(idSelectSettings);
             var transformedSelect = document.getElementById(idTransformedSelect);
             var selectSettingsIndex = selectSettings.options[selectSettings.selectedIndex].index;         //какой выбрали option
@@ -810,12 +878,12 @@
                 if (!re.test(arguments[i])) console.log('Patterns error');
                 else {
                     subStringSet = arguments[i].slice(0, arguments[i].indexOf('-'));
-                    setNumbers = subStringSet.replace(/,/g,'');
+                    setNumbers = subStringSet.replace(/,/g, '');
                     transformNumber = arguments[i].substr(-1);
-                    for (var j = 0; j < setNumbers.length; j++){
-                        if (selectSettingsIndex == setNumbers[j]-1){
-                            if (transformedSelectIndex+1 !== transformNumber){
-                                transformedSelect.selectedIndex = transformNumber-1;
+                    for (var j = 0; j < setNumbers.length; j++) {
+                        if (selectSettingsIndex == setNumbers[j] - 1) {
+                            if (transformedSelectIndex + 1 !== transformNumber) {
+                                transformedSelect.selectedIndex = transformNumber - 1;
                             }
                         }
                     }
@@ -826,16 +894,16 @@
         function changeSelectByCheckbox(idSelect, idCheckbox, selectSettingIndex, selectResetIndex) {
             var select = document.getElementById(idSelect);
             var checkbox = document.getElementById(idCheckbox);
-            if (checkbox.checked){
-                select.selectedIndex = selectSettingIndex-1;
+            if (checkbox.checked) {
+                select.selectedIndex = selectSettingIndex - 1;
             }
             else {
-                select.selectedIndex = selectResetIndex-1;
+                select.selectedIndex = selectResetIndex - 1;
             }
         }
 
-        function onlyOneCheckboxChecked(idCheckbox){
-            for (var i = 0, checkbox = document.getElementById(arguments[i]); i < arguments.length; i++){
+        function onlyOneCheckboxChecked(idCheckbox) {
+            for (var i = 0, checkbox = document.getElementById(arguments[i]); i < arguments.length; i++) {
                 if (checkbox.checked) checkbox.checked = false;
             }
         }
@@ -854,7 +922,7 @@
             }
         }
 
-        function resetStyleIfChecked(id, idCheckboxButton, newStyle){
+        function resetStyleIfChecked(id, idCheckboxButton, newStyle) {
             var element = document.getElementById(id);
             var checkboxButton = document.getElementById(idCheckboxButton);
             if (checkboxButton.checked) element.className = newStyle;
@@ -883,7 +951,7 @@
             el.style._display = 'none';
         }
 
-        function hideExpandDivByCheckbox (elementId, checkboxId, checkOrUncheck, height) {
+        function hideExpandDivByCheckbox(elementId, checkboxId, checkOrUncheck, height) {
             var element = document.getElementById(elementId);
             var checkbox = document.getElementById(checkboxId);
             if (checkOrUncheck == 1) {				//hide on uncheck
@@ -938,6 +1006,31 @@
             }
         }
 
+        /*WARNING*/
+        function getCaretCharacterOffsetWithin(id) {
+            var iframe = document.getElementById(id);
+            var element = (iframe.contentDocument || iframe.contentWindow.document).body;
+            var doc = element.ownerDocument || element.document;
+            var win = doc.defaultView || doc.parentWindow;
+            var sel, range, preCaretRange, caretOffset = 0;
+            if (typeof win.getSelection != "undefined") {
+                sel = win.getSelection();
+                if (sel.rangeCount) {
+                    range = sel.getRangeAt(0);
+                    preCaretRange = range.cloneRange();
+                    preCaretRange.selectNodeContents(element);
+                    preCaretRange.setEnd(range.endContainer, range.endOffset);
+                    caretOffset = preCaretRange.toString().length;
+                }
+            } else if ((sel = doc.selection) && sel.type != "Control") {
+                preCaretRange = doc.body.createTextRange();
+                preCaretRange.moveToElementText(element);
+                preCaretRange.setEndPoint("EndToEnd", textRange);
+                caretOffset = preCaretTextRange.text.length;
+            }
+            return caretOffset;
+        }
+
         /*AUTOPSY */
 
         function getTextForm(inputId, outputId) {
@@ -948,21 +1041,19 @@
 
         }
 
-
-
         function ISchecked(id) { //проверка на нажатие
             return document.getElementById(id).checked;
         }
 
         function checkCheckboxesOR(id) {
-            for (var i=0; i<arguments.length; i++) {
+            for (var i = 0; i < arguments.length; i++) {
                 if (document.getElementById(arguments[i]).checked) return true;
             }
             return false;
         }
 
         function checkCheckboxesAND(id) {
-            for (var i=0; i<arguments.length; i++) {
+            for (var i = 0; i < arguments.length; i++) {
                 if (!document.getElementById(arguments[i]).checked) return false;
             }
             return true;
@@ -976,11 +1067,13 @@
             else return undefined;
         }
 
-        //if (element) return true;
-        //else return false;
+        function changeCheckedFalse(id) {
+            var element = document.getElementById(id);
+            if (element.checked) element.checked = false;
+        }
 
-        function resetFormElements(){ 								//reset input (text, checkbox, radio), textarea and select
-            for (var i=0; i<arguments.length; i++) {				//you need to add any number of IDs elements in the function arguments
+        function resetFormElements() { 								//reset input by default (text, checkbox, radio), textarea and select
+            for (var i = 0; i < arguments.length; i++) {				//you need to add any number of IDs elements in the function arguments
                 var element = document.getElementById(arguments[i]);
                 var name = element.tagName;
                 var type = element.getAttribute('type');
@@ -1007,8 +1100,8 @@
             document.getElementById(id).reset();
         }
 
-        function resetTextarea(){
-            for (var i=0; i<arguments.length; i++) {
+        function resetTextarea() {
+            for (var i = 0; i < arguments.length; i++) {
                 var textarea = document.getElementById(arguments[i]);
                 textarea.value = '';
             }
@@ -1040,7 +1133,7 @@
 
         function checkboxChecked(checkboxSetId, checkboxChangeId) {
             var checkboxSet = document.getElementById(checkboxSetId);
-            for (var i=1; i<arguments.length; i++) {
+            for (var i = 1; i < arguments.length; i++) {
                 var checkboxChange = document.getElementById(checkboxChangeId);
                 if (checkboxSet.checked) checkboxChange.checked = true;
                 else checkboxChange.checked = false;
@@ -1057,7 +1150,7 @@
             return document.getElementById(id).value
         }
 
-        function getOptionNumberOfSelect(idSelect){
+        function getOptionNumberOfSelect(idSelect) {
             var select = document.getElementById(idSelect);
             return select.options[select.selectedIndex].index + 1;
         }
@@ -1067,7 +1160,7 @@
         }
 
         function getNumberFromTextarea(id) {
-            return document.getElementById(id).value.replace (/\./, ',');
+            return document.getElementById(id).value.replace(/\./, ',');
         }
 
 
@@ -1079,7 +1172,7 @@
             }
         }
 
-        function getStringFromSelect2(idSelect, array, startArrayElement){
+        function getStringFromSelect2(idSelect, array, startArrayElement) {
             var select = document.getElementById(idSelect);
             var index = select.options[select.selectedIndex].index;         //какой выбрали option
             return array[index + startArrayElement];
@@ -1089,16 +1182,15 @@
         function verificationSelect(id, point) { //то ли выбрано, что задано в point (№ option)?
             var select = document.getElementById(id);
             var index = select.options[select.selectedIndex].index;
-            if (index == point-1) return true;
+            if (index == point - 1) return true;
             else return false;
         }
 
-        function getStringEnumeration(idCheckbox, array, firstElement){
+        function getStringEnumeration(idCheckbox, array, firstElement) {
             var result = '', resultArray = [], arrayCounter = 0, arrayPlace = arguments[arguments.length - 1];
             if (!Array.isArray(arguments[arguments.length - 1])) { //last argument is not array?
-                arrayCounter  = arguments[arguments.length - 1];
+                arrayCounter = arguments[arguments.length - 1];
                 arrayPlace = arguments[arguments.length - 2]; // the array will be the penultimate argument
-
             }
 
             for (var i = 0; i < arguments.length; i++, arrayCounter++) {
@@ -1114,10 +1206,10 @@
             return result;
         }
 
-        function getStringEnumeration2(idCheckbox, array, firstElement){
+        function getStringEnumeration2(idCheckbox, array, firstElement) {
             var result = '', resultArray = [], arrayCounter = 0, arrayPlace = arguments[arguments.length - 1];
             if (!Array.isArray(arguments[arguments.length - 1])) { //last argument is not array?
-                arrayCounter  = arguments[arguments.length - 1];
+                arrayCounter = arguments[arguments.length - 1];
                 arrayPlace = arguments[arguments.length - 2]; // the array will be the penultimate argument
 
             }
@@ -1135,10 +1227,10 @@
             return result;
         }
 
-        function getStringEnumeration3(idCheckbox, array, firstElement){
+        function getStringEnumeration3(idCheckbox, array, firstElement) {
             var result = '', resultArray = [], arrayCounter = 0, arrayPlace = arguments[arguments.length - 1];
             if (!Array.isArray(arguments[arguments.length - 1])) { //last argument is not array?
-                arrayCounter  = arguments[arguments.length - 1];
+                arrayCounter = arguments[arguments.length - 1];
                 arrayPlace = arguments[arguments.length - 2]; // the array will be the penultimate argument
             }
 
@@ -1153,6 +1245,24 @@
             return result;
         }
 
+        function getStringEnumeration4(idCheckbox, array, firstElement) {
+            var result = '', resultArray = [], arrayCounter = 0, arrayPlace = arguments[arguments.length - 1];
+            if (!Array.isArray(arguments[arguments.length - 1])) { //last argument is not array?
+                arrayCounter = arguments[arguments.length - 1];
+                arrayPlace = arguments[arguments.length - 2]; // the array will be the penultimate argument
+            }
+
+            for (var i = 0; i < arguments.length; i++, arrayCounter++) {
+                if (Array.isArray(arguments[i])) break;
+                if (document.getElementById(arguments[i]).checked) {
+                    resultArray.push(arrayPlace[arrayCounter]);
+                }
+            }
+
+            result = resultArray.join(', '); //making the string
+
+            return result;
+        }
 
         /*numbers */
 
@@ -1167,20 +1277,20 @@
             return Math.floor(rand / num) * num;
         }
 
-        function getRandAndAddInValue(id, min, max){
+        function getRandAndAddInValue(id, min, max) {
             var rand = min + Math.random() * (max + 1 - min);
             rand = Math.floor(rand);
             document.getElementById(id).value = rand;
         }
 
-        function get05RandAndAddInValue(id, min, max){ //с десятичной дробью
+        function get05RandAndAddInValue(id, min, max) { //с десятичной дробью
             var rand = Math.random() * (max - min) + min;
-            document.getElementById(id).value = Math.round((rand)*10)/10;
+            document.getElementById(id).value = Math.round((rand) * 10) / 10;
         }
 
         function get5RandAndAddInValue(id, min, max, num) { //кратное num
             var rand = Math.floor(Math.random() * (max - min + 1)) + min;
-            document.getElementById(id).value = Math.floor(rand/num)*num;
+            document.getElementById(id).value = Math.floor(rand / num) * num;
         }
 
         /* -----  */
@@ -1842,7 +1952,7 @@
 
         ];
 
-        var arr_Head = [ /*array5*/
+        var arr_Head = [/*array5*/
             'Волосы на голове отсутствуют. ',
             'Волосы на голове темно-русые',
             'Волосы на голове русые',
@@ -1943,7 +2053,7 @@
             'Из половых путей определяются выделения светло-желтого цвета. ',
             'Из половых путей определяются выделения темно-желтого цвета. ',
             'Из половых путей определяются выделения темно-зеленого цвета. ',
-            'Задний проход сомкнут, ',/*36*/
+            'Задний проход сомкнут, ', /*36*/
             'Задний проход зияет, ',
             'кожа вокруг него чистая. ',
             'кожа вокруг него загрязнена каловыми массами. ',
@@ -1987,7 +2097,7 @@
             'Эпифиз эластичный на ощупь, неправильной овальной формы, размерами ',
             'Эпифиз эластичный на ощупь, шаровидной формы, размерами ',
             'с поверхности и на разрезе светло-коричневого цвета. ',
-            'Гипофиз бобовидной формы, размерами ',/*34*/
+            'Гипофиз бобовидной формы, размерами ', /*34*/
             ' см, эластичный на ощупь, с поверхности и на разрезе синюшно-серого цвета с красным оттенком. ',
             'Каких-либо кровоизлияний и очагов размягчения в веществе мозга не выявлено. '
         ];
@@ -2244,6 +2354,41 @@
             'масса '
         ];
 
+        var arr_hystology = [
+            'На судебно-гистологическое исследование направлены кусочки ',
+            'головного мозга',
+            'гипофиза',
+            'твердой мозговой оболочки',
+            'спинного мозга',
+            'сердца',
+            'аорты',
+            'щитовидной железы',
+            'надпочечников',
+            'почек',
+            'мочевого пузыря',
+            'предстательной железы',
+            'яичек',
+            'матки',
+            'яичников',
+            'лимфатических узлов',
+            'селезенки',
+            'грудины',
+            'костного мозга',
+            'брюшины',
+            'брыжейки',
+            'пищевода',
+            'желудка',
+            'кишечника',
+            'печени',
+            'желчного пузыря',
+            'поджелудочной железы',
+            'мягких тканей нижних конечностей',
+            'мягких тканей шеи',
+            'кожи с фрагментом странгуляционной борозды'
+
+        ];
+
+
         function getResult(t) {
             var re = /[\S+]/;
 
@@ -2272,18 +2417,18 @@
             }
 
             var generalCharacters = {
-                sex: function(){
+                sex: function () {
                     if (ISchecked(t.id6)) return t.array2[0];
                     else return t.array2[1];
                 },
                 physique: getStringFromSelect2(t.id8, t.array2, 2),
                 pitanie: getStringFromSelect2(t.id7, t.array2, 5),
-                defects: function(){
+                defects: function () {
                     if (!ISchecked(t.id9)) return t.array2[9];
                     else return '. ';
                 },
                 growth: arr_General[10] + getFromTextarea(t.id10) + ' см, ',
-                age: function(){
+                age: function () {
                     if (verificationSelect(t.id11, 4)) {
                         return t.array2[14] + getFromTextarea(t.id12) + '-' + getFromTextarea(t.id13) + ' лет. ';
                     }
@@ -2291,7 +2436,7 @@
                         return getStringFromSelect2(t.id11, arr_General, 11);
                     }
                 },
-                mass: function(){
+                mass: function () {
                     if (ISchecked(t.id14)) return t.array2[15];
                     else return t.array2[16] + getFromTextarea(t.id15) + ' кг. ';
                 }
@@ -2301,7 +2446,7 @@
                 cool: getStringFromSelect2(t.id16, t.array3, 0),
                 skinColor: getStringFromSelect2(t.id17, t.array2, 17),
                 skinElastic: getStringFromSelect2(t.id18, t.array2, 23),
-                skinDry: function(){
+                skinDry: function () {
                     if (ISchecked(t.id19)) return t.array2[27];
                     else  return t.array2[26];
                 },
@@ -2309,35 +2454,35 @@
                 spotIntensity: getStringFromSelect2(t.id21, t.array3, 7),
                 spotArea: getStringFromSelect2(t.id22, t.array3, 9),
                 spotLocalization: getStringFromSelect2(t.id23, t.array3, 11),
-                spotStage: function(){
+                spotStage: function () {
                     return t.array3[16];
                 }
             };
 
             var decompositionMuscle = {
-                spotColorAfterPush: function(){
+                spotColorAfterPush: function () {
                     if (verificationSelect(t.id24, 1)) return t.array3[17];
                     else return getStringFromSelect2(t.id24, t.array3, 17) + getFromTextarea(t.id25) + ' мин. ';
                 },
                 rigorMortis: getStringFromSelect2(t.id26, t.array3, 20),
-                muscle: function(){
+                muscle: function () {
                     if (verificationSelect(t.id26, 2)) return t.array2[29] + getStringFromSelect2(t.id27, t.array2, 30);
                     else return t.array2[28] + getStringFromSelect2(t.id27, t.array2, 30);
                 },
-                rotting: function(){
+                rotting: function () {
                     if (verificationSelect(t.id28, 4)) return getFromTextarea(t.id29);
                     else return getStringFromSelect2(t.id28, t.array3, 24);
                 }
             };
 
             var head = {
-                skullDamage: function(){
+                skullDamage: function () {
                     if (!(ISchecked(t.id30) || ISchecked(t.id31))) return t.array4[0];
                     else return '';
                 },
-                hair: function(){
+                hair: function () {
                     if (!(ISchecked(t.id32))) {
-                        if (!verificationSelect(t.id33, 6)){
+                        if (!verificationSelect(t.id33, 6)) {
                             if (!ISchecked(t.id35)) return getStringFromSelect2(t.id33, t.array5, 1) + t.array5[8] + getFromTextarea(t.id36) + ' см. ';
                             else return getStringFromSelect2(t.id33, t.array5, 1) + t.array5[6] + t.array5[8] + getFromTextarea(t.id36) + ' см. ';
                         }
@@ -2347,44 +2492,44 @@
                     else  return t.array5[0];
                 },
 
-                headHairDamage: function(){
+                headHairDamage: function () {
                     if (!ISchecked(t.id49)) return t.array4[1];
                     else return '';
                 },
 
                 face: getStringFromSelect2(t.id37, t.array5, 9),
-                facePuffy: function(){
-                    if (ISchecked('puffy')) return  t.array5[15];
+                facePuffy: function () {
+                    if (ISchecked('puffy')) return t.array5[15];
                     else return t.array5[14];
                 },
 
                 eyes: getStringFromSelect2(t.id39, t.array5, 16) + getStringFromSelect2(t.id40, t.array5, 18),
 
-                iris: function(){
+                iris: function () {
                     if (!verificationSelect(t.id41, 6)) return getStringFromSelect2(t.id41, t.array5, 20);
                     else return t.array5[25] + getFromTextarea(t.id42) + t.array0[2];
                 },
 
-                pupil: function(){
-                    return  t.array5[59] + getNumberFromTextarea(t.id43) + ' см каждый. ';
+                pupil: function () {
+                    return t.array5[59] + getNumberFromTextarea(t.id43) + ' см каждый. ';
                 },
 
                 eyesConnectMembran: getStringFromSelect2(t.id46, t.array5, 26) + getStringFromSelect2(t.id47, t.array5, 30),
-                eyesConnectMembranDamageAndHemorrhage: function(){
+                eyesConnectMembranDamageAndHemorrhage: function () {
                     if (!ISchecked(t.id50) && !ISchecked(t.id48)) return t.array4[2];
                     else if (!ISchecked(t.id50) && ISchecked(t.id48)) return t.array4[3];
                     else if (ISchecked(t.id50) && !ISchecked(t.id48)) return t.array4[4];
                     else return '. ';
                 },
 
-                noseDamage: function(){
+                noseDamage: function () {
                     if (!ISchecked(t.id51) && !ISchecked(t.id52)) return t.array5[32];
                     else if (!ISchecked(t.id51) && ISchecked(t.id52)) return t.array5[33];
                     else if (ISchecked(t.id51) && !ISchecked(t.id52)) return t.array5[34];
                     else return '';
                 },
 
-                noseExcret: function(){
+                noseExcret: function () {
                     if (verificationSelect(t.id53, 6)) {
                         if (checkAreaForFill(t.id54, re)) {
                             return getFromTextarea(t.id54);
@@ -2396,20 +2541,20 @@
                     }
                 },
 
-                teeth: function() {
+                teeth: function () {
                     if (ISchecked(t.id85)) return t.array5[58];
                     else return getResultString(matrix, symb, textPhrasesArray);
                 },
 
                 mouth: getStringFromSelect2(t.id57, t.array5, 41),
-                mouthDamage: function(){
+                mouthDamage: function () {
                     if (!ISchecked(t.id58)) return t.array4[3];
                     else return '. ';
                 },
 
                 lipsborder: getStringFromSelect2(t.id59, t.array5, 45) + getStringFromSelect2(t.id60, t.array5, 49),
-                ear: function(){
-                    if (!ISchecked(t.id61)){
+                ear: function () {
+                    if (!ISchecked(t.id61)) {
                         if (verificationSelect(t.id62, 6)) {
                             if (checkAreaForFill(t.id63, re))  return t.array5[51] + getFromTextarea(t.id63);
 
@@ -2431,17 +2576,17 @@
             };
 
             var neckTorso = {
-                neck: function(){
+                neck: function () {
                     if (ISchecked(t.id64)) return t.array6[0] + '. ';
                     else return t.array6[0] + t.array4[3];
                 },
 
-                armpits: function(){
+                armpits: function () {
                     if (ISchecked(t.id65)) return '';
                     else return t.array6[1] + t.array4[3];
                 },
 
-                thorax: function(){
+                thorax: function () {
                     if (ISchecked(t.id66)) {
                         if (ISchecked(t.id68)) return getStringFromSelect2(t.id67, t.array6, 2) + t.array6[8] + '. ';
                         else return getStringFromSelect2(t.id67, t.array6, 2) + t.array6[9] + '. ';
@@ -2452,17 +2597,17 @@
                     }
                 },
 
-                mammaryGland:  function(){
+                mammaryGland: function () {
                     if (ISchecked(t.id6a)) return getStringFromSelect2(t.id69, t.array6, 10) + getStringFromSelect2(t.id70, t.array6, 12);
                     else return '';
                 },
 
-                abdomen: function(){
+                abdomen: function () {
                     if (ISchecked(t.id71)) return t.array6[15] + getStringFromSelect2(t.id72, t.array6, 17);
                     else return t.array6[16] + getStringFromSelect2(t.id72, t.array6, 17);
                 },
 
-                pubis: function(){
+                pubis: function () {
                     if (verificationSelect(t.id73, 3)) return t.array6[22];
                     else {
                         if (ISchecked(t.id6)) return getStringFromSelect2(t.id73, t.array6, 20) + t.array6[23];
@@ -2470,27 +2615,27 @@
                     }
                 },
 
-                genitals: function() {
+                genitals: function () {
                     if (ISchecked(t.id6)) return t.array6[25] + getStringFromSelect2(t.id74, t.array6, 26);
                     else return getStringFromSelect2(t.id74, t.array6, 31);
                 },
 
                 rectum: getStringFromSelect2(t.id75, t.array6, 36) + getStringFromSelect2(t.id76, t.array6, 38),
 
-                spinLoinsDamage: function(){
-                    if (!ISchecked(t.id82) && !ISchecked(t.id83)){
+                spinLoinsDamage: function () {
+                    if (!ISchecked(t.id82) && !ISchecked(t.id83)) {
                         return t.array4[12];
                     }
-                    else if (!ISchecked(t.id82) && ISchecked(t.id83)){
+                    else if (!ISchecked(t.id82) && ISchecked(t.id83)) {
                         return t.array4[13];
                     }
-                    else if (ISchecked(t.id82) && !ISchecked(t.id83)){
+                    else if (ISchecked(t.id82) && !ISchecked(t.id83)) {
                         return t.array4[14];
                     }
                     else return '';
                 },
 
-                bonesDamageExternalResearch: function() {
+                bonesDamageExternalResearch: function () {
                     var otherBones = getStringEnumeration(t.id77, t.id78, t.id80, t.id81, t.array4, 7),
                             limbBones = getStringEnumeration2(t.id79a, t.id79b, t.array4, 19);
 
@@ -2501,18 +2646,18 @@
                     else if (limbBones == '' && otherBones !== '') {
                         return otherBones + t.array4[6];
                     }
-                    else if (limbBones !== '' && otherBones == ''){
+                    else if (limbBones !== '' && otherBones == '') {
                         return limbBones.charAt(1).toUpperCase() + limbBones.substr(2) + t.array4[21] + t.array4[6];
                     }
                     else return '';
                 },
 
-                textareaDamage: function() {
+                textareaDamage: function () {
                     if (checkAreaForFill(t.id84, re)) return t.array4[17] + getFromTextarea(t.id84) + ' ';
                     else return '';
                 },
 
-                lastSentenceExternalResearch: function() {
+                lastSentenceExternalResearch: function () {
                     if (checkCheckboxesOR(t.id30, t.id31, t.id49, t.id50, t.id51, t.id52, t.id58, t.id61, t.id64, t.id65, t.id66, t.id77, t.id78, t.id79a, t.id79b, t.id80, t.id81, t.id82, t.id83) || checkAreaForFill(t.id84, re)) return t.array4[16];
                     else return t.array4[15];
                 }
@@ -2520,37 +2665,37 @@
             };
 
             var headBrain = {
-                headSoftTissues: function(){
+                headSoftTissues: function () {
                     return t.array7[0];
                 },
-                calvaria: function(){
-                    if (!ISchecked(t.id86)){
+                calvaria: function () {
+                    if (!ISchecked(t.id86)) {
                         return t.array7[1];
                     }
                     else return '';
                 },
 
-                skull: function(){
+                skull: function () {
                     return t.array7[3] + getNumberFromTextarea(t.id88) + ' см, ' + t.array7[4] +
                             getNumberFromTextarea(t.id89) + ' см, ' + t.array7[5] + getNumberFromTextarea(t.id90) + ' см. ';
                 },
 
-                duraMater: function(){
-                    if (!ISchecked(t.id91)){
+                duraMater: function () {
+                    if (!ISchecked(t.id91)) {
                         return t.array7[6] + t.array4[18] + getStringFromSelect2(t.id92, t.array7, 7) + getStringFromSelect2(t.id93, t.array7, 9) + t.array7[11] + getStringFromSelect2(t.id94, t.array7, 12);
                     }
                     else return t.array7[6] + getStringFromSelect2(t.id92, t.array7, 7) + getStringFromSelect2(t.id93, t.array7, 9) + t.array7[11] + getStringFromSelect2(t.id94, t.array7, 12);
                 },
 
-                arachnoidMater1: function(){
-                    if (!ISchecked(t.id91)){
+                arachnoidMater1: function () {
+                    if (!ISchecked(t.id91)) {
                         return t.array7[15] + t.array4[18] + t.array7[16];
                     }
                     else return t.array7[15] + t.array7[16];
                 },
 
-                arachnoidMater2: function(){
-                    if (!ISchecked(t.id95)){
+                arachnoidMater2: function () {
+                    if (!ISchecked(t.id95)) {
                         return t.array7[17] + t.array7[19];
                     }
                     else return t.array7[18] + t.array7[19];
@@ -2559,43 +2704,43 @@
 
                 brainArterias: getStringFromSelect2(t.id104, t.array7, 26),
 
-                hemisphere: function(){
+                hemisphere: function () {
                     return t.array7[20];
                 },
 
-                brainMass: function(){
+                brainMass: function () {
                     return t.array7[21] + getNumberFromTextarea(t.id97) + ' г. ';
                 },
 
-                brain: function(){
+                brain: function () {
                     if (!ISchecked(t.id95)) return t.array7[22] + t.array8[0];
                     else return t.array7[22] + t.array8[2];
                 },
 
-                brainCavity: function(){
+                brainCavity: function () {
                     if (!ISchecked(t.id95)) return t.array7[24] + t.array8[0];
                     else return t.array7[24] + t.array8[3];
                 },
 
-                nucleiSubcortical: function(){
+                nucleiSubcortical: function () {
                     return t.array7[25];
                 },
 
-                brainstemCerebellim: function(){
+                brainstemCerebellim: function () {
                     return t.array7[30];
                 },
 
-                pinealGland: function(){
+                pinealGland: function () {
                     if (getNumberFromTextarea(t.id98) == getNumberFromTextarea(t.id99) && getNumberFromTextarea(t.id98) == getNumberFromTextarea(t.id100)) return t.array7[32] + getNumberFromTextarea(t.id98) + 'x' + getNumberFromTextarea(t.id99) + 'x' + getNumberFromTextarea(t.id100) + ' см, ' + t.array7[33];
                     else return t.array7[31] + getNumberFromTextarea(t.id98) + 'x' + getNumberFromTextarea(t.id99) + 'x' + getNumberFromTextarea(t.id100) + ' см, ' + t.array7[33];
                 },
 
-                pituitaryGlandOtherBraim: function(){
+                pituitaryGlandOtherBraim: function () {
                     return t.array7[34] + getNumberFromTextarea(t.id101) + 'x' + getNumberFromTextarea(t.id102) + 'x' + getNumberFromTextarea(t.id103) + t.array7[35] + t.array7[36];
                 },
 
-                baseSkull: function(){
-                    if (!ISchecked(t.id87)){
+                baseSkull: function () {
+                    if (!ISchecked(t.id87)) {
                         return t.array7[2];
                     }
                     else return '';
@@ -2604,84 +2749,86 @@
             };
 
             var visceralGeneral = {
-                subcutaneousFat: function(){
-                    if (ISchecked(t.id96)) return t.array10[0] + t.array9[1] + t.array10[1]  + getNumberFromTextarea(t.id105) + ' см, ' + t.array10[2] + getNumberFromTextarea(t.id106) + ' см. ';
+                subcutaneousFat: function () {
+                    if (ISchecked(t.id96)) return t.array10[0] + t.array9[1] + t.array10[1] + getNumberFromTextarea(t.id105) + ' см, ' + t.array10[2] + getNumberFromTextarea(t.id106) + ' см. ';
                     else return t.array10[0] + t.array9[0] + t.array10[1] + getNumberFromTextarea(t.id105) + ' см, ' + t.array10[2] + getNumberFromTextarea(t.id106) + ' см. ';
                 },
 
-                softTissueNeckThoraxAbdomen: function(){
+                softTissueNeckThoraxAbdomen: function () {
                     if (ISchecked(t.id95)) return t.array10[3] + t.array9[3] + ', ' + t.array11[1] + '. ';
                     else if (ISchecked(t.id96)) return t.array10[3] + t.array9[4] + ', ' + t.array11[1] + '. ';
                     else return t.array10[3] + t.array9[2] + ', ' + t.array11[1] + '. ';
                 },
 
-                abdominalCavity: function(){ return t.array10[4]; },
-                liverEdgeCurve: function(){
+                abdominalCavity: function () {
+                    return t.array10[4];
+                },
+                liverEdgeCurve: function () {
                     if (verificationSelect(t.id107, 1)) return t.array10[5];
                     else if (verificationSelect(t.id107, 2)) return t.array10[6];
                     else return t.array10[7];
                 },
 
-                liverEdgeProtrusion: function(){
+                liverEdgeProtrusion: function () {
                     if (verificationSelect(t.id108, 2)) return t.array10[8] + getNumberFromTextarea(t.id109) + ' см. ';
                     else return t.array10[9];
                 },
 
-                thoracicCavity: function(){
+                thoracicCavity: function () {
                     return t.array10[10];
                 },
 
-                pleuralCavityLiquid: function(){
+                pleuralCavityLiquid: function () {
                     if (verificationSelect(t.id117, 2)) { /*Liquid*/
                         if (getNumberFromTextarea(t.id118) == 0 && getNumberFromTextarea(t.id119) == 0) return t.array12[1];
                         if (getNumberFromTextarea(t.id118) !== 0 && getNumberFromTextarea(t.id119) == 0) {
-                            if (verificationSelect(t.id120, 1)) return t.array12[5] + getNumberFromTextarea(t.id118) + ' мл ' +  t.array9[5] + t.array12[7] + t.array12[4];
-                            if (verificationSelect(t.id120, 2)) return t.array12[5] + getNumberFromTextarea(t.id118) + ' мл ' +  t.array9[6] + t.array12[7] + t.array12[4];
-                            if (verificationSelect(t.id120, 3)) return t.array12[5] + getNumberFromTextarea(t.id118) + ' мл ' +  t.array9[7] + t.array12[7] + t.array12[4];
+                            if (verificationSelect(t.id120, 1)) return t.array12[5] + getNumberFromTextarea(t.id118) + ' мл ' + t.array9[5] + t.array12[7] + t.array12[4];
+                            if (verificationSelect(t.id120, 2)) return t.array12[5] + getNumberFromTextarea(t.id118) + ' мл ' + t.array9[6] + t.array12[7] + t.array12[4];
+                            if (verificationSelect(t.id120, 3)) return t.array12[5] + getNumberFromTextarea(t.id118) + ' мл ' + t.array9[7] + t.array12[7] + t.array12[4];
                         }
                         if (getNumberFromTextarea(t.id118) == 0 && getNumberFromTextarea(t.id119) !== 0) {
-                            if (verificationSelect(t.id120, 1)) return t.array12[6] + getNumberFromTextarea(t.id119) + ' мл ' +  t.array9[5] + t.array12[8] + t.array12[4];
-                            if (verificationSelect(t.id120, 2)) return t.array12[6] + getNumberFromTextarea(t.id119) + ' мл ' +  t.array9[6] + t.array12[8] + t.array12[4];
-                            if (verificationSelect(t.id120, 3)) return t.array12[6] + getNumberFromTextarea(t.id119) + ' мл ' +  t.array9[7] + t.array12[8] + t.array12[4];
+                            if (verificationSelect(t.id120, 1)) return t.array12[6] + getNumberFromTextarea(t.id119) + ' мл ' + t.array9[5] + t.array12[8] + t.array12[4];
+                            if (verificationSelect(t.id120, 2)) return t.array12[6] + getNumberFromTextarea(t.id119) + ' мл ' + t.array9[6] + t.array12[8] + t.array12[4];
+                            if (verificationSelect(t.id120, 3)) return t.array12[6] + getNumberFromTextarea(t.id119) + ' мл ' + t.array9[7] + t.array12[8] + t.array12[4];
                         }
                         if (getNumberFromTextarea(t.id118) !== 0 && getNumberFromTextarea(t.id119) !== 0) {
-                            if (verificationSelect(t.id120, 1)) return  t.array12[9] + t.array9[8] + t.array11[3] + getNumberFromTextarea(t.id118) + ' мл, ' + t.array11[4] + getNumberFromTextarea(t.id119) + ' мл. ' + t.array12[4];
-                            if (verificationSelect(t.id120, 2)) return  t.array12[9] + t.array9[9] + t.array11[3] + getNumberFromTextarea(t.id118) + ' мл, ' + t.array11[4] + getNumberFromTextarea(t.id119) + ' мл. ' + t.array12[4];
-                            if (verificationSelect(t.id120, 3)) return  t.array12[9] + t.array9[10] + t.array11[3] + getNumberFromTextarea(t.id118) + ' мл, ' + t.array11[4] + getNumberFromTextarea(t.id119) + ' мл. ' + t.array12[4];
+                            if (verificationSelect(t.id120, 1)) return t.array12[9] + t.array9[8] + t.array11[3] + getNumberFromTextarea(t.id118) + ' мл, ' + t.array11[4] + getNumberFromTextarea(t.id119) + ' мл. ' + t.array12[4];
+                            if (verificationSelect(t.id120, 2)) return t.array12[9] + t.array9[9] + t.array11[3] + getNumberFromTextarea(t.id118) + ' мл, ' + t.array11[4] + getNumberFromTextarea(t.id119) + ' мл. ' + t.array12[4];
+                            if (verificationSelect(t.id120, 3)) return t.array12[9] + t.array9[10] + t.array11[3] + getNumberFromTextarea(t.id118) + ' мл, ' + t.array11[4] + getNumberFromTextarea(t.id119) + ' мл. ' + t.array12[4];
 
                         }
                     }
                     else return t.array12[1] + t.array12[3];
                 },
 
-                pericard: function() {
+                pericard: function () {
                     return t.array13[64] + getNumberFromTextarea(t.id154) + ' мл ' + t.array9[11] + '. ';
                 },
 
-                neckVessels: function(){
+                neckVessels: function () {
                     if (ISchecked(t.id110)) return t.array10[13] + t.array10[14] + t.array10[15];
                     else return t.array10[12] + t.array10[14] + t.array10[15];
                 },
 
-                thyreoidGland: function(){
+                thyreoidGland: function () {
                     return t.array10[16] + getNumberFromTextarea(t.id111) + 'x' + getNumberFromTextarea(t.id112) + 'х' + getNumberFromTextarea(t.id113) + ' см, ' +
                             t.array10[17] + getNumberFromTextarea(t.id114) + 'x' + getNumberFromTextarea(t.id115) + 'х' + getNumberFromTextarea(t.id116) + ' см. ' +
                             t.array10[18] + t.array11[0] + '. ' + t.array10[19];
                 },
 
-                respiratoryDigestivePathNL: function(){
+                respiratoryDigestivePathNL: function () {
                     return t.array10[20] + t.array10[21] + t.array10[22] + t.array11[0] + '. ';
                 },
 
-                lungsMass: function(){
-                    return t.array12[10] + t.array11[5] + getNumberFromTextarea(t.id121) + ' г., ' +  t.array11[6] +  getNumberFromTextarea(t.id122) + ' г. ' ;
+                lungsMass: function () {
+                    return t.array12[10] + t.array11[5] + getNumberFromTextarea(t.id121) + ' г., ' + t.array11[6] + getNumberFromTextarea(t.id122) + ' г. ';
                 },
 
-                pulmonaryPleura: function(){
+                pulmonaryPleura: function () {
                     return t.array12[11];
                 },
 
-                lungTissue: function(){
+                lungTissue: function () {
                     if (ISchecked(t.id124)) {
                         if (verificationSelect(t.id123, 1)) return t.array12[12] + t.array8[1] + t.array12[15];
                         /*ум. кровенап*/
@@ -2704,51 +2851,51 @@
                     }
                 },
 
-                bronchInSection: function(){
-                    if (ISchecked(t.id125) && ISchecked(t.id126)){
+                bronchInSection: function () {
+                    if (ISchecked(t.id125) && ISchecked(t.id126)) {
                         return t.array12[17] + t.array12[19];
                     }
-                    else if (ISchecked(t.id125) && !ISchecked(t.id126)){
+                    else if (ISchecked(t.id125) && !ISchecked(t.id126)) {
                         return t.array12[17] + t.array12[18];
                     }
-                    else if (!ISchecked(t.id125) && ISchecked(t.id126)){
+                    else if (!ISchecked(t.id125) && ISchecked(t.id126)) {
                         return t.array12[16] + t.array12[19];
                     }
                     else return t.array12[16] + t.array12[18];
                 },
 
-                heartGeneral: function(){
+                heartGeneral: function () {
                     return t.array13[0] + t.array13[1] + getStringFromSelect2(t.id128, t.array11, 9) + ', ';
                 },
 
-                heartSizeWeight: function(){
-                    return t.array11[7] + getNumberFromTextarea(t.id130L) + 'x'+ getNumberFromTextarea(t.id130W) + 'x' + getNumberFromTextarea(t.id130D) + ' см, ' + t.array11[8] + getNumberFromTextarea(t.id129) + ' г. '
+                heartSizeWeight: function () {
+                    return t.array11[7] + getNumberFromTextarea(t.id130L) + 'x' + getNumberFromTextarea(t.id130W) + 'x' + getNumberFromTextarea(t.id130D) + ' см, ' + t.array11[8] + getNumberFromTextarea(t.id129) + ' г. '
                 },
 
-                heartFatСoronaritis: function(){
+                heartFatСoronaritis: function () {
                     return getStringFromSelect2(t.id127, t.array13, 3) +
                             getStringFromSelect2(t.id131, t.array13, 7) + getStringFromSelect2(t.id132, t.array13, 10);
                 },
 
-                heartCavity: function(){
-                    if(ISchecked(t.id133)) return t.array13[14] + t.array13[16] + getStringFromSelect2(t.id134, t.array13, 17);
+                heartCavity: function () {
+                    if (ISchecked(t.id133)) return t.array13[14] + t.array13[16] + getStringFromSelect2(t.id134, t.array13, 17);
                     else return t.array13[14] + t.array13[15] + getStringFromSelect2(t.id134, t.array13, 17);
                 },
 
-                heartValves: function(){
+                heartValves: function () {
                     return getStringFromSelect2(t.id135, t.array13, 23) + t.array13[26] +
                             getNumberFromTextarea(t.id136) + ' см, ' + t.array13[27] + getNumberFromTextarea(t.id137) + ' см, ' +
-                            t.array13[28] + getNumberFromTextarea(t.id138) + ' см, ' + t.array13[29] + getNumberFromTextarea(t.id139) + ' см. ' ;
+                            t.array13[28] + getNumberFromTextarea(t.id138) + ' см, ' + t.array13[29] + getNumberFromTextarea(t.id139) + ' см. ';
                 },
 
-                heartPapillMusclThreadsEndocard: function(){
+                heartPapillMusclThreadsEndocard: function () {
                     if (!ISchecked(t.id140) && !ISchecked(t.id141)) return t.array13[30] + t.array13[34];
                     if (ISchecked(t.id140) && !ISchecked(t.id141)) return t.array13[31] + t.array13[34];
                     if (!ISchecked(t.id140) && ISchecked(t.id141)) return t.array13[32] + t.array13[34];
                     if (ISchecked(t.id140) && ISchecked(t.id141)) return t.array13[33] + t.array13[34];
                 },
 
-                heartTissue: function(){
+                heartTissue: function () {
                     if (ISchecked(t.id142)) {
                         if (verificationSelect(t.id143, 1)) return t.array13[35] + t.array8[1] + t.array13[36];
                         /*ум. кровенап*/
@@ -2771,46 +2918,46 @@
                     }
                 },
 
-                heartVentriclesSize: function() {
-                    return  t.array13[37] + getNumberFromTextarea(t.id144) + ' см, ' +  t.array13[38] + getNumberFromTextarea(t.id145) + ' см. ';
+                heartVentriclesSize: function () {
+                    return t.array13[37] + getNumberFromTextarea(t.id144) + ' см, ' + t.array13[38] + getNumberFromTextarea(t.id145) + ' см. ';
                 },
 
-                aorta: function() {
+                aorta: function () {
                     if (verificationSelect(t.id149, 6)) return t.array13[55] + getStringFromSelect2(t.id146, t.array13, 39) + getStringFromSelect2(t.id148, t.array13, 44) + getStringFromSelect2(t.id149, t.array13, 49);
                     else return getStringFromSelect2(t.id146, t.array13, 39) + getStringFromSelect2(t.id148, t.array13, 44) + getStringFromSelect2(t.id149, t.array13, 49);
                 },
 
-                aortaSize: function(){
+                aortaSize: function () {
                     return t.array13[61] + getNumberFromTextarea(t.id150) + ' см, ' + t.array13[62] + getNumberFromTextarea(t.id151) + ' см. ';
                 },
 
-                venaCavaInf: function(){
+                venaCavaInf: function () {
                     return getStringFromSelect2(t.id147, t.array13, 56) + t.array13[63];
                 },
 
-                spleenGSR: function(){
+                spleenGSR: function () {
                     return t.array14[0] + t.array14[1] + getNumberFromTextarea(t.id152M) + ' г, ' +
-                            t.array11[12] + getNumberFromTextarea(t.id152H) + 'х' + getNumberFromTextarea(t.id152W) + 'х'+ getNumberFromTextarea(t.id152D) + ' см. ' +
+                            t.array11[12] + getNumberFromTextarea(t.id152H) + 'х' + getNumberFromTextarea(t.id152W) + 'х' + getNumberFromTextarea(t.id152D) + ' см. ' +
                             t.array14[2] + getStringFromSelect2(t.id153, t.array14, 3) + t.array14[6];
                 },
 
-                kidneyFat: function(){
+                kidneyFat: function () {
                     return t.array15[0] + getNumberFromTextarea(t.id155) + ' мм. ';
                 },
 
-                kidneyRightSize: function(){
+                kidneyRightSize: function () {
                     return t.array15[1] + getNumberFromTextarea(t.id156) + 'х' + getNumberFromTextarea(t.id157) + 'х' + getNumberFromTextarea(t.id158) + ' см, ';
                 },
 
-                kidneyLeftSize: function(){
+                kidneyLeftSize: function () {
                     return t.array15[2] + getNumberFromTextarea(t.id159) + 'х' + getNumberFromTextarea(t.id160) + 'х' + getNumberFromTextarea(t.id161) + ' см. ';
                 },
 
-                kidneyCapsule: function(){
+                kidneyCapsule: function () {
                     return getStringFromSelect2(t.id162, t.array15, 3) + getStringFromSelect2(t.id163, t.array15, 5) + getStringFromSelect2(t.id164, t.array0, 3) + t.array0[2];
                 },
 
-                kidneyTissue: function(){
+                kidneyTissue: function () {
                     if (!ISchecked(t.id165)) {
                         if (verificationSelect(t.id166, 1)) return t.array15[8] + t.array8[1] + t.array15[9] + t.array15[11];
                         /*ум. кровенап*/
@@ -2833,30 +2980,30 @@
                     }
                 },
 
-                bladder: function(){
+                bladder: function () {
                     if (!ISchecked(t.id168)) return t.array15[12] + getNumberFromTextarea(t.id167) + ' мл ' + t.array15[13] + t.array15[15];
                     else return t.array15[12] + t.array15[14] + t.array15[15];
                 },
 
-                prostateUterus: function(){
+                prostateUterus: function () {
                     if (ISchecked(t.id6)) return t.array15[16] + getNumberFromTextarea(t.id169) + 'x' + getNumberFromTextarea(t.id170) + 'x' + getNumberFromTextarea(t.id171) + ' см. ';
                     else return t.array15[17] + getStringFromSelect2(t.id172, t.array15, 18) + t.array15[20];
                 },
 
-                gaster: function(){
-                    if (verificationSelect(t.id174, 1)) return t.array16[0] + t.array16[1] + getNumberFromTextarea(t.id175) + ' мл ' + t.array16[3] + getStringFromSelect2(t.id176, t.array16, 4) + getStringFromSelect2(t.id177, t.array0, 5) + t.array16[8] ;
+                gaster: function () {
+                    if (verificationSelect(t.id174, 1)) return t.array16[0] + t.array16[1] + getNumberFromTextarea(t.id175) + ' мл ' + t.array16[3] + getStringFromSelect2(t.id176, t.array16, 4) + getStringFromSelect2(t.id177, t.array0, 5) + t.array16[8];
                     if (verificationSelect(t.id174, 2)) return t.array16[0] + t.array16[2] + getStringFromSelect2(t.id176, t.array16, 4) + getStringFromSelect2(t.id177, t.array0, 5) + t.array16[8];
                 },
 
-                pancreas: function(){
+                pancreas: function () {
                     return t.array16[9] + getStringFromSelect2(t.id182, t.array16, 10) + t.array11[13] + getNumberFromTextarea(t.id179) + 'x' + getNumberFromTextarea(t.id180) + 'x' + getNumberFromTextarea(t.id181) + ' см, массой ' + getNumberFromTextarea(t.id178) + ' г. ';
                 },
 
-                pancreasStructure: function(){
+                pancreasStructure: function () {
                     return t.array16[13] + getStringFromSelect2(t.id182, t.array16, 10) + getStringFromSelect2(t.id183, t.array16, 14) + '';
                 },
 
-                pancreasBloodFillingOther: function(){
+                pancreasBloodFillingOther: function () {
                     if (verificationSelect(t.id184, 1)) return t.array8[1] + t.array0[8];
                     /*ум. кровенап*/
                     if (verificationSelect(t.id184, 2)) return t.array8[4] + t.array0[8];
@@ -2867,37 +3014,37 @@
                     /*малокр*/
                 },
 
-                gallbladder: function(){
-                    return t.array16[16] + getNumberFromTextarea(t.id185) + t.array16[17] +  t.array16[18];
+                gallbladder: function () {
+                    return t.array16[16] + getNumberFromTextarea(t.id185) + t.array16[17] + t.array16[18];
                 },
 
-                hepar: function(){
-                    return t.array16[19] + getStringFromSelect2(t.id186, t.array16, 10) + t.array16[20] + getStringFromSelect2(t.id187, t.array0, 9) + '. ' + t.array16[21] + getNumberFromTextarea(t.id188) + 'x' + getNumberFromTextarea(t.id189) + 'x' + getNumberFromTextarea(t.id190) + 'x' + getNumberFromTextarea(t.id191) + 'x' + getNumberFromTextarea(t.id192) + ' см, ' + t.array11[14] + getNumberFromTextarea(t.id193) + ' г. ' ;
+                hepar: function () {
+                    return t.array16[19] + getStringFromSelect2(t.id186, t.array16, 10) + t.array16[20] + getStringFromSelect2(t.id187, t.array0, 9) + '. ' + t.array16[21] + getNumberFromTextarea(t.id188) + 'x' + getNumberFromTextarea(t.id189) + 'x' + getNumberFromTextarea(t.id190) + 'x' + getNumberFromTextarea(t.id191) + 'x' + getNumberFromTextarea(t.id192) + ' см, ' + t.array11[14] + getNumberFromTextarea(t.id193) + ' г. ';
                 },
 
-                heparDisection: function(){
+                heparDisection: function () {
                     if (verificationSelect(t.id194, 1)) return t.array16[22] + getStringFromSelect2(t.id187, t.array0, 9) + ', ' + t.array8[1] + getStringFromSelect2(t.id195, t.array16, 23);
                     /*ум. кровенап*/
                     if (verificationSelect(t.id194, 2)) return t.array16[22] + getStringFromSelect2(t.id187, t.array0, 9) + ', ' + t.array8[4] + getStringFromSelect2(t.id195, t.array16, 23);
                     /*полнокровие*/
                     if (verificationSelect(t.id194, 3)) return t.array16[22] + getStringFromSelect2(t.id187, t.array0, 9) + ', ' + t.array8[7] + getStringFromSelect2(t.id195, t.array16, 23);
                     /*неравномерного*/
-                    if (verificationSelect(t.id194, 4)) return t.array16[22] +  getStringFromSelect2(t.id187, t.array0, 9) + ', ' + t.array8[8] + getStringFromSelect2(t.id195, t.array16, 23);
+                    if (verificationSelect(t.id194, 4)) return t.array16[22] + getStringFromSelect2(t.id187, t.array0, 9) + ', ' + t.array8[8] + getStringFromSelect2(t.id195, t.array16, 23);
                     /*малокр*/
                 },
 
-                intestines: function(){
+                intestines: function () {
                     return t.array16[25] + t.array16[26];
                 },
 
-                bonesDamageInternalResearch: function() {
+                bonesDamageInternalResearch: function () {
                     var otherBones = getStringEnumeration(t.id173, t.id77, t.id78, t.id80, t.id81, t.array4, 22),
                             limbBones = getStringEnumeration2(t.id79a, t.id79b, t.array4, 32);
 
                     if (!ISchecked(t.id173) && checkCheckboxesAND(t.id77, t.id78, t.id80, t.id81, t.id79a, t.id79b)) {
                         return 'Грудина цела. ';
                     }
-                    else if (!ISchecked(t.id77) && checkCheckboxesAND(t.id173, t.id78, t.id80, t.id81, t.id79a, t.id79b)){
+                    else if (!ISchecked(t.id77) && checkCheckboxesAND(t.id173, t.id78, t.id80, t.id81, t.id79a, t.id79b)) {
                         return 'Позвоночник цел. ';
                     }
                     else {
@@ -2907,7 +3054,7 @@
                         else if (limbBones == '' && otherBones !== '') {
                             return otherBones + t.array4[27];
                         }
-                        else if (limbBones !== '' && otherBones == ''){
+                        else if (limbBones !== '' && otherBones == '') {
                             console.log(t.array4[35] + limbBones + t.array4[21] + t.array4[27]);
                             return t.array4[35] + limbBones + t.array4[21] + t.array4[27];
                         }
@@ -2915,12 +3062,12 @@
                     }
                 },
 
-                ribsDamage: function(){
+                ribsDamage: function () {
                     if (!ISchecked(t.id66)) return t.array4[36];
                     else return '';
                 },
 
-                lastSentenceInternalResearch: function() {
+                lastSentenceInternalResearch: function () {
                     if (checkCheckboxesOR(t.id66, t.id77, t.id78, t.id79a, t.id79b, t.id80, t.id81, t.id86, t.id87, t.id91, t.id173)) return t.array4[29];
                     else return t.array4[28];
                 },
@@ -2952,9 +3099,15 @@
                     else return alcogol() + '. ';
                 },
 
-                bloodType: function(){
+                bloodType: function () {
                     if (ISchecked(t.id205)) return t.array17[16];
                     else return '';
+                },
+
+                hystilogy: function () {
+                    if (checkCheckboxesOR(t.id206, t.id207, t.id208, t.id209, t.id210, t.id211, t.id212, t.id213, t.id214, t.id215, t.id216, t.id217, t.id218, t.id219, t.id220, t.id221, t.id222, t.id223, t.id224, t.id225, t.id226, t.id227, t.id228, t.id229, t.id230, t.id231, t.id232, t.id233, t.id234)) {
+                        return t.array18[0] + getStringEnumeration4(t.id206, t.id207, t.id208, t.id209, t.id210, t.id211, t.id212, t.id213, t.id214, t.id215, t.id216, t.id217, t.id218, t.id219, t.id220, t.id221, t.id222, t.id223, t.id224, t.id225, t.id226, t.id227, t.id228, t.id229, t.id230, t.id231, t.id232, t.id233, t.id234, t.array18, 1) + '. ';
+                    } else return '';
                 }
             };
 
@@ -3001,14 +3154,15 @@
 
             iHTML = "<style> p{text-align: justify; text-indent: 30px; font-family: 'Times New Roman', sans-serif; font-size: 16px; margin: 0}"
                     + " .titleResearch {margin-left: 40%; font-family: Georgia, 'Times New Roman', Times, serif; font-weight:bold; text-transform: uppercase;}</style>"
-                    + "<div id='divFrame' style='background: #fbecdd; padding: 10px 20px 20px 30px'></div>" ;
+                    + "<div id='divFrame' style='background: #fbecdd; padding: 10px 20px 20px 30px'></div>";
             iDoc.open(); // Открываем фрейм
             iDoc.write(iHTML); // Добавляем написанный код в фрейм
             iDoc.getElementById("divFrame").innerHTML = "";
             iDoc.getElementById("divFrame").appendChild(spanTitle1);
             iDoc.getElementById("divFrame").appendChild(br);
             iDoc.getElementById("divFrame").appendChild(p); //
-            iDoc.getElementById("divFrame").appendChild(br); divFrame.appendChild(br);
+            iDoc.getElementById("divFrame").appendChild(br);
+            divFrame.appendChild(br);
             iDoc.getElementById("divFrame").appendChild(br);
             iDoc.getElementById("divFrame").appendChild(br);
             iDoc.getElementById("divFrame").appendChild(br);
@@ -3038,6 +3192,7 @@
             array15: arr_genitourinary,
             array16: arr_digestive,
             array17: arr_additionInvestigation,
+            array18: arr_hystology,
             id2: 'dress',
             id3: 'dressold',
             id4: 'dirty',
@@ -3086,7 +3241,7 @@
             id46: 'shell_color',
             id47: 'shell_surface',
             id48: 'eyesHemorrhage',
-            id49: 'd1',  /* hair pars of head*/
+            id49: 'd1', /* hair pars of head*/
             id50: 'd2', /*eyes membranes*/
             id51: 'd11', /*nose bones*/
             id52: 'd11a', /*nose cartilages*/
@@ -3121,7 +3276,7 @@
             id80: 'd18', /*claviculas*/
             id81: 'd19', /*scapulas*/
             id82: 'd13', /*spin*/
-            id83: 'd14',  /*loins*/
+            id83: 'd14', /*loins*/
             id84: 'textareaDamage',
             id85: 'teethVisible',
             id86: 'd9' /*calvaria*/,
@@ -3129,7 +3284,7 @@
             id88: 'osFrontale',
             id89: 'osTemporale',
             id90: 'osOccipitale',
-            id91: 'd20',  /*meninges*/
+            id91: 'd20', /*meninges*/
             id92: 'duraMaterTension',
             id93: 'duraMaterSeparate',
             id94: 'duraMaterSinus',
@@ -3248,53 +3403,95 @@
             id202: 'narcotic',
             id203: 'bloodChem',
             id204: 'urineChem',
-            id205: 'bloodType'
+            id205: 'bloodType',
+            id206: 'hystBrain',
+            id207: 'hystHypophysis',
+            id208: 'hystDuraMater',
+            id209: 'hystSpinalCord',
+            id210: 'hystHeart',
+            id211: 'hystAorta',
+            id212: 'hystThyroid',
+            id213: 'hystAdrenal',
+            id214: 'hystBud',
+            id215: 'hystBladder',
+            id216: 'hystProstata',
+            id217: 'hystTesticles',
+            id218: 'hystUterus',
+            id219: 'hystOvary',
+            id220: 'hystLymph',
+            id221: 'hystSpleen',
+            id222: 'hystSternum',
+            id223: 'hystBoneMarrow',
+            id224: 'hystPeritoneum',
+            id225: 'hystMesentery',
+            id226: 'hystEsophagus',
+            id227: 'hystStomach',
+            id228: 'hystIntestine',
+            id229: 'hystLiver',
+            id230: 'hystGullbladder',
+            id231: 'hystPancreas',
+            id232: 'softTissueFeet',
+            id233: 'softTissueNeck',
+            id234: 'hystStrangulation'
         };
-
     </script>
 </head>
 
 <body>
 <div class="main-container">
     <div class="menu">
-        <!--<div class="button-container1">-->
-        <div class="button-pointer pointer-dress" onclick="changeLocalityLeft('formDress', '50px')"><span>одежда</span></div>
+        <div class="button-pointer pointer-dress" onclick="changeLocalityLeft('formDress', '50px')"><span>одежда</span>
+        </div>
         <div class="button-pointer " onclick="changeLocalityLeft('head', '50px')"><span>голова</span></div>
         <div class="button-pointer" onclick="changeLocalityLeft('torso', '50px')"><span>туловище</span></div>
-        <div class="button-pointer" onclick="changeLocalityLeft('heartBloodVessels', '10px')"><span>сердце и сосуды</span></div>
-        <div class="button-pointer" onclick="changeLocalityLeft('breath', '50px')"><span>дыхательная система</span></div>
+        <div class="button-pointer" onclick="changeLocalityLeft('heartBloodVessels', '10px')">
+            <span>сердце и сосуды</span></div>
+        <div class="button-pointer" onclick="changeLocalityLeft('breath', '50px')"><span>дыхательная система</span>
+        </div>
 
-        <!--</div>-->
-        <!--<div class="button-container2">-->
-        <div class="button-pointer pointer-general" onclick="changeLocalityLeft('formGeneral', '50px')"><span>общие параметры тела</span></div>
-        <div class="button-pointer" onclick="changeLocalityLeft('teeth', '50px')"><span>зубная формула</span></div>
+        <div class="button-pointer pointer-general" onclick="changeLocalityLeft('formGeneral', '50px')"><span>общие параметры тела</span>
+        </div>
+        <div class="button-pointer pointer-teethFormula" onclick="changeLocalityLeft('teeth', '50px')"><span>зубная формула</span>
+        </div>
         <div class="button-pointer" onclick="changeLocalityLeft('brainSkull', '50px')"><span>ЦНС, череп</span></div>
         <div class="button-pointer" onclick="changeLocalityLeft('digestive', '50px')"><span>ЖКТ</span></div>
-        <div class="button-pointer" onclick="changeLocalityLeft('genitourinary', '50px')"><span>мочеполовая система</span></div>
-        <div class="button-pointer" onclick="changeLocalityLeft('formDecomposition', '50px')"><span>трупные явления</span></div>
-        <div class="button-pointer" onclick="changeLocalityLeft('damage', '50px')"><span>повреждения</span></div>
-        <div class="button-pointer" onclick="changeLocalityLeft('generalPathology', '50px')"><span>общая патология</span></div>
-        <div class="button-pointer" onclick="changeLocalityLeft('additionalStudy', '50px')"><span>дополнительное исследование</span></div>
-        <div class="button-pointer" onclick="changeLocalityLeft('other', '50px')"><span>остальное</span></div>
+        <div class="button-pointer" onclick="changeLocalityLeft('genitourinary', '50px')">
+            <span>мочеполовая система</span></div>
+        <div class="button-pointer pointer-decomposition" onclick="changeLocalityLeft('formDecomposition', '50px')">
+            <span>трупные явления</span></div>
+        <div class="button-pointer pointer-damage" onclick="changeLocalityLeft('damage', '50px')">
+            <span>повреждения</span></div>
+        <div class="button-pointer pointer-generalPathology" onclick="changeLocalityLeft('generalPathology', '50px')">
+            <span>общая патология</span></div>
+        <div class="button-pointer pointer-additionalStudy" onclick="changeLocalityLeft('additionalStudy', '50px')">
+            <span>дополнительное исследование</span></div>
+        <div class="button-pointer pointer-other" onclick="changeLocalityLeft('other', '50px')"><span>остальное</span>
+        </div>
 
         <!--DRESS-->
         <div class="block block-forma block-forma-dress" id="formDress">
-            <div class="pushback-block" onclick="resetLocalityLeft('formDress')">  X  </div>
+            <div class="pushback-block" onclick="resetLocalityLeft('formDress')"> X</div>
             <form id="form_dress" name="form_dress">
                 <label for="dressPresence"><span>Одежды нет</span></label>
-                <input type="checkbox" id="dressPresence" onchange="changeStyle('dressGeneral', ' div-hidden'); resetFormElements('dress', 'clotheds')"/>
+                <input type="checkbox" autocomplete="off" id="dressPresence"
+                       onchange="changeStyle('dressGeneral', ' div-hidden'); resetFormElements('dress', 'clotheds')"/>
+
                 <br/>
                 <br/>
+
                 <div class="dress-general" id="dressGeneral">
                     <label for="dress"><span>Одежда:</span></label><br/>
                     <textarea cols="50" id="dress" rows="13"></textarea><br/>
                     <label for="checkDress"><span>Повреждения одежды&nbsp;</span></label>
-                    <input id="checkDress" type="checkbox" onclick="changeStyle('div_clotheds', ' div-cloth'); resetFormElements('clotheds')">
+                    <input id="checkDress" type="checkbox" autocomplete="off"
+                           onclick="changeStyle('div_clotheds', ' div-cloth'); resetFormElements('clotheds')">
                     <br/>
+
                     <div class="div-hidden" id="div_clotheds">
                         <textarea cols="50" id="clotheds" name="clotheds" rows="7"></textarea>
                     </div>
                     <br/>
+
                     <div id="div_dress">
                         <label for="dressold"><span>Степень изношенности одежды:</span></label>
                         <select id="dressold">
@@ -3317,24 +3514,42 @@
                 </div>
                 <br/>
                 <br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="
+                if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);
+                else getResult(t);
+                "
+                       type="button" value="Результат">
                 <input onclick="resetNewStyle('dressGeneral', 'div_clotheds');
                         resetForm('form_dress')" type="button" value="Сбросить">
             </form>
         </div>
         <!--general characters -->
         <div class="block block-forma block-forma-general" id="formGeneral">
-            <div class="pushback-block" onclick="resetLocalityLeft('formGeneral')">  X  </div>
+            <div class="pushback-block" onclick="resetLocalityLeft('formGeneral')"> X</div>
             <form id="form_general" name="form_general">
                 <span>Пол:</span><br>
-                <input checked id="man" name="sex" type="radio" onchange="resetNewStyle('divBreast', 'divProstata', 'divUterus'); getRandAndAddInValue('hair_length', 2, 10);
+                <input id="man" name="sex" type="radio" autocomplete="off" checked="checked" onchange="
+                resetNewStyle('divBreast', 'divProstata', 'divUterus');
+                getRandAndAddInValue('hair_length', 2, 10);
                 get5RandAndAddInValue('massBrain', 1360, 1380, 10);
+                changeCheckedFalse('hystUterus');
+                changeCheckedFalse('hystOvary');
+                changeStyleDisplay('hystologyUterus', 'none');
+                changeStyleDisplay('hystologyOvary', 'none');
+                changeStyleDisplay('hystologyProstata', 'block');
+                changeStyleDisplay('hystologyTesticles', 'block');
                 "><label for="man"><span>Мужской</span></label><br/>
-                <input id="woman" name="sex" type="radio" onchange="changeStyle('divBreast', ' div-breast-new');
-                 changeStyle('divProstata', ' div-prostata-new');
-                 changeStyle('divUterus', ' div-uterus-new');
-                 getRandAndAddInValue('hair_length', 10, 35);
-                 get5RandAndAddInValue('massBrain', 1260, 1280, 10);
+                <input id="woman" name="sex" type="radio" autocomplete="off" onchange="changeStyle('divBreast', ' div-breast-new');
+                changeStyle('divProstata', ' div-prostata-new');
+                changeStyle('divUterus', ' div-uterus-new');
+                getRandAndAddInValue('hair_length', 10, 35);
+                get5RandAndAddInValue('massBrain', 1260, 1280, 10);
+                changeCheckedFalse('hystProstata');
+                changeCheckedFalse('hystTesticles');
+                changeStyleDisplay('hystologyUterus', 'block');
+                changeStyleDisplay('hystologyOvary', 'block');
+                changeStyleDisplay('hystologyProstata', 'none');
+                changeStyleDisplay('hystologyTesticles', 'none');
                  "><label for="woman"><span>Женский</span></label><br/>
                 <br/>
                 <label for="growth"><span>Длина тела:</span></label> <input id="growth" size="5" type="text">
@@ -3388,10 +3603,12 @@
                 <br/>
                 <br/>
                 <label for="defects"><span>Дефекты развития&nbsp;</span>
-                </label><input id="defects" type="checkbox">
+                </label><input id="defects" type="checkbox" autocomplete="off">
                 <label for="mass"><span>&nbsp; &nbsp; масса тела не измерялась&nbsp;</span></label>
-                <input checked id="mass" type="checkbox" onchange="changeStyle('massDiv', ' mass-new')">
+                <input checked id="mass" type="checkbox" autocomplete="off"
+                       onchange="changeStyle('massDiv', ' mass-new')">
                 <br/>
+
                 <div id="massDiv" class="mass">
                     <label for="massNum"><span>Масса тела</span></label><input id="massNum" type="text" size="2"/><span>кг</span>
                 </div>
@@ -3406,19 +3623,21 @@
                     <option>указать примерный возраст</option>
                 </select>
                 <br/>
+
                 <div id="ageInterval" class="age-interval">
-                    <label for="ageIntervalMin"><span>Возраст на вид соответствует: &nbsp; от</span></label> <input id="ageIntervalMin" size="5" type="text">
+                    <label for="ageIntervalMin"><span>Возраст на вид соответствует: &nbsp; от</span></label> <input
+                        id="ageIntervalMin" size="5" type="text">
                     <span>до</span><input id="ageIntervalMax" size="5" type="text"> <span>лет</span>
                 </div>
                 <br/>
                 <label for="skinColor"><span>Цвет кожного покрова:</span></label>
                 <select id="skinColor">
-                    <option >мертвенно-бледный</option>
-                    <option >бледно-серый</option>
-                    <option >смуглый</option>
-                    <option >с желтизной</option>
-                    <option >грязно-зеленый</option>
-                    <option >с розовым оттенком</option>
+                    <option>мертвенно-бледный</option>
+                    <option>бледно-серый</option>
+                    <option>смуглый</option>
+                    <option>с желтизной</option>
+                    <option>грязно-зеленый</option>
+                    <option>с розовым оттенком</option>
                 </select>
                 <br/>
                 <label for="skinElastic"><span>Консистенция кожи:</span></label>
@@ -3429,14 +3648,15 @@
                 </select>
                 <br/>
                 <label for="skinDry"><span>Участки подсыхания кожи&nbsp;</span></label>
-                <input type="checkbox" id="skinDry" onclick="changeStyle('skinDryTrue', ' skin-dry-true-new');
+                <input type="checkbox" autocomplete="off" id="skinDry" onclick="changeStyle('skinDryTrue', ' skin-dry-true-new');
                     resetFormElements('skinDryTrue')">
                 <br/>
                 <textarea class="skin-dry-true" id="skinDryTrue" cols="20" rows="5"></textarea>
                 <br/>
 
                 <br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"
+                       type="button" value="Результат">
                 <input onclick="resetForm('form_general'); resetNewStyle('ageInterval','skinDryTrue', 'divBreast', 'divProstata', 'divUterus'); resetFormElements('abdomen');
                 getRandAndAddInValue('growth', 160, 180)" type="button" value="Сбросить">
             </form>
@@ -3444,20 +3664,20 @@
 
         <!--decomposition-->
         <div class="block block-forma block-forma-decomposition" id="formDecomposition">
-            <div class="pushback-block" onclick="resetLocalityLeft('formDecomposition')">  X  </div>
+            <div class="pushback-block" onclick="resetLocalityLeft('formDecomposition')"> X</div>
             <form id="form_decomposition" name="form_decomposition">
                 <label for="cool"><span>Охлаждение</span></label>
                 <select id="cool">
                     <option>холодный</option>
                     <option>теплый в подмыш. и вн.п. бедер</option>
                     <option>тепловатый</option>
-                    <option >тепловатый в подмыш. и вн.п. бедер</option>
+                    <option>тепловатый в подмыш. и вн.п. бедер</option>
                 </select>
                 <br/>
                 <br/>
 
                 <label for="larshe"><span>Пятна Лярше &nbsp;</span></label>
-                <input type="checkbox" id="larshe">
+                <input type="checkbox" autocomplete="off" id="larshe">
                 <br/>
                 <br/>
                 <br/>
@@ -3501,6 +3721,7 @@
                     <option>стаз</option>
                     <option>гипостаз</option>
                 </select>
+
                 <div class="spot-time" id="spTime">
                     <label for="spot_time"><span>время восстановленияпятна:</span></label>
                     <input id="spot_time" size="5" type="text" value="5"><span>мин</span>
@@ -3518,38 +3739,45 @@
                 <br/>
                 <br/>
                 <label for="rotting"><span>Гниение:</span></label>
-                <select id="rotting" onchange="changeStyleIfSelected('rottingOther', 'rotting', ' rotting-other-new', 4)">
+                <select id="rotting"
+                        onchange="changeStyleIfSelected('rottingOther', 'rotting', ' rotting-other-new', 4)">
                     <option>нет</option>
                     <option>зелень на животе</option>
                     <option>зелень в паховых областях</option>
                     <option>другое</option>
                 </select>
                 <br/>
+
                 <div class="rotting-other" id="rottingOther">
                     <label for="rotting2"><span>другое:</span></label><br/>
                     <textarea cols="40" id="rotting2" rows="2"></textarea>
                 </div>
                 <br>
                 <label for="tandr"><span>температура тела и суправитальные реакции&nbsp;</span></label>
-                <input id="tandr" type="checkbox">
+                <input id="tandr" type="checkbox" autocomplete="off">
                 <br/>
                 <br/>
-                <input type="button" onclick="getResult(t)" value="Результат">
+                <input type="button"
+                       onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"
+                       value="Результат">
                 <input type="button" onclick="resetForm('form_decomposition')" value="Сбросить">
             </form>
         </div>
 
         <!--head-->
         <div class="block block-forma block-forma-head" id="head">
-            <div class="pushback-block" onclick="resetLocalityLeft('head')">  X  </div>
+            <div class="pushback-block" onclick="resetLocalityLeft('head')"> X</div>
             <form id="formHead" name="formHead">
                 <div class="hair-face">
                     <label for="hairNo"><span>волос нет</span></label>
-                    <input id="hairNo" type="checkbox" onclick="changeStyle('divHairNo', ' div-hair-no-new')">
+                    <input id="hairNo" type="checkbox" autocomplete="off"
+                           onclick="changeStyle('divHairNo', ' div-hair-no-new')">
                     <br/>
+
                     <div id="divHairNo" class="div-hair-no">
                         <label for="hairColor"><span>волосы</span></label>
-                        <select id="hairColor" onchange="changeStyleIfSelected('divHairColorOther', 'hairColor', ' div-hair-color-other-new', 6)">
+                        <select id="hairColor"
+                                onchange="changeStyleIfSelected('divHairColorOther', 'hairColor', ' div-hair-color-other-new', 6)">
                             <option>темно-русые</option>
                             <option>русые</option>
                             <option>светло-русые</option>
@@ -3564,7 +3792,7 @@
                         </div>
                         <br/>
                         <label for="greyHair"><span>с сединой</span></label>
-                        <input id="greyHair" type="checkbox">
+                        <input id="greyHair" type="checkbox" autocomplete="off">
                         <br/>
                         <label for="hair_length"><span>длина волос</span></label>
                         <input id="hair_length" size="5" type="text"><span>см</span>
@@ -3579,7 +3807,7 @@
                         <option value="">синюшно-розовое</option>
                     </select>
                     <label for="puffy"><span>одутловатое</span></label>
-                    <input id="puffy" type="checkbox" value="125">
+                    <input id="puffy" type="checkbox" autocomplete="off" value="125">
                     <br/>
                     <br/>
                 </div>
@@ -3598,15 +3826,17 @@
                     <br/>
                     <br/>
                     <label for="iris"><span>радужка</span></label>
-                    <select id="iris" onchange="changeStyleIfSelected('divIrisColorOther', 'iris', ' div-iris-color-other-new', 6)">
-                        <option >светло-коричневая</option>
-                        <option >темно-коричневая</option>
-                        <option >голубая</option>
-                        <option >черная</option>
-                        <option >светло-зеленая</option>
-                        <option >другой цвет</option>
+                    <select id="iris"
+                            onchange="changeStyleIfSelected('divIrisColorOther', 'iris', ' div-iris-color-other-new', 6)">
+                        <option>светло-коричневая</option>
+                        <option>темно-коричневая</option>
+                        <option>голубая</option>
+                        <option>черная</option>
+                        <option>светло-зеленая</option>
+                        <option>другой цвет</option>
                     </select>
                     <br/>
+
                     <div id="divIrisColorOther" class="div-iris-color-other">
                         <label for="iris_color"><span>другой цвет: </span></label><br/>
                         <textarea cols="47" id="iris_color" rows="1"></textarea><br/>
@@ -3631,7 +3861,7 @@
                     </select>
                     </br>
                     <label for="eyesHemorrhage"><span>кровоизлияния</span></label>
-                    <input id="eyesHemorrhage" type="checkbox" value="126">
+                    <input id="eyesHemorrhage" type="checkbox" autocomplete="off" value="126">
                     </br>
                     </br>
                 </div>
@@ -3640,7 +3870,8 @@
                 <div class="nose">
 
                     <label for="noseExcret"><span>Выделения из носа</span></label>
-                    <select id="noseExcret" onchange="changeStyleIfSelected('divNoseExcretOther', 'noseExcret', ' div-nose-excret-new', 6)">
+                    <select id="noseExcret"
+                            onchange="changeStyleIfSelected('divNoseExcretOther', 'noseExcret', ' div-nose-excret-new', 6)">
                         <option value="">нет</option>
                         <option value="">кровянистые</option>
                         <option value="">светло-желтые</option>
@@ -3649,6 +3880,7 @@
                         <option value="">другое</option>
                     </select>
                     <br/>
+
                     <div id="divNoseExcretOther" class="div-nose-excret">
                         <label for="noseExcretOther"><span>другое: </span></label>
                         <br/>
@@ -3660,7 +3892,8 @@
 
                 <div class="ear">
                     <label for="earExcret"><span>Выделения из слух. проходов</span></label>
-                    <select id="earExcret" onchange="changeStyleIfSelected('divEarExcretOther', 'earExcret', ' div-ear-excret-other-new', 6 )">
+                    <select id="earExcret"
+                            onchange="changeStyleIfSelected('divEarExcretOther', 'earExcret', ' div-ear-excret-other-new', 6 )">
                         <option value="a">нет</option>
                         <option value="ab">кровянистые</option>
                         <option value="abc">светло-желтые</option>
@@ -3669,6 +3902,7 @@
                         <option value="abcdef">другое</option>
                     </select>
                     <br/>
+
                     <div id="divEarExcretOther" class="div-ear-excret-other">
                         <label for="earExcretOther"><span>другое: </span></label><br/>
                         <textarea cols="30" id="earExcretOther" rows="4"></textarea>
@@ -3707,9 +3941,11 @@
                         <option value="гладкая">гладкая</option>
                         <option value="шероховатая">шероховатая</option>
                     </select>
-                </div><br/>
+                </div>
+                <br/>
 
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"
+                       type="button" value="Результат">
                 <input onclick="resetNewStyle('divHairNo', 'divHairColorOther', 'divIrisColorOther', 'divNoseExcretOther', 'divEarExcretOther');
         resetForm('formHead'); (ISchecked('man')) ? getRandAndAddInValue('hair_length', 2, 10) : getRandAndAddInValue('hair_length', 10, 35);
         get05RandAndAddInValue('pupil', 0.3, 0.5)
@@ -3718,17 +3954,18 @@
         </div>
         <!--teeth-->
         <div class="block block-forma block-forma-teeth" id="teeth">
-            <div class="pushback-block" onclick="resetLocalityLeft('teeth')">  X  </div>
+            <div class="pushback-block" onclick="resetLocalityLeft('teeth')"> X</div>
             <form id="formTeeth" name="formTeeth">
                 <label for="teethVisible"><span>Видимые зубы целы &nbsp;</span></label>
-                <input type="checkbox" id="teethVisible">
+                <input type="checkbox" autocomplete="off" id="teethVisible">
                 <br/><br/>
-                <label><input type="radio" checked="checked" name="raz" id="s1"/> <span>Нет</span></label><br/>
-                <label><input type="radio" name="raz"/> <span>Из желтого металла</span></label><br/>
-                <label><input type="radio" name="raz"/> <span>Из белого металла</span></label><br/>
-                <label><input type="radio" name="raz"/> <span>Корень</span></label><br/>
-                <label><input type="radio" name="raz"/> <span>Целый</span></label><br/>
-                <label><input type="radio" name="raz"/> <span>Кариес</span></label><br/>
+                <label><input type="radio" autocomplete="off" checked="checked" name="raz" id="s1"/>
+                    <span>Нет</span></label><br/>
+                <label><input type="radio" autocomplete="off" name="raz"/> <span>Из желтого металла</span></label><br/>
+                <label><input type="radio" autocomplete="off" name="raz"/> <span>Из белого металла</span></label><br/>
+                <label><input type="radio" autocomplete="off" name="raz"/> <span>Корень</span></label><br/>
+                <label><input type="radio" autocomplete="off" name="raz"/> <span>Целый</span></label><br/>
+                <label><input type="radio" autocomplete="off" name="raz"/> <span>Кариес</span></label><br/>
 
                 <table>
                     <tr>
@@ -3800,7 +4037,8 @@
                     </tr>
                 </table>
                 <br/><br/>
-                <label><span>лунки отсутствующих зубов заращены </span><input type="checkbox" id="teeth_alveolus"
+                <label><span>лунки отсутствующих зубов заращены </span><input type="checkbox" autocomplete="off"
+                                                                              id="teeth_alveolus"
                                                                               checked></label>
                 <br/><br/>
                 <!-- Control buttons  -->
@@ -3808,13 +4046,13 @@
                        onclick="getMatrix(matrix); funcEcho((function() {
                 if (ISchecked(t.id85)) return t.array5[58];
                 else return getResultString(matrix, symb, textPhrasesArray);
-                })(), 'outputinf'); getResult(t)"/>
+                })(), 'outputinf');
+                if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"/>
                 <input name="process" type="button" value="Все целы" onclick="resetTeeth('inp', ' Ц ')"/>
                 <input name="process" type="button" value="Нет зубов" onclick="resetTeeth('inp', ' Н ')"/>
                 <input name="process" type="button" value="Все по выбору" onclick="allTheSelectSymb('inp')"/>
                 <br/>
                 <br/>
-
 
                 <div id="outputinf" class="teeth-text-out"></div>
 
@@ -3823,38 +4061,39 @@
 
         <!--torso-->
         <div class="block block-forma block-forma-torso" id="torso">
-            <div class="pushback-block" onclick="resetLocalityLeft('torso')">  X  </div>
+            <div class="pushback-block" onclick="resetLocalityLeft('torso')"> X</div>
             <form id="formTorso">
                 <label for="chest"><span>грудная клетка</span></label>
                 <select id="chest">
-                    <option value = "">цилиндрическая</option>
-                    <option value = "">бочкообразная</option>
-                    <option value = "">коническая</option>
-                    <option value = "">килевидная</option>
-                    <option value = "">воронкообразная</option>
-                    <option value = "">ладьевидная</option>
+                    <option value="">цилиндрическая</option>
+                    <option value="">бочкообразная</option>
+                    <option value="">коническая</option>
+                    <option value="">килевидная</option>
+                    <option value="">воронкообразная</option>
+                    <option value="">ладьевидная</option>
                 </select>
                 <br/>
-                <label for="chest_symmetry"><span>симметричная</span></label> <input type="checkbox" id="chest_symmetry" checked>
+                <label for="chest_symmetry"><span>симметричная</span></label> <input type="checkbox" autocomplete="off"
+                                                                                     id="chest_symmetry" checked>
                 <br/><br/>
 
                 <div id="divBreast" class="div-breast">
                     <label for="breast"><span>молочные железы</span></label>
                     <select id="breast">
-                        <option value = "">плоские</option>
-                        <option value = "">округлые</option>
+                        <option value="">плоские</option>
+                        <option value="">округлые</option>
                     </select> <br/><br/>
                     <label for="nipples"><span>пигментация сосков</span></label>
                     <select id="nipples">
-                        <option value = "">серо-розовая</option>
-                        <option value = "">светло-коричневая</option>
-                        <option value = "">буровато-красная</option>
+                        <option value="">серо-розовая</option>
+                        <option value="">светло-коричневая</option>
+                        <option value="">буровато-красная</option>
                     </select> <br/><br/>
 
                 </div>
                 <br/><br/>
                 <label for="abdomenSymmetry"><span>живот симметричный</span></label>
-                <input type="checkbox" id="abdomenSymmetry" checked><br/>
+                <input type="checkbox" autocomplete="off" id="abdomenSymmetry" checked><br/>
                 <label for="abdomen"><span>расположен</span></label>
                 <select id="abdomen">
                     <option>на уровне</option>
@@ -3871,28 +4110,31 @@
                 <br>
                 <label for="genitalsExcret"><span>выделения из гениталий</span></label>
                 <select id="genitalsExcret">
-                    <option value = "a">нет</option>
-                    <option value = "ab">кровянистые</option>
-                    <option value = "abc">светло-желтые</option>
-                    <option value = "abcd">темно-желтые</option>
-                    <option value = "abcde">светло-зеленые</option>
+                    <option value="a">нет</option>
+                    <option value="ab">кровянистые</option>
+                    <option value="abc">светло-желтые</option>
+                    <option value="abcd">темно-желтые</option>
+                    <option value="abcde">светло-зеленые</option>
                 </select>
+
                 <div id=divRectum>
                     <label for="rectum"><span>задний проход</span></label>
                     <select id="rectum">
-                        <option value = "">сомкнут</option>
-                        <option value = "">зияет</option>
+                        <option value="">сомкнут</option>
+                        <option value="">зияет</option>
                     </select>
                     <br/>
                     <label for="rectumSkin"><span>кожа вокруг заднего прохода</span></label>
                     <select id="rectumSkin">
                         <option>чистая</option>
                         <option>испачкана калом</option>
-                        <option>кровь</option>>
+                        <option>кровь</option>
+                        >
                     </select>
                 </div>
                 <br/><br/><br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"
+                       type="button" value="Результат">
                 <input onclick="resetForm('formTorso')" type="button" value="Сбросить">
             </form>
         </div>
@@ -3900,66 +4142,81 @@
         <!--damage-->
 
         <div class="block block-forma block-forma-damage" id="damage">
-            <div class="pushback-block" onclick="resetLocalityLeft('damage')">  X  </div>
+            <div class="pushback-block" onclick="resetLocalityLeft('damage')"> X</div>
             <form id="formDamage">
                 <div class="checkbox-damage">
                     <div class="damage-block">
                         <span style="text-decoration: underline">Отметить повреждения:</span><br/><br/>
-                        <label><input type="checkbox" id="d9"> <span>свод черепа</span></label><br/>
-                        <label><input type="checkbox" id="d9a"> <span>основание черепа</span></label><br/>
-                        <label><input type="checkbox" id="d10"> <span>лицевой скелет</span></label><br/>
-                        <label><input type="checkbox" id="d11" onchange="checkboxChecked('d11', 'd10')"> <span>кости носа</span></label><br/>
-                        <label><input type="checkbox" id="d11a"> <span>хрящи носа</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d9"> <span>свод черепа</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d9a"> <span>основание черепа</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d10">
+                            <span>лицевой скелет</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d11"
+                                      onchange="checkboxChecked('d11', 'd10')"> <span>кости носа</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d11a"> <span>хрящи носа</span></label><br/>
                         <br/>
-                        <label><input type="checkbox" id="d20"> <span>оболочки мозга</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d20">
+                            <span>оболочки мозга</span></label><br/>
                     </div>
                     <div class="damage-block">
-                        <label><input type="checkbox" id="d12"> <span>ребра</span></label><br/>
-                        <label><input type="checkbox" id="d13"> <span>спина</span></label><br/>
-                        <label><input type="checkbox" id="d14"> <span>поясница</span></label><br/>
-                        <label><input type="checkbox" id="d15"> <span>таз</span></label><br/>
-                        <label><input type="checkbox" id="d16"> <span>позвоночник</span></label><br/>
-                        <label><input type="checkbox" id="d21"> <span>грудина</span></label><br/>
-                        <label><input type="checkbox" id="d18"> <span>ключицы</span></label><br/>
-                        <label><input type="checkbox" id="d19"> <span>лопатки</span></label><br/>
-                        <label><input type="checkbox" id="d17a"> <span>верхние конечности</span></label><br/>
-                        <label><input type="checkbox" id="d17b"> <span>нижние конечности</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d12"> <span>ребра</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d13"> <span>спина</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d14"> <span>поясница</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d15"> <span>таз</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d16"> <span>позвоночник</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d21"> <span>грудина</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d18"> <span>ключицы</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d19"> <span>лопатки</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d17a">
+                            <span>верхние конечности</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d17b">
+                            <span>нижние конечности</span></label><br/>
                         <br/>
                     </div>
                     <div class="damage-block">
-                        <label><input type="checkbox" id="d1"><span>волосистая часть головы</span></label><br/>
-                        <label><input type="checkbox" id="d2" > <span>глаза</span></label><br/>
-                        <label><input type="checkbox" id="d3" ><span>преддверие и полость рта</span></label>	<br/>
-                        <label><input type="checkbox" id="d5" ><span>ушные раковины</span></label><br/>
-                        <label><input type="checkbox" id="d6" ><span>шея</span></label><br/>
-                        <label><input type="checkbox" id="d7" ><span>подм. впадины</span></label>	<br/>
-                        <label><input type="checkbox" id="d8" >гениталии</label><br/>
+                        <label><input type="checkbox" autocomplete="off"
+                                      id="d1"><span>волосистая часть головы</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d2"> <span>глаза</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off"
+                                      id="d3"><span>преддверие и полость рта</span></label> <br/>
+                        <label><input type="checkbox" autocomplete="off"
+                                      id="d5"><span>ушные раковины</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d6"><span>шея</span></label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="d7"><span>подм. впадины</span></label>
+                        <br/>
+                        <label><input type="checkbox" autocomplete="off" id="d8">гениталии</label><br/>
                     </div>
 
                 </div>
                 <br/>
                 <label for="textareaDamage"><span>Описание наружных повреждений:</span> </label>
-                <div class="textarea-damage" >
-                    <textarea id="textareaDamage" cols = "75" rows = "10"></textarea><br>
+
+                <div class="textarea-damage">
+                    <textarea id="textareaDamage" cols="75" rows="10"></textarea><br>
                 </div>
 
                 <br/><br/><br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"
+                       type="button" value="Результат">
                 <input onclick="resetForm('formDamage')" type="button" value="Сбросить">
             </form>
 
         </div>
 
+        <!--Brain, Skull-->
         <div class="block block-forma block-forma-brainSkull" id="brainSkull">
-            <div class="pushback-block" onclick="resetLocalityLeft('brainSkull')">  X  </div>
-            <form id="formBrainSkull" >
+            <div class="pushback-block" onclick="resetLocalityLeft('brainSkull')"> X</div>
+            <form id="formBrainSkull">
 
                 <div class="scull_size">
                     <span>Кости черепа:</span>
                     <ul>
-                        <li><label for="osFrontale"><span>лобная:</span></label> <input id="osFrontale" size="3" type="text"></li>
-                        <li><label for="osTemporale"><span>теменная:</span></label> <input id="osTemporale" size="3" type="text"></li>
-                        <li><label for="osOccipitale"><span>височная:</span></label> <input id="osOccipitale" size="3" type="text"></li>
+                        <li><label for="osFrontale"><span>лобная:</span></label> <input id="osFrontale" size="3"
+                                                                                        type="text"></li>
+                        <li><label for="osTemporale"><span>теменная:</span></label> <input id="osTemporale" size="3"
+                                                                                           type="text"></li>
+                        <li><label for="osOccipitale"><span>височная:</span></label> <input id="osOccipitale" size="3"
+                                                                                            type="text"></li>
                     </ul>
                     <br/>
                     <label for="duraMaterTension"><span>ТМО</span></label>
@@ -4000,7 +4257,8 @@
                     <label><span>х &nbsp</span><input id="pituitaryGlandDepth" size="1" type="text"></label>
                 </div>
                 <br/><br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"
+                       type="button" value="Результат">
                 <input onclick="resetForm('formBrainSkull');
                 get05RandAndAddInValue('osFrontale', 1, 1.5);
                 get05RandAndAddInValue('osTemporale', 0.7, 1.2);
@@ -4020,9 +4278,9 @@
         </div>
 
         <div class="block block-forma block-forma-generalPathology" id="generalPathology">
-            <div class="pushback-block" onclick="resetLocalityLeft('generalPathology')">  X  </div>
+            <div class="pushback-block" onclick="resetLocalityLeft('generalPathology')"> X</div>
             <form id="formGeneralPathology">
-                <label><input type="checkbox" id="plethora" onchange="onlyOneCheckboxChecked('anemia');
+                <label><input type="checkbox" autocomplete="off" id="plethora" onchange="onlyOneCheckboxChecked('anemia');
                 changeSelectByCheckbox('heartBloodFill', 'plethora', 2, 1);
                 changeSelectByCheckbox('liverBloodFill', 'plethora', 2, 1);
                 changeSelectByCheckbox('pancreasBloodFill', 'plethora', 2, 1);
@@ -4032,7 +4290,7 @@
                 changeSelectByCheckbox('v_cavaInf', 'plethora', 2, 1)
                 ">Полнокровие</label><br/>
 
-                <label><input type="checkbox" id="anemia" onchange="onlyOneCheckboxChecked('plethora');
+                <label><input type="checkbox" autocomplete="off" id="anemia" onchange="onlyOneCheckboxChecked('plethora');
                 changeSelectByCheckbox('heartBloodFill', 'anemia', 4, 1);
                 changeSelectByCheckbox('liverBloodFill', 'anemia', 4, 1);
                 changeSelectByCheckbox('pancreasBloodFill', 'anemia', 4, 1);
@@ -4040,28 +4298,30 @@
                 changeSelectByCheckbox('kidneyBloodFill', 'anemia', 4, 1)
                 ">Малокровие</label><br/>
 
-                <label><input type="checkbox" id="generalAtherosclerosis" onchange="changeSelectByCheckbox('coronaritis', 'generalAtherosclerosis', 2, 1);
+                <label><input type="checkbox" autocomplete="off" id="generalAtherosclerosis" onchange="changeSelectByCheckbox('coronaritis', 'generalAtherosclerosis', 2, 1);
                 changeSelectByCheckbox('coronarosclerosis', 'generalAtherosclerosis', 3, 1);
                 changeSelectByCheckbox('aortaInnerMembrСolor', 'generalAtherosclerosis', 2, 1);
                 changeSelectByCheckbox('aortaInnerMembr', 'generalAtherosclerosis', 5, 1);
                 changeSelectByCheckbox('arteriaCerebri', 'generalAtherosclerosis', 2, 1);
                 ">Генерализованный атеросклероз</label><br/>
-                <label><input type="checkbox" id="icterus" onchange="
+                <label><input type="checkbox" autocomplete="off" id="icterus" onchange="
                 changeSelectByCheckbox('skinColor', 'icterus', 4, 1);
                 changeSelectByCheckbox('shell_color', 'icterus', 3, 1);
                 changeSelectByCheckbox('mouth', 'icterus', 4, 1);
-                " >Желтуха</label><br/>
+                ">Желтуха</label><br/>
             </form>
             <br/>
-            <input onclick="getResult(t)" type="button" value="Результат">
+            <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"
+                   type="button" value="Результат">
             <input onclick="resetForm('formGeneralPathology');
             resetFormElements('coronaritis', 'coronarosclerosis', 'aortaInnerMembrСolor', 'aortaInnerMembr',
             'arteriaCerebri', 'heartBloodFill', 'liverBloodFill', 'pancreasBloodFill', 'lungsBloodFill', 'kidneyBloodFill',
             'skinColor', 'shell_color', 'mouth', 'aortaCavity', 'v_cavaInf')" type="button" value="Сбросить">
         </div>
 
+        <!--Heart, Blood, Vessels-->
         <div class="block block-forma block-forma-heartBloodVessels" id="heartBloodVessels">
-            <div class="pushback-block" onclick="resetLocalityLeft('heartBloodVessels')">  X  </div>
+            <div class="pushback-block" onclick="resetLocalityLeft('heartBloodVessels')"> X</div>
             <form id="formHeartBloodVessels">
                 <div class="heart-blood">
                     <div class="heart-blood-left">
@@ -4082,20 +4342,23 @@
                         </select>
                         <br/>
                         <br/>
-                        <label><span>Масса сердца: &nbsp</span><input id="heartWeigth" size="1" type="text"></label><br/><br/>
+                        <label><span>Масса сердца: &nbsp</span><input id="heartWeigth" size="1"
+                                                                      type="text"></label><br/><br/>
                         <label><span>Размеры сердца: &nbsp</span><input id="heartLength" size="1" type="text"></label>
                         <label><span>х &nbsp</span><input id="heartWidth" size="1" type="text"></label>
                         <label><span>х &nbsp</span><input id="heartDepth" size="1" type="text"></label>
                         <br/><br/>
-                        <label><span>Левый желудочек: &nbsp</span><input id="ventricleLeft" size="1" type="text"></label>
-                        <label><span>Правый желудочек: &nbsp</span><input id="ventricleRight" size="1" type="text"></label>
+                        <label><span>Левый желудочек: &nbsp</span><input id="ventricleLeft" size="1"
+                                                                         type="text"></label>
+                        <label><span>Правый желудочек: &nbsp</span><input id="ventricleRight" size="1"
+                                                                          type="text"></label>
                         <br/><br/>
                         <label for="heartFat"><span>Жировая ткань сердца: </span></label>
                         <select id="heartFat">
                             <option>выражена незначительно</option>
                             <option>выражена умеренно</option>
                             <option>выражена хорошо</option>
-                            <option>резко выражена </option>
+                            <option>резко выражена</option>
                         </select>
                         <br/>
                         <label for="heartCavity"><span>В полости сердца: </span></label>
@@ -4107,10 +4370,12 @@
                             <option>желтые свертки</option>
                         </select>
                         <br/><br/>
-                        <label><input type="checkbox" id="heartCavExtend">Полости сердца расширены</label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="heartCavExtend">Полости сердца
+                            расширены</label><br/>
                         <br/><br/>
-                        <label><input type="checkbox" id="papillaryMuscles">Сосочковые мышцы утолщены</label><br/>
-                        <label><input type="checkbox" id="tendonThread">Сухожильные нити укорочены</label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="papillaryMuscles">Сосочковые мышцы утолщены</label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="tendonThread">Сухожильные нити
+                            укорочены</label><br/>
                         <br/>
                     </div>
                     <div class="heart-blood-right">
@@ -4129,7 +4394,8 @@
                             <option>просвет полностью закрыт</option>
                         </select>
                         <br/>
-                        <label><input type="checkbox" id="diffuseCardscl">Диффузный кардиосклероз</label><br/>
+                        <label><input type="checkbox" autocomplete="off" id="diffuseCardscl">Диффузный
+                            кардиосклероз</label><br/>
                         <br/>
                         <label for="aortaInnerMembrСolor"><span>Цвет интимы аорты: </span></label>
                         <select id="aortaInnerMembrСolor">
@@ -4170,8 +4436,10 @@
                             <option>желтые свертки</option>
                         </select>
                         <br/>
-                        <label><span>Длина окружности аорты: &nbsp</span><input id="aortaWidth" size="1" type="text"></label><br/>
-                        <label><span>Края аорты разошлись на: &nbsp</span><input id="aortaEdgesDivergence" size="1" type="text"></label>
+                        <label><span>Длина окружности аорты: &nbsp</span><input id="aortaWidth" size="1"
+                                                                                type="text"></label><br/>
+                        <label><span>Края аорты разошлись на: &nbsp</span><input id="aortaEdgesDivergence" size="1"
+                                                                                 type="text"></label>
                         <br/>
                         <br/>
                         <label for="v_cavaInf"><span>В просвете НПВ: </span></label>
@@ -4190,20 +4458,26 @@
                             <option>кальциноз</option>
                         </select>
                         <br/>
+
                         <div class="valve">
                             <div class="valve-right">
-                                <label><span>Тркспд. клапан &nbsp</span><input id="tricuspid" size="1" type="text"></label><br/>
-                                <label><span>Лег.ств. клапан &nbsp</span><input id="pulmValve" size="1" type="text"></label><br/>
+                                <label><span>Тркспд. клапан &nbsp</span><input id="tricuspid" size="1"
+                                                                               type="text"></label><br/>
+                                <label><span>Лег.ств. клапан &nbsp</span><input id="pulmValve" size="1"
+                                                                                type="text"></label><br/>
                             </div>
                             <div class="valve-Left">
-                                <label><span>Мтр. клапан &nbsp</span><input id="mitral" size="1" type="text"></label><br/>
-                                <label><span>Аорт. клапан &nbsp</span><input id="aortaValve" size="1" type="text"></label><br/>
+                                <label><span>Мтр. клапан &nbsp</span><input id="mitral" size="1"
+                                                                            type="text"></label><br/>
+                                <label><span>Аорт. клапан &nbsp</span><input id="aortaValve" size="1"
+                                                                             type="text"></label><br/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"
+                       type="button" value="Результат">
                 <input onclick="resetForm('formHeartBloodVessels');
                     get5RandAndAddInValue('liquidPericard', 10, 20, 5);
                     get5RandAndAddInValue('heartWeigth', 300, 320, 5);
@@ -4222,34 +4496,37 @@
 
 
             </form>
-
         </div>
 
+        <!--Digestive System-->
         <div class="block block-forma block-forma-digestive" id="digestive">
-            <div class="pushback-block" onclick="resetLocalityLeft('digestive')">  X  </div>
+            <div class="pushback-block" onclick="resetLocalityLeft('digestive')"> X</div>
             <form id="formDigestive">
                 <br/>
                 <span style="text-decoration: underline">Печень</span><br/>
                 <label for="liverEdge"><span>край печени:</span></label>
-                <select id="liverEdge" onchange="changeStyleIfSelected('divLiverEdgeValue', 'liverEdge', ' div-liverEdgeValue-new', 2)">
+                <select id="liverEdge"
+                        onchange="changeStyleIfSelected('divLiverEdgeValue', 'liverEdge', ' div-liverEdgeValue-new', 2)">
                     <option>не выступает</option>
                     <option>выступает</option>
                 </select>
+
                 <div class="div-liverEdgeValue" id="divLiverEdgeValue">
-                    <label><span>На &nbsp;</span><input id="liverEdgeValue" size="1"  value="2" type="text"></label>
+                    <label><span>На &nbsp;</span><input id="liverEdgeValue" size="1" value="2" type="text"></label>
                 </div>
                 <select id="liverEdgeCurve">
                     <option>острый</option>
                     <option>слегка закруглен</option>
                     <option>закруглен</option>
                 </select>
-                <br/><label><span>Размеры:&nbsp;</span><input id="liverSize1" size="1" type="text"></label><span>x</span>
+                <br/><label><span>Размеры:&nbsp;</span><input id="liverSize1" size="1"
+                                                              type="text"></label><span>x</span>
                 <input id="liverSize2" size="1" type="text"><span>x</span>
                 <input id="liverSize3" size="1" type="text"><span>x</span>
                 <input id="liverSize4" size="1" type="text"><span>x</span>
                 <input id="liverSize5" size="1" type="text"><br/>
 
-                <label><span>Масса:&nbsp;</span><input id="liverMass" size="1"  value="2" type="text"></label>
+                <label><span>Масса:&nbsp;</span><input id="liverMass" size="1" value="2" type="text"></label>
 
                 <label for="liverConsistency"><span>Консистенция:</span></label>
                 <select id="liverConsistency">
@@ -4321,10 +4598,12 @@
                 <br/><br/>
                 <span style="text-decoration: underline">Желудок</span><br/>
                 <label for="gasterFilling"><span>Содержимое: </span></label>
-                <select id="gasterFilling" onchange="changeStyleIfSelected('divGasterFillingValue', 'gasterFilling', ' div-gasterFilling-value-new', 2)">
+                <select id="gasterFilling"
+                        onchange="changeStyleIfSelected('divGasterFillingValue', 'gasterFilling', ' div-gasterFilling-value-new', 2)">
                     <option>пища</option>
                     <option>немного слизи</option>
                 </select>
+
                 <div class="div-gasterFilling-value" id="divGasterFillingValue">
                     <label><span>&nbsp;</span><input id="gasterFillingValue" size="1" type="text"></label>
                 </div>
@@ -4345,7 +4624,8 @@
                 </select>
 
                 <br/><br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"
+                       type="button" value="Результат">
                 <input onclick="resetForm('formDigestive');
                resetNewStyle('divLiverEdgeValue', 'divGasterFillingValue');
                get5RandAndAddInValue('gasterFillingValue', 100, 300, 10);
@@ -4366,8 +4646,9 @@
 
         </div>
 
+        <!--Breath-->
         <div class="block block-forma block-forma-breath" id="breath">
-            <div class="pushback-block" onclick="resetLocalityLeft('breath')">  X  </div>
+            <div class="pushback-block" onclick="resetLocalityLeft('breath')"> X</div>
             <form id="formBreath">
                 <label for="pleuralCavity"><span>В плевральных полостях</span></label>
                 <select id="pleuralCavity" onchange="changeStyleAllExceptSelected('divPleuralCavity', 'pleuralCavity', ' div-pleuralCavity-new');
@@ -4377,17 +4658,21 @@
                     <option>жидкость</option>
                 </select>
                 <br/>
+
                 <div class="div-pleuralCavity" id="divPleuralCavity">
-                    <label><span>Справа: &nbsp</span><input id="pleuralCavityRight" size="1" type="text" value="0"></label>
-                    <label><span>Слева: &nbsp</span><input id="pleuralCavityLeft" size="1" type="text"  value="0"></label>
+                    <label><span>Справа: &nbsp</span><input id="pleuralCavityRight" size="1" type="text"
+                                                            value="0"></label>
+                    <label><span>Слева: &nbsp</span><input id="pleuralCavityLeft" size="1" type="text"
+                                                           value="0"></label>
                     <select id="pleuralCavityLiquid" class="select-pleuralCavity">
-                        <option>желтоватая полупрозрачная </option>
+                        <option>желтоватая полупрозрачная</option>
                         <option>желтая мутная</option>
                         <option>красноватая полупрозрачная</option>
                     </select>
                 </div>
                 <br/>
-                <label><span>Правое легкое: &nbsp</span><input id="lungRightWeight" size="1" type="text" value="0"> <span>г. &nbsp&nbsp&nbsp</span></label>
+                <label><span>Правое легкое: &nbsp</span><input id="lungRightWeight" size="1" type="text" value="0">
+                    <span>г. &nbsp&nbsp&nbsp</span></label>
                 <label><span>Левое легкое: &nbsp</span><input id="lungLeftWeight" size="1" type="text" value="0"><span>г. </span></label>
                 <br/>
                 <label for="lungsConsistency"><span>Легкие</span></label>
@@ -4412,13 +4697,15 @@
                     <option>малокровие</option>
                 </select>
                 <br/>
-                <label><input type="checkbox" id="pulmonaryEdema"><span>Выраженный отек легких</span></label><br/>
+                <label><input type="checkbox" autocomplete="off" id="pulmonaryEdema"><span>Выраженный отек легких</span></label><br/>
                 <br/>
-                <label><input type="checkbox" id="bronchialWall"><span>Стенки бронхов утолщены, выступают от поверхности разрезов</span></label><br/>
-                <label><input type="checkbox" id="bronchialMucus"><span>В просветах бронхов слизь</span></label><br/>
+                <label><input type="checkbox" autocomplete="off" id="bronchialWall"><span>Стенки бронхов утолщены, выступают от поверхности разрезов</span></label><br/>
+                <label><input type="checkbox" autocomplete="off"
+                              id="bronchialMucus"><span>В просветах бронхов слизь</span></label><br/>
                 <br/>
 
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"
+                       type="button" value="Результат">
                 <input onclick="resetForm('formBreath'); resetNewStyle('divPleuralCavity');
                     get5RandAndAddInValue('lungRightWeight', 380, 400, 5);
                     get5RandAndAddInValue('lungLeftWeight', 380, 400, 5);
@@ -4426,16 +4713,17 @@
             </form>
         </div>
 
+        <!--Genitourinary system-->
         <div class="block block-forma block-forma-genitourinary" id="genitourinary">
-            <div class="pushback-block" onclick="resetLocalityLeft('genitourinary')">  X  </div>
+            <div class="pushback-block" onclick="resetLocalityLeft('genitourinary')"> X</div>
             <form id="formGenitourinary">
-                <label><input type="checkbox" id="bladder" onchange="changeStyle('divBladder', ' div-bladder-new');
-                changeCheck('bladder', 'urineChem')
+                <label><input type="checkbox" autocomplete="off" id="bladder" onchange="changeStyle('divBladder', ' div-bladder-new');
+                changeCheck('bladder', 'urineChem');
                 if (document.getElementById('spanWarningChem').style.display == 'inline')
                 document.getElementById('spanWarningChem').style.display = 'none';
-
                ">
                     <span>Мочи нет</span></label><br/>
+
                 <div class="div-bladder" id="divBladder">
                     <label><span>В мочевом пузыре: &nbsp</span><input id="urine" size="1" type="text"></label><span>мл мочи</span>
                 </div>
@@ -4443,10 +4731,12 @@
                 <span style="text-decoration: underline">Почки</span><br/>
                 <label><span>Толщина жировой капсулы:&nbsp;</span><input id="kidneyFat" size="1" type="text"></label>
                 <br/>
-                <label><span>размеры правой:&nbsp;</span><input id="kidneyRightSize1" size="1" type="text"></label><span>x</span>
+                <label><span>размеры правой:&nbsp;</span><input id="kidneyRightSize1" size="1"
+                                                                type="text"></label><span>x</span>
                 <input id="kidneyRightSize2" size="1" type="text"><span>x</span>
                 <input id="kidneyRightSize3" size="1" type="text"><br/>
-                <label><span>размеры левой:&nbsp;</span><input id="kidneyLeftSize1" size="1" type="text"></label><span>x</span>
+                <label><span>размеры левой:&nbsp;</span><input id="kidneyLeftSize1" size="1"
+                                                               type="text"></label><span>x</span>
                 <input id="kidneyLeftSize2" size="1" type="text"><span>x</span>
                 <input id="kidneyLeftSize3" size="1" type="text">
                 <br/>
@@ -4469,7 +4759,7 @@
                     <option>бледно-синюшная</option>
                 </select>
                 <br/>
-                <label><input type="checkbox" id="kidneyMedCortexBorder"><span>Граница между корк. и мозг. веществом нечеткая</span></label><br/>
+                <label><input type="checkbox" autocomplete="off" id="kidneyMedCortexBorder"><span>Граница между корк. и мозг. веществом нечеткая</span></label><br/>
                 <br/>
                 <label for="kidneyBloodFill"><span>Кровенаполнение почек: </span></label>
                 <select id="kidneyBloodFill">
@@ -4480,12 +4770,15 @@
                 </select>
                 <br/>
                 <br/>
+
                 <div class="div-prostata" id="divProstata">
-                    <label><span>размеры простаты:&nbsp;</span><input id="prostataSize1" size="1" type="text"></label><span>x</span>
+                    <label><span>размеры простаты:&nbsp;</span><input id="prostataSize1" size="1"
+                                                                      type="text"></label><span>x</span>
                     <input id="prostataSize2" size="1" type="text"><span>x</span>
                     <input id="prostataSize3" size="1" type="text">
                 </div>
                 <br/>
+
                 <div class="div-uterus" id="divUterus">
                     <label for="uterus">Наружный зев матки: </label>
                     <select id="uterus">
@@ -4495,7 +4788,8 @@
                 </div>
                 <br/>
                 <br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"
+                       type="button" value="Результат">
                 <input onclick="resetForm('formGenitourinary'); resetNewStyle('divBladder');
                 if (!document.getElementById('urineChem').checked) document.getElementById('urineChem').checked = true;
                 get05RandAndAddInValue('kidneyFat', 2, 3);
@@ -4514,8 +4808,9 @@
             </form>
         </div>
 
+        <!--Other-->
         <div class="block block-forma block-forma-other" id="other">
-            <div class="pushback-block" onclick="resetLocalityLeft('other')">  X  </div>
+            <div class="pushback-block" onclick="resetLocalityLeft('other')"> X</div>
             <form id="formOther">
                 <span style="text-decoration: underline">Подкожно-жировая клетчатка</span><br/>
                 <label><span>Грудь: &nbsp</span><input id="subcutaneousFatChest" size="1" type="text"></label>
@@ -4547,7 +4842,9 @@
                 <label><span>х &nbsp</span><input id="thyroidRightDepth" size="1" type="text"></label>
                 <br/>
                 <br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);
+                               else getResult(t);"
+                       type="button" value="Результат">
                 <input onclick="resetForm('formOther');
                     getRandAndAddInValue('subcutaneousFatChest', 1, 2);
                     getRandAndAddInValue('subcutaneousFatAbdomen', 2, 4);
@@ -4565,46 +4862,138 @@
             </form>
         </div>
 
+        <!--Additional Study-->
         <div class="block block-forma block-forma-additionalStudy" id="additionalStudy">
-            <div class="pushback-block" onclick="resetLocalityLeft('additionalStudy')">  X  </div>
+            <div class="pushback-block" onclick="resetLocalityLeft('additionalStudy')"> X</div>
             <form id="formAdditionalStudy">
                 <span style="text-decoration: underline; text-transform: uppercase">химия</span><br/>
-                <label><input type="checkbox" id="bloodChem" checked><span>Кровь</span></label><br/>
-                <label><input type="checkbox" id="urineChem" checked onchange="
+                <label><input type="checkbox" autocomplete="off" id="bloodChem" checked><span>Кровь</span></label><br/>
+                <label><input type="checkbox" autocomplete="off" id="urineChem" checked onchange="
                 if (document.getElementById('bladder').checked && document.getElementById('urineChem').checked)
                     document.getElementById('spanWarningChem').style.display = 'inline';
-                else document.getElementById('spanWarningChem').style.display = 'none';
+                else changeStyleDisplay('spanWarningChem', 'none');
 
 //                console.log(document.getElementById('urine').checked && document.getElementById('urineChem').checked);
                 "><span>Моча</span></label>
-                <span class="span-warning-urineChem" id="spanWarningChem">(указано, что в мочевом пузыре мочи нет)</span><br/>
+                <span class="span-warning-urineChem"
+                      id="spanWarningChem">(указано, что в мочевом пузыре мочи нет)</span><br/>
                 <br/>
-                <label><input type="checkbox" id="liverChem" onclick="(checkCheckboxesOR('liverChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Печень</span></label><br/>
-                <label><input type="checkbox" id="brainChem" onclick="(checkCheckboxesOR('brainChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Мозг</span></label><br/>
-                <label><input type="checkbox" id="kidneyChem" onclick="(checkCheckboxesOR('kidneyChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Почка</span></label><br/>
-                <label><input type="checkbox" id="stomachChem" onclick="(checkCheckboxesOR('stomachChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Желудок</span></label><br/>
+                <label><input type="checkbox" autocomplete="off" id="liverChem"
+                              onclick="(checkCheckboxesOR('liverChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Печень</span></label><br/>
+                <label><input type="checkbox" autocomplete="off" id="brainChem"
+                              onclick="(checkCheckboxesOR('brainChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Мозг</span></label><br/>
+                <label><input type="checkbox" autocomplete="off" id="kidneyChem"
+                              onclick="(checkCheckboxesOR('kidneyChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Почка</span></label><br/>
+                <label><input type="checkbox" autocomplete="off" id="stomachChem"
+                              onclick="(checkCheckboxesOR('stomachChem')) ? changeStyleOneOff('divChemDefine', ' div-chemDefine-new') : resetNewStyle('divChemDefine')"><span>Желудок</span></label><br/>
                 <br/>
+
                 <div class="div-chemDefine" id="divChemDefine">
-                    <label><input type="checkbox" id="surrogates"><span>суррогаты</span></label><br/>
-                    <label><input type="checkbox" id="drug"><span>лекарства</span></label><br/>
-                    <label><input type="checkbox" id="narcotic"><span>наркотики</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="surrogates"><span>суррогаты</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="drug"><span>лекарства</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="narcotic"><span>наркотики</span></label><br/>
                 </div>
                 <br/>
 
                 <span style="text-decoration: underline; text-transform: uppercase">биология</span><br/>
-                <label><input type="checkbox" id="bloodType"><span>кровь на группу</span></label><br/>
+                <label><input type="checkbox" autocomplete="off"
+                              id="bloodType"><span>кровь на группу</span></label><br/>
                 <br/>
+
+                <div class="hystology1">
+                    <span style="text-decoration: underline; text-transform: uppercase">гистология</span><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystBrain" checked="checked"><span>Головной мозг</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystHeart"
+                                  checked="checked"><span>Сердце</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystBud" checked="checked"> <span>Почка</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystLiver"
+                                  checked="checked"><span>Печень</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystSpleen"
+                                  checked="checked"><span>Селезенка</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystPancreas" checked="checked"><span>Поджелудочная</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystAdrenal" checked="checked"><span>Надпочечник</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystThyroid"
+                                  checked="checked"><span>Щитовидная</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystStomach"><span>Желудок</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off"
+                                  id="softTissueFeet"><span>М.тк. ног</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off"
+                                  id="softTissueNeck"><span>М.тк. шеи</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystStrangulation">
+                        <span>Странгуляц. борозда</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystSternum"> <span>Грудина</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystBoneMarrow">
+                        <span>Костный мозг</span></label><br/>
+                    <br/>
+                </div>
+                <div class="hystology2">
+                    <label><input type="checkbox" autocomplete="off" id="hystDuraMater"><span>ТМО</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off"
+                                  id="hystSpinalCord"><span>Спинной мозг</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off"
+                                  id="hystHypophysis"><span>Гипофиз</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystAorta"><span>Аорта</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystLymph"><span>Лимфоузлы</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off"
+                                  id="hystEsophagus"><span>Пищевод</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystIntestine"><span>Кишка</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off"
+                                  id="hystMesentery"><span>Брыжейка</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystPeritoneum"><span>Брюшина</span></label>
+
+
+                    <div id="hystologyUterus" class="hystology-reproductive-woman"><label><input type="checkbox"
+                                                                                                 autocomplete="off"
+                                                                                                 id="hystUterus"> <span>Матка</span></label>
+                    </div>
+                    <div id="hystologyOvary" class="hystology-reproductive-woman"><label><input type="checkbox"
+                                                                                                autocomplete="off"
+                                                                                                id="hystOvary"> <span>Яичники</span></label>
+                    </div>
+                    <div id="hystologyProstata"><label><input type="checkbox" autocomplete="off" id="hystProstata">
+                        <span>Простата</span></label></div>
+                    <div id="hystologyTesticles"><label><input type="checkbox" autocomplete="off"
+                                                               id="hystTesticles"><span>Яички</span></label></div>
+                    <label><input type="checkbox" autocomplete="off" id="hystBladder">
+                        <span>Мочевой п.</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="hystGullbladder">
+                        <span>Желчный п.</span></label><br/>
+
+                </div>
+
                 <br/>
-                <input onclick="getResult(t)" type="button" value="Результат">
-                <input onclick="resetForm('formAdditionalStudy'); resetNewStyle('divChemDefine')" type="button" value="Сбросить">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);
+                                else getResult(t);" type="button" value="Результат">
+                <input onclick="resetForm('formAdditionalStudy'); resetNewStyle('divChemDefine')" type="button"
+                       value="Сбросить">
             </form>
         </div>
         <div class="test-block" id="testblock"></div>
 
+        <input type="button" class="location-reload" onclick="location.reload()" value="Сбросить все изменения">
     </div>
+
+    <!--END FORM-->
+
+    <div class="block block-forma warning" id="warning">
+        <p class="warning-word">Предупреждение!</p>
+
+        <p class="warning-text">При повторном использовании формы текст, который возможно вы самостоятельно добавили,
+            будет утерян. Рекомендуется скопировать и сохранить его в отдельном файле. </p>
+
+        <div class="warning-buttons">
+            <input onclick="getResult(t); changeStyleDisplay('warning', 'none')" type="button"
+                   class="warning-button-left" value="ВЫПОЛНИТЬ ">
+            <input onclick="changeStyleDisplay('warning', 'none')" type="button" class="warning-button-right"
+                   value="ОТМЕНА ДЕЙСТВИЯ">
+        </div>
+        <label><input type="checkbox" id="noWarning" onclick=""
+                      autocomplete="off"><span>Не напоминать</span></label><br/>
+    </div>
+
+
     <iframe scrolling='yes' frameborder='no' src='#' id='frameId' name='frameId' width="900" height="2500"></iframe>
     <script>
-
         get05RandAndAddInValue('kidneyFat', 2, 3);
         getRandAndAddInValue('subcutaneousFatChest', 1, 2);
         getRandAndAddInValue('subcutaneousFatAbdomen', 2, 4);
@@ -4669,11 +5058,8 @@
         get5RandAndAddInValue('pancreasSize1', 16, 22, 1);
         get5RandAndAddInValue('pancreasSize2', 4, 6, 1);
         get5RandAndAddInValue('pancreasSize3', 2, 3, 1);
-        //
-        //
-        //
 
-        getResult(t);
+        getResult(t); //main function
 
     </script>
 
