@@ -272,7 +272,6 @@
             margin-top: 20px;
             margin-left: 60px;
             width: 400px;
-
         }
 
         .warning-buttons input {
@@ -281,7 +280,22 @@
 
         .location-reload {
             margin-top: 10px;
+            float: left;
+        }
+
+        .location-info {
+            margin-top: 10px;
             float: right;
+        }
+
+        .info {
+            display: none;
+            outline: 2px solid #963233;
+            margin-left: 200px;
+        }
+
+        .p-info {
+            font-family: Courier New, monospace
         }
 
         .pushback-block {
@@ -699,6 +713,7 @@
             background: green;
             position: fixed;
             left: -510px;
+
             -webkit-transition-duration: 0.6s; /* анимационное выдвижение для всех браузеров*/
             -moz-transition-duration: 0.6s;
             -o-transition-duration: 0.6s;
@@ -708,9 +723,10 @@
 
     <script>
         /**
-         * Start created by Ъ- on 29.09.2015.
+         * Created by Ъ- on 29.09.2015.
          */
         /*VISUAL EFFECTS*/
+
         function changeLocality(id1, crd1, id2, crd2, side) { //смещение двух блоков
             var e1 = document.getElementById(id1);
             var e2 = document.getElementById(id2);
@@ -1334,7 +1350,7 @@
             return mark;
         }
 
-        function reset(name, symb) {
+        function resetTeeth(name, symb) {
             var elLength = document.getElementsByName(name).length;
             for (var i = 0; i < elLength; i++) {
                 document.getElementsByName(name)[i].value = symb;
@@ -1362,21 +1378,27 @@
             'На верхней и нижней челюсти определяются корни всех зубов. ',
             'Все зубы поражены кариесом. ',
             'На верхней и нижней челюсти все зубы с коронками из металла белого цвета. ',
-            'На верхней и нижней челюсти все зубы с коронками из металла желтого цвета.',
+            'На верхней и нижней челюсти все зубы с коронками из металла желтого цвета. ',
 
             'На верхней челюсти ', //6
             'На нижней челюсти ', //7
 
             'зубы отсутствуют. ',
             'зубы целы. ',
-            'определяются корни всех зубов. ', //10
+            'зубы представлены корнями. ', //10
             'все зубы поражены кариесом. ',
             'зубы с коронками из металла белого цвета. ',
-            'зубы с коронками из металла желтого цвета.', //13
+            'зубы с коронками из металла желтого цвета. ', //13
             'справа: ', //14
             'слева: ',
-            'зубы целы; ', //16
-            'зубы отсутствуют; ' //17
+            'зубы отсутствуют; ', //16
+            'зубы целы; ', //17
+            'справа ',
+            'слева ',
+            'зубы представлены корнями; ', //20
+            'зубы поражены кариесом; ',
+            'зубы с коронками из металла белого цвета; ',
+            'зубы с коронками из металла желтого цвета; ' //23
         ];
 
 
@@ -1755,8 +1777,7 @@
         function getResultString(array, symbArray, textArray1) {
             var teethAll,
                     teethMaxilla, teethMandible,
-                    teethMaxillaRight, teethMaxillaLeft,
-                    teethMandibleRight, teethMandibleLeft,
+                    maxillaRareComb = false, mandibleRareComb = false,
                     result = 'No';
 
             (getUniqueElementOfArray(array, 1) == 1) ? teethAll = true : teethAll = false;
@@ -1767,31 +1788,75 @@
                 else if (array[0][0] == symbArray[3]) result = textArray1[3];
                 else if (array[0][0] == symbArray[4]) result = textArray1[4];
                 else result = textArray1[5];
-
                 return result;
-
             }
-            //Проверка однотипности зубного ряда на ВЧ и НЧ
-            (getUniqueElementOfArray(array, 1, 0) == 1 && getUniqueElementOfArray(array, 1, 1) == 1) ? teethMaxilla = true : teethMaxilla = false;
-            (getUniqueElementOfArray(array, 1, 2) == 1 && getUniqueElementOfArray(array, 1, 3) == 1) ? teethMandible = true : teethMandible = false;
+            //Частичная проверка однотипности зубного ряда на ВЧ и НЧ, кроме редкого сочетания
+            if (getUniqueElementOfArray(array, 1, 0) == 1 && getUniqueElementOfArray(array, 1, 1) == 1) teethMaxilla = true; else teethMaxilla = false;
+            if (getUniqueElementOfArray(array, 1, 2) == 1 && getUniqueElementOfArray(array, 1, 3) == 1) teethMandible = true; else teethMandible = false;
 
-            if (teethMaxilla) { // все на ВЧ однотипны
+            /*maxilla*/
+            if (teethMaxilla && array[0][0] !== array[1][0]) { //редкое сочетание, когда слева все одного типа, а справа все другого на ВЧ
+                maxillaRareComb = true;
+                result = textArray1[6] + textArray1[18]; //Начало строки "На верхней челюсти справа "
+                if (array[0][0] == symbArray[0]) result += textArray1[16]; //отсутствуют
+                else if (array[0][0] == symbArray[1]) result += textArray1[17]; //целы
+                else if (array[0][0] == symbArray[2]) result += textArray1[20]; //корни
+                else if (array[0][0] == symbArray[3]) result += textArray1[21]; // кариес
+                else if (array[0][0] == symbArray[4]) result += textArray1[22];  // белые
+                else if (array[0][0] == symbArray[5]) result += textArray1[23];  // желтые
+                else result = '';
+
+                result += textArray1[19]; //После точки с запятой слово "слева "
+                if (array[1][0] == symbArray[0]) result +=  textArray1[8]; //отсутствуют
+                else if (array[1][0] == symbArray[1]) result +=  textArray1[9]; //целы
+                else if (array[1][0] == symbArray[2]) result +=  textArray1[10]; //корни
+                else if (array[1][0] == symbArray[3]) result +=  textArray1[11]; // кариес
+                else if (array[1][0] == symbArray[4]) result +=  textArray1[12];  // белые
+                else if (array[1][0] == symbArray[5]) result +=  textArray1[13];  // желтые
+                else result = '';
+            }
+
+            if (teethMaxilla && !maxillaRareComb) { // все на ВЧ однотипны
                 result = textArray1[6]; //Начало строки "На верхней челюсти"
-                if (array[0][0] == symbArray[0]) result += textArray1[8];
+                if (array[0][0] == symbArray[0]) result += textArray1[8]; //отсутствуют
                 else if (array[0][0] == symbArray[1]) result += textArray1[9];
                 else if (array[0][0] == symbArray[2]) result += textArray1[10];
-                else if (array[0][0] == symbArray[3]) result += textArray1[11];
+                else if (array[0][0] == symbArray[3]) result += textArray1[11];//кариес
                 else if (array[0][0] == symbArray[4]) result += textArray1[12];
                 else if (array[0][0] == symbArray[5]) result += textArray1[13];
-                else result = textArray1[13];
-            } else {
+                else result = '';
+            }
+
+            if (!teethMaxilla && !maxillaRareComb) {
                 result = textArray1[6] + textArray1[14]; //Начало строки "На верхней челюсти" + "справа"
                 //Добавление числовой последовательности
                 result += joingArrayTeeth(array, 0, symb) + '; ' + textArray1[15] + joingArrayTeeth(array, 1, symb) + '. ';
-
             }
 
-            if (teethMandible) { // все на HЧ однотипны
+            /*mandible*/
+
+            if (teethMandible && array[2][0] !== array[3][0]) { //редкое сочетание, когда слева все одного типа, а справа все другого на ВЧ
+                mandibleRareComb = true;
+                result += textArray1[7] + textArray1[18]; //Начало строки "На нижней челюсти справа "
+                if (array[2][0] == symbArray[0]) result += textArray1[18] + textArray1[16]; //отсутствуют
+                else if (array[2][0] == symbArray[1]) result += textArray1[17]; //целы
+                else if (array[2][0] == symbArray[2]) result += textArray1[20]; //корни
+                else if (array[2][0] == symbArray[3]) result += textArray1[21]; // кариес
+                else if (array[2][0] == symbArray[4]) result += textArray1[22];  // белые
+                else if (array[2][0] == symbArray[5]) result += textArray1[23];  // желтые
+                else result = '';
+
+                result += textArray1[19]; //После точки с запятой слово "слева "
+                if (array[3][0] == symbArray[0]) result +=  textArray1[8]; //отсутствуют
+                else if (array[3][0] == symbArray[1]) result +=  textArray1[9]; //целы
+                else if (array[3][0] == symbArray[2]) result +=  textArray1[10]; //корни
+                else if (array[3][0] == symbArray[3]) result +=  textArray1[11]; // кариес
+                else if (array[3][0] == symbArray[4]) result +=  textArray1[12];  // белые
+                else if (array[3][0] == symbArray[5]) result +=  textArray1[13];  // желтые
+                else result = '';
+            }
+
+            if (teethMandible && !mandibleRareComb) { // все на HЧ однотипны
                 result += textArray1[7]; //Начало строки "На нижней челюсти"
                 if (array[2][0] == symbArray[0]) result += textArray1[8];
                 else if (array[2][0] == symbArray[1]) result += textArray1[9];
@@ -1799,12 +1864,15 @@
                 else if (array[2][0] == symbArray[3]) result += textArray1[11];
                 else if (array[2][0] == symbArray[4]) result += textArray1[12];
                 else if (array[2][0] == symbArray[5]) result += textArray1[13];
-                else result = textArray1[13];
-            } else {
+                else result = '';
+            }
+
+            if (!teethMandible && !mandibleRareComb) {
                 result += textArray1[7] + textArray1[14];
                 //Добавление числовой последовательности
                 result += joingArrayTeeth(array, 2, symb) + '; ' + textArray1[15] + joingArrayTeeth(array, 3, symb) + '. ';
             }
+
             return result;
         }
 
@@ -1889,33 +1957,35 @@
             'Трупные пятна синюшно-фиолетового цвета, ',
             'Трупные пятна синюшно-багрового цвета, ',
             'Трупные пятна розовато-красного цвета, ',
-            'интенсивные, ',
+            'интенсивные, ', //7
             'слабой интенсивности ',
             'сливные, ',
-            'очаговые ',
+            'очаговые ',//10
             'располагаются на задней поверхности шеи, спины и конечностей, за исключением мест сдавлений в области лопаток и ягодиц, ',
             'располагаются на заднебоковых поверхностях шеи, спины и конечностей, ',
             'располагаются на передней поверхности шеи, спины и конечностей, ',
             'располагаются на левой боковой поверхности шеи, туловища и конечностей, ',
             'располагаются на правой боковой поверхности шеи, туловища и конечностей, ',
-            'при надавливании в трех рядом расположенных участках судебно-медицинским динамометром СМЭД-2 с силой 2 кг/см',
+            'при надавливании в трех рядом расположенных участках судебно-медицинским динамометром СМЭД-2 с силой 2 кг/см', //16
             'не изменяют свою окраску. ',
             'бледнеют, восстанавливая свою окраску через ',
             'исчезают, восстанавливая свою окраску через ',
-            'Трупное окоченение умеренно развито во всех группах мышц. ',
+            'Трупное окоченение умеренно развито во всех группах мышц. ', //20
             'Трупное окоченение хорошо развито во всех группах мышц. ',
             'Трупное окоченение слабо развито во всех группах мышц. ',
             'Трупное окоченение отсутствует во всех группах мышц. ',
             'Видимые признаки гниения отсутствуют. ',
-            'Кожный покров на передней брюшной стенке темно-зеленого цвета (трупная зелень). ',
-            'Кожный покров в паховых областях темно-зеленого цвета (трупная зелень). '
+            'Кожный покров на передней брюшной стенке темно-зеленого цвета (трупная зелень). ', //25
+            'Кожный покров в паховых областях темно-зеленого цвета (трупная зелень). ',
+            ' с грязно-серыми участками треугольной формы, вершиной обращенной к углу глаза (пятна Лярше). ' //27
+
         ];
 
         var arr_Damage = [
             'Кости свода черепа и лицевого скелета на ощупь целы. ',
             'Повреждений на волосистой части головы не обнаружено. ',
             ', без повреждений и кровоизлияний. ',
-            ', без повреждений. ',
+            ', без повреждений. ',//3
             ', без кровоизлияний. ',
             ' ребра на ощупь целы. ',
             ' на ощупь целы. ', /*6*/
@@ -1948,20 +2018,23 @@
             ' нижних ',
             'конечностей ',
             'Кости ', //35
-            'Рассечены межреберные промежутки - переломов ребер не обнаружено. '
+            'Рассечены межреберные промежутки - переломов ребер не обнаружено. ',
+            ', без повреждений и кровоизлияний', //37
+            ', без повреждений',
+            ', без кровоизлияний'
 
         ];
 
         var arr_Head = [/*array5*/
             'Волосы на голове отсутствуют. ',
-            'Волосы на голове темно-русые',
-            'Волосы на голове русые',
-            'Волосы на голове светло-русые',
-            'Волосы на голове черные',
-            'Волосы на голове седые',
-            ' с сединой',
-            'Волосы на голове ',
-            ', длиной до ',
+            'Волосы на голове темно-русые, ',
+            'Волосы на голове русые, ',
+            'Волосы на голове светло-русые, ',
+            'Волосы на голове черные, ',
+            'Волосы на голове седые, ', //5
+            ' с сединой ',
+            'Волосы на голове ', //7
+            'длиной до ',
             'Лицо бледно-синюшного цвета',
             'Лицо бледно-серого цвета',
             'Лицо синюшно-фиолетового цвета',
@@ -1973,18 +2046,18 @@
             'Глаза открыты, ',
             'роговицы прозрачные, ',
             'роговицы мутные, ',
-            'радужная оболочка светло-коричневого цвета. ',
+            'радужная оболочка светло-коричневого цвета. ', //20
             'радужная оболочка темно-коричневого цвета. ',
             'радужная оболочка голубого цвета. ',
             'радужная оболочка черного цвета. ',
             'радужная оболочка светло-зеленого цвета. ',
             'радужная оболочка ',
-            'Соединительные оболочки глаз бледно-розового цвета, ', /*25*/
+            'Соединительные оболочки глаз бледно-розового цвета, ', /*26*/
             'Соединительные оболочки глаз серо-розового цвета, ',
             'Соединительные оболочки глаз желтого цвета, ',
             'Соединительные оболочки глаз светло-желтого цвета, ',
             'гладкие',
-            'шероховатые',
+            'шероховатые', //31
             'Кости и хрящи носа на ощупь целы. ',
             'Кости носа на ощупь целы. ',
             'Хрящи носа на ощупь целы. ',
@@ -2333,7 +2406,7 @@
             'суррогатов алкоголя',
             'лекарственных препаратов',
             'наркотических веществ', //15
-            'На судебно-биологическое исследование направлена кровь для определения групповой принадлежности.'
+            'На судебно-биологическое исследование направлена кровь для определения групповой принадлежности. '
         ];
 
         var arr_frequentlyPhrases = [
@@ -2486,7 +2559,7 @@
                             if (!ISchecked(t.id35)) return getStringFromSelect2(t.id33, t.array5, 1) + t.array5[8] + getFromTextarea(t.id36) + ' см. ';
                             else return getStringFromSelect2(t.id33, t.array5, 1) + t.array5[6] + t.array5[8] + getFromTextarea(t.id36) + ' см. ';
                         }
-                        else return t.array5[7] + t.array5[8] + getFromTextarea(t.id36) + ' см. ';
+                        else return t.array5[7] + getFromTextarea(t.id34) + ', ' + t.array5[8] + getFromTextarea(t.id36) + ' см. ';
 
                     }
                     else  return t.array5[0];
@@ -2514,12 +2587,20 @@
                     return t.array5[59] + getNumberFromTextarea(t.id43) + ' см каждый. ';
                 },
 
-                eyesConnectMembran: getStringFromSelect2(t.id46, t.array5, 26) + getStringFromSelect2(t.id47, t.array5, 30),
+                eyesConnectMembran: function () {
+                    return getStringFromSelect2(t.id46, t.array5, 26) + getStringFromSelect2(t.id47, t.array5, 30);
+                },
+
                 eyesConnectMembranDamageAndHemorrhage: function () {
-                    if (!ISchecked(t.id50) && !ISchecked(t.id48)) return t.array4[2];
-                    else if (!ISchecked(t.id50) && ISchecked(t.id48)) return t.array4[3];
-                    else if (ISchecked(t.id50) && !ISchecked(t.id48)) return t.array4[4];
-                    else return '. ';
+                    var larshe = function () {
+                        if (ISchecked(t.id235)) return ', ' + t.array3[27];
+                        else return '. ';
+                    };
+
+                    if (!ISchecked(t.id50) && !ISchecked(t.id48)) return t.array4[37] + larshe(); //без повреждений и кровоизлияний
+                    else if (!ISchecked(t.id50) && ISchecked(t.id48)) return t.array4[38] + larshe(); //без повреждений
+                    else if (ISchecked(t.id50) && !ISchecked(t.id48)) return t.array4[39] + larshe(); //без кровоизлияний
+                    else return larshe();
                 },
 
                 noseDamage: function () {
@@ -2812,7 +2893,7 @@
 
                 thyreoidGland: function () {
                     return t.array10[16] + getNumberFromTextarea(t.id111) + 'x' + getNumberFromTextarea(t.id112) + 'х' + getNumberFromTextarea(t.id113) + ' см, ' +
-                            t.array10[17] + getNumberFromTextarea(t.id114) + 'x' + getNumberFromTextarea(t.id115) + 'х' + getNumberFromTextarea(t.id116) + ' см. ' +
+                            t.array10[17] + getNumberFromTextarea(t.id114) + 'x' + getNumberFromTextarea(t.id115) + 'х' + getNumberFromTextarea(t.id116) + ' см, ' +
                             t.array10[18] + t.array11[0] + '. ' + t.array10[19];
                 },
 
@@ -3432,9 +3513,11 @@
             id231: 'hystPancreas',
             id232: 'softTissueFeet',
             id233: 'softTissueNeck',
-            id234: 'hystStrangulation'
+            id234: 'hystStrangulation',
+            id235: 'larshe'
         };
-    </script>
+</script>
+
 </head>
 
 <body>
@@ -3470,7 +3553,7 @@
 
         <!--DRESS-->
         <div class="block block-forma block-forma-dress" id="formDress">
-            <div class="pushback-block" onclick="resetLocalityLeft('formDress')"> X</div>
+            <div class="pushback-block" onclick="resetLocalityLeft('formDress')">X</div>
             <form id="form_dress" name="form_dress">
                 <label for="dressPresence"><span>Одежды нет</span></label>
                 <input type="checkbox" autocomplete="off" id="dressPresence"
@@ -4833,13 +4916,13 @@
                 <br/>
                 <br/>
                 <span style="text-decoration: underline">Щитовидная</span><br/>
-                <label><span>Левая доля: &nbsp</span><input id="thyroidLeftHeight" size="1" type="text"></label>
-                <label><span>х &nbsp</span><input id="thyroidLeftWidth" size="1" type="text"></label>
-                <label><span>х &nbsp</span><input id="thyroidLeftDepth" size="1" type="text"></label>
-                <br/>
                 <label><span>Правая доля: &nbsp</span><input id="thyroidRightHeight" size="1" type="text"></label>
                 <label><span>х &nbsp</span><input id="thyroidRightWidth" size="1" type="text"></label>
                 <label><span>х &nbsp</span><input id="thyroidRightDepth" size="1" type="text"></label>
+                <br/>
+                <label><span>Левая доля: &nbsp</span><input id="thyroidLeftHeight" size="1" type="text"></label>
+                <label><span>х &nbsp</span><input id="thyroidLeftWidth" size="1" type="text"></label>
+                <label><span>х &nbsp</span><input id="thyroidLeftDepth" size="1" type="text"></label>
                 <br/>
                 <br/>
                 <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);
@@ -4970,7 +5053,8 @@
         </div>
         <div class="test-block" id="testblock"></div>
 
-        <input type="button" class="location-reload" onclick="location.reload()" value="Сбросить все изменения">
+        <input type="button" class="location-reload" onclick="location.reload()" value="Сброс всех изменений">
+        <input type="button" class="location-info" onclick="changeStyleDisplay('info', 'block')" value="Справка">
     </div>
 
     <!--END FORM-->
@@ -4989,6 +5073,12 @@
         </div>
         <label><input type="checkbox" id="noWarning" onclick=""
                       autocomplete="off"><span>Не напоминать</span></label><br/>
+    </div>
+
+    <div class="block block-forma info" id="info">
+        <div class="pushback-block" onclick="changeStyleDisplay('info', 'none')">X</div>
+        <p>По всем вопросам данного проекта можно обратиться по адресу:</p>
+        <p class="p-info">magmae2e4@mail.ru</p>
     </div>
 
 
@@ -5065,4 +5155,5 @@
 
 </div>
 </body>
+
 </html>

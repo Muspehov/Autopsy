@@ -265,7 +265,6 @@ ul {
     margin-top: 20px;
     margin-left: 60px;
     width: 400px;
-
 }
 
 .warning-buttons input {
@@ -274,7 +273,22 @@ ul {
 
 .location-reload {
     margin-top: 10px;
+    float: left;
+}
+
+.location-info {
+    margin-top: 10px;
     float: right;
+}
+
+.info {
+    display: none;
+    outline: 2px solid #963233;
+    margin-left: 200px;
+}
+
+.p-info {
+    font-family: Courier New, monospace
 }
 
 .pushback-block {
@@ -549,6 +563,24 @@ ul {
     max-height: 300px;
     opacity: 1;
 }
+
+.div-coronars-percent{
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-coronars-percent-new {
+    max-height: 70px;
+    opacity: 1;
+}
+
+
+
 
 .div-gasterFilling-value {
     display: inline-block;

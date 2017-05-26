@@ -626,7 +626,21 @@ function getPushSymb() {
     return mark;
 }
 
-function reset(name, symb) {
+function checkAlveolus (nameTeeth, targetCheckbox, symb){
+    var elLength = document.getElementsByName(nameTeeth).length;
+    var checkbox = document.getElementById(targetCheckbox);
+    for (var i = 0, counter = 0; i < elLength; i++) {
+        if (counter >= 2) break;
+        if (document.getElementsByName(nameTeeth)[i].value == symb) counter++;
+    }
+    if (counter !== 0) checkbox.checked = true;
+    else checkbox.checked = false;
+}
+
+
+
+
+    function resetTeeth(name, symb) {
     var elLength = document.getElementsByName(name).length;
     for (var i = 0; i < elLength; i++) {
         document.getElementsByName(name)[i].value = symb;
@@ -654,21 +668,27 @@ var textPhrasesArray = [
     'На верхней и нижней челюсти определяются корни всех зубов. ',
     'Все зубы поражены кариесом. ',
     'На верхней и нижней челюсти все зубы с коронками из металла белого цвета. ',
-    'На верхней и нижней челюсти все зубы с коронками из металла желтого цвета.',
+    'На верхней и нижней челюсти все зубы с коронками из металла желтого цвета. ',
 
     'На верхней челюсти ', //6
     'На нижней челюсти ', //7
 
     'зубы отсутствуют. ',
     'зубы целы. ',
-    'определяются корни всех зубов. ', //10
+    'зубы представлены корнями. ', //10
     'все зубы поражены кариесом. ',
     'зубы с коронками из металла белого цвета. ',
-    'зубы с коронками из металла желтого цвета.', //13
+    'зубы с коронками из металла желтого цвета. ', //13
     'справа: ', //14
     'слева: ',
-    'зубы целы; ', //16
-    'зубы отсутствуют; ' //17
+    'зубы отсутствуют; ', //16
+    'зубы целы; ', //17
+    'справа ',
+    'слева ',
+    'зубы представлены корнями; ', //20
+    'зубы поражены кариесом; ',
+    'зубы с коронками из металла белого цвета; ',
+    'зубы с коронками из металла желтого цвета; ' //23
 ];
 
 
@@ -1047,8 +1067,7 @@ function joingArrayTeeth(array, row, arrSymb) {
 function getResultString(array, symbArray, textArray1) {
     var teethAll,
         teethMaxilla, teethMandible,
-        teethMaxillaRight, teethMaxillaLeft,
-        teethMandibleRight, teethMandibleLeft,
+        maxillaRareComb = false, mandibleRareComb = false,
         result = 'No';
 
     (getUniqueElementOfArray(array, 1) == 1) ? teethAll = true : teethAll = false;
@@ -1059,31 +1078,75 @@ function getResultString(array, symbArray, textArray1) {
         else if (array[0][0] == symbArray[3]) result = textArray1[3];
         else if (array[0][0] == symbArray[4]) result = textArray1[4];
         else result = textArray1[5];
-
         return result;
-
     }
-    //Проверка однотипности зубного ряда на ВЧ и НЧ
-    (getUniqueElementOfArray(array, 1, 0) == 1 && getUniqueElementOfArray(array, 1, 1) == 1) ? teethMaxilla = true : teethMaxilla = false;
-    (getUniqueElementOfArray(array, 1, 2) == 1 && getUniqueElementOfArray(array, 1, 3) == 1) ? teethMandible = true : teethMandible = false;
+    //Частичная проверка однотипности зубного ряда на ВЧ и НЧ, кроме редкого сочетания
+    if (getUniqueElementOfArray(array, 1, 0) == 1 && getUniqueElementOfArray(array, 1, 1) == 1) teethMaxilla = true; else teethMaxilla = false;
+    if (getUniqueElementOfArray(array, 1, 2) == 1 && getUniqueElementOfArray(array, 1, 3) == 1) teethMandible = true; else teethMandible = false;
 
-    if (teethMaxilla) { // все на ВЧ однотипны
+    /*maxilla*/
+    if (teethMaxilla && array[0][0] !== array[1][0]) { //редкое сочетание, когда слева все одного типа, а справа все другого на ВЧ
+        maxillaRareComb = true;
+        result = textArray1[6] + textArray1[18]; //Начало строки "На верхней челюсти справа "
+        if (array[0][0] == symbArray[0]) result += textArray1[16]; //отсутствуют
+        else if (array[0][0] == symbArray[1]) result += textArray1[17]; //целы
+        else if (array[0][0] == symbArray[2]) result += textArray1[20]; //корни
+        else if (array[0][0] == symbArray[3]) result += textArray1[21]; // кариес
+        else if (array[0][0] == symbArray[4]) result += textArray1[22];  // белые
+        else if (array[0][0] == symbArray[5]) result += textArray1[23];  // желтые
+        else result = '';
+
+        result += textArray1[19]; //После точки с запятой слово "слева "
+        if (array[1][0] == symbArray[0]) result +=  textArray1[8]; //отсутствуют
+        else if (array[1][0] == symbArray[1]) result +=  textArray1[9]; //целы
+        else if (array[1][0] == symbArray[2]) result +=  textArray1[10]; //корни
+        else if (array[1][0] == symbArray[3]) result +=  textArray1[11]; // кариес
+        else if (array[1][0] == symbArray[4]) result +=  textArray1[12];  // белые
+        else if (array[1][0] == symbArray[5]) result +=  textArray1[13];  // желтые
+        else result = '';
+    }
+
+    if (teethMaxilla && !maxillaRareComb) { // все на ВЧ однотипны
         result = textArray1[6]; //Начало строки "На верхней челюсти"
-        if (array[0][0] == symbArray[0]) result += textArray1[8];
+        if (array[0][0] == symbArray[0]) result += textArray1[8]; //отсутствуют
         else if (array[0][0] == symbArray[1]) result += textArray1[9];
         else if (array[0][0] == symbArray[2]) result += textArray1[10];
-        else if (array[0][0] == symbArray[3]) result += textArray1[11];
+        else if (array[0][0] == symbArray[3]) result += textArray1[11];//кариес
         else if (array[0][0] == symbArray[4]) result += textArray1[12];
         else if (array[0][0] == symbArray[5]) result += textArray1[13];
-        else result = textArray1[13];
-    } else {
+        else result = '';
+    }
+
+    if (!teethMaxilla && !maxillaRareComb) {
         result = textArray1[6] + textArray1[14]; //Начало строки "На верхней челюсти" + "справа"
         //Добавление числовой последовательности
         result += joingArrayTeeth(array, 0, symb) + '; ' + textArray1[15] + joingArrayTeeth(array, 1, symb) + '. ';
-
     }
 
-    if (teethMandible) { // все на HЧ однотипны
+    /*mandible*/
+
+    if (teethMandible && array[2][0] !== array[3][0]) { //редкое сочетание, когда слева все одного типа, а справа все другого на ВЧ
+        mandibleRareComb = true;
+        result += textArray1[7] + textArray1[18]; //Начало строки "На нижней челюсти справа "
+        if (array[2][0] == symbArray[0]) result += textArray1[18] + textArray1[16]; //отсутствуют
+        else if (array[2][0] == symbArray[1]) result += textArray1[17]; //целы
+        else if (array[2][0] == symbArray[2]) result += textArray1[20]; //корни
+        else if (array[2][0] == symbArray[3]) result += textArray1[21]; // кариес
+        else if (array[2][0] == symbArray[4]) result += textArray1[22];  // белые
+        else if (array[2][0] == symbArray[5]) result += textArray1[23];  // желтые
+        else result = '';
+
+        result += textArray1[19]; //После точки с запятой слово "слева "
+        if (array[3][0] == symbArray[0]) result +=  textArray1[8]; //отсутствуют
+        else if (array[3][0] == symbArray[1]) result +=  textArray1[9]; //целы
+        else if (array[3][0] == symbArray[2]) result +=  textArray1[10]; //корни
+        else if (array[3][0] == symbArray[3]) result +=  textArray1[11]; // кариес
+        else if (array[3][0] == symbArray[4]) result +=  textArray1[12];  // белые
+        else if (array[3][0] == symbArray[5]) result +=  textArray1[13];  // желтые
+        else result = '';
+    }
+
+    if (teethMandible && !mandibleRareComb) { // все на HЧ однотипны
         result += textArray1[7]; //Начало строки "На нижней челюсти"
         if (array[2][0] == symbArray[0]) result += textArray1[8];
         else if (array[2][0] == symbArray[1]) result += textArray1[9];
@@ -1091,12 +1154,15 @@ function getResultString(array, symbArray, textArray1) {
         else if (array[2][0] == symbArray[3]) result += textArray1[11];
         else if (array[2][0] == symbArray[4]) result += textArray1[12];
         else if (array[2][0] == symbArray[5]) result += textArray1[13];
-        else result = textArray1[13];
-    } else {
+        else result = '';
+    }
+
+    if (!teethMandible && !mandibleRareComb) {
         result += textArray1[7] + textArray1[14];
         //Добавление числовой последовательности
         result += joingArrayTeeth(array, 2, symb) + '; ' + textArray1[15] + joingArrayTeeth(array, 3, symb) + '. ';
     }
+
     return result;
 }
 
@@ -1181,33 +1247,35 @@ var arr_Decomposition = [
     'Трупные пятна синюшно-фиолетового цвета, ',
     'Трупные пятна синюшно-багрового цвета, ',
     'Трупные пятна розовато-красного цвета, ',
-    'интенсивные, ',
+    'интенсивные, ', //7
     'слабой интенсивности ',
     'сливные, ',
-    'очаговые ',
+    'очаговые ',//10
     'располагаются на задней поверхности шеи, спины и конечностей, за исключением мест сдавлений в области лопаток и ягодиц, ',
     'располагаются на заднебоковых поверхностях шеи, спины и конечностей, ',
     'располагаются на передней поверхности шеи, спины и конечностей, ',
     'располагаются на левой боковой поверхности шеи, туловища и конечностей, ',
     'располагаются на правой боковой поверхности шеи, туловища и конечностей, ',
-    'при надавливании в трех рядом расположенных участках судебно-медицинским динамометром СМЭД-2 с силой 2 кг/см',
+    'при надавливании в трех рядом расположенных участках судебно-медицинским динамометром СМЭД-2 с силой 2 кг/см', //16
     'не изменяют свою окраску. ',
     'бледнеют, восстанавливая свою окраску через ',
     'исчезают, восстанавливая свою окраску через ',
-    'Трупное окоченение умеренно развито во всех группах мышц. ',
+    'Трупное окоченение умеренно развито во всех группах мышц. ', //20
     'Трупное окоченение хорошо развито во всех группах мышц. ',
     'Трупное окоченение слабо развито во всех группах мышц. ',
     'Трупное окоченение отсутствует во всех группах мышц. ',
     'Видимые признаки гниения отсутствуют. ',
-    'Кожный покров на передней брюшной стенке темно-зеленого цвета (трупная зелень). ',
-    'Кожный покров в паховых областях темно-зеленого цвета (трупная зелень). '
+    'Кожный покров на передней брюшной стенке темно-зеленого цвета (трупная зелень). ', //25
+    'Кожный покров в паховых областях темно-зеленого цвета (трупная зелень). ',
+    ' с грязно-серыми участками треугольной формы, вершиной обращенной к углу глаза (пятна Лярше). ' //27
+
 ];
 
 var arr_Damage = [
     'Кости свода черепа и лицевого скелета на ощупь целы. ',
     'Повреждений на волосистой части головы не обнаружено. ',
     ', без повреждений и кровоизлияний. ',
-    ', без повреждений. ',
+    ', без повреждений. ',//3
     ', без кровоизлияний. ',
     ' ребра на ощупь целы. ',
     ' на ощупь целы. ', /*6*/
@@ -1240,20 +1308,23 @@ var arr_Damage = [
     ' нижних ',
     'конечностей ',
     'Кости ', //35
-    'Рассечены межреберные промежутки - переломов ребер не обнаружено. '
+    'Рассечены межреберные промежутки - переломов ребер не обнаружено. ',
+    ', без повреждений и кровоизлияний', //37
+    ', без повреждений',
+    ', без кровоизлияний'
 
 ];
 
 var arr_Head = [/*array5*/
     'Волосы на голове отсутствуют. ',
-    'Волосы на голове темно-русые',
-    'Волосы на голове русые',
-    'Волосы на голове светло-русые',
-    'Волосы на голове черные',
-    'Волосы на голове седые',
-    ' с сединой',
-    'Волосы на голове ',
-    ', длиной до ',
+    'Волосы на голове темно-русые, ',
+    'Волосы на голове русые, ',
+    'Волосы на голове светло-русые, ',
+    'Волосы на голове черные, ',
+    'Волосы на голове седые, ', //5
+    ' с сединой ',
+    'Волосы на голове ', //7
+    'длиной до ',
     'Лицо бледно-синюшного цвета',
     'Лицо бледно-серого цвета',
     'Лицо синюшно-фиолетового цвета',
@@ -1265,18 +1336,18 @@ var arr_Head = [/*array5*/
     'Глаза открыты, ',
     'роговицы прозрачные, ',
     'роговицы мутные, ',
-    'радужная оболочка светло-коричневого цвета. ',
+    'радужная оболочка светло-коричневого цвета. ', //20
     'радужная оболочка темно-коричневого цвета. ',
     'радужная оболочка голубого цвета. ',
     'радужная оболочка черного цвета. ',
     'радужная оболочка светло-зеленого цвета. ',
     'радужная оболочка ',
-    'Соединительные оболочки глаз бледно-розового цвета, ', /*25*/
+    'Соединительные оболочки глаз бледно-розового цвета, ', /*26*/
     'Соединительные оболочки глаз серо-розового цвета, ',
     'Соединительные оболочки глаз желтого цвета, ',
     'Соединительные оболочки глаз светло-желтого цвета, ',
     'гладкие',
-    'шероховатые',
+    'шероховатые', //31
     'Кости и хрящи носа на ощупь целы. ',
     'Кости носа на ощупь целы. ',
     'Хрящи носа на ощупь целы. ',
@@ -1304,7 +1375,9 @@ var arr_Head = [/*array5*/
     'выделения темно-желтого цвета. ',
     'выделения зеленого цвета. ',
     'Видимые зубы целы. ',
-    'Зрачки равномерно округлой формы, по ' /*59*/
+    'Зрачки равномерно округлой формы, по ' /*59*/,
+    'Лунка отсутствующего зуба заращена, атрофичная. ',
+    'Лунки отсутствующих зубов заращены, атрофичные. '
 
 ];
 
@@ -1484,17 +1557,17 @@ var arr_heartVessels = [
     'Венечные артерии извиты, стенки их эластичные, ', /*7*/
     'Венечные артерии извиты, стенки их плотноватые, ',
     'Венечные артерии извиты, стенки их плотные, режутся с трудом, ',
-    'на внутренней стенке бляшек нет, в просветах небольшое количество темно-красной жидкой крови. ',
-    'с внутренней стороны с наложением множественных полулунных бляшек, на большем протяжении сливающихся между собой, расположенных в передней межжелудочковой и огибающей ветвях левой венечной артерии, суживающих просвет на 1/3. В просвете венечных артерий небольшое количество темно-красной жидкой крови. ',
-    'с внутренней стороны с наложением множественных кольцевидных и полулунных бляшек, на большем протяжении сливающихся между собой, расположенных в передней межжелудочковой и огибающей ветвях левой венечной артерии, суживающих просвет на 2/3. В просвете венечных артерий небольшое количество темно-красной жидкой крови. ',
-    'с внутренней стороны с наложением множественных кольцевидных и полулунных бляшек, на большем протяжении сливающихся между собой, расположенных в передней межжелудочковой и огибающей ветвях левой венечной артерии, суживающих просвет на 2/3, в отдельных участках полностью закрывающие просвет. В свободном от бляшек просвете венечных артерий небольшое количество темно-красной жидкой крови. ',
-    'Сердце вскрыто по току крови. ',
+    'на внутренней стенке бляшек нет, в просветах небольшое количество темно-красной жидкой крови. ', /*10*/
+    'с внутренней стороны с наложением множественных полулунных бляшек, на большем протяжении сливающихся между собой, расположенных в передней межжелудочковой и огибающей ветвях левой венечной артерии, суживающих просвет до 70%. В просвете венечных артерий небольшое количество темно-красной жидкой крови. ',
+    'с внутренней стороны с наложением множественных кольцевидных и полулунных бляшек, на большем протяжении сливающихся между собой, расположенных в передней межжелудочковой и огибающей ветвях левой венечной артерии, суживающих просвет до 70%. В просвете венечных артерий небольшое количество темно-красной жидкой крови. ',
+    'с внутренней стороны с наложением множественных кольцевидных и полулунных бляшек, на большем протяжении сливающихся между собой, расположенных в передней межжелудочковой и огибающей ветвях левой венечной артерии, суживающих просвет до 70%, в отдельных участках полностью закрывающие просвет. В свободном от бляшек просвете венечных артерий небольшое количество темно-красной жидкой крови. ',
+    'Сердце вскрыто по току крови. ', /*14*/
     'Полости сердца не расширены, ',
     'Полости сердца расширены, ',
     'в них небольшое количество темно-красной жидкой крови. ',
     'содержат темно-красную жидкую кровь. ',
     'содержат темно-красные рыхлые свертки. ',
-    'содержат желтовато-красные эластичные свертки. ',
+    'содержат желтовато-красные эластичные свертки. ', /*20*/
     'содержат желтые эластичные свертки. ',
     'Клапанный аппарат сердца и крупных сосудов сформирован правильно. ',
     'Створки клапанов белесовато-желтоватого цвета, уплотнены у основания, не сращены между собой, легко подвижные, смыкаются полностью, гладкие, блестящие. ',
@@ -1504,7 +1577,7 @@ var arr_heartVessels = [
     'аортального ',
     'трехстворчатого ',
     'клапана легочного ствола ',
-    'Сосочковые мышцы не утолщены, сухожильные нити тонкие, не укорочены, не сросшиеся, светло-серого цвета. ',
+    'Сосочковые мышцы не утолщены, сухожильные нити тонкие, не укорочены, не сросшиеся, светло-серого цвета. ', /*30*/
     'Сосочковые мышцы утолщены, сухожильные нити тонкие, не укорочены, не сросшиеся, светло-серого цвета. ',
     'Сосочковые мышцы не утолщены, сухожильные нити тонкие, укорочены, не сросшиеся, светло-серого цвета. ',
     'Сосочковые мышцы утолщены, сухожильные нити тонкие, укорочены, не сросшиеся, светло-серого цвета. ',
@@ -1514,7 +1587,7 @@ var arr_heartVessels = [
     'Толщина стенки левого желудочка ',
     'правого - ',
     'В просвете аорты содержится небольшое количество темно-красной жидкой крови, ',
-    'В просвете аорты содержится темно-красная жидкая кровь, ',
+    'В просвете аорты содержится темно-красная жидкая кровь, ', /*40*/
     'В просвете аорты содержатся темно-красные рыхлые свертки, ',
     'В просвете аорты содержатся желтовато-красные эластичные свертки, ',
     'В просвете аорты содержатся желтые эластичные свертки, ',
@@ -1524,7 +1597,7 @@ var arr_heartVessels = [
     'внутренняя оболочка аорты красновато-желтая, ',
     'внутренняя оболочка аорты темно-красная, ',
     'содержит многочисленные желтые участки (липидные пятна). ',
-    'гладкая. ',
+    'гладкая. ', /*50*/
     'содержит многочисленные желтые участки (липидные пятна) и единичные плотноватые атеросклеротические бляшки. ',
     'содержит многочисленные желтые участки (липидные пятна) и плотноватые атеросклеротические бляшки. ',
     'на ней имеются многочисленные, сильно выбухающие желтоватые атеросклеротические бляшки, часть которых находятся в состоянии изъязвления.  ',
@@ -1534,11 +1607,14 @@ var arr_heartVessels = [
     'В просвете нижней полой вены содержится темно-красная жидкая кровь, ',
     'В просвете нижней полой вены содержатся темно-красные рыхлые свертки, ',
     'В просвете нижней полой вены содержатся желтовато-красные эластичные свертки, ',
-    'В просвете нижней полой вены содержатся желтые эластичные свертки, ',
+    'В просвете нижней полой вены содержатся желтые эластичные свертки, ', /*60*/
     'Длина окружности аорты в грудном отделе ',
     'края ее при пересечении разошлись на ',
     'внутренняя оболочка сосуда темно-синюшная, гладкая, блестящая. ',
-    'Перикард розовато-серого цвета, поверхности его гладкие и блестящие. В полости перикарда '
+    'Перикард розовато-серого цвета, поверхности его гладкие и блестящие. В полости перикарда ',
+    'с внутренней стороны с наложением множественных полулунных бляшек, на большем протяжении сливающихся между собой, расположенных в передней межжелудочковой и огибающей ветвях левой венечной артерии, ',
+    'суживающих просвет до ',
+    'В просвете венечных артерий небольшое количество темно-красной жидкой крови. ' /*67*/
 ];
 
 var arr_LienGsr = [
@@ -1625,7 +1701,7 @@ var arr_additionInvestigation = [
     'суррогатов алкоголя',
     'лекарственных препаратов',
     'наркотических веществ', //15
-    'На судебно-биологическое исследование направлена кровь для определения групповой принадлежности.'
+    'На судебно-биологическое исследование направлена кровь для определения групповой принадлежности. '
 ];
 
 var arr_frequentlyPhrases = [
@@ -1778,8 +1854,7 @@ function getResult(t) {
                     if (!ISchecked(t.id35)) return getStringFromSelect2(t.id33, t.array5, 1) + t.array5[8] + getFromTextarea(t.id36) + ' см. ';
                     else return getStringFromSelect2(t.id33, t.array5, 1) + t.array5[6] + t.array5[8] + getFromTextarea(t.id36) + ' см. ';
                 }
-                else return t.array5[7] + t.array5[8] + getFromTextarea(t.id36) + ' см. ';
-
+                else return t.array5[7] + getFromTextarea(t.id34) + ', ' + t.array5[8] + getFromTextarea(t.id36) + ' см. ';
             }
             else  return t.array5[0];
         },
@@ -1806,12 +1881,20 @@ function getResult(t) {
             return t.array5[59] + getNumberFromTextarea(t.id43) + ' см каждый. ';
         },
 
-        eyesConnectMembran: getStringFromSelect2(t.id46, t.array5, 26) + getStringFromSelect2(t.id47, t.array5, 30),
-        eyesConnectMembranDamageAndHemorrhage: function () {
-            if (!ISchecked(t.id50) && !ISchecked(t.id48)) return t.array4[2];
-            else if (!ISchecked(t.id50) && ISchecked(t.id48)) return t.array4[3];
-            else if (ISchecked(t.id50) && !ISchecked(t.id48)) return t.array4[4];
+        eyesConnectMembran: function () {
+            return getStringFromSelect2(t.id46, t.array5, 26) + getStringFromSelect2(t.id47, t.array5, 30);
+        },
+
+    eyesConnectMembranDamageAndHemorrhage: function () {
+        var larshe = function () {
+            if (ISchecked(t.id235)) return ', ' + t.array3[27];
             else return '. ';
+        };
+
+        if (!ISchecked(t.id50) && !ISchecked(t.id48)) return t.array4[37] + larshe(); //без повреждений и кровоизлияний
+            else if (!ISchecked(t.id50) && ISchecked(t.id48)) return t.array4[38] + larshe(); //без повреждений
+            else if (ISchecked(t.id50) && !ISchecked(t.id48)) return t.array4[39] + larshe(); //без кровоизлияний
+            else return larshe();
         },
 
         noseDamage: function () {
@@ -1836,6 +1919,21 @@ function getResult(t) {
         teeth: function () {
             if (ISchecked(t.id85)) return t.array5[58];
             else return getResultString(matrix, symb, textPhrasesArray);
+        },
+
+        teethAlveolus: function (){
+            if (ISchecked(t.id57t)){
+                var elLength = document.getElementsByName(t.id57t_name).length;
+                for (var i = 0, counter = 0; i < elLength; i++) {
+                    if (document.getElementsByName(t.id57t_name)[i].value == ' Н ') counter++;
+
+                }
+
+                if (counter == 1) return t.array5[60];
+                else if (counter > 1) return t.array5[61];
+                else return '';
+
+            } else return '';
         },
 
         mouth: getStringFromSelect2(t.id57, t.array5, 41),
@@ -2104,7 +2202,7 @@ function getResult(t) {
 
         thyreoidGland: function () {
             return t.array10[16] + getNumberFromTextarea(t.id111) + 'x' + getNumberFromTextarea(t.id112) + 'х' + getNumberFromTextarea(t.id113) + ' см, ' +
-                t.array10[17] + getNumberFromTextarea(t.id114) + 'x' + getNumberFromTextarea(t.id115) + 'х' + getNumberFromTextarea(t.id116) + ' см. ' +
+                t.array10[17] + getNumberFromTextarea(t.id114) + 'x' + getNumberFromTextarea(t.id115) + 'х' + getNumberFromTextarea(t.id116) + ' см, ' +
                 t.array10[18] + t.array11[0] + '. ' + t.array10[19];
         },
 
@@ -2164,9 +2262,14 @@ function getResult(t) {
             return t.array11[7] + getNumberFromTextarea(t.id130L) + 'x' + getNumberFromTextarea(t.id130W) + 'x' + getNumberFromTextarea(t.id130D) + ' см, ' + t.array11[8] + getNumberFromTextarea(t.id129) + ' г. '
         },
 
-        heartFatСoronaritis: function () {
-            return getStringFromSelect2(t.id127, t.array13, 3) +
-                getStringFromSelect2(t.id131, t.array13, 7) + getStringFromSelect2(t.id132, t.array13, 10);
+        heartFat: function () {
+            return getStringFromSelect2(t.id127, t.array13, 3);
+        },
+
+        coronars: function () {
+            if (!verificationSelect(t.id142с, 5)){
+                return getStringFromSelect2(t.id131, t.array13, 7) + getStringFromSelect2(t.id132, t.array13, 10);
+            } else return getStringFromSelect2(t.id131, t.array13, 7) + t.array13[65] + t.array13[66] + getNumberFromTextarea(t.id142сs) + '%. ' + t.array13[67];
         },
 
         heartCavity: function () {
@@ -2542,6 +2645,8 @@ var t = {
     id55: 'earExcret',
     id56: 'earExcretOther',
     id57: 'mouth',
+    id57t: 'teeth_alveolus',
+    id57t_name: 'inp',
     id58: 'd3', /*mouth*/
     id59: 'lipsBorderColor',
     id60: 'lipsBorderSurface',
@@ -2630,6 +2735,8 @@ var t = {
     id140: 'papillaryMuscles',
     id141: 'tendonThread',
     id142: 'diffuseCardscl',
+    id142с: 'coronarosclerosis',
+    id142сs: 'coronars',
     id143: 'heartBloodFill',
     id144: 'ventricleLeft',
     id145: 'ventricleRight',
@@ -2724,6 +2831,7 @@ var t = {
     id231: 'hystPancreas',
     id232: 'softTissueFeet',
     id233: 'softTissueNeck',
-    id234: 'hystStrangulation'
+    id234: 'hystStrangulation',
+    id235: 'larshe'
 };
 
