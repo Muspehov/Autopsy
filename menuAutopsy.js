@@ -51,9 +51,17 @@ function resetLocalityLeft(id) {
     e.style.zIndex = '0';
 }
 
-function changeStyleDisplay(id, display) {
-    var element = document.getElementById(id);
-    element.style.display = display;
+function changeTextInBlock(id, text){
+    var span = document.getElementById(id);
+    var content = document.createTextNode(text);
+    span.innerHTML = '';
+    span.appendChild(content);
+}
+
+function changeStyleDisplay() {
+    for (var i = 0; i < arguments.length-1; i++) {
+        document.getElementById(arguments[i]).style.display = arguments[arguments.length-1];
+    }
 }
 
 function changeStyle(id, newStyle) {
@@ -296,6 +304,19 @@ function expandDivTroughSelect2(idSlct, optionNum, id, heightNum) { //тольк
         el.style.height = '0px';
         el.style.opacity = '0';
     }
+}
+
+function chemResearchNonDetected (array, idTextarea, idCheckbox1, idCheckbox2, idCheckbox3){ //вывод списка веществ в textarea
+    var text = '';                                                                           //в зависимости от нажатия checkbox
+    for (var i = 2, ch = false; i < arguments.length; i++) {
+        if (document.getElementById(arguments[i]).checked){
+            if (i !== 0 && ch) text += '; ';
+            text += array[i-2];
+            ch = true;
+        }
+    }
+    if (ch) text += '. ';
+    document.getElementById(idTextarea).value = text;
 }
 
 /*WARNING*/
@@ -583,6 +604,32 @@ function get05RandAndAddInValue(id, min, max) { //с десятичной дро
 function get5RandAndAddInValue(id, min, max, num) { //кратное num
     var rand = Math.floor(Math.random() * (max - min + 1)) + min;
     document.getElementById(id).value = Math.floor(rand / num) * num;
+}
+
+/*Date*/
+function getDateYear(id){
+    var year = new Date();
+    for (var i = 0; i < arguments.length; i++) {
+        document.getElementById(arguments[i]).value = year.getFullYear().toString().slice(2);
+    }
+}
+
+function getDateMonth(id){
+    var date = new Date();
+    var month = date.getMonth() + 1;
+    if (month.toString().length < 2) month = '0' + month;
+    for (var i = 0; i < arguments.length; i++) {
+        document.getElementById(arguments[i]).value = month;
+    }
+}
+
+function getDateDay(id){
+    var date = new Date();
+    var day = date.getDate();
+    if (day.toString().length < 2) day = '0' + day;
+    for (var i = 0; i < arguments.length; i++) {
+        document.getElementById(arguments[i]).value = day;
+    }
 }
 
 /* -----  */
@@ -1455,8 +1502,8 @@ var arr_headbrain = [
     'Желудочки мозга не расширены, симметричны, заполнены прозрачной розоватой жидкостью; внутренняя оболочка желудочков блестящая, гладкая, сосудистые сплетения серовато-красные, ',
     'Подкорковые ядра обычного анатомического строения, симметричные. ',
     'Артерии основания головного мозга слегка утолщены, слабоэластичные, без очаговых изменений. ',
-    'Артерии основания головного мозга на большем протяжении с непрозрачными светло-желтоватыми циркулярно утолщенными стенками и желтыми плотными атеросклеротическими бляшками, суживающие просвет на 1/2. ',
-    'Артерии основания головного мозга практически на всем протяжении с непрозрачными светло-желтоватыми циркулярно утолщенными стенками и большим количеством желтых плотных атеросклеротических бляшек, суживающие просвет на 2/3. ',
+    'Артерии основания головного мозга на большем протяжении с непрозрачными светло-желтоватыми циркулярно утолщенными стенками и желтыми плотными атеросклеротическими бляшками, суживающие просвет на 50%. ',
+    'Артерии основания головного мозга практически на всем протяжении с непрозрачными светло-желтоватыми циркулярно утолщенными стенками и большим количеством желтых плотных атеросклеротических бляшек, суживающие просвет на 80%. ',
     'Артерии основания головного мозга тонкие, слабоэластичные, без очаговых изменений. ',
     'Мозжечок и ствол мозга на разрезах с хорошо различимым обычным симметричным рисунком строения, без кровоизлияний. ', /*30*/
     'Эпифиз эластичный на ощупь, неправильной овальной формы, размерами ',
@@ -1560,7 +1607,7 @@ var arr_heartVessels = [
     'на внутренней стенке бляшек нет, в просветах небольшое количество темно-красной жидкой крови. ', /*10*/
     'с внутренней стороны с наложением множественных полулунных бляшек, на большем протяжении сливающихся между собой, расположенных в передней межжелудочковой и огибающей ветвях левой венечной артерии, суживающих просвет до 70%. В просвете венечных артерий небольшое количество темно-красной жидкой крови. ',
     'с внутренней стороны с наложением множественных кольцевидных и полулунных бляшек, на большем протяжении сливающихся между собой, расположенных в передней межжелудочковой и огибающей ветвях левой венечной артерии, суживающих просвет до 70%. В просвете венечных артерий небольшое количество темно-красной жидкой крови. ',
-    'с внутренней стороны с наложением множественных кольцевидных и полулунных бляшек, на большем протяжении сливающихся между собой, расположенных в передней межжелудочковой и огибающей ветвях левой венечной артерии, суживающих просвет до 70%, в отдельных участках полностью закрывающие просвет. В свободном от бляшек просвете венечных артерий небольшое количество темно-красной жидкой крови. ',
+    'с внутренней стороны с наложением множественных кольцевидных и полулунных бляшек, на большем протяжении сливающихся между собой, расположенных в передней межжелудочковой и огибающей ветвях левой венечной артерии, суживающих просвет до 80%, в отдельных участках полностью закрывающие просвет. В свободном от бляшек просвете венечных артерий небольшое количество темно-красной жидкой крови. ',
     'Сердце вскрыто по току крови. ', /*14*/
     'Полости сердца не расширены, ',
     'Полости сердца расширены, ',
@@ -1701,7 +1748,11 @@ var arr_additionInvestigation = [
     'суррогатов алкоголя',
     'лекарственных препаратов',
     'наркотических веществ', //15
-    'На судебно-биологическое исследование направлена кровь для определения групповой принадлежности. '
+    'стекловидное тело для определения концентрации глюкозы',
+    'На судебно-химическое исследование направлено стекловидное тело для определения концентрации глюкозы',
+    'На судебно-биологическое исследование направлена кровь для определения групповой принадлежности. ',
+    '10 мл периферической крови для определения концентрации карбоксигемоглобина', //19
+    '10 мл мочи '
 ];
 
 var arr_frequentlyPhrases = [
@@ -1756,6 +1807,18 @@ var arr_hystology = [
 
 ];
 
+var arr_chem = [
+    'хлороформ, хлоралгидрат, 4-хлористый углерод, дихлорэтан; ацетальдегид; ацетон; метиловый, пропиловые, бутиловые, амиловые спирты; бензол, толуол, ксилол',
+    'морфин, кодеин, дионин, героин, промедол, папаверин; димедрол',
+    'амитриптилин; аминазин, дипразин, трифтазин, мажептил, тизерцин, этмозин и другие производные фенотиазина; имизин; МДА, МДМА; элениум, седуксен, тазепам, нитразепам, феназепам и другие производные 1,4-бензодиазепина'
+];
+
+var arr_hystologists = [
+  'Захарова О.А.',
+  'Штарберг Р.С.',
+  'Захарчук Я.',
+  'Салтонас '
+];
 
 function getResult(t) {
     var re = /[\S+]/;
@@ -1767,7 +1830,7 @@ function getResult(t) {
             }
             else return t.array1[0];
         }
-    };
+};
 
 
     if (checkAreaForFill(t.id2, re)) {
@@ -2482,6 +2545,7 @@ function getResult(t) {
 
             var alcogol = function () {
                 if (!ISchecked(t.id204)) return t.array17[4] + t.array17[6] + t.array17[7];
+                else if (!ISchecked(t.id203)) return t.array17[4] + t.array17[20] + t.array17[7];
                 else return t.array17[4] + t.array17[5] + t.array17[7];
             };
 
@@ -2489,13 +2553,40 @@ function getResult(t) {
                 if (checkCheckboxesOR(t.id200, t.id201, t.id202)) {
                     var chemItem = getStringEnumeration3(t.id200, t.id201, t.id202, t.array17, 13);
                 } else chemItem = '';
-                return alcogol() + '; ' + getStringEnumeration3(t.id196, t.id197, t.id198, t.id199, t.array17, 8) + t.array17[12] + chemItem + '. ';
+                return alcogol() + '; ' + getStringEnumeration3(t.id196, t.id197, t.id198, t.id199, t.array17, 8) + t.array17[12] + chemItem;
             }
-            else return alcogol() + '. ';
+            else return alcogol();
+        },
+
+        vitreous: function() {
+            if (checkCheckboxesOR(t.id203, t.id204)){                          //bloodChem, urineChem are checked
+                if (ISchecked(t.id236)){                                      //стекловидное тело checked
+                    if (ISchecked(t.id237)){
+                        return '; ' +  t.array17[16] + '; ' + t.array17[19] + '. ';  // if(CO выбрано) return стекловидное тело + СО + '. '
+                    } else return '; ' +  t.array17[16] + '. ' ;                       // else only стекловидное тело (ниже)
+                }
+                else {                                          //стекловидное тело unchecked
+                    if (ISchecked(t.id237)){                    // if(CO выбрано) return СО + '. '
+                        return '; ' + t.array17[19] + '. ';
+                    } else return '. ';                         // else return '. ';
+                }
+
+            } else {                                            //bloodChem, urineChem are checked
+                if (ISchecked(t.id236)){                        //стекловидное тело checked
+                    if (ISchecked(t.id237)) {                   // if(CO выбрано)
+                        return ' ' + t.array17[17] + ', ' + t.array17[19] + '. ';
+                    } else return ' ' + t.array17[17] + '. ';
+                }
+                else {                                          //стекловидное тело unchecked
+                    if (ISchecked(t.id237)) {                   // if(CO выбрано)
+                        return ' ' + t.array17[0] + t.array17[19] + '. ';
+                    } else return ' ';                          // совсем ничего не выбрано, в том числе ни кровь ни моча
+                }
+            }
         },
 
         bloodType: function () {
-            if (ISchecked(t.id205)) return t.array17[16];
+            if (ISchecked(t.id205)) return t.array17[18];
             else return '';
         },
 
@@ -2506,31 +2597,77 @@ function getResult(t) {
         }
     };
 
+    var investigationHystology = {
+      hystology: function (){
+          if (ISchecked('hystologySecondCopy')){
+              return '1. Акт судебно-гистологического исследования прилагается ко второму экземпляру данного заключения. '
+          } else {
+              if (ISchecked('hystologyArchive')){
+                  return '1. Материал для судебно-гистологического исследования сдан в архив № ' + getNumberFromTextarea('numHystologyArchive') + '. ';
+              } else {
+                  if (verificationSelect('hystologist', 5)){
+                    return '1. Из акта судебно-гистологического исследования № ' + getNumberFromTextarea('numHystologyText') + ' от ' + getNumberFromTextarea('hystologyTextDay') + '.' + getNumberFromTextarea('hystologyTextMounth') + '.' + getNumberFromTextarea('hystologyTextYear') + '. ' + '(судебно-медицинский эксперт ' + getFromTextarea('hystologistOther') + ') известно, что: "' + getFromTextarea('textareaHystology') + '". ';
+                  } else return '1. Из акта судебно-гистологического исследования № ' + getNumberFromTextarea('numHystologyText') + ' от ' + getNumberFromTextarea('hystologyTextDay') + '.' + getNumberFromTextarea('hystologyTextMounth') + '.' + getNumberFromTextarea('hystologyTextYear') + '. ' + '(судебно-медицинский эксперт ' + getStringFromSelect2('hystologist', arr_hystologists, 0) + ') известно, что: "' + getFromTextarea('textareaHystology') + '". ';
+              }
+
+          }
+      }
+    };
+
+    var investigationChem = {
+      chem: function (){
+          return '2. Судебно-химическое исследование' + 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad aliquid architecto assumenda autem blanditiis, cum, expedita fugiat ipsum natus nobis obcaecati perspiciatis quaerat recusandae repellendus soluta tenetur veniam! Quos. ';
+      }
+    };
+
+    var investigationEvidence = {
+      evidence: function () {
+          return '3. Экспертиза вещественных доказательств Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad aliquid architecto assumenda autem blanditiis, cum, expedita fugiat ipsum natus nobis obcaecati perspiciatis quaerat recusandae repellendus soluta tenetur veniam! Quos.';
+      }
+    };
+
+    ////////////////////
+
     var title1 = 'наружное исследование',
-        title2 = 'внутреннее исследование';
+        title2 = 'внутреннее исследование',
+        title3 = 'данные дополнительных методов исследования';
+
     var result1 = getProp(dressC) + getProp(generalCharacters) + getProp(decompositionAndSkin);
     var result2 = getProp(decompositionMuscle) + getProp(head) + getProp(neckTorso);
     var result3 = getProp(headBrain) + getProp(visceralGeneral);
+    var result4 = getProp(investigationHystology);
+    var result5 = getProp(investigationChem);
+    var result6 = getProp(investigationEvidence);
 
     var spanTitle1 = document.createElement("span"),
-        spanTitle2 = document.createElement("span");
+        spanTitle2 = document.createElement("span"),
+        spanTitle3 = document.createElement("span");
     spanTitle1.classList.add("titleResearch");
     spanTitle2.classList.add("titleResearch");
+    spanTitle3.classList.add("title3");
 
 
     var divFrame = document.createElement("div"),
         p = document.createElement("p"),
         br = document.createElement("br"),
-        p2 = document.createElement("p");
+        p2 = document.createElement("p"),
+        p3 = document.createElement("p"),
+        p4 = document.createElement("p"),
+        p5 = document.createElement("p");
 
     var inputTitle1 = document.createTextNode(title1),
-        inputTitle2 = document.createTextNode(title2);
+        inputTitle2 = document.createTextNode(title2),
+        inputTitle3 = document.createTextNode(title3);
     var content1 = document.createTextNode(result1),
         content2 = document.createTextNode(result2),
-        content3 = document.createTextNode(result3);
+        content3 = document.createTextNode(result3),
+        content4 = document.createTextNode(result4),
+        content5 = document.createTextNode(result5),
+        content6 = document.createTextNode(result6);
 
     spanTitle1.appendChild(inputTitle1); //заворачиваем заголовки в span
     spanTitle2.appendChild(inputTitle2);
+    spanTitle3.appendChild(inputTitle3);
 
     var sup = document.createElement("sup"); //верхний индекс
     var contentSup = document.createTextNode('2 ');
@@ -2539,7 +2676,10 @@ function getResult(t) {
     p.appendChild(content1);
     p.appendChild(sup);
     p.appendChild(content2);
-    p2.appendChild(content3);
+    p2.appendChild(content3); //внутреннее исследование
+    p3.appendChild(content4); //данные дополнительных методов исследования. Гистология
+    p4.appendChild(content5); //данные дополнительных методов исследования. Химия
+    p5.appendChild(content6); //данные дополнительных методов исследования. Вещ. доказательства
 
     //var w = document.getElementById(t.outputId); //вывод данных
     var isGecko = navigator.userAgent.toLowerCase().indexOf("gecko") != -1;
@@ -2548,21 +2688,29 @@ function getResult(t) {
     var iDoc = (isGecko) ? iframe.contentDocument : iframe.document;
 
     iHTML = "<style> p{text-align: justify; text-indent: 30px; font-family: 'Times New Roman', sans-serif; font-size: 16px; margin: 0}"
-        + " .titleResearch {margin-left: 40%; font-family: Georgia, 'Times New Roman', Times, serif; font-weight:bold; text-transform: uppercase;}</style>"
+        + " .titleResearch {display: block; margin-top: 20px; margin-left: 270px; font-family: Georgia, 'Times New Roman', Times, serif; font-weight:bold; text-transform: uppercase;} .title3{display: block; margin-top: 20px; margin-left: 140px; font-family: Georgia, 'Times New Roman', Times, serif; font-weight:bold; text-transform: uppercase;}</style>"
         + "<div id='divFrame' style='background: #fbecdd; padding: 10px 20px 20px 30px'></div>";
     iDoc.open(); // Открываем фрейм
     iDoc.write(iHTML); // Добавляем написанный код в фрейм
     iDoc.getElementById("divFrame").innerHTML = "";
     iDoc.getElementById("divFrame").appendChild(spanTitle1);
-    iDoc.getElementById("divFrame").appendChild(br);
+
     iDoc.getElementById("divFrame").appendChild(p); //
-    iDoc.getElementById("divFrame").appendChild(br);
-    divFrame.appendChild(br);
-    iDoc.getElementById("divFrame").appendChild(br);
-    iDoc.getElementById("divFrame").appendChild(br);
-    iDoc.getElementById("divFrame").appendChild(br);
-    iDoc.getElementById("divFrame").appendChild(spanTitle2);
-    iDoc.getElementById("divFrame").appendChild(p2);
+    //iDoc.getElementById("divFrame").appendChild(br);
+    //divFrame.appendChild(br);
+    //iDoc.getElementById("divFrame").appendChild(br);
+    //iDoc.getElementById("divFrame").appendChild(br);
+    //iDoc.getElementById("divFrame").appendChild(br);
+    iDoc.getElementById("divFrame").appendChild(spanTitle2);  //заголовок внутреннее исследование
+    iDoc.getElementById("divFrame").appendChild(p2); //внутреннее исследование
+
+
+    //iDoc.getElementById("divFrame").appendChild(br);
+    //iDoc.getElementById("divFrame").appendChild(br);
+    iDoc.getElementById("divFrame").appendChild(spanTitle3);  //заголовок внутреннее исследование
+    iDoc.getElementById("divFrame").appendChild(p3); //данные дополнительных методов исследования
+    iDoc.getElementById("divFrame").appendChild(p4); //данные дополнительных методов исследования
+    iDoc.getElementById("divFrame").appendChild(p5); //данные дополнительных методов исследования
     iDoc.close(); // Закрываем фрейм
     iDoc.designMode = "on"; // Включаем режим редактирования фрейма
 }
@@ -2832,6 +2980,8 @@ var t = {
     id232: 'softTissueFeet',
     id233: 'softTissueNeck',
     id234: 'hystStrangulation',
-    id235: 'larshe'
+    id235: 'larshe',
+    id236: 'vitreous',
+    id237: 'carboxyhemoglobin'
 };
 

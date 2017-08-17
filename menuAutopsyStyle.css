@@ -234,8 +234,29 @@ ul {
 .block-forma-additionalStudy {
     top: 40px;
     left: -500px;
-    min-width: 450px;
+    min-width: 470px;
     min-height: 258px;
+}
+
+.block-forma-hystology {
+    top: 50px;
+    left: -500px;
+    min-height: 258px;
+    width: 470px;
+}
+
+.block-forma-chem {
+    top: 20px;
+    left: -540px;
+    min-height: 258px;
+    width: 470px;
+}
+
+.block-forma-manipulations {
+    top: 50px;
+    left: -500px;
+    min-height: 258px;
+    width: 470px;
 }
 
 .warning {
@@ -648,6 +669,172 @@ ul {
     overflow: hidden;
 }
 
+.div-subclavian-catheter {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-subclavian-catheter-new {
+    max-height: 700px;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.div-air-embolia-test-positive {
+    max-height: 0;
+    margin-left: 20px;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-air-embolia-test-positive-new {
+    max-height: 100px;
+    margin-left: 20px;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.div-pneumothorax-test-positive {
+    max-height: 0;
+    margin-left: 20px;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-pneumothorax-test-positive-new {
+    max-height: 100px;
+    margin-left: 20px;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.div-hystology-main {
+    min-height: 100px;
+    opacity: 1;
+    overflow: hidden;
+
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-hystology-main-new {
+    min-height: 0;
+    opacity: 0;
+    display: none;
+    overflow: hidden;
+}
+
+.div-hystologist-other {
+    display: none;
+}
+
+.div-hystologist-other-new {
+    display: block;
+
+}
+
+.div-hystology-archive {
+    min-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    display: none;
+
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-hystology-archive-new {
+    min-height: 100px;
+    opacity: 1;
+    overflow: hidden;
+    display: block;
+}
+
+.div-hystology-text {
+    min-height: 100px;
+    opacity: 1;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-hystology-text-new {
+    min-height: 0;
+    opacity: 0;
+    display: none;
+    overflow: hidden;
+}
+
+.div-chemistAlcohol-other {
+    display: none;
+}
+
+.div-chemistAlcohol-other-new {
+    display: block;
+}
+
+.div-chemistSubstrNothing-other, .div-chemistVitreousNothing-other, .div-chemistCarboxy {
+    display: none;
+}
+
+.div-chemistSubstrNothing-other-new, .div-chemistVitreousNothing-other-new, .div-chemistCarboxy-new {
+    display: block;
+}
+
+
+.div-wound-post-operative-middle {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-wound-post-operative-middle-new {
+    max-height: 100px;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.div-injections {
+    max-height: 0;
+    margin-left: 20px;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.div-injections-new {
+    max-height: 100px;
+    margin-left: 20px;
+    opacity: 1;
+    overflow: hidden;
+}
+
 .div-chemDefine {
     position: absolute;
     top: 69px;
@@ -668,6 +855,15 @@ ul {
     max-height: 700px;
     opacity: 1;
     overflow: hidden;
+}
+
+
+.div-chemSubstr, .div-vitreous, .div-carboxy {
+    display: none;
+}
+
+.div-vitreous {
+    outline: auto;
 }
 
 .span-warning-urineChem {
@@ -704,14 +900,14 @@ ul {
     min-width: 100px;
     position: absolute;
     top: 14px;
-    left: 175px;
+    left: 210px;
 }
 
 .hystology2 {
     min-width: 100px;
     position: absolute;
     top: 44px;
-    left: 345px;
+    left: 370px;
 }
 
 .hystology-reproductive-woman {
@@ -730,3 +926,91 @@ ul {
     -o-transition-duration: 0.6s;
     transition-duration: 0.6s;
 }
+
+.addit-research-button {
+    background: #2d2f47;
+    width: 96px;
+    height: 35px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+
+    -webkit-transition-duration: 0.6s; /* анимационное выдвижение дл€ всех браузеров*/
+    -moz-transition-duration: 0.6s;
+    -o-transition-duration: 0.6s;
+    transition-duration: 0.6s;
+}
+
+.addit-research-button:hover {
+    background: #432847;
+    outline: auto;
+}
+
+.div-research-buttons {
+    /*width: 116px;*/
+    /*margin-left: 10px;*/
+    /*outline: auto;*/
+    /*overflow: hidden;*/
+    /*height: 0;*/
+    /*visibility: hidden;*/
+    /*opacity: 0;*/
+    /*transition: visibility 0s, opacity 0.5s linear;*/
+    transition: opacity 1s ease-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+
+}
+
+.div-research-buttons-new {
+    width: 116px;
+    margin-left: 10px;
+    opacity: 1;
+    height: auto;
+    outline: auto;
+}
+
+.research-button {
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.hystology-button {
+    background: #87b087;
+}
+
+.chem-button {
+    background: #5b5682;
+}
+
+.evidence-button {
+    background: #b49d80;
+}
+
+.manipulations-button {
+    background: #2d2f47;
+    width: 120px;
+    height: 100px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    position: absolute;
+    left: 270px;
+    top: 130px;
+    cursor: pointer;
+
+    -webkit-transition-duration: 0.6s; /* анимационное выдвижение дл€ всех браузеров*/
+    -moz-transition-duration: 0.6s;
+    -o-transition-duration: 0.6s;
+    transition-duration: 0.6s;
+}
+
+.manipulations-button:hover {
+    background: #432847;
+    outline: auto;
+}
+
+#divAlcohol {
+    outline: auto;
+}
+

@@ -108,6 +108,7 @@
                 changeStyleDisplay('hystologyOvary', 'none');
                 changeStyleDisplay('hystologyProstata', 'block');
                 changeStyleDisplay('hystologyTesticles', 'block');
+                changeTextInBlock('spanChemSurname', 'Труп гр-на');
                 "><label for="man"><span>Мужской</span></label><br/>
                 <input id="woman" name="sex" type="radio" autocomplete="off" onchange="changeStyle('divBreast', ' div-breast-new');
                 changeStyle('divProstata', ' div-prostata-new');
@@ -120,6 +121,7 @@
                 changeStyleDisplay('hystologyOvary', 'block');
                 changeStyleDisplay('hystologyProstata', 'none');
                 changeStyleDisplay('hystologyTesticles', 'none');
+                changeTextInBlock('spanChemSurname', 'Труп гр-ки');
                  "><label for="woman"><span>Женский</span></label><br/>
                 <br/>
                 <label for="growth"><span>Длина тела:</span></label> <input id="growth" size="5" type="text">
@@ -228,6 +230,7 @@
                 <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"
                        type="button" value="Результат">
                 <input onclick="resetForm('form_general'); resetNewStyle('ageInterval','skinDryTrue', 'divBreast', 'divProstata', 'divUterus'); resetFormElements('abdomen');
+                changeTextInBlock('spanChemSurname', 'Труп гр-на');
                 getRandAndAddInValue('growth', 160, 180)" type="button" value="Сбросить">
             </form>
         </div>
@@ -561,56 +564,88 @@
 
                     </tr>
                     <tr>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
 
                         <td>||</td>
 
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
 
                     </tr>
                     <tr>
 
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
 
                         <td>||</td>
 
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
-                        <td><input name="inp" type="button" value=" Ц " onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
+                        <td><input name="inp" type="button" value=" Ц "
+                                   onclick="push(this); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/></td>
 
                     </tr>
                 </table>
                 <br/><br/>
                 <label><span>лунки отсутствующих зубов заращены </span><input type="checkbox" autocomplete="off"
                                                                               id="teeth_alveolus"
-                                                                              ></label>
-            <br/><br/>
+                        ></label>
+                <br/><br/>
                 <!-- Control buttons  -->
                 <input name="process" type="button" value="РЕЗУЛЬТАТ"
                        onclick="getMatrix(matrix); funcEcho((function() {
@@ -618,9 +653,12 @@
                 else return getResultString(matrix, symb, textPhrasesArray);
                 })(), 'outputinf');
                 if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);                 else getResult(t);"/>
-                <input name="process" type="button" value="Все целы" onclick="resetTeeth('inp', ' Ц '); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/>
-                <input name="process" type="button" value="Нет зубов" onclick="resetTeeth('inp', ' Н '); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/>
-                <input name="process" type="button" value="Все по выбору" onclick="allTheSelectSymb('inp'); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/>
+                <input name="process" type="button" value="Все целы"
+                       onclick="resetTeeth('inp', ' Ц '); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/>
+                <input name="process" type="button" value="Нет зубов"
+                       onclick="resetTeeth('inp', ' Н '); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/>
+                <input name="process" type="button" value="Все по выбору"
+                       onclick="allTheSelectSymb('inp'); checkAlveolus ('inp', 'teeth_alveolus', ' Н ')"/>
                 <br/>
                 <br/>
 
@@ -957,7 +995,8 @@
                         </select>
                         <br/>
                         <label for="coronarosclerosis"><span>Коронаросклероз: </span></label>
-                        <select id="coronarosclerosis" onchange="changeStyleIfSelected('divCoronarsPercent', 'coronarosclerosis', ' div-coronars-percent-new', 5)">
+                        <select id="coronarosclerosis"
+                                onchange="changeStyleIfSelected('divCoronarsPercent', 'coronarosclerosis', ' div-coronars-percent-new', 5)">
                             <option>отсутствует</option>
                             <option>сужение просвета до 40%</option>
                             <option>сужение просвета до 70%</option>
@@ -965,6 +1004,7 @@
                             <option>укажу процент сужения сам</option>
                         </select>
                         <br/>
+
                         <div id="divCoronarsPercent" class="div-coronars-percent">
                             <label for="coronars"><span>коронары сужены на </span></label>
                             <input type="text" id="coronars" size="1" value="50"><span>%</span>
@@ -1299,6 +1339,8 @@
                 changeCheck('bladder', 'urineChem');
                 if (document.getElementById('spanWarningChem').style.display == 'inline')
                 document.getElementById('spanWarningChem').style.display = 'none';
+                if (this.checked) changeStyleDisplay('сhemAlcoholUrineSpan', 'сhemAlcoholUrine', 'none');
+
                ">
                     <span>Мочи нет</span></label><br/>
 
@@ -1419,6 +1461,9 @@
                 <label><span>х &nbsp</span><input id="thyroidLeftWidth" size="1" type="text"></label>
                 <label><span>х &nbsp</span><input id="thyroidLeftDepth" size="1" type="text"></label>
                 <br/>
+
+                <div class="manipulations-button">
+                    <span>МЕД. МАНИПУЛЯЦИИ ПРОБЫ НА ВОЗДУШНУЮ ЭМБОЛИЮ И ПНЕВМОТОРАКС</span></div>
                 <br/>
                 <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);
                                else getResult(t);"
@@ -1445,13 +1490,26 @@
             <div class="pushback-block" onclick="resetLocalityLeft('additionalStudy')"> X</div>
             <form id="formAdditionalStudy">
                 <span style="text-decoration: underline; text-transform: uppercase">химия</span><br/>
-                <label><input type="checkbox" autocomplete="off" id="bloodChem" checked><span>Кровь</span></label><br/>
+                <label><input type="checkbox" autocomplete="off" id="bloodChem" checked onchange="
+                    if (!this.checked) changeStyleDisplay('сhemAlcoholBloodSpan', 'сhemAlcoholBlood', 'none');
+                    if (!this.checked && !ISchecked('urineChem')) changeStyleDisplay('divAlcohol', 'none');
+                    if (this.checked) {
+                        changeStyleDisplay('сhemAlcoholBloodSpan', 'сhemAlcoholBlood', 'inline');
+                        changeStyleDisplay('divAlcohol', 'block');
+                    }
+                "><span>Кровь</span></label><br/>
                 <label><input type="checkbox" autocomplete="off" id="urineChem" checked onchange="
-                if (document.getElementById('bladder').checked && document.getElementById('urineChem').checked)
-                    document.getElementById('spanWarningChem').style.display = 'inline';
-                else changeStyleDisplay('spanWarningChem', 'none');
+                    if (document.getElementById('bladder').checked && document.getElementById('urineChem').checked)
+                        document.getElementById('spanWarningChem').style.display = 'inline';
+                    else changeStyleDisplay('spanWarningChem', 'none');
 
-//                console.log(document.getElementById('urine').checked && document.getElementById('urineChem').checked);
+                    if (!this.checked) changeStyleDisplay('сhemAlcoholUrineSpan', 'сhemAlcoholUrine', 'none');
+                    if (!this.checked && !ISchecked('bloodChem')) changeStyleDisplay('divAlcohol', 'none');
+                    if (this.checked) {
+                        changeStyleDisplay('сhemAlcoholUrineSpan', 'сhemAlcoholUrine', 'inline');
+                        changeStyleDisplay('divAlcohol', 'block');
+                    }
+
                 "><span>Моча</span></label>
                 <span class="span-warning-urineChem"
                       id="spanWarningChem">(указано, что в мочевом пузыре мочи нет)</span><br/>
@@ -1467,16 +1525,46 @@
                 <br/>
 
                 <div class="div-chemDefine" id="divChemDefine">
-                    <label><input type="checkbox" autocomplete="off" id="surrogates"><span>суррогаты</span></label><br/>
-                    <label><input type="checkbox" autocomplete="off" id="drug"><span>лекарства</span></label><br/>
-                    <label><input type="checkbox" autocomplete="off" id="narcotic"><span>наркотики</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="surrogates" onchange="
+                        if (this.checked) changeStyleDisplay('divChemSubst', 'block');
+                        if (!this.checked && !ISchecked('drug') && !ISchecked('narcotic')) changeStyleDisplay('divChemSubst', 'none');
+                        chemResearchNonDetected (arr_chem, 'chemSubstrNothing', 'surrogates', 'narcotic', 'drug')
+                    "><span>суррогаты</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="drug" onchange="
+                        if (this.checked) changeStyleDisplay('divChemSubst', 'block');
+                        if (!this.checked && !ISchecked('surrogates') && !ISchecked('narcotic')) changeStyleDisplay('divChemSubst', 'none');
+                        chemResearchNonDetected (arr_chem, 'chemSubstrNothing', 'surrogates', 'narcotic', 'drug')
+                    "><span>лекарства</span></label><br/>
+                    <label><input type="checkbox" autocomplete="off" id="narcotic" onchange="
+                        if (this.checked) changeStyleDisplay('divChemSubst', 'block');
+                        if (!this.checked && !ISchecked('surrogates') && !ISchecked('drug')) changeStyleDisplay('divChemSubst', 'none');
+                        chemResearchNonDetected (arr_chem, 'chemSubstrNothing', 'surrogates', 'narcotic', 'drug')
+                    "><span>наркотики</span></label><br/>
                 </div>
-                <br/>
-
+                    <label><input type="checkbox" autocomplete="off" id="vitreous" onchange="
+                        if (this.checked) changeStyleDisplay('divVitreous', 'block');
+                        if (!this.checked) changeStyleDisplay('divVitreous', 'none');
+                    "><span>Стекловидное тело</span></label>
+                    <br>
+                    <label><input type="checkbox" autocomplete="off" id="carboxyhemoglobin" onchange="
+                        if (this.checked) changeStyleDisplay('divCarboxy', 'block');
+                        if (!this.checked) changeStyleDisplay('divCarboxy', 'none');
+                    "><span>Кровь на СО</span></label>
+                <br>
+                <br>
                 <span style="text-decoration: underline; text-transform: uppercase">биология</span><br/>
                 <label><input type="checkbox" autocomplete="off"
-                              id="bloodType"><span>кровь на группу</span></label><br/>
-                <br/>
+                              id="bloodType"><span>кровь на группу</span></label><br>
+                <br>
+
+                <div class="addit-research-button"
+                     onclick="changeStyle('divResearchButtons', ' div-research-buttons-new')"><span>ОБРАБОТАТЬ РЕЗУЛЬТАТЫ</span>
+                </div>
+                <div id="divResearchButtons" class="div-research-buttons">
+                    <div class="research-button hystology-button" onclick="changeLocalityLeft('hystologyBlock', '50px')"><span>ГИСТОЛОГИЯ</span></div>
+                    <div class="research-button chem-button" onclick="changeLocalityLeft('chemBlock', '250px')"><span>ХИМИЯ</span></div>
+                    <div class="research-button evidence-button"><span>БИОЛОГИЯ</span></div>
+                </div>
 
                 <div class="hystology1">
                     <span style="text-decoration: underline; text-transform: uppercase">гистология</span><br/>
@@ -1538,14 +1626,246 @@
                         <span>Желчный п.</span></label><br/>
 
                 </div>
-
                 <br/>
                 <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);
                                 else getResult(t);" type="button" value="Результат">
-                <input onclick="resetForm('formAdditionalStudy'); resetNewStyle('divChemDefine')" type="button"
+                <input onclick="resetForm('formAdditionalStudy'); resetNewStyle('divChemDefine', 'divResearchButtons');
+                    changeStyleDisplay('сhemAlcoholUrineSpan', 'сhemAlcoholUrine', 'сhemAlcoholBloodSpan', 'сhemAlcoholBlood', 'inline');
+                    changeStyleDisplay('divAlcohol', 'block'); changeStyleDisplay('divChemSubst', 'divVitreous', 'divCarboxy', 'none')"
+                       type="button"
                        value="Сбросить">
             </form>
         </div>
+
+        <div class="block block-forma block-forma-hystology" id="hystologyBlock">
+            <div class="pushback-block" onclick="resetLocalityLeft('hystologyBlock')">X</div>
+            <form id="formHystology">
+                <label><input type="checkbox" id="hystologySecondCopy" onchange="onlyOneCheckboxChecked('hystologyArchive'); changeStyle('divHystologyMain', ' div-hystology-main-new')"><span>Акт прилагается ко второму экземпляру</span></label><br>
+                <br>
+                <div id="divHystologyMain" class="div-hystology-main">
+                    <label><input type="checkbox" id="hystologyArchive" onchange="onlyOneCheckboxChecked('hystologySecondCopy'); changeStyle('divHystologyArchive', ' div-hystology-archive-new'); changeStyle('divHystologyText', ' div-hystology-text-new')"><span>Акт сдан в архив</span></label><br>
+                    <br>
+                    <div id="divHystologyArchive" class="div-hystology-archive">
+                        <label for="numHystologyArchive"><span>№ акта:</span></label> <input id="numHystologyArchive" size="1" type="text"><br>
+                        <label for="hystologyArchiveDay"><span>Дата:</span></label> <input id="hystologyArchiveDay" size="1" type="text" >
+                        <label for="hystologyArchiveMounth"></label> <input id="hystologyArchiveMounth" size="1" type="text" >
+                        <label for="hystologyArchiveYear"></label> <input id="hystologyArchiveYear" size="1" type="text">
+                    </div>
+
+                    <div id="divHystologyText" class="div-hystology-text">
+                        <label for="numHystologyText"><span>№ акта:</span></label> <input id="numHystologyText" size="1" type="text"><br>
+                        <label for="hystologyTextDay"><span>Дата:</span></label> <input id="hystologyTextDay" size="1" type="text" >
+                        <label for="hystologyTextMounth"></label> <input id="hystologyTextMounth" size="1" type="text" >
+                        <label for="hystologyTextYear"></label> <input id="hystologyTextYear" size="1" type="text">
+                        <br>
+                        <span>Текст гистологического заключения: </span>
+                        <textarea id="textareaHystology" cols="60" rows="10"></textarea>
+                        <br>
+                        <label for="hystologist"><span>Эксперт-гистолог: </span></label>
+                        <select id="hystologist" onchange="changeStyleIfSelected('divHystologistOther', 'hystologist', ' div-hystologist-other-new', 5)">
+                            <option>Захарова</option>
+                            <option>Штарберг</option>
+                            <option>Захарчук</option>
+                            <option>Салтонас</option>
+                            <option>Другой гистолог</option>
+                        </select>
+                        <div id="divHystologistOther" class="div-hystologist-other">
+                            <textarea cols="20" id="hystologistOther" rows="1"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t); else getResult(t);" type="button" value="Результат">
+                <input onclick="resetForm('formHystology');
+                resetNewStyle('divHystologyMain', 'divHystologyArchive', 'divHystologistOther', 'divHystologyText')
+
+//            resetFormElements()
+            " type="button" value="Сбросить">
+            </form>
+        </div>
+
+        <div class="block block-forma block-forma-manipulations" id="manipulations">
+            <div class="pushback-block" onclick="resetLocalityLeft('manipulations')">X</div>
+            <form id="formManipulations">
+                <span>Подключичные катетеры</span><br/>
+                <label><input type="checkbox" autocomplete="off" id="subclCatheterCheckboxRight" onchange="
+                changeStyle('divSubclavianCatheter', ' div-subclavian-catheter-new');
+                "><span>Справа</span></label><br/>
+
+                <div id="divSubclavianCatheter" class="div-subclavian-catheter">
+                    <label for="catheterLength"><span>длина:</span></label> <input id="catheterLength" size="1"
+                                                                                   type="text" value="5"><span>см</span><br>
+                    <label for="catheterFixation">чем фиксирован к коже: </label>
+                    <select id="catheterFixation">
+                        <option>шов</option>
+                        <option>лейкоплатырь</option>
+                    </select><br>
+                    <label for="catheterLumen">в просвете катетера: </label>
+                    <select id="catheterLumen">
+                        <option>кровь</option>
+                        <option>воздух</option>
+                        <option>немного розовой жидкости</option>
+                    </select><br>
+                    <label for="catheterCap">заглушка: </label>
+                    <select id="catheterCap">
+                        <option>закрыта</option>
+                        <option>открыта</option>
+                        <option>отсутствует</option>
+                    </select>
+                </div>
+                <label><input type="checkbox" autocomplete="off" id="subclCatheterCheckboxLeft"
+                              onchange=""><span>Слева</span></label><br/>
+                <br>
+                <label><input type="checkbox" autocomplete="off" id="woundPostOperativeMiddle"
+                              onchange="changeStyle('divWoundPostOperativeMiddle', ' div-wound-post-operative-middle-new')"><span>Послеоперац. рана, на животе спереди</span></label><br/>
+
+                <div id="divWoundPostOperativeMiddle" class="div-wound-post-operative-middle">
+                    <label for="woundPostOperativeMiddleLength"><span>длина:</span></label>
+                    <input id="woundPostOperativeMiddleLength" size="1" type="text" value="15"><span>см,</span>
+                    <label for="woundPostOperativeMiddleSuture"><span>количество швов:</span></label>
+                    <input id="woundPostOperativeMiddleSuture" size="1" type="text" value="15">
+                </div>
+                <br>
+                <label><input type="checkbox" autocomplete="off" id="injections"
+                              onchange="changeStyle('divInjections', ' div-injections-new')"><span>Следы иньекций в локтевых обл.</span></label><br/>
+
+                <div id="divInjections" class="div-injections">
+                    <label><input type="checkbox" autocomplete="off" id="injectionsRight" onchange="" checked><span>Cправа</span></label><br>
+                    <label><input type="checkbox" autocomplete="off" id="injectionsLeft" onchange=""><span>Cлева</span></label><br>
+                </div>
+                <br>
+
+                <label><input type="checkbox" autocomplete="off" id="airEmboliaTest"
+                              onchange="changeStyle('divAirEmboliaTestPositive', ' div-air-embolia-test-positive-new')"><span>Проба на воздушную эмболию</span></label><br/>
+
+                <div id="divAirEmboliaTestPositive" class="div-air-embolia-test-positive">
+                    <label><input type="checkbox" autocomplete="off" id="AirEmboliaTestPositive" onchange=""><span>Положительная</span></label><br/>
+                </div>
+
+                <label><input type="checkbox" autocomplete="off" id="pneumothoraxTest"
+                              onchange="changeStyle('divPneumothoraxTestPositive', ' div-pneumothorax-test-positive-new')"><span>Проба на пневмоторакс</span></label><br/>
+
+                <div id="divPneumothoraxTestPositive" class="div-pneumothorax-test-positive">
+                    <label><input type="checkbox" autocomplete="off" id="pneumothoraxTestRight" onchange=""><span>Положительная справа</span></label><br>
+                    <label><input type="checkbox" autocomplete="off" id="pneumothoraxTestLeft" onchange=""><span>Положительная слева</span></label><br>
+                </div>
+                <br/>
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t); else getResult(t);" type="button" value="Результат">
+                <input onclick="
+//            resetForm('');
+            resetNewStyle('divSubclavianCatheter', 'divAirEmboliaTestPositive', 'divPneumothoraxTestPositive', 'divWoundPostOperativeMiddle', 'divInjections');
+//            resetFormElements()
+            " type="button" value="Сбросить">
+            </form>
+        </div>
+
+        <div class="block block-forma block-forma-chem" id="chemBlock">
+            <div class="pushback-block" onclick="resetLocalityLeft('chemBlock')">X</div>
+            <form id="formChem">
+                <br>
+                <label><span id="spanChemSurname">Труп гр-на</span><input id="chemSurname" size="15" type="text"></label>
+                <input onclick="changeStyleDisplay('сhemAlcoholUrineSpan', 'сhemAlcoholUrine', 'none')" type="button" value="Change span">
+                <input onclick="changeStyleDisplay('сhemAlcoholUrineSpan', 'сhemAlcoholUrine', 'inline')" type="button" value="Style default">
+                <br>
+                <label><span>Год рождения: </span><input id="сhemBirth" size="10" type="text"></label>
+                <br>
+                <br>
+                <div id="divAlcohol">
+                    <span id="alhogolSpan">Алкоголь</span><br>
+                    <label for="numChemAlhogolText"><span>№ акта:</span></label> <input id="numChemAlhogolText" size="1" type="text"><br>
+                    <label for="chemAlhogolTextDay"><span>Дата:</span></label> <input id="chemAlhogolTextDay" size="1" type="text" >
+                    <label for="chemAlhogolTextMounth"></label> <input id="chemAlhogolTextMounth" size="1" type="text" >
+                    <label for="chemAlhogolTextYear"></label> <input id="chemAlhogolTextYear" size="1" type="text">
+                    <br>
+                    <label><span id="сhemAlcoholBloodSpan">В крови: </span><input id="сhemAlcoholBlood" size="6" type="text"></label>
+                    <label><span id="сhemAlcoholUrineSpan">В моче: </span><input id="сhemAlcoholUrine" size="6" type="text"></label><br>
+                    <label for="chemistAlсohol"><span>Эксперт-химик: </span></label>
+                    <select id="chemistAlсohol" onchange="changeStyleIfSelected('divChemistAlсoholOther', 'chemistAlсohol', ' div-chemistAlcohol-other-new', 3)">
+                        <option>Дорофеева</option>
+                        <option>Жердева</option>
+                        <option>Другой химик</option>
+                    </select>
+                    <div id="divChemistAlсoholOther" class="div-chemistAlcohol-other">
+                        <textarea cols="20" id="chemistAlсoholOther" rows="1"></textarea>
+                    </div>
+                </div>
+                <div id="divChemSubst" class="div-chemSubstr">
+                    <span>Общая химия: </span> <br>
+                    <label for="numChemSubstrText"><span>№ акта:</span></label> <input id="numChemSubstrText" size="1" type="text"><br>
+                    <label for="chemSubstrTextDay"><span>Дата:</span></label> <input id="chemSubstrTextDay" size="1" type="text" >
+                    <label for="chemSubstrTextMounth"></label> <input id="chemSubstrTextMounth" size="1" type="text" >
+                    <label for="chemSubstrTextYear"></label> <input id="chemSubstrTextYear" size="1" type="text">
+                    <br>
+                    <span>Не обнаружено:</span>
+                    <p><textarea id="chemSubstrNothing" cols="40" rows="5"></textarea></p>
+                    <span>Обнаружено:</span>
+                    <p><textarea id="textarea2" cols="40" rows="2"></textarea></p>
+                    <label for="chemistSubstrNothing"><span>Эксперт-химик: </span></label>
+                    <select id="chemistSubstrNothing" onchange="changeStyleIfSelected('divChemistSubstrNothingOther', 'chemistSubstrNothing', ' div-chemistSubstrNothing-other-new', 3)">
+                        <option>Дорофеева</option>
+                        <option>Жердева</option>
+                        <option>Другой химик</option>
+                    </select>
+                    <div id="divChemistSubstrNothingOther" class="div-chemistSubstrNothing-other">
+                        <textarea cols="20" id="chemistSubstrNothingOther" rows="1"></textarea>
+                    </div>
+                </div>
+                <div id="divVitreous" class="div-vitreous">
+                    <span>Глюкоза в стеловидном теле </span> <br>
+                    <label for="numChemVitreousText"><span>№ акта:</span></label> <input id="numChemVitreousText" size="1" type="text"><br>
+                    <label for="chemVitreousTextDay"><span>Дата:</span></label> <input id="chemVitreousTextDay" size="1" type="text" >
+                    <label for="chemVitreousTextMounth"></label> <input id="chemVitreousTextMounth" size="1" type="text" >
+                    <label for="chemVitreousTextYear"></label><input id="chemVitreousTextYear" size="1" type="text">
+                    <br>
+                    <span>Содержит глюкозу в количестве: </span>
+                    <label><input id="chemVitreousGlucose" size="3" type="text"></label>
+                    <br>
+
+                    <label for="chemistVitreousNothing"><span>Эксперт-химик: </span></label>
+                    <select id="chemistVitreousNothing" onchange="changeStyleIfSelected('divChemistVitreousNothingOther', 'chemistVitreousNothing', ' div-chemistVitreousNothing-other-new', 3)">
+                        <option>Дорофеева</option>
+                        <option>Жердева</option>
+                        <option>Другой химик</option>
+                    </select>
+                    <div id="divChemistVitreousNothingOther" class="div-chemistVitreousNothing-other">
+                        <textarea cols="20" id="chemistVitreousNothingOther" rows="1"></textarea>
+                    </div>
+                </div>
+                <br>
+                <div id="divCarboxy" class="div-carboxy">
+                    <span>Кровь на СО</span> <br>
+                    <label for="numChemCarboxyText"><span>№ акта:</span></label> <input id="numChemCarboxyText" size="1" type="text"><br>
+                    <label for="chemCarboxyTextDay"><span>Дата:</span></label> <input id="chemCarboxyTextDay" size="1" type="text" >
+                    <label for="chemCarboxyTextMounth"></label> <input id="chemCarboxyTextMounth" size="1" type="text" >
+                    <label for="chemCarboxyTextYear"></label><input id="chemCarboxyTextYear" size="1" type="text">
+                    <br>
+                    <span>Карбоксигемоглобин в количестве: </span>
+                    <label><input id="chemCarboxy" size="3" type="text"></label>
+                    <br>
+
+                    <label for="chemistCarboxy"><span>Эксперт-химик: </span></label>
+                    <select id="chemistCarboxy" onchange="changeStyleIfSelected('divChemistCarboxyOther', 'chemistCarboxy', ' div-chemistCarboxy-other-new', 3)">
+                        <option>Дорофеева</option>
+                        <option>Жердева</option>
+                        <option>Другой химик</option>
+                    </select>
+                    <div id="divChemistCarboxyOther" class="div-chemistCarboxy-other">
+                        <textarea cols="20" id="chemistCarboxyOther" rows="1"></textarea>
+                    </div>
+                </div>
+
+
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t); else getResult(t);" type="button" value="Результат">
+                <input onclick="
+//            resetForm('');
+            resetNewStyle();
+//          resetFormElements()
+            " type="button" value="Сбросить">
+            </form>
+        </div>
+
+
+
         <div class="test-block" id="testblock"></div>
 
         <input type="button" class="location-reload" onclick="location.reload()" value="Сброс всех изменений">
@@ -1573,9 +1893,9 @@
     <div class="block block-forma info" id="info">
         <div class="pushback-block" onclick="changeStyleDisplay('info', 'none')">X</div>
         <p>По всем вопросам данного проекта можно обратиться по адресу:</p>
+
         <p class="p-info">magmae2e4@mail.ru</p>
     </div>
-
 
     <iframe scrolling='yes' frameborder='no' src='#' id='frameId' name='frameId' width="900" height="2500"></iframe>
     <script>
@@ -1644,10 +1964,36 @@
         get5RandAndAddInValue('pancreasSize2', 4, 6, 1);
         get5RandAndAddInValue('pancreasSize3', 2, 3, 1);
 
+        getDateDay('hystologyTextDay');
+        getDateDay('hystologyArchiveDay');
+        getDateMonth('hystologyTextMounth');
+        getDateMonth('hystologyArchiveMounth');
+        getDateYear('hystologyTextYear');
+        getDateYear('hystologyArchiveYear');
+
+        getDateDay('chemAlhogolTextDay');
+        getDateMonth('chemAlhogolTextMounth');
+        getDateYear('chemAlhogolTextYear');
+
+        getDateDay('chemSubstrTextDay');
+        getDateMonth('chemSubstrTextMounth');
+        getDateYear('chemSubstrTextYear');
+
+        getDateDay('chemVitreousTextDay');
+        getDateMonth('chemVitreousTextMounth');
+        getDateYear('chemVitreousTextYear');
+
+        getDateDay('chemVitreousTextDay');
+        getDateMonth('chemVitreousTextMounth');
+        getDateYear('chemVitreousTextYear');
+
         getResult(t); //main function
 
 
     </script>
+
+
+
 
 </div>
 </body>
