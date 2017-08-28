@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    outline: 0; /*удаляем обводочку*/
+    outline: 0; /*??????? ?????????*/
 }
 
 body {
@@ -10,12 +10,12 @@ body {
 }
 
 li {
-    list-style-type: none; /* Убираем маркеры */
+    list-style-type: none; /* ??????? ??????? */
 }
 
 ul {
-    margin-left: 0; /* Отступ слева в браузере IE и Opera */
-    padding-left: 0; /* Отступ слева в браузере Firefox, Safari, Chrome */
+    margin-left: 0; /* ?????? ????? ? ???????? IE ? Opera */
+    padding-left: 0; /* ?????? ????? ? ???????? Firefox, Safari, Chrome */
 }
 
 .main-container {
@@ -120,7 +120,7 @@ ul {
 }
 
 .block {
-    -webkit-transition-duration: 0.6s; /* анимационное выдвижение для всех браузеров*/
+    -webkit-transition-duration: 0.6s; /* ???????????? ?????????? ??? ???? ?????????*/
     -moz-transition-duration: 0.6s;
     -o-transition-duration: 0.6s;
     transition-duration: 0.6s;
@@ -130,27 +130,28 @@ ul {
     position: fixed;
     background: #68a;
     font: 14px Arial;
-    color: #f9f9f9; /* цвет текста */
+    color: #f9f9f9; /* ???? ?????? */
     padding: 5px;
+    border: 2px solid #666;
     border-radius: 4px;
     border-top-right-radius: 0;
 }
 
 .block-forma-dress {
     top: 50px;
-    left: -510px;
+    left: -610px;
     width: 500px;
 }
 
 .block-forma-general {
     top: 50px;
-    left: -510px;
+    left: -610px;
     width: 500px;
 }
 
 .block-forma-decomposition {
     top: 50px;
-    left: -510px;
+    left: -610px;
     width: 500px;
 }
 
@@ -161,7 +162,7 @@ ul {
 
 .block-forma-teeth {
     top: 50px;
-    left: -500px;
+    left: -600px;
 }
 
 .teeth-text-out {
@@ -175,18 +176,18 @@ ul {
 
 .block-forma-torso {
     top: 50px;
-    left: -500px;
+    left: -600px;
 }
 
 .block-forma-brainSkull {
     top: 50px;
-    left: -500px;
+    left: -600px;
     width: 450px;
 }
 
 .block-forma-generalPathology {
     top: 50px;
-    left: -500px;
+    left: -600px;
     width: 400px;
 }
 
@@ -215,46 +216,53 @@ ul {
 
 .block-forma-breath {
     top: 10px;
-    left: -500px;
+    left: -600px;
     width: 450px;
 }
 
 .block-forma-genitourinary {
     top: 10px;
-    left: -500px;
+    left: -600px;
     width: 450px;
 }
 
 .block-forma-other {
     top: 10px;
-    left: -500px;
+    left: -600px;
     width: 450px;
 }
 
 .block-forma-additionalStudy {
     top: 40px;
-    left: -500px;
+    left: -600px;
     min-width: 470px;
     min-height: 258px;
 }
 
 .block-forma-hystology {
     top: 50px;
-    left: -500px;
+    left: -600px;
     min-height: 258px;
     width: 470px;
 }
 
 .block-forma-chem {
     top: 20px;
-    left: -540px;
+    left: -640px;
+    min-height: 258px;
+    width: 470px;
+}
+
+.block-forma-bio {
+    top: 20px;
+    left: -640px;
     min-height: 258px;
     width: 470px;
 }
 
 .block-forma-manipulations {
     top: 50px;
-    left: -500px;
+    left: -600px;
     min-height: 258px;
     width: 470px;
 }
@@ -739,11 +747,11 @@ ul {
     overflow: hidden;
 }
 
-.div-hystologist-other {
+.div-hystologist-other, .div-biologist-other {
     display: none;
 }
 
-.div-hystologist-other-new {
+.div-hystologist-other-new, .div-biologist-other-new {
     display: block;
 
 }
@@ -921,7 +929,7 @@ ul {
     position: fixed;
     left: -510px;
 
-    -webkit-transition-duration: 0.6s; /* анимационное выдвижение для всех браузеров*/
+    -webkit-transition-duration: 0.6s; /* ???????????? ?????????? ??? ???? ?????????*/
     -moz-transition-duration: 0.6s;
     -o-transition-duration: 0.6s;
     transition-duration: 0.6s;
@@ -935,7 +943,7 @@ ul {
     margin-left: 10px;
     cursor: pointer;
 
-    -webkit-transition-duration: 0.6s; /* анимационное выдвижение для всех браузеров*/
+    -webkit-transition-duration: 0.6s; /* ???????????? ?????????? ??? ???? ?????????*/
     -moz-transition-duration: 0.6s;
     -o-transition-duration: 0.6s;
     transition-duration: 0.6s;
@@ -999,7 +1007,7 @@ ul {
     top: 130px;
     cursor: pointer;
 
-    -webkit-transition-duration: 0.6s; /* анимационное выдвижение для всех браузеров*/
+    -webkit-transition-duration: 0.6s; /* ???????????? ?????????? ??? ???? ?????????*/
     -moz-transition-duration: 0.6s;
     -o-transition-duration: 0.6s;
     transition-duration: 0.6s;

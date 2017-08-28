@@ -45,10 +45,8 @@
                 <label for="dressPresence"><span>Одежды нет</span></label>
                 <input type="checkbox" autocomplete="off" id="dressPresence"
                        onchange="changeStyle('dressGeneral', ' div-hidden'); resetFormElements('dress', 'clotheds')"/>
-
                 <br/>
                 <br/>
-
                 <div class="dress-general" id="dressGeneral">
                     <label for="dress"><span>Одежда:</span></label><br/>
                     <textarea cols="50" id="dress" rows="13"></textarea><br/>
@@ -122,6 +120,7 @@
                 changeStyleDisplay('hystologyProstata', 'none');
                 changeStyleDisplay('hystologyTesticles', 'none');
                 changeTextInBlock('spanChemSurname', 'Труп гр-ки');
+                changeTextInBlock('spanBioSurname', 'Труп гр-ки');
                  "><label for="woman"><span>Женский</span></label><br/>
                 <br/>
                 <label for="growth"><span>Длина тела:</span></label> <input id="growth" size="5" type="text">
@@ -231,6 +230,7 @@
                        type="button" value="Результат">
                 <input onclick="resetForm('form_general'); resetNewStyle('ageInterval','skinDryTrue', 'divBreast', 'divProstata', 'divUterus'); resetFormElements('abdomen');
                 changeTextInBlock('spanChemSurname', 'Труп гр-на');
+                changeTextInBlock('spanBioSurname', 'Труп гр-на');
                 getRandAndAddInValue('growth', 160, 180)" type="button" value="Сбросить">
             </form>
         </div>
@@ -644,7 +644,7 @@
                 <br/><br/>
                 <label><span>лунки отсутствующих зубов заращены </span><input type="checkbox" autocomplete="off"
                                                                               id="teeth_alveolus"
-                        ></label>
+                ></label>
                 <br/><br/>
                 <!-- Control buttons  -->
                 <input name="process" type="button" value="РЕЗУЛЬТАТ"
@@ -1462,8 +1462,8 @@
                 <label><span>х &nbsp</span><input id="thyroidLeftDepth" size="1" type="text"></label>
                 <br/>
 
-                <div class="manipulations-button">
-                    <span>МЕД. МАНИПУЛЯЦИИ ПРОБЫ НА ВОЗДУШНУЮ ЭМБОЛИЮ И ПНЕВМОТОРАКС</span></div>
+                <!--<div class="manipulations-button">-->
+                    <!--<span>МЕД. МАНИПУЛЯЦИИ ПРОБЫ НА ВОЗДУШНУЮ ЭМБОЛИЮ И ПНЕВМОТОРАКС</span></div>-->
                 <br/>
                 <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t);
                                else getResult(t);"
@@ -1541,12 +1541,12 @@
                         chemResearchNonDetected (arr_chem, 'chemSubstrNothing', 'surrogates', 'narcotic', 'drug')
                     "><span>наркотики</span></label><br/>
                 </div>
-                    <label><input type="checkbox" autocomplete="off" id="vitreous" onchange="
+                <label><input type="checkbox" autocomplete="off" id="vitreous" onchange="
                         if (this.checked) changeStyleDisplay('divVitreous', 'block');
                         if (!this.checked) changeStyleDisplay('divVitreous', 'none');
                     "><span>Стекловидное тело</span></label>
-                    <br>
-                    <label><input type="checkbox" autocomplete="off" id="carboxyhemoglobin" onchange="
+                <br>
+                <label><input type="checkbox" autocomplete="off" id="carboxyhemoglobin" onchange="
                         if (this.checked) changeStyleDisplay('divCarboxy', 'block');
                         if (!this.checked) changeStyleDisplay('divCarboxy', 'none');
                     "><span>Кровь на СО</span></label>
@@ -1561,9 +1561,11 @@
                      onclick="changeStyle('divResearchButtons', ' div-research-buttons-new')"><span>ОБРАБОТАТЬ РЕЗУЛЬТАТЫ</span>
                 </div>
                 <div id="divResearchButtons" class="div-research-buttons">
-                    <div class="research-button hystology-button" onclick="changeLocalityLeft('hystologyBlock', '50px')"><span>ГИСТОЛОГИЯ</span></div>
-                    <div class="research-button chem-button" onclick="changeLocalityLeft('chemBlock', '250px')"><span>ХИМИЯ</span></div>
-                    <div class="research-button evidence-button"><span>БИОЛОГИЯ</span></div>
+                    <div class="research-button hystology-button"
+                         onclick="changeLocalityLeft('hystologyBlock', '50px')"><span>ГИСТОЛОГИЯ</span></div>
+                    <div class="research-button chem-button" onclick="changeLocalityLeft('chemBlock', '250px')"><span>ХИМИЯ</span>
+                    </div>
+                    <div class="research-button evidence-button" onclick="changeLocalityLeft('bioBlock', '400px')"><span>БИОЛОГИЯ</span></div>
                 </div>
 
                 <div class="hystology1">
@@ -1640,29 +1642,38 @@
         <div class="block block-forma block-forma-hystology" id="hystologyBlock">
             <div class="pushback-block" onclick="resetLocalityLeft('hystologyBlock')">X</div>
             <form id="formHystology">
-                <label><input type="checkbox" id="hystologySecondCopy" onchange="onlyOneCheckboxChecked('hystologyArchive'); changeStyle('divHystologyMain', ' div-hystology-main-new')"><span>Акт прилагается ко второму экземпляру</span></label><br>
+                <label><input type="checkbox" id="hystologySecondCopy"
+                              onchange="onlyOneCheckboxChecked('hystologyArchive'); changeStyle('divHystologyMain', ' div-hystology-main-new')"><span>Акт прилагается ко второму экземпляру</span></label><br>
                 <br>
                 <div id="divHystologyMain" class="div-hystology-main">
-                    <label><input type="checkbox" id="hystologyArchive" onchange="onlyOneCheckboxChecked('hystologySecondCopy'); changeStyle('divHystologyArchive', ' div-hystology-archive-new'); changeStyle('divHystologyText', ' div-hystology-text-new')"><span>Акт сдан в архив</span></label><br>
+                    <label><input type="checkbox" id="hystologyArchive"
+                                  onchange="onlyOneCheckboxChecked('hystologySecondCopy'); changeStyle('divHystologyArchive', ' div-hystology-archive-new'); changeStyle('divHystologyText', ' div-hystology-text-new')"><span>Акт сдан в архив</span></label><br>
                     <br>
                     <div id="divHystologyArchive" class="div-hystology-archive">
-                        <label for="numHystologyArchive"><span>№ акта:</span></label> <input id="numHystologyArchive" size="1" type="text"><br>
-                        <label for="hystologyArchiveDay"><span>Дата:</span></label> <input id="hystologyArchiveDay" size="1" type="text" >
-                        <label for="hystologyArchiveMounth"></label> <input id="hystologyArchiveMounth" size="1" type="text" >
-                        <label for="hystologyArchiveYear"></label> <input id="hystologyArchiveYear" size="1" type="text">
+                        <label for="numHystologyArchive"><span>№ акта:</span></label> <input id="numHystologyArchive"
+                                                                                             size="1" type="text"><br>
+                        <label for="hystologyArchiveDay"><span>Дата:</span></label> <input id="hystologyArchiveDay"
+                                                                                           size="1" type="text">
+                        <label for="hystologyArchiveMounth"></label> <input id="hystologyArchiveMounth" size="1"
+                                                                            type="text">
+                        <label for="hystologyArchiveYear"></label> <input id="hystologyArchiveYear" size="1"
+                                                                          type="text">
                     </div>
 
                     <div id="divHystologyText" class="div-hystology-text">
-                        <label for="numHystologyText"><span>№ акта:</span></label> <input id="numHystologyText" size="1" type="text"><br>
-                        <label for="hystologyTextDay"><span>Дата:</span></label> <input id="hystologyTextDay" size="1" type="text" >
-                        <label for="hystologyTextMounth"></label> <input id="hystologyTextMounth" size="1" type="text" >
+                        <label for="numHystologyText"><span>№ акта:</span></label> <input id="numHystologyText" size="1"
+                                                                                          type="text"><br>
+                        <label for="hystologyTextDay"><span>Дата:</span></label> <input id="hystologyTextDay" size="1"
+                                                                                        type="text">
+                        <label for="hystologyTextMounth"></label> <input id="hystologyTextMounth" size="1" type="text">
                         <label for="hystologyTextYear"></label> <input id="hystologyTextYear" size="1" type="text">
                         <br>
                         <span>Текст гистологического заключения: </span>
                         <textarea id="textareaHystology" cols="60" rows="10"></textarea>
                         <br>
                         <label for="hystologist"><span>Эксперт-гистолог: </span></label>
-                        <select id="hystologist" onchange="changeStyleIfSelected('divHystologistOther', 'hystologist', ' div-hystologist-other-new', 5)">
+                        <select id="hystologist"
+                                onchange="changeStyleIfSelected('divHystologistOther', 'hystologist', ' div-hystologist-other-new', 5)">
                             <option>Захарова</option>
                             <option>Штарберг</option>
                             <option>Захарчук</option>
@@ -1675,10 +1686,16 @@
                     </div>
                 </div>
                 <br>
-                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t); else getResult(t);" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t); else getResult(t);"
+                       type="button" value="Результат">
                 <input onclick="resetForm('formHystology');
                 resetNewStyle('divHystologyMain', 'divHystologyArchive', 'divHystologistOther', 'divHystologyText')
-
+                    getDateDay('hystologyTextDay');
+                    getDateDay('hystologyArchiveDay');
+                    getDateMonth('hystologyTextMounth');
+                    getDateMonth('hystologyArchiveMounth');
+                    getDateYear('hystologyTextYear');
+                    getDateYear('hystologyArchiveYear');
 //            resetFormElements()
             " type="button" value="Сбросить">
             </form>
@@ -1750,7 +1767,8 @@
                     <label><input type="checkbox" autocomplete="off" id="pneumothoraxTestLeft" onchange=""><span>Положительная слева</span></label><br>
                 </div>
                 <br/>
-                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t); else getResult(t);" type="button" value="Результат">
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t); else getResult(t);"
+                       type="button" value="Результат">
                 <input onclick="
 //            resetForm('');
             resetNewStyle('divSubclavianCatheter', 'divAirEmboliaTestPositive', 'divPneumothoraxTestPositive', 'divWoundPostOperativeMiddle', 'divInjections');
@@ -1763,24 +1781,24 @@
             <div class="pushback-block" onclick="resetLocalityLeft('chemBlock')">X</div>
             <form id="formChem">
                 <br>
-                <label><span id="spanChemSurname">Труп гр-на</span><input id="chemSurname" size="15" type="text"></label>
-                <input onclick="changeStyleDisplay('сhemAlcoholUrineSpan', 'сhemAlcoholUrine', 'none')" type="button" value="Change span">
-                <input onclick="changeStyleDisplay('сhemAlcoholUrineSpan', 'сhemAlcoholUrine', 'inline')" type="button" value="Style default">
-                <br>
-                <label><span>Год рождения: </span><input id="сhemBirth" size="10" type="text"></label>
-                <br>
+                <label><span id="spanChemSurname">Труп гр-на</span><input id="surname" size="15" type="text"></label>
                 <br>
                 <div id="divAlcohol">
                     <span id="alhogolSpan">Алкоголь</span><br>
-                    <label for="numChemAlhogolText"><span>№ акта:</span></label> <input id="numChemAlhogolText" size="1" type="text"><br>
-                    <label for="chemAlhogolTextDay"><span>Дата:</span></label> <input id="chemAlhogolTextDay" size="1" type="text" >
-                    <label for="chemAlhogolTextMounth"></label> <input id="chemAlhogolTextMounth" size="1" type="text" >
+                    <label for="numChemAlhogolText"><span>№ акта:</span></label> <input id="numChemAlhogolText" size="1"
+                                                                                        type="text"><br>
+                    <label for="chemAlhogolTextDay"><span>Дата:</span></label> <input id="chemAlhogolTextDay" size="1"
+                                                                                      type="text">
+                    <label for="chemAlhogolTextMounth"></label> <input id="chemAlhogolTextMounth" size="1" type="text">
                     <label for="chemAlhogolTextYear"></label> <input id="chemAlhogolTextYear" size="1" type="text">
                     <br>
-                    <label><span id="сhemAlcoholBloodSpan">В крови: </span><input id="сhemAlcoholBlood" size="6" type="text"></label>
-                    <label><span id="сhemAlcoholUrineSpan">В моче: </span><input id="сhemAlcoholUrine" size="6" type="text"></label><br>
+                    <label><span id="сhemAlcoholBloodSpan">В крови: </span><input id="сhemAlcoholBlood" size="6"
+                                                                                  type="text"></label>
+                    <label><span id="сhemAlcoholUrineSpan">В моче: </span><input id="сhemAlcoholUrine" size="6"
+                                                                                 type="text"></label><br>
                     <label for="chemistAlсohol"><span>Эксперт-химик: </span></label>
-                    <select id="chemistAlсohol" onchange="changeStyleIfSelected('divChemistAlсoholOther', 'chemistAlсohol', ' div-chemistAlcohol-other-new', 3)">
+                    <select id="chemistAlсohol"
+                            onchange="changeStyleIfSelected('divChemistAlсoholOther', 'chemistAlсohol', ' div-chemistAlcohol-other-new', 3)">
                         <option>Дорофеева</option>
                         <option>Жердева</option>
                         <option>Другой химик</option>
@@ -1791,17 +1809,20 @@
                 </div>
                 <div id="divChemSubst" class="div-chemSubstr">
                     <span>Общая химия: </span> <br>
-                    <label for="numChemSubstrText"><span>№ акта:</span></label> <input id="numChemSubstrText" size="1" type="text"><br>
-                    <label for="chemSubstrTextDay"><span>Дата:</span></label> <input id="chemSubstrTextDay" size="1" type="text" >
-                    <label for="chemSubstrTextMounth"></label> <input id="chemSubstrTextMounth" size="1" type="text" >
+                    <label for="numChemSubstrText"><span>№ акта:</span></label> <input id="numChemSubstrText" size="1"
+                                                                                       type="text"><br>
+                    <label for="chemSubstrTextDay"><span>Дата:</span></label> <input id="chemSubstrTextDay" size="1"
+                                                                                     type="text">
+                    <label for="chemSubstrTextMounth"></label> <input id="chemSubstrTextMounth" size="1" type="text">
                     <label for="chemSubstrTextYear"></label> <input id="chemSubstrTextYear" size="1" type="text">
                     <br>
                     <span>Не обнаружено:</span>
                     <p><textarea id="chemSubstrNothing" cols="40" rows="5"></textarea></p>
                     <span>Обнаружено:</span>
-                    <p><textarea id="textarea2" cols="40" rows="2"></textarea></p>
+                    <p><textarea id="chemSubstrYes" cols="40" rows="2"></textarea></p>
                     <label for="chemistSubstrNothing"><span>Эксперт-химик: </span></label>
-                    <select id="chemistSubstrNothing" onchange="changeStyleIfSelected('divChemistSubstrNothingOther', 'chemistSubstrNothing', ' div-chemistSubstrNothing-other-new', 3)">
+                    <select id="chemistSubstrNothing"
+                            onchange="changeStyleIfSelected('divChemistSubstrNothingOther', 'chemistSubstrNothing', ' div-chemistSubstrNothing-other-new', 3)">
                         <option>Дорофеева</option>
                         <option>Жердева</option>
                         <option>Другой химик</option>
@@ -1812,9 +1833,12 @@
                 </div>
                 <div id="divVitreous" class="div-vitreous">
                     <span>Глюкоза в стеловидном теле </span> <br>
-                    <label for="numChemVitreousText"><span>№ акта:</span></label> <input id="numChemVitreousText" size="1" type="text"><br>
-                    <label for="chemVitreousTextDay"><span>Дата:</span></label> <input id="chemVitreousTextDay" size="1" type="text" >
-                    <label for="chemVitreousTextMounth"></label> <input id="chemVitreousTextMounth" size="1" type="text" >
+                    <label for="numChemVitreousText"><span>№ акта:</span></label> <input id="numChemVitreousText"
+                                                                                         size="1" type="text"><br>
+                    <label for="chemVitreousTextDay"><span>Дата:</span></label> <input id="chemVitreousTextDay" size="1"
+                                                                                       type="text">
+                    <label for="chemVitreousTextMounth"></label> <input id="chemVitreousTextMounth" size="1"
+                                                                        type="text">
                     <label for="chemVitreousTextYear"></label><input id="chemVitreousTextYear" size="1" type="text">
                     <br>
                     <span>Содержит глюкозу в количестве: </span>
@@ -1822,7 +1846,8 @@
                     <br>
 
                     <label for="chemistVitreousNothing"><span>Эксперт-химик: </span></label>
-                    <select id="chemistVitreousNothing" onchange="changeStyleIfSelected('divChemistVitreousNothingOther', 'chemistVitreousNothing', ' div-chemistVitreousNothing-other-new', 3)">
+                    <select id="chemistVitreousNothing"
+                            onchange="changeStyleIfSelected('divChemistVitreousNothingOther', 'chemistVitreousNothing', ' div-chemistVitreousNothing-other-new', 3)">
                         <option>Дорофеева</option>
                         <option>Жердева</option>
                         <option>Другой химик</option>
@@ -1834,9 +1859,11 @@
                 <br>
                 <div id="divCarboxy" class="div-carboxy">
                     <span>Кровь на СО</span> <br>
-                    <label for="numChemCarboxyText"><span>№ акта:</span></label> <input id="numChemCarboxyText" size="1" type="text"><br>
-                    <label for="chemCarboxyTextDay"><span>Дата:</span></label> <input id="chemCarboxyTextDay" size="1" type="text" >
-                    <label for="chemCarboxyTextMounth"></label> <input id="chemCarboxyTextMounth" size="1" type="text" >
+                    <label for="numChemCarboxyText"><span>№ акта:</span></label> <input id="numChemCarboxyText" size="1"
+                                                                                        type="text"><br>
+                    <label for="chemCarboxyTextDay"><span>Дата:</span></label> <input id="chemCarboxyTextDay" size="1"
+                                                                                      type="text">
+                    <label for="chemCarboxyTextMounth"></label> <input id="chemCarboxyTextMounth" size="1" type="text">
                     <label for="chemCarboxyTextYear"></label><input id="chemCarboxyTextYear" size="1" type="text">
                     <br>
                     <span>Карбоксигемоглобин в количестве: </span>
@@ -1844,7 +1871,8 @@
                     <br>
 
                     <label for="chemistCarboxy"><span>Эксперт-химик: </span></label>
-                    <select id="chemistCarboxy" onchange="changeStyleIfSelected('divChemistCarboxyOther', 'chemistCarboxy', ' div-chemistCarboxy-other-new', 3)">
+                    <select id="chemistCarboxy"
+                            onchange="changeStyleIfSelected('divChemistCarboxyOther', 'chemistCarboxy', ' div-chemistCarboxy-other-new', 3)">
                         <option>Дорофеева</option>
                         <option>Жердева</option>
                         <option>Другой химик</option>
@@ -1854,16 +1882,76 @@
                     </div>
                 </div>
 
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t); else getResult(t);"
+                       type="button" value="Результат">
+                <input onclick=" resetForm('formChem');
+            resetNewStyle('divChemistAlсoholOther', 'divChemistSubstrNothingOther', 'divChemistVitreousNothingOther', 'divChemistCarboxyOther');
+            getDateDay('chemAlhogolTextDay');
+            getDateMonth('chemAlhogolTextMounth');
+            getDateYear('chemAlhogolTextYear');
 
-                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t); else getResult(t);" type="button" value="Результат">
-                <input onclick="
-//            resetForm('');
-            resetNewStyle();
+            getDateDay('chemSubstrTextDay');
+            getDateMonth('chemSubstrTextMounth');
+            getDateYear('chemSubstrTextYear');
+
+            getDateDay('chemVitreousTextDay');
+            getDateMonth('chemVitreousTextMounth');
+            getDateYear('chemVitreousTextYear');
+
+            getDateDay('chemVitreousTextDay');
+            getDateMonth('chemVitreousTextMounth');
+            getDateYear('chemVitreousTextYear');
+
+            getDateDay('chemCarboxyTextDay');
+            getDateMonth('chemCarboxyTextMounth');
+            getDateYear('chemCarboxyTextYear');
 //          resetFormElements()
             " type="button" value="Сбросить">
             </form>
         </div>
 
+        <div class="block block-forma block-forma-bio" id="bioBlock">
+            <div class="pushback-block" onclick="resetLocalityLeft('bioBlock')">X</div>
+            <form id="formBio">
+                <label><span id="spanBioSurname">Труп гр-на</span><input id="surname2" size="15" type="text"></label>
+                <br>
+                <span id="bioSpan">Группа крови</span><br>
+                <label for="numBioText"><span>№ акта:</span></label> <input id="numBioText" size="1" type="text"><br>
+                <label for="bioTextDay"><span>Дата:</span></label> <input id="bioTextDay" size="1"
+                                                                                  type="text">
+                <label for="bioTextMounth"></label> <input id="bioTextMounth" size="1" type="text">
+                <label for="bioTextYear"></label> <input id="bioTextYear" size="1" type="text">
+                <br>
+                <label for="bloodTypeBio"><span>Группа крови: </span></label>
+                <select id="bloodTypeBio">
+                    <option>0(первая)</option>
+                    <option>А(вторая)</option>
+                    <option>В(третья)</option>
+                    <option>АВ(четвёртая)</option>
+                </select>
+                <br>
+                <label for="biologist"><span>Эксперт-биолог: </span></label>
+                <select id="biologist"
+                    onchange="changeStyleIfSelected('divBiologistOther', 'biologist', ' div-biologist-other-new', 2)">
+                    <option>Количниченко</option>
+                    <option>Другой биолог</option>
+                </select>
+                <div id="divBiologistOther" class="div-biologist-other">
+                    <textarea cols="20" id="biologistOther" rows="1"></textarea>
+                </div>
+                <br>
+                <br>
+                <input onclick="if (!ISchecked('noWarning'))(getCaretCharacterOffsetWithin('frameId')) ? changeStyleDisplay('warning', 'block') : getResult(t); else getResult(t);"
+                       type="button" value="Результат">
+                <input onclick=" resetForm('formBio');
+                resetNewStyle('divBiologistOther');
+                getDateDay('bioTextDay');
+                getDateMonth('bioTextMounth');
+                getDateYear('bioTextYear');
+//          resetFormElements()
+            " type="button" value="Сбросить">
+            </form>
+        </div>
 
 
         <div class="test-block" id="testblock"></div>
@@ -1987,12 +2075,17 @@
         getDateMonth('chemVitreousTextMounth');
         getDateYear('chemVitreousTextYear');
 
-        getResult(t); //main function
+        getDateDay('chemCarboxyTextDay');
+        getDateMonth('chemCarboxyTextMounth');
+        getDateYear('chemCarboxyTextYear');
 
+        getDateDay('bioTextDay');
+        getDateMonth('bioTextMounth');
+        getDateYear('bioTextYear');
+
+       getResult(t); //main function
 
     </script>
-
-
 
 
 </div>

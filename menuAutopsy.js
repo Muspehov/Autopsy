@@ -1,6 +1,7 @@
 /**
  * Created by Ъ- on 29.09.2015.
  */
+
 /*VISUAL EFFECTS*/
 
 function changeLocality(id1, crd1, id2, crd2, side) { //смещение двух блоков
@@ -51,7 +52,7 @@ function resetLocalityLeft(id) {
     e.style.zIndex = '0';
 }
 
-function changeTextInBlock(id, text){
+function changeTextInBlock(id, text) {
     var span = document.getElementById(id);
     var content = document.createTextNode(text);
     span.innerHTML = '';
@@ -59,8 +60,8 @@ function changeTextInBlock(id, text){
 }
 
 function changeStyleDisplay() {
-    for (var i = 0; i < arguments.length-1; i++) {
-        document.getElementById(arguments[i]).style.display = arguments[arguments.length-1];
+    for (var i = 0; i < arguments.length - 1; i++) {
+        document.getElementById(arguments[i]).style.display = arguments[arguments.length - 1];
     }
 }
 
@@ -306,12 +307,12 @@ function expandDivTroughSelect2(idSlct, optionNum, id, heightNum) { //тольк
     }
 }
 
-function chemResearchNonDetected (array, idTextarea, idCheckbox1, idCheckbox2, idCheckbox3){ //вывод списка веществ в textarea
+function chemResearchNonDetected(array, idTextarea, idCheckbox1, idCheckbox2, idCheckbox3) { //вывод списка веществ в textarea
     var text = '';                                                                           //в зависимости от нажатия checkbox
     for (var i = 2, ch = false; i < arguments.length; i++) {
-        if (document.getElementById(arguments[i]).checked){
+        if (document.getElementById(arguments[i]).checked) {
             if (i !== 0 && ch) text += '; ';
-            text += array[i-2];
+            text += array[i - 2];
             ch = true;
         }
     }
@@ -424,11 +425,11 @@ function ISchecked_AndOutputArrayElem(id, item, num) { //проверка на �
     var element = document.getElementById(id).checked;
     if (num == 1) {
         if (element) return item;
-        else  return false;
+        else return false;
     }
     else {
         if (element) return false;
-        else  return item;
+        else return item;
     }
 }
 
@@ -436,11 +437,11 @@ function ISchecked_AndOutputArrayElem2(id, item1, item2, num) { //проверк
     var element = document.getElementById(id).checked;
     if (num == 1) {
         if (element) return item1;
-        else  return item2;
+        else return item2;
     }
     else {
         if (element) return item2;
-        else  return item1;
+        else return item1;
     }
 }
 
@@ -607,14 +608,14 @@ function get5RandAndAddInValue(id, min, max, num) { //кратное num
 }
 
 /*Date*/
-function getDateYear(id){
+function getDateYear(id) {
     var year = new Date();
     for (var i = 0; i < arguments.length; i++) {
         document.getElementById(arguments[i]).value = year.getFullYear().toString().slice(2);
     }
 }
 
-function getDateMonth(id){
+function getDateMonth(id) {
     var date = new Date();
     var month = date.getMonth() + 1;
     if (month.toString().length < 2) month = '0' + month;
@@ -623,7 +624,7 @@ function getDateMonth(id){
     }
 }
 
-function getDateDay(id){
+function getDateDay(id) {
     var date = new Date();
     var day = date.getDate();
     if (day.toString().length < 2) day = '0' + day;
@@ -673,7 +674,7 @@ function getPushSymb() {
     return mark;
 }
 
-function checkAlveolus (nameTeeth, targetCheckbox, symb){
+function checkAlveolus(nameTeeth, targetCheckbox, symb) {
     var elLength = document.getElementsByName(nameTeeth).length;
     var checkbox = document.getElementById(targetCheckbox);
     for (var i = 0, counter = 0; i < elLength; i++) {
@@ -685,9 +686,7 @@ function checkAlveolus (nameTeeth, targetCheckbox, symb){
 }
 
 
-
-
-    function resetTeeth(name, symb) {
+function resetTeeth(name, symb) {
     var elLength = document.getElementsByName(name).length;
     for (var i = 0; i < elLength; i++) {
         document.getElementsByName(name)[i].value = symb;
@@ -1144,12 +1143,12 @@ function getResultString(array, symbArray, textArray1) {
         else result = '';
 
         result += textArray1[19]; //После точки с запятой слово "слева "
-        if (array[1][0] == symbArray[0]) result +=  textArray1[8]; //отсутствуют
-        else if (array[1][0] == symbArray[1]) result +=  textArray1[9]; //целы
-        else if (array[1][0] == symbArray[2]) result +=  textArray1[10]; //корни
-        else if (array[1][0] == symbArray[3]) result +=  textArray1[11]; // кариес
-        else if (array[1][0] == symbArray[4]) result +=  textArray1[12];  // белые
-        else if (array[1][0] == symbArray[5]) result +=  textArray1[13];  // желтые
+        if (array[1][0] == symbArray[0]) result += textArray1[8]; //отсутствуют
+        else if (array[1][0] == symbArray[1]) result += textArray1[9]; //целы
+        else if (array[1][0] == symbArray[2]) result += textArray1[10]; //корни
+        else if (array[1][0] == symbArray[3]) result += textArray1[11]; // кариес
+        else if (array[1][0] == symbArray[4]) result += textArray1[12];  // белые
+        else if (array[1][0] == symbArray[5]) result += textArray1[13];  // желтые
         else result = '';
     }
 
@@ -1184,12 +1183,12 @@ function getResultString(array, symbArray, textArray1) {
         else result = '';
 
         result += textArray1[19]; //После точки с запятой слово "слева "
-        if (array[3][0] == symbArray[0]) result +=  textArray1[8]; //отсутствуют
-        else if (array[3][0] == symbArray[1]) result +=  textArray1[9]; //целы
-        else if (array[3][0] == symbArray[2]) result +=  textArray1[10]; //корни
-        else if (array[3][0] == symbArray[3]) result +=  textArray1[11]; // кариес
-        else if (array[3][0] == symbArray[4]) result +=  textArray1[12];  // белые
-        else if (array[3][0] == symbArray[5]) result +=  textArray1[13];  // желтые
+        if (array[3][0] == symbArray[0]) result += textArray1[8]; //отсутствуют
+        else if (array[3][0] == symbArray[1]) result += textArray1[9]; //целы
+        else if (array[3][0] == symbArray[2]) result += textArray1[10]; //корни
+        else if (array[3][0] == symbArray[3]) result += textArray1[11]; // кариес
+        else if (array[3][0] == symbArray[4]) result += textArray1[12];  // белые
+        else if (array[3][0] == symbArray[5]) result += textArray1[13];  // желтые
         else result = '';
     }
 
@@ -1814,10 +1813,19 @@ var arr_chem = [
 ];
 
 var arr_hystologists = [
-  'Захарова О.А.',
-  'Штарберг Р.С.',
-  'Захарчук Я.',
-  'Салтонас '
+    'Захарова О.А.',
+    'Штарберг Р.С.',
+    'Захарчук Я.',
+    'Салтонас '
+];
+
+var arr_chemist = [
+    'Дорофеева О.Е.',
+    'Жердева Е.А.'
+];
+
+var arr_biologist = [
+    'Колисниченко Н.В.'
 ];
 
 function getResult(t) {
@@ -1830,7 +1838,7 @@ function getResult(t) {
             }
             else return t.array1[0];
         }
-};
+    };
 
 
     if (checkAreaForFill(t.id2, re)) {
@@ -1879,7 +1887,7 @@ function getResult(t) {
         skinElastic: getStringFromSelect2(t.id18, t.array2, 23),
         skinDry: function () {
             if (ISchecked(t.id19)) return t.array2[27];
-            else  return t.array2[26];
+            else return t.array2[26];
         },
         spotColor: getStringFromSelect2(t.id20, t.array3, 4),
         spotIntensity: getStringFromSelect2(t.id21, t.array3, 7),
@@ -1919,7 +1927,7 @@ function getResult(t) {
                 }
                 else return t.array5[7] + getFromTextarea(t.id34) + ', ' + t.array5[8] + getFromTextarea(t.id36) + ' см. ';
             }
-            else  return t.array5[0];
+            else return t.array5[0];
         },
 
         headHairDamage: function () {
@@ -1948,13 +1956,13 @@ function getResult(t) {
             return getStringFromSelect2(t.id46, t.array5, 26) + getStringFromSelect2(t.id47, t.array5, 30);
         },
 
-    eyesConnectMembranDamageAndHemorrhage: function () {
-        var larshe = function () {
-            if (ISchecked(t.id235)) return ', ' + t.array3[27];
-            else return '. ';
-        };
+        eyesConnectMembranDamageAndHemorrhage: function () {
+            var larshe = function () {
+                if (ISchecked(t.id235)) return ', ' + t.array3[27];
+                else return '. ';
+            };
 
-        if (!ISchecked(t.id50) && !ISchecked(t.id48)) return t.array4[37] + larshe(); //без повреждений и кровоизлияний
+            if (!ISchecked(t.id50) && !ISchecked(t.id48)) return t.array4[37] + larshe(); //без повреждений и кровоизлияний
             else if (!ISchecked(t.id50) && ISchecked(t.id48)) return t.array4[38] + larshe(); //без повреждений
             else if (ISchecked(t.id50) && !ISchecked(t.id48)) return t.array4[39] + larshe(); //без кровоизлияний
             else return larshe();
@@ -1984,8 +1992,8 @@ function getResult(t) {
             else return getResultString(matrix, symb, textPhrasesArray);
         },
 
-        teethAlveolus: function (){
-            if (ISchecked(t.id57t)){
+        teethAlveolus: function () {
+            if (ISchecked(t.id57t)) {
                 var elLength = document.getElementsByName(t.id57t_name).length;
                 for (var i = 0, counter = 0; i < elLength; i++) {
                     if (document.getElementsByName(t.id57t_name)[i].value == ' Н ') counter++;
@@ -2009,7 +2017,7 @@ function getResult(t) {
         ear: function () {
             if (!ISchecked(t.id61)) {
                 if (verificationSelect(t.id62, 6)) {
-                    if (checkAreaForFill(t.id63, re))  return t.array5[51] + getFromTextarea(t.id63);
+                    if (checkAreaForFill(t.id63, re)) return t.array5[51] + getFromTextarea(t.id63);
 
                     else {
                         return t.array5[51] + t.array5[53];
@@ -2330,7 +2338,7 @@ function getResult(t) {
         },
 
         coronars: function () {
-            if (!verificationSelect(t.id142с, 5)){
+            if (!verificationSelect(t.id142с, 5)) {
                 return getStringFromSelect2(t.id131, t.array13, 7) + getStringFromSelect2(t.id132, t.array13, 10);
             } else return getStringFromSelect2(t.id131, t.array13, 7) + t.array13[65] + t.array13[66] + getNumberFromTextarea(t.id142сs) + '%. ' + t.array13[67];
         },
@@ -2558,21 +2566,21 @@ function getResult(t) {
             else return alcogol();
         },
 
-        vitreous: function() {
-            if (checkCheckboxesOR(t.id203, t.id204)){                          //bloodChem, urineChem are checked
-                if (ISchecked(t.id236)){                                      //стекловидное тело checked
-                    if (ISchecked(t.id237)){
-                        return '; ' +  t.array17[16] + '; ' + t.array17[19] + '. ';  // if(CO выбрано) return стекловидное тело + СО + '. '
-                    } else return '; ' +  t.array17[16] + '. ' ;                       // else only стекловидное тело (ниже)
+        vitreous: function () {
+            if (checkCheckboxesOR(t.id203, t.id204)) {                          //bloodChem, urineChem are checked
+                if (ISchecked(t.id236)) {                                      //стекловидное тело checked
+                    if (ISchecked(t.id237)) {
+                        return '; ' + t.array17[16] + '; ' + t.array17[19] + '. ';  // if(CO выбрано) return стекловидное тело + СО + '. '
+                    } else return '; ' + t.array17[16] + '. ';                       // else only стекловидное тело (ниже)
                 }
                 else {                                          //стекловидное тело unchecked
-                    if (ISchecked(t.id237)){                    // if(CO выбрано) return СО + '. '
+                    if (ISchecked(t.id237)) {                    // if(CO выбрано) return СО + '. '
                         return '; ' + t.array17[19] + '. ';
                     } else return '. ';                         // else return '. ';
                 }
 
             } else {                                            //bloodChem, urineChem are checked
-                if (ISchecked(t.id236)){                        //стекловидное тело checked
+                if (ISchecked(t.id236)) {                        //стекловидное тело checked
                     if (ISchecked(t.id237)) {                   // if(CO выбрано)
                         return ' ' + t.array17[17] + ', ' + t.array17[19] + '. ';
                     } else return ' ' + t.array17[17] + '. ';
@@ -2598,32 +2606,298 @@ function getResult(t) {
     };
 
     var investigationHystology = {
-      hystology: function (){
-          if (ISchecked('hystologySecondCopy')){
-              return '1. Акт судебно-гистологического исследования прилагается ко второму экземпляру данного заключения. '
-          } else {
-              if (ISchecked('hystologyArchive')){
-                  return '1. Материал для судебно-гистологического исследования сдан в архив № ' + getNumberFromTextarea('numHystologyArchive') + '. ';
-              } else {
-                  if (verificationSelect('hystologist', 5)){
-                    return '1. Из акта судебно-гистологического исследования № ' + getNumberFromTextarea('numHystologyText') + ' от ' + getNumberFromTextarea('hystologyTextDay') + '.' + getNumberFromTextarea('hystologyTextMounth') + '.' + getNumberFromTextarea('hystologyTextYear') + '. ' + '(судебно-медицинский эксперт ' + getFromTextarea('hystologistOther') + ') известно, что: "' + getFromTextarea('textareaHystology') + '". ';
-                  } else return '1. Из акта судебно-гистологического исследования № ' + getNumberFromTextarea('numHystologyText') + ' от ' + getNumberFromTextarea('hystologyTextDay') + '.' + getNumberFromTextarea('hystologyTextMounth') + '.' + getNumberFromTextarea('hystologyTextYear') + '. ' + '(судебно-медицинский эксперт ' + getStringFromSelect2('hystologist', arr_hystologists, 0) + ') известно, что: "' + getFromTextarea('textareaHystology') + '". ';
-              }
+        hystology: function () {
+            if (ISchecked('hystologySecondCopy')) {
+                return '1. Акт судебно-гистологического исследования прилагается ко второму экземпляру данного заключения. '
+            } else {
+                if (ISchecked('hystologyArchive')) {
+                    return '1. Материал для судебно-гистологического исследования сдан в архив № ' + getNumberFromTextarea('numHystologyArchive') + '. ';
+                } else {
+                    if (verificationSelect('hystologist', 5)) {
+                        return '1. Из акта судебно-гистологического исследования № ' + getNumberFromTextarea('numHystologyText') + ' от ' + getNumberFromTextarea('hystologyTextDay') + '.' + getNumberFromTextarea('hystologyTextMounth') + '.' + getNumberFromTextarea('hystologyTextYear') + '. ' + '(судебно-медицинский эксперт ' + getFromTextarea('hystologistOther') + ') известно, что: "' + getFromTextarea('textareaHystology') + '". ';
+                    } else return '1. Из акта судебно-гистологического исследования № ' + getNumberFromTextarea('numHystologyText') + ' от ' + getNumberFromTextarea('hystologyTextDay') + '.' + getNumberFromTextarea('hystologyTextMounth') + '.' + getNumberFromTextarea('hystologyTextYear') + '. ' + '(судебно-медицинский эксперт ' + getStringFromSelect2('hystologist', arr_hystologists, 0) + ') известно, что: "' + getFromTextarea('textareaHystology') + '". ';
+                }
 
-          }
-      }
+            }
+        }
     };
 
     var investigationChem = {
-      chem: function (){
-          return '2. Судебно-химическое исследование' + 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad aliquid architecto assumenda autem blanditiis, cum, expedita fugiat ipsum natus nobis obcaecati perspiciatis quaerat recusandae repellendus soluta tenetur veniam! Quos. ';
-      }
+//вывод номера 2. Если хоть один чекбокс выбран
+        numTwo: function () {
+            if (checkCheckboxesOR('bloodChem', 'urineChem', 'surrogates', 'drug', 'narcotic', 'vitreous', 'carboxyhemoglobin')) return '2. ';
+            else return '';
+        },
+
+        alcohol: function () {
+            var bloodChem = ISchecked('bloodChem'),
+                urineChem = ISchecked('urineChem');
+
+            var getChemist = function () {
+                var chemistOtherCheck = verificationSelect('chemistAlсohol', 3),
+                    chemist = getStringFromSelect2('chemistAlсohol', arr_chemist, 0),
+                    chemistOther = getFromTextarea('chemistAlсoholOther'),
+                    chemistStartStr = ' (судебно-медицинский эксперт ',
+                    chemistEndStr = ') ';
+
+                if (chemistOtherCheck) return chemistStartStr + chemistOther + chemistEndStr;
+                else return chemistStartStr + chemist + chemistEndStr;
+            };
+
+            var getCorpseInfo = function () {
+                var corpse = getFromTextarea('surname');
+                if (ISchecked(t.id6)) return ' от трупа гр-на ' + corpse;
+                else return ' от трупа гр-ки ' + corpse;
+            };
+
+            var startStr = 'Из акта судебно-химического исследования № ';
+            var point = '. ',
+                promille = String.fromCharCode(8240);
+            var protocolData = getNumberFromTextarea('numChemAlhogolText'),
+                getFromDate = function () {
+                    var day = getNumberFromTextarea('chemAlhogolTextDay'),
+                        month = getNumberFromTextarea('chemAlhogolTextMounth'),
+                        year = getNumberFromTextarea('chemAlhogolTextYear');
+                    return ' от ' + day + '.' + month + '.' + year;
+                };
+            var bloodCheck = checkAreaForFill('сhemAlcoholBlood', re),
+                urineCheck = checkAreaForFill('сhemAlcoholUrine', re),
+                alcoholBlood = getNumberFromTextarea('сhemAlcoholBlood'),
+                alcoholUrine = getNumberFromTextarea('сhemAlcoholUrine');
+
+            var partStr1 = startStr + protocolData + getFromDate() + getChemist();
+
+            if (bloodChem && urineChem) {
+                if (bloodCheck && urineCheck) return partStr1 + 'известно, что в крови и моче ' + getCorpseInfo() +
+                    ' обнаружен этиловый спирт в концентрации: в крови ' + alcoholBlood + promille +
+                    ', в моче ' + alcoholUrine + promille + point;
+                else if (bloodCheck && !urineCheck) return partStr1 + 'известно, что в крови' + getCorpseInfo() +
+                    ' обнаружен этиловый спирт в концентрации: ' + alcoholBlood + promille + point;
+                else if (!bloodCheck && urineCheck) return partStr1 + 'известно, что в моче' + getCorpseInfo() +
+                    ' обнаружен этиловый спирт в концентрации: ' + alcoholUrine + promille + point;
+                else return partStr1 + 'известно, что в крови и моче ' + getCorpseInfo() + ' этиловый спирт не обнаружен' + point;
+            }
+            else if (bloodChem && !urineChem) {
+                if (bloodCheck) return partStr1 + 'известно, что в крови' + getCorpseInfo() +
+                    ' обнаружен этиловый спирт в концентрации: ' + alcoholBlood + promille + point;
+                else return partStr1 + 'известно, что в крови ' + getCorpseInfo() + ' этиловый спирт не обнаружен' + point;
+            }
+            else if (!bloodChem && urineChem) {
+                if (urineCheck) return partStr1 + 'известно, что в моче' + getCorpseInfo() +
+                    ' обнаружен этиловый спирт в концентрации: ' + alcoholUrine + promille + point;
+                else return partStr1 + 'известно, что в моче ' + getCorpseInfo() + ' этиловый спирт не обнаружен' + point;
+            }
+            else return '';
+
+        },
+        chemOther: function () {
+            var getChemist = function () {
+                var chemistOtherCheck = verificationSelect('chemistAlсohol', 3),
+                    chemist = getStringFromSelect2('chemistAlсohol', arr_chemist, 0),
+                    chemistOther = getFromTextarea('chemistAlсoholOther'),
+                    chemistStartStr = ' (судебно-медицинский эксперт ',
+                    chemistEndStr = ')';
+
+                if (chemistOtherCheck) return chemistStartStr + chemistOther + chemistEndStr;
+                else return chemistStartStr + chemist + chemistEndStr;
+            };
+
+            var startStr = 'Из акта судебно-химического исследования № ';
+            var point = '. ';
+
+            var protocolData = getNumberFromTextarea('numChemSubstrText'),
+                getFromDate = function () {
+                    var day = getNumberFromTextarea('chemSubstrTextDay'),
+                        month = getNumberFromTextarea('chemSubstrTextMounth'),
+                        year = getNumberFromTextarea('chemSubstrTextYear');
+                    return ' от ' + day + '.' + month + '.' + year;
+                };
+
+            var arr_organs = [
+                'головного мозга',
+                'печени',
+                'почки',
+                'желудка с содержимым'
+            ];
+            var organs = ' (' + getStringEnumeration4(t.id197, t.id196, t.id198, t.id199, arr_organs) + ') ';
+
+
+            var noDetected = getFromTextarea('chemSubstrNothing');
+            //    detected = getFromTextarea();
+
+            var partStr1 = startStr + protocolData + getFromDate() + getChemist();
+
+            if (checkAreaForFill('chemSubstrNothing', re) && checkAreaForFill('chemSubstrYes', re)) {
+                return partStr1 + ', известно, что при химическом исследовании биологического материала'
+                    + organs + ' обнаружено: ' + getFromTextarea('chemSubstrYes') + point
+                    + 'Не обнаружено:  ' + getFromTextarea('chemSubstrNothing') + point;
+            }
+            else if ((checkAreaForFill('chemSubstrNothing', re) && !checkAreaForFill('chemSubstrYes', re))) {
+                return partStr1 + ', известно, что при химическом исследовании биологического материала'
+                    + organs + ' не обнаружены: ' + getFromTextarea('chemSubstrNothing');
+            }
+            else if ((!checkAreaForFill('chemSubstrNothing', re) && checkAreaForFill('chemSubstrYes', re))) {
+                return partStr1 + ', известно, что при химическом исследовании биологического материала'
+                    + organs + ' обнаружено: ' + getFromTextarea('chemSubstrYes');
+            }
+            else return '';
+        },
+
+
+        carboxy: function () {
+            var carboxyChem = ISchecked('carboxyhemoglobin');
+
+            var getChemist = function () {
+                var chemistOtherCheck = verificationSelect('chemistCarboxy', 3),
+                    chemist = getStringFromSelect2('chemistCarboxy', arr_chemist, 0),
+                    chemistOther = getFromTextarea('chemistCarboxyOther'),
+                    chemistStartStr = ' (судебно-медицинский эксперт ',
+                    chemistEndStr = ')';
+
+                if (chemistOtherCheck) return chemistStartStr + chemistOther + chemistEndStr;
+                else return chemistStartStr + chemist + chemistEndStr;
+            };
+
+            var getCorpseInfo = function () {
+                var corpse = getFromTextarea('surname');
+                if (ISchecked(t.id6)) return ' от трупа гр-на ' + corpse;
+                else return ' от трупа гр-ки ' + corpse;
+            };
+
+            var startStr = 'Из акта судебно-химического исследования № ';
+            var point = '. ';
+
+            var protocolData = getNumberFromTextarea('numChemCarboxyText'),
+                getFromDate = function () {
+                    var day = getNumberFromTextarea('chemCarboxyTextDay'),
+                        month = getNumberFromTextarea('chemCarboxyTextMounth'),
+                        year = getNumberFromTextarea('chemCarboxyTextYear');
+                    return ' от ' + day + '.' + month + '.' + year;
+                };
+
+            var carboxyCheck = checkAreaForFill('chemCarboxy', re),
+                carboxy = getNumberFromTextarea('chemCarboxy') + '% ';
+
+            var partStr1 = startStr + protocolData + getFromDate() + getChemist();
+
+            if (carboxyChem) {
+                if (carboxyCheck) {
+                    return partStr1 + ' известно, что в крови' + getCorpseInfo() + 'обнаружен карбоксигемоглобин в количестве: '
+                        + carboxy + point;
+                } else {
+                    return partStr1 + ' известно, что в крови' + getCorpseInfo() + 'карбоксигемоглобин не обнаружен' + point;
+                }
+            } else return ''
+        },
+
+        vitreous: function () {
+            var vitreousChem = ISchecked('vitreous');
+            var getChemist = function () {
+                var chemistOtherCheck = verificationSelect('chemistVitreousNothing', 3),
+                    chemist = getStringFromSelect2('chemistVitreousNothing', arr_chemist, 0),
+                    chemistOther = getFromTextarea('divChemistVitreousNothingOther'),
+                    chemistStartStr = ' (судебно-медицинский эксперт ',
+                    chemistEndStr = ')';
+
+                if (chemistOtherCheck) return chemistStartStr + chemistOther + chemistEndStr;
+                else return chemistStartStr + chemist + chemistEndStr;
+            };
+
+            var getCorpseInfo = function () {
+                var corpse = getFromTextarea('surname');
+                if (ISchecked(t.id6)) return ' от трупа гр-на ' + corpse;
+                else return ' от трупа гр-ки ' + corpse;
+            };
+
+            var startStr = 'Из акта судебно-химического исследования № ';
+            var point = '. ';
+
+            var protocolData = getNumberFromTextarea('numChemVitreousText'),
+                getFromDate = function () {
+                    var day = getNumberFromTextarea('chemVitreousTextDay'),
+                        month = getNumberFromTextarea('chemVitreousTextMounth'),
+                        year = getNumberFromTextarea('chemVitreousTextYear');
+                    return ' от ' + day + '.' + month + '.' + year;
+                };
+
+            var vitreousCheck = checkAreaForFill('chemVitreousGlucose', re),
+                vitreous = getNumberFromTextarea('chemVitreousGlucose') + ' ммоль/л';
+
+            var partStr1 = startStr + protocolData + getFromDate() + getChemist();
+
+            if (vitreousChem) {
+                if (vitreousCheck) {
+                    return partStr1 + ' известно, что в стекловидном теле' + getCorpseInfo() + 'обнаружена глюкоза в концентрации: '
+                        + vitreous + point;
+                } else {
+                    return partStr1 + ' известно, что в стекловидном теле' + getCorpseInfo() + 'глюкоза не обнаружена' + point;
+                }
+            } else return ''
+
+        }
+
     };
 
     var investigationEvidence = {
-      evidence: function () {
-          return '3. Экспертиза вещественных доказательств Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad aliquid architecto assumenda autem blanditiis, cum, expedita fugiat ipsum natus nobis obcaecati perspiciatis quaerat recusandae repellendus soluta tenetur veniam! Quos.';
-      }
+        numberThree: function () {
+            if (ISchecked('bloodType')) {
+                if (checkCheckboxesOR('bloodChem', 'urineChem', 'surrogates', 'drug', 'narcotic', 'vitreous', 'carboxyhemoglobin'))
+                    return '3. ';
+                else return '2. ';
+            } else return '';
+        },
+
+        evidence: function () {
+            var bloodType = ISchecked('bloodType');
+            var getBiologist = function () {
+                var biologistOtherCheck = verificationSelect('biologist', 2),
+                    biologist = getStringFromSelect2('biologist', arr_biologist, 0),
+                    biologistOther = getFromTextarea('biologistOther'),
+                    biologistStartStr = ' (судебно-медицинский эксперт ',
+                    biologistEndStr = ')';
+                if (biologistOtherCheck) return biologistStartStr + biologistOther + biologistEndStr;
+                else return biologistStartStr + biologist + biologistEndStr;
+            };
+
+            var getCorpseInfo = function () {
+                var corpse = getFromTextarea('surname2');
+                if (ISchecked(t.id6)) return ' от трупа гр-на ' + corpse;
+                else return ' от трупа гр-ки ' + corpse;
+            };
+
+            var protocolData = getNumberFromTextarea('numBioText'),
+                getFromDate = function () {
+                    var day = getNumberFromTextarea('bioTextDay'),
+                        month = getNumberFromTextarea('bioTextMounth'),
+                        year = getNumberFromTextarea('bioTextYear');
+                    return ' от ' + day + '.' + month + '.' + year;
+                };
+
+
+            var startStr = 'Из заключения эксперта (экспертиза вещественных доказательств) № ';
+
+            var bloodTypeText = function () {
+                var option = getOptionNumberOfSelect('bloodTypeBio');
+                var alfa = String.fromCharCode(945),
+                    betta = String.fromCharCode(946);
+
+                switch (option) {
+                    case 1:
+                        return ' относится к O' + alfa + betta + ' группе. ';  break;
+                    case 2:
+                        return ' относится к A' + betta + ' группе. '; break;
+                    case 3:
+                        return ' относится к B' + alfa + ' группе. '; break;
+                    case 4:
+                        return ' относится к AB группе. '; break;
+                }
+
+            };
+
+            if (bloodType) {
+                return  startStr + protocolData + getFromDate() + getBiologist() + ' известно, что кровь ' + getCorpseInfo() + bloodTypeText();
+            } else return '';
+        }
     };
 
     ////////////////////
